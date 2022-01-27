@@ -1,7 +1,7 @@
 {
   "name": "kiwicomponents",
   "version": "0.0.1",
-  "description": "Kiwi Components",
+  "description": "A collection of web components and web utilities.",
   "main": "./dist/build/kiwicomponents-bundle.js",
   "unpkg": "./dist/build/kiwicomponents-bundle.js",
   "jsdelivr": "./dist/build/kiwicomponents-bundle.js",
