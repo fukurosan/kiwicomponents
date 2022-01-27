@@ -1,0 +1,93 @@
+@import "../../../Assets/Stylesheets/variables.scss";
+@import "../../../Assets/Stylesheets/Components/typography.scss";
+
+#main {
+	@extend %body-2;
+	background-color: black;
+	color: white;
+	transition: background-color 200ms;
+	display: flex;
+	flex-direction: row;
+	gap: 0.5em;
+	align-items: center;
+	height: 1.5em;
+	margin: var(--margin);
+	padding: 0.25em 0.5em;
+	border-radius: 0.25em;
+	user-select: none;
+	cursor: pointer;
+	min-width: 200px;
+	position: relative;
+}
+
+:host([disabled]) #main {
+	color: darkgray;
+}
+
+:host(:not([disabled])) #main:hover {
+	background-color: white;
+	color: black;
+}
+
+:host(:not([disabled])) #main.has-submenu:hover {
+	background-color: darkgray;
+	color: black;
+}
+
+.icon {
+	min-height: 1em;
+	min-width: 1em;
+	height: 1em;
+	width: 1em;
+}
+
+#icon:not([src]) {
+	display: none;
+}
+
+#icon[src=""] {
+	visibility: hidden;
+}
+
+#text {
+	flex: auto;
+}
+
+#detail {
+	color: coral;
+	justify-content: flex-end;
+}
+
+#right-arrow {
+	display: none;
+}
+
+#submenu {
+	position: absolute;
+	background-color: black;
+	left: 100%;
+	top: 0px;
+	/* Equal to the margin of the parent (to cancel it out) */
+	margin-top: calc(var(--margin) * -1);
+	/* Equal to the values of kiwi-menu */
+	background-color: black;
+	color: white;
+	box-shadow: $element-box-shadow;
+	border-radius: $component-border-radius;
+	transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+	opacity: 0;
+	transform-origin: left;
+	transform: translateX(-3px) rotateY(20deg);
+	pointer-events: none;
+
+	&.reversed {
+		transform-origin: right;
+		transform: translateX(3px) rotateY(-20deg);	
+	}
+}
+
+#main:hover #submenu {
+	opacity: 1;
+	transform: none;
+	pointer-events: all;
+}

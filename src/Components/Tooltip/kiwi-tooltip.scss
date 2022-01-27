@@ -1,0 +1,68 @@
+@import "../../Assets/Stylesheets/variables.scss";
+@import "../../Assets/Stylesheets/Components/typography.scss";
+
+#main {
+	@extend %body-2;
+	display: none;
+	position: fixed;
+	background-color: black;
+	color: white;
+	padding: 0.5rem 0.75rem;
+	border-radius: $component-border-radius;
+	max-width: 300px;
+	user-select: none;
+	pointer-events: none;
+	opacity: 0;
+	transform: scale(0.8);
+	transition: opacity 150ms ease-out, transform 150ms ease-out;
+	z-index: 999999;
+}
+
+.visible {
+	opacity: 1 !important;
+	transform: scale(1) !important;
+}
+
+:host([position]:not([position="mouse"])) #main::after {
+	content: " ";
+	position: absolute;
+	border-width: var(--arrow-size);
+	border-style: solid;
+	border-color: transparent;
+}
+:host([position="top"]) #main {
+	transform-origin: bottom;
+}
+:host([position="top"]) #main::after {
+	margin-left: calc(0px - var(--arrow-size));
+	top: 100%;
+	left: 50%;
+	border-top-color: #000000 !important;
+}
+:host([position="right"]) #main {
+	transform-origin: left;
+}
+:host([position="right"]) #main::after {
+	margin-top: calc(0px - var(--arrow-size));
+	top: 50%;
+	right: 100%;
+	border-right-color: #000000 !important;
+}
+:host([position="bottom"]) #main {
+	transform-origin: top;
+}
+:host([position="bottom"]) #main::after {
+	margin-left: calc(0px - var(--arrow-size));
+	bottom: 100%;
+	left: 50%;
+	border-bottom-color: #000000 !important;
+}
+:host([position="left"]) #main {
+	transform-origin: right;
+}
+:host([position="left"]) #main::after {
+	margin-top: calc(0px - var(--arrow-size));
+	top: 50%;
+	left: 100%;
+	border-left-color: #000000 !important;
+}

@@ -1,0 +1,268 @@
+@import "../../Assets/Stylesheets/variables.scss";
+@import "../../Assets/Stylesheets/Components/typography.scss";
+@import "../../Assets/Stylesheets/Components/scrollbar.scss";
+
+#backdrop {
+	position: fixed;
+	inset: 0;
+	background-color: black;
+	opacity: 0.5;
+}
+
+#window {
+	display: none;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	box-shadow: $element-box-shadow;
+	border-radius: 0.5em;
+	animation-duration: 200ms;
+	animation-timing-function: ease-in-out;
+	transition: all 200ms;
+	&.noanimation {
+		transition: none !important;
+	}
+}
+
+@keyframes main-animation {
+	from {
+		transform: scale(0.8);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/* 
+ * By setting the border radius like this we are allowing for separate background colors for the header, body and footer 
+ * without having to set overflow hidden on the #window element.
+ * Setting overflow hidden could cause issues in dropdowns, menus, tooltips or other position:fixed elements inside of the window.
+ */
+#header,
+:host([noheader]) #body {
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+}
+
+#footer,
+:host([nofooter]) #body {
+	border-bottom-left-radius: 0.5em;
+	border-bottom-right-radius: 0.5em;
+}
+
+#header {
+	@extend %h5;
+	font-weight: 600 !important;
+	background: white;
+	border-bottom: 1px solid lightgray;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5em;
+	cursor: move;
+	user-select: none;
+	#header-text {
+		display: none;
+		flex: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	#header-buttons {
+		display: flex;
+		flex-direction: row;
+		gap: 0.5em;
+	}
+	#minimize-icon,
+	#maximize-icon,
+	#close-icon {
+		cursor: pointer;
+		opacity: 0.4;
+		transition: opacity 200ms;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+#body {
+	height: 100%;
+	overflow: auto;
+	background: white;
+}
+
+#footer {
+	background: white;
+	border-top: 1px solid lightgray;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+#body,
+#footer {
+	@extend %body-1;
+}
+
+#header,
+#footer {
+	min-height: 1.5rem;
+}
+
+#header,
+#body,
+#footer {
+	padding: 0.5rem;
+}
+
+.resizer {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+.resizer.top,
+.resizer.bottom {
+	height: 10px;
+	cursor: ns-resize;
+}
+.resizer.left,
+.resizer.right {
+	width: 10px;
+	cursor: ew-resize;
+}
+.resizer.top {
+	top: -5px;
+}
+.resizer.right {
+	right: -5px;
+}
+.resizer.bottom {
+	bottom: -5px;
+}
+.resizer.left {
+	left: -5px;
+}
+.resizer.top.right,
+.resizer.bottom.left {
+	cursor: nesw-resize;
+}
+.resizer.bottom.right,
+.resizer.top.left {
+	cursor: nwse-resize;
+}
+
+.icon {
+	display: block;
+	min-height: 1em;
+	min-width: 1em;
+	height: 1em;
+	width: 1em;
+	position: relative;
+	&[src=""] {
+		visibility: hidden;
+	}
+	&:not([src]) {
+		display: none;
+	}
+}
+
+.minimized {
+	height: auto !important;
+	#body,
+	#footer {
+		display: none;
+	}
+	#header-buttons {
+		display: none !important;
+	}
+	#header {
+		user-select: none;
+		cursor: pointer;
+	}
+}
+
+.maximized:not(.minimized) {
+	width: 100vw !important;
+	height: 100vh !important;
+	inset: 0 !important;
+	border-radius: 0 !important;
+	* {
+		border-radius: 0 !important;
+	}
+}
+
+.drag {
+	transition: none !important;
+}
+
+/* Most configurable attributes can be handled by pure CSS */
+:host([noheader]) #header {
+	display: none;
+}
+:host([nofooter]) #footer {
+	display: none;
+}
+:host([nominimize]) #minimize-icon {
+	display: none;
+}
+:host([nomaximize]) #maximize-icon {
+	display: none;
+}
+:host([noclose]) #close-icon {
+	display: none;
+}
+:host([noresize]) .resizer {
+	display: none;
+}
+:host([nodrag]) #header {
+	cursor: default;
+}
+:host([modality="none"]) #backdrop,
+:host(:not([modality])) #backdrop {
+	display: none;
+}
+:host([mode="large"]) {
+	#header,
+	#footer {
+		min-height: 2rem;
+	}
+	.icon {
+		min-height: 1.5rem;
+		min-width: 1.5rem;
+		height: 1.5rem;
+		width: 1.5rem;
+	}
+	#header,
+	#body,
+	#footer {
+		padding: 1rem;
+	}
+	#header {
+		@extend %h4;
+	}
+}
+:host([mode="compact"]) {
+	#header,
+	#footer {
+		min-height: 1rem;
+	}
+	#header {
+		@extend %subtitle-2;
+	}
+	#body,
+	#footer {
+		@extend %body-2;
+	}
+}
+:host([noanimation]) {
+	* {
+		transition-duration: 0ms !important;
+	}
+}
+:host([noresize]) .resizer {
+	display: none;
+}

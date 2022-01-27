@@ -1,0 +1,155 @@
+@import "../../Assets/Stylesheets/variables.scss";
+@import "../../Assets/Stylesheets/Components/typography.scss";
+
+:host {
+	display: inline-block;
+	width: 100%;
+}
+
+button {
+	@extend %button;
+	padding: 1em 1.5em;
+	cursor: pointer;
+	white-space: nowrap;
+	text-align: center;
+	width: 100%;
+	border: $component-border;
+	outline: $component-outline;
+	transition: all $animation-time, transform 0ms;
+	border-radius: $component-border-radius;
+	box-shadow: $component-box-shadow;
+	&:active,
+	&:hover {
+		border: $component-border-activated;
+		outline: $component-outline-activated;
+		box-shadow: $component-box-shadow-activated;
+	}
+	&:active {
+		transform: translateY(2px);
+	}
+	&:focus::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background-color: rgba(255, 255, 255, 0.1);
+		z-index: -1;
+	}
+}
+
+.animation {
+	overflow: hidden;
+	transform: translateX(0px);
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		transition: opacity $animation-time, transform $animation-time;
+		background-color: rgba(255, 255, 255, 0.15);
+		z-index: -1;
+		transform: translateX(-130%) skew(-30deg);
+		opacity: 0;
+	}
+	&:hover::before {
+		transform: translateX(0px) skew(0deg);
+		opacity: 1;
+	}
+}
+
+.disabled {
+	cursor: not-allowed;
+}
+
+#container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.25em;
+}
+
+#icon {
+	height: 1em;
+	width: 1em;
+	min-height: 1em;
+	min-width: 1em;
+	object-fit: contain;
+	pointer-events: none;
+}
+
+button[type="primary"] {
+	background: $primary-color;
+	color: $with-primary-color;
+	&:focus,
+	&:active,
+	&:hover {
+		background: $primary-color-light;
+		color: $with-primary-color-light;
+	}
+}
+
+button[type="secondary"] {
+	background: $secondary-color;
+	color: $with-secondary-color;
+	&:focus,
+	&:active,
+	&:hover {
+		background: $secondary-color-light;
+		color: $with-secondary-color-light;
+	}
+}
+
+button[type="neutral"] {
+	background: #f7f7f7;
+	color: #000000;
+	&:focus,
+	&:active,
+	&:hover {
+		background: #f9f9f9;
+		color: #000000;
+	}
+}
+
+button[type="info"] {
+	background: $info-color;
+	color: $with-info-color;
+	&:focus,
+	&:active,
+	&:hover {
+		background: $info-color;
+		color: $with-info-color;
+	}
+}
+
+button[type="success"] {
+	background: $success-color;
+	color: $with-success-color;
+	&:focus,
+	&:active,
+	&:hover {
+		background: $success-color;
+		color: $with-success-color;
+	}
+}
+
+button[type="warning"] {
+	background: $warning-color;
+	color: $with-warning-color;
+	&:focus,
+	&:active,
+	&:hover {
+		background: $warning-color;
+		color: $with-warning-color;
+	}
+}
+
+button[type="error"] {
+	background: $error-color;
+	color: $with-error-color;
+	&:focus,
+	&:active,
+	&:hover {
+		background: $error-color;
+		color: $with-error-color;
+	}
+}

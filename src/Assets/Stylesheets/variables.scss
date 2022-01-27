@@ -1,0 +1,80 @@
+//Typography
+$font-family-heading: var(--kiwi-font-family-heading, Quicksand,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif);
+$font-family-body: var(--kiwi-font-family-body, Quicksand,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif);
+
+//Accent Colors
+$primary-color-dark: var(--kiwi-primary-color-dark, #0a0a0a);
+$primary-color: var(--kiwi-primary-color, #1a1a1a);
+$primary-color-light: var(--kiwi-primary-color-light, #3a3a3a);
+$secondary-color-dark: var(--kiwi-secondary-color-dark, #f7f7f7);
+$secondary-color: var(--kiwi-secondary-color, #e2e2e2);
+$secondary-color-light: var(--kiwi-secondary-color-light, #cecece);
+
+//With Accent Colors
+$with-primary-color-dark: var(--kiwi-with-primary-color-dark, #ffffff);
+$with-primary-color: var(--kiwi-with-primary-color, #ffffff);
+$with-primary-color-light: var(--kiwi-with-primary-color-light, #ffffff);
+$with-secondary-color-dark: var(--kiwi-with-secondary-color-dark, #000000);
+$with-secondary-color: var(--kiwi-with-secondary-color, #000000);
+$with-secondary-color-light: var(--kiwi-with-secondary-color-light, #000000);
+
+//Element Colors
+$content-background-color: #f5f5f5;
+
+//With Element Colors
+$with-content-background-color: #323232;
+
+//Status Colors
+$success-color: var(--kiwi-success-color, #cbf782);
+$warning-color: var(--kiwi-warning-color, #f7e982);
+$info-color: var(--kiwi-info-color, #82cbf7);
+$error-color: var(--kiwi-error-color, #c97979);
+
+//With Status Colors
+$with-success-color: var(--kiwi-with-success-color, #587000);
+$with-warning-color: var(--kiwi-with-warning-color, #705000);
+$with-info-color: var(--kiwi-with-info-color, #13445d);
+$with-error-color: var(--kiwi-with-error-color, #5d2c13);
+
+//Borders and Outlines
+$component-border: var(--kiwi-component-border, none);
+$component-border-activated: var(--kiwi-border-activated, none);
+$element-border: var(--kiwi-element-border, none);
+$layout-border: var(--kiwi-layout-border, none);
+$component-outline: var(--kiwi-component-outline, none); 
+$component-outline-activated: var(--kiwi-component-outline-activated, none); 
+$element-outline: var(--kiwi-element-outline, none); 
+$layout-outline: var(--kiwi-layout-outline, none); 
+$component-border-radius: var(--kiwi-component-border-radius, 0.5em);
+$element-border-radius: var(--kiwi-element-border-radius, 1em);
+$layout-border-radius: var(--kiwi-layout-border-radius, 0);
+
+//Animations and Transitions
+$animation-time: var(--kiwi-animation-time, 500ms);
+
+//Shadows
+$component-box-shadow: none;
+$component-box-shadow-activated: none;
+$element-box-shadow: var(--kiwi-box-shadow, 0 2px 5px 0 rgba(0,0,0,.2));
+$layout-box-shadow: none;
+
+//Scrollbars Standard
+$scrollbar-width: var(--kiwi-scrollbar-width, thin);
+$scrollbar-thumb-color: var(--kiwi-scrollbar-thumb-color, #cdcdcd);
+$scrollbar-track-color: var(--kiwi-scrollbar-track-color, #f0f0f0);
+//Scrollbars Webkit
+$scrollbar-width-webkit: var(--kiwi-scrollbar-width-webkit, 9px);
+$scrollbar-thumb-radius: var(--kiwi-scrollbar-thumb-radius, 0);
+$scrollbar-thumb-boxshadow: var(--kiwi-scrollbar-thumb-boxshadow, none);
+$scrollbar-thumb-border: var(--kiwi-scrollbar-thumb-border, none);
+$scrollbar-track-backgroundsize: var(--kiwi-scrollbar-track-backgroundsize, 0);
+//Scrollbars Webkit Hover
+$scrollbar-thumb-color-hover: var(--kiwi-scrollbar-thumb-color-hover, #cdcdcd);
+$scrollbar-thumb-radius-hover: var(--kiwi-scrollbar-thumb-radius-hover, 0);
+$scrollbar-thumb-boxshadow-hover: var(--kiwi-scrollbar-thumb-boxshadow-hover, none);
+$scrollbar-thumb-border-hover: var(--kiwi-scrollbar-thumb-border-hover, none);
+//Scrollbars Webkit Active
+$scrollbar-thumb-color-active: var(--kiwi-scrollbar-thumb-color-active, #cdcdcd);
+$scrollbar-thumb-radius-active: var(--kiwi-scrollbar-thumb-radius-active, 0);
+$scrollbar-thumb-boxshadow-active: var(--kiwi-scrollbar-thumb-boxshadow-active, none);
+$scrollbar-thumb-border-active: var(--kiwi-scrollbar-thumb-border-active, none);

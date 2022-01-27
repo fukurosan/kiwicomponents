@@ -1,0 +1,70 @@
+@import "../../Assets/Stylesheets/variables.scss";
+
+#container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80px;
+	height: 80px;
+	cursor: pointer;
+    border: 3px solid white;
+	transition: all $animation-time;
+}
+
+#button {
+	width: 50px;
+	height: 6px;
+	background: #fff;
+	border-radius: 5px;
+	transition: inherit;
+}
+
+#button::before,
+#button::after {
+	content: "";
+	position: absolute;
+	width: 50px;
+	height: 6px;
+	background: #fff;
+	border-radius: 5px;
+	transition: inherit;
+}
+
+#button::before {
+	transform: translateY(-16px);
+}
+
+#button::after {
+	transform: translateY(16px);
+}
+
+:host([open]) #button {
+	background: transparent;
+}
+:host([open]) #button::before {
+	transform: rotate(45deg);
+}
+:host([open]) #button::after {
+	transform: rotate(-45deg);
+}
+
+#menu-panel {
+	display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: gray;
+    justify-content: center;
+    align-items: center;
+    transition: opacity $animation-time;
+    opacity: 0;
+    pointer-events: none;
+}
+
+:host([open]) #menu-panel {
+    opacity: 1;
+    pointer-events: unset;
+}

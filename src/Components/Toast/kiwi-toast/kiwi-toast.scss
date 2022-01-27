@@ -1,0 +1,120 @@
+@import "../../../Assets/Stylesheets/variables.scss";
+@import "../../../Assets/Stylesheets/Components/typography.scss";
+
+* {
+	box-sizing: border-box;
+}
+
+#main {
+	@extend %h6;
+	background-color: white;
+	color: #0f0f0f;
+	box-shadow: $element-box-shadow;
+	border-radius: $component-border-radius;
+	outline: $component-outline;
+	border: $component-border;
+	margin-bottom: 1rem;
+	padding: 1em;
+	gap: 1em;
+	width: 400px;
+	max-width: calc(100vw - 2em);
+	display: flex;
+	flex-direction: row;
+	opacity: 1;
+	transform: translate(0, 0);
+	max-height: 500px;
+	animation-duration: $animation-time;
+	animation-direction: normal;
+	animation-timing-function: ease-in-out;
+	z-index: 99999;
+}
+
+@keyframes main-animation {
+	0% {
+		opacity: 0;
+		transform: translate(var(--animation-h, 0), var(--animation-v, 0));
+		max-height: 0px;
+		padding: 0;
+		margin-bottom: 0;
+	}
+	50% {
+		opacity: 0;
+		transform: translate(var(--animation-h, 0), var(--animation-v, 0));
+		max-height: var(--height);
+		padding: 1em;
+		margin-bottom: 1rem;
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
+		max-height: var(--height);
+		padding: 1em;
+		margin-bottom: 1rem;
+	}
+}
+
+#icon {
+	height: 1em;
+	width: 1em;
+	min-height: 1em;
+	min-width: 1em;
+	object-fit: contain;
+	pointer-events: none;
+	display: none;
+	align-self: center;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+	flex: auto;
+	gap: 0.5em;
+	overflow: hidden;
+}
+
+#title {
+	display: none;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#body {
+	@extend %body-2;
+	display: none;
+	min-height: 3rem;
+	height: 3rem;
+	max-height: 3rem;
+}
+
+:host([type="success"]) #main {
+	border-left: 0.4em solid $success-color;
+}
+
+:host([type="primary"]) #main {
+	border-left: 0.4em solid $primary-color;
+}
+
+:host([type="secondary"]) #main {
+	border-left: 0.4em solid $secondary-color;
+}
+
+:host([type="neutral"]) #main {
+	border-left: 0.4em solid #f7f7f7;
+}
+
+:host([type="info"]) #main {
+	border-left: 0.4em solid $info-color;
+}
+
+:host([type="success"]) #main {
+	border-left: 0.4em solid $success-color;
+}
+
+:host([type="warning"]) #main {
+	border-left: 0.4em solid $warning-color;
+}
+
+:host([type="error"]) #main {
+	border-left: 0.4em solid $error-color;
+}

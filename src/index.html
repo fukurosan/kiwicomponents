@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiwi Frame Web Components Test Area</title>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #323232;
+    }
+
+    .box {
+      max-width: 500px;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+
+    .box * {
+      margin-bottom: 10px !important;
+    }
+  </style>
+  <script>
+    kiwicomponents.injectStyle({
+      scrollbar: true,
+      typography: true
+    })
+    kiwicomponents.enableGlobalTooltips()
+  </script>
+  <style>
+    kiwi-navbar-item {
+      color: #f7f7f7;
+    }
+  </style>
+</head>
+
+<body>
+  <kiwi-navbar margin="1em" padding="0" height="130px" responsive-breakpoint="800">
+    <kiwi-navbar-item justify="left">Hello world</kiwi-navbar-item>
+    <kiwi-navbar-item justify="center">Hello world</kiwi-navbar-item>
+    <kiwi-navbar-item justify="right">Hello world</kiwi-navbar-item>
+    <kiwi-navbar-item slot="mobile" justify="right">
+      Hello World. This is some content right here!
+    </kiwi-navbar-item>
+  </kiwi-navbar>
+
+  <div class="box">
+    Typography
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3 style="width:fit-content;">Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+    <div class="subtitle-1">Subtitle 1</div>
+    <div class="subtitle-2">Subtitle 2</div>
+    <div class="body-1">Body 1</div>
+    <div class="body-2">Body 2</div>
+    <div class="button">Button</div>
+    <div class="caption">Caption</div>
+    <div class="overline">Overline</div>
+  </div>
+
+  <div style="width:200px;height:200px;overflow:auto;" class="box">
+    Scrollbars
+    <div style="width:400px;height:400px;"></div>
+  </div>
+
+  <div class="box">
+    Buttons
+    <kiwi-button>Default</kiwi-button>
+    <kiwi-button type="primary">Primary</kiwi-button>
+    <kiwi-button type="secondary">Secondary</kiwi-button>
+    <kiwi-button type="neutral">Neutral</kiwi-button>
+    <kiwi-button type="info">Info</kiwi-button>
+    <kiwi-button type="success">Success</kiwi-button>
+    <kiwi-button type="warning">Warning</kiwi-button>
+    <kiwi-button type="error">Error</kiwi-button>
+    <kiwi-button icon="./Icons/icon-rightarrow.svg">With Icon</kiwi-button>
+    <kiwi-button icon-placement="after" icon="./Icons/icon-rightarrow.svg">With Reverse Icon</kiwi-button>
+    <kiwi-button direction="column" icon="./Icons/icon-rightarrow.svg">With Column</kiwi-button>
+  </div>
+
+  <div class="box">
+    Spinners
+    <div style="display:flex;gap:1rem;align-items: center;">
+      <div style="width:100px;height:100px;">
+        <kiwi-spinner></kiwi-spinner>
+      </div>
+      <kiwi-spinner size="50px"></kiwi-spinner>
+      <kiwi-spinner size="50px" usebackground></kiwi-spinner>
+      <kiwi-spinner size="50px" percent="75" usebackground></kiwi-spinner>
+    </div>
+  </div>
+
+  <div class="box">
+    Toasts
+    <script>
+      function showToast() {
+        kiwicomponents.showNotification({ title: "Hello World", icon: "./Icons/icon-rightarrow-dark.svg", left: true, bottom: true, body: "Hello World", type: "info", timeout: 5000 })
+      }
+      function showSnackbar() {
+        kiwicomponents.showNotification({ title: "Hello World", top: true, right: true, bottom: true, left: true, type: "warning", timeout: 5000, clearExisting: true })
+      }
+    </script>
+    <kiwi-button onclick="showToast()">Show Toast</kiwi-button>
+    <kiwi-button onclick="showSnackbar()">Show Snackbar</kiwi-button>
+  </div>
+
+  <div class="box">
+    Tooltips
+    <h3 style="width:fit-content;">
+      Top
+      <kiwi-tooltip position="top">Top</kiwi-tooltip>
+    </h3>
+    <h3 style="width:fit-content;">
+      Right
+      <kiwi-tooltip position="right">Right</kiwi-tooltip>
+    </h3>
+    <h3 style="width:fit-content;">
+      Bottom
+      <kiwi-tooltip position="bottom">Bottom</kiwi-tooltip>
+    </h3>
+    <h3 style="width:fit-content;">
+      Left
+      <kiwi-tooltip position="left">Left</kiwi-tooltip>
+    </h3>
+    <h3 style="width:fit-content;">
+      Mouse Position
+      <kiwi-tooltip position="mouse">Mouse Position</kiwi-tooltip>
+    </h3>
+    <h3 style="width:fit-content;">
+      Follow
+      <kiwi-tooltip position="follow">Follow</kiwi-tooltip>
+    </h3>
+    <h3 style="width:fit-content;">
+      Rich Content
+      <kiwi-tooltip padding="0">
+        <div style="width:100px;height:100px;background:coral;margin:0 !important;padding:1em;">Rich Content</div>
+      </kiwi-tooltip>
+    </h3>
+    <h3 style="width:fit-content;">
+      No animation
+      <kiwi-tooltip noanimation="">No Animation</kiwi-tooltip>
+    </h3>
+    <h3 style="width:fit-content;" id="tooltip-target-1">Target</h3>
+    <kiwi-tooltip target="#tooltip-target-1">Target</kiwi-tooltip>
+    <kiwi-tooltip>
+      Slotted
+      <h3 style="width:fit-content;" slot="target">Slotted</h3>
+    </kiwi-tooltip>
+    <h3 style="width:fit-content;" kiwi-tooltip="Generated">Generated</h3>
+  </div>
+
+  <div class="box">
+    Menus
+    <h3>
+      Dropdown Menu
+      <kiwi-menu>
+        <div>This</div>
+        <div>is</div>
+        <div>a</div>
+        <div>menu</div>
+      </kiwi-menu>
+    </h3>
+    <h3>
+      Context Menu
+      <kiwi-menu mode="contextmenu">
+        <div>This</div>
+        <div>is</div>
+        <div>a</div>
+        <div>menu</div>
+      </kiwi-menu>
+    </h3>
+    <h3>
+      With sub menu
+      <kiwi-menu mode="contextmenu">
+        <kiwi-menu-item icon="./Icons/icon-rightarrow.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
+        <kiwi-menu-item icon="" text="Option 2"></kiwi-menu-item>
+        <kiwi-menu-item icon="" text="Option 3">
+          <kiwi-menu-item icon="./Icons/icon-rightarrow.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
+          <kiwi-menu-item icon="" text="Option 2" disabled=""></kiwi-menu-item>
+          <hr>
+          <kiwi-menu-item text="Option 3">
+          </kiwi-menu-item>
+        </kiwi-menu-item>
+      </kiwi-menu>
+    </h3>
+  </div>
+
+  <div class="box">
+    Window Management
+    <script>
+      function openWindow(mode) {
+        const options = {
+          icon: "./Icons/icon-rightarrow-dark.svg",
+          title: "This is a window!",
+          mode: mode,
+          content: `This is some content inside of the window.
+          <div style="background-color: coral;margin:0 !important;">
+            And this content is inside of a full size div inside
+            of the window
+          </div>
+          <div slot="footer" style="margin:0 !important;">And this is some footer content</div>`
+        }
+        kiwicomponents.openWindow(options)
+      }
+    </script>
+    <kiwi-button onclick="openWindow('default')">Open default window</kiwi-button>
+    <kiwi-button onclick="openWindow('compact')">Open compact window</kiwi-button>
+    <kiwi-button onclick="openWindow('large')">Open large window</kiwi-button>
+  </div>
+
+  <div class="box">
+    Tabs
+  </div>
+
+  <div class="box">
+    Graphs
+  </div>
+
+</body>
+
+</html>

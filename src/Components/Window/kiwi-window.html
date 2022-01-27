@@ -1,0 +1,27 @@
+<div id="backdrop"></div>
+<div id="window">
+  <span id="resizer" class="resizer top"></span>
+  <span id="resizer" class="resizer right"></span>
+  <span id="resizer" class="resizer bottom"></span>
+  <span id="resizer" class="resizer left"></span>
+  <span id="resizer" class="resizer top left"></span>
+  <span id="resizer" class="resizer top right"></span>
+  <span id="resizer" class="resizer bottom right"></span>
+  <span id="resizer" class="resizer bottom left"></span>
+  <div id="header">
+    <img class="icon" id="header-icon"></img>
+    <span id="header-text"></span>
+    <slot name="header"></slot>
+    <div id="header-buttons">
+      <img class="icon" id="minimize-icon"></img>
+      <img class="icon" id="maximize-icon"></img>
+      <img class="icon" id="close-icon"></img>
+    </div>
+  </div>
+  <div id="body">
+    <slot></slot>
+  </div>
+  <div id="footer">
+    <slot name="footer"></slot>
+  </div>
+</div>

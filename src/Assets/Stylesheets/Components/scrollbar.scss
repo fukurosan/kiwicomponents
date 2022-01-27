@@ -1,0 +1,41 @@
+@import "../variables.scss";
+
+/* 
+ * W3C scrollbar proposal: https://www.w3.org/TR/css-scrollbars-1/
+ */
+
+* {
+	scrollbar-width: $scrollbar-width;
+	scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
+}
+
+::-webkit-scrollbar {
+	width: $scrollbar-width-webkit;
+	height: $scrollbar-width-webkit;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $scrollbar-thumb-color;
+	border-radius: $scrollbar-thumb-radius;
+	box-shadow: $scrollbar-thumb-boxshadow;
+	border: $scrollbar-thumb-border;
+}
+
+::-webkit-scrollbar-hover {
+	background: $scrollbar-thumb-color-hover;
+	border-radius: $scrollbar-thumb-radius-hover;
+	box-shadow: $scrollbar-thumb-boxshadow-hover;
+	border: $scrollbar-thumb-border-hover;
+}
+
+::-webkit-scrollbar-active {
+	background: $scrollbar-thumb-color-active;
+	border-radius: $scrollbar-thumb-radius-active;
+	box-shadow: $scrollbar-thumb-boxshadow-active;
+	border: $scrollbar-thumb-border-active;
+}
+
+::-webkit-scrollbar-track {
+	background: $scrollbar-track-color;
+	background-size: $scrollbar-track-backgroundsize;
+}

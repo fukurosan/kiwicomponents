@@ -1,0 +1,55 @@
+@import "../../Assets/Stylesheets/variables.scss";
+
+svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	animation: 1.6s linear infinite svg-animation;
+}
+
+#spinning-circle {
+	display: block;
+	fill: transparent;
+	stroke: $primary-color;
+	stroke-linecap: round;
+	stroke-width: 12px;
+	transform-origin: 50% 50%;
+	stroke-dasharray: 100;
+	stroke-dashoffset: 100;
+	animation: 1.6s ease-in-out infinite both circle-animation;
+}
+
+#background-circle {
+	fill: transparent;
+	stroke: #d7d7d7;
+	stroke-linecap: initial;
+	stroke-width: 12px;
+}
+
+@keyframes svg-animation {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+
+@keyframes circle-animation {
+	0%,
+	25% {
+		stroke-dashoffset: 90;
+		transform: rotate(0);
+	}
+
+	50%,
+	60% {
+		stroke-dashoffset: 0;
+		transform: rotate(45deg);
+	}
+
+	100% {
+		stroke-dashoffset: 90;
+		transform: rotate(360deg);
+	}
+}

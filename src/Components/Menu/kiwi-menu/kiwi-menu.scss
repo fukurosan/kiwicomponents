@@ -1,0 +1,29 @@
+@import "../../../Assets/Stylesheets/variables.scss";
+@import "../../../Assets/Stylesheets/Components/scrollbar.scss";
+
+#main {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	background-color: black;
+	color: white;
+	box-shadow: $element-box-shadow;
+	border-radius: $component-border-radius;
+	user-select: none;
+	transition: transform 200ms ease-in-out, opacity 200ms ease-in-out, clip-path 200ms ease-in-out;
+	opacity: 0;
+	transform-origin: top center;
+	transform: translateY(-5px) rotateX(-60deg);
+}
+
+:host([mode="contextmenu"]) #main {
+	transform-origin: top left;
+	transform: scale(0);
+}
+
+.visible {
+	transform: none !important;
+	opacity: 1 !important;
+}

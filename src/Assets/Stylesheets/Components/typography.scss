@@ -1,0 +1,133 @@
+@import "../variables.scss";
+
+%h1 {
+	font-family: $font-family-heading;
+	font-size: clamp(2.25rem, calc(-0.25rem + 5.2083vw), 6rem);
+	font-weight: 500;
+	font-style: normal;
+	line-height: 1em;
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+%h2 {
+	font-family: $font-family-heading;
+	font-size: clamp(1.75rem, calc(0.5833rem + 2.4306vw), 3.5rem);
+	font-weight: 500;
+	font-style: normal;
+	line-height: 1em;
+	letter-spacing: 0;
+	text-transform: none;
+	text-decoration: none;
+}
+
+%h3 {
+	font-family: $font-family-heading;
+	font-size: clamp(1.5rem, calc(0.5000rem + 2.0833vw), 3rem);
+	font-weight: 500;
+	font-style: normal;
+	line-height: 1.2em;
+	letter-spacing: 0;
+	text-transform: none;
+	text-decoration: none;
+}
+
+%h4 {
+	font-family: $font-family-heading;
+	font-size: 1.25rem;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: 0.5px;
+	text-transform: none;
+}
+
+%h5 {
+	font-family: $font-family-heading;
+	font-size: 1.125rem;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+%h6 {
+	font-family: $font-family-heading;
+	font-size: 1rem;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+%subtitle-1 {
+	font-family: $font-family-body;
+	font-size: 1rem;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+%subtitle-2 {
+	font-family: $font-family-body;
+	font-size: 0.875rem;
+	font-weight: 600;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+%body-1 {
+	font-family: $font-family-body;
+	font-size: 1rem;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: 0.5px;
+	text-transform: none;
+}
+
+%body-2 {
+	font-family: $font-family-body;
+	font-size: 0.875rem;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: 0.25px;
+	text-transform: none;
+}
+
+%button {
+	font-family: $font-family-body;
+	font-size: 0.75rem;
+	font-weight: 600;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+
+%caption {
+	font-family: $font-family-body;
+	font-size: 0.75rem;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: 0.5px;
+	text-transform: none;
+}
+
+%overline {
+	font-family: $font-family-body;
+	font-size: 0.625rem;
+	font-weight: 200;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+}

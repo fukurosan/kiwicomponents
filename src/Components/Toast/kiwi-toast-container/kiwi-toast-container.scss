@@ -1,0 +1,14 @@
+@import "../../../Assets/Stylesheets/variables.scss";
+
+#main {
+	display: flex;
+	margin: auto;
+	width: max-content;
+	height: max-content;
+	position: fixed;
+	/*
+	* All toasts have a bottom margin, because of this we do not need bottom padding
+	* The reason for putting the margin on the toast is to allow for the space to be animated.
+	*/
+	padding: 1rem 1rem 0 1rem;
+}
