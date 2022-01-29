@@ -11,12 +11,12 @@
 - Add a tab panel component
 - Add a split view component
 
-### 0.1.1 (TBR)
+### 0.1.2 (TBR)
 
 - Promise based API for: Confirm(), alert(), prompt()
 - Implement flipping for tooltips when scrolled out of view
 
-### 0.1.0
+### 0.1.1
 
 - Project Setup
 - Added Window Management

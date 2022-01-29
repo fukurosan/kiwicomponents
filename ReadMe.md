@@ -4,7 +4,9 @@
   <img src="https://img.shields.io/npm/v/kiwicomponents?color=1" style="display:inline-block;">
   <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" style="display:inline-block;">
   <br />
-    <img src="https://fukurosan.github.io/kiwicomponents/logo.png" style="width:200px;">
+  <div style="width:200px;">
+    <img src="https://fukurosan.github.io/kiwicomponents/logo.png">
+  </div>
   <br />
   The web browser SDK you've been missing.
   <br />
