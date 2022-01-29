@@ -1,6 +1,6 @@
 # Components
 
-Kiwi Components come with a few supporting web components that most applications need and that can be easily implemented.
+Kiwi Components come with a number of web components that most applications need and that are generally time consuming to create.
 
 ## \<kiwi-button>
 
@@ -55,12 +55,12 @@ The following CSS variables can be configured:
 | --kiwi-button-border-radius        | Border radius of the button                      |
 | --kiwi-button-box-shadow           | Box shadow of the button                         |
 | --kiwi-button-border-activated     | Border when button is in :hover or :active mode  |
-| --kiwi-button-outline-activated    | outline when button is in :hover or :active mode |
-| --kiwi-button-box-shadow-activated | shadow when button is in :hover or :active mode  |
+| --kiwi-button-outline-activated    | Outline when button is in :hover or :active mode |
+| --kiwi-button-box-shadow-activated | Shadow when button is in :hover or :active mode  |
 
 ## \<kiwi-spinner>
 
-\<kiwi-spinner> is a simple yet modern loading indicator. The motivation for this component is that most modern applications require one, yet they can be cumbersome to develop.
+\<kiwi-spinner> is a loading indicator. The motivation for this component is that most modern applications require one, yet they can be cumbersome to develop.
 
 ### Example:
 
@@ -105,13 +105,13 @@ The following CSS variables can be configured:
 
 ## \<kiwi-navbar>
 
-\<kiwi-navbar> is a modern navbar with responsiveness built-in. The motivation for this component is that when prototyping new applications it is nice to be able to just drop in a navbar that is already responsive and ready to go. The navbar is not built to cover every single use case, but should tackle most.
+\<kiwi-navbar> is a modern navbar with responsiveness built in. 
 
-The navbar can be used in tandem with \<kiwi-navbar-item> which is an element made specifically to be placed inside of it. Although, naturally, you can place anything inside of the navbar. These navbar items will all take up an equal amount of space inside of the navbar, allowing you to create equal sections, and center things inside.
+The navbar can be used in tandem with \<kiwi-navbar-item> which is an element made specifically to be used together with it. These navbar items will all take up an equal amount of space inside of the navbar, allowing you to create equal sections, and center things inside.
 
-The navbar can be configured with breakpoints, which allows it to become responsive. In your markup you are able to specify what should exist in each breakpoint. Your provided breakpoints are numbers (width in pixels) separated by commas, showing where the sections start and end. You place content inside of each responsive section by providing a slot number.
+The navbar can be configured with breakpoints, which allows it to become responsive. In your markup you are then able to specify what should exist in each breakpoint. Your provided breakpoints are numbers (width in pixels) separated by commas, showing where the sections start and end. You place content inside of each responsive section by providing a slot number.
 
-For example, if we say that responsive-breakpoint="600,800,1000" then that means that any element with slot="0" will be visible when the page width is between 0 and 600. If we use slot="1" then it will be visible when the width is between 600 and 800. And so on. If no slot is provided then the content will always be visible, and will be positioned from the left side. This is useful if you want to, for example, add a logotype.
+For example, if we say that responsive-breakpoint="600,800,1000" then that means that any element with slot="0" will be visible when the page width is between 0 and 600. If we use slot="1" then it will be visible when the width is between 600 and 800. And so on. If no slot is provided then the content will always be visible, and will be prefixed to the left of all other content. This is useful if you want to, for example, add a logotype.
 
 ### Example:
 

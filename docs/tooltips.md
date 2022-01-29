@@ -1,6 +1,6 @@
 # Tooltips
 
-Kiwi Component component tooltips can be created by either enabling a global custom HTML attribute that Kiwi Components uses to attach tooltips, or by utilizing the \<kiwi-tooltip> element.
+Kiwi Components tooltips can be created by either enabling a global custom HTML attribute or by utilizing the \<kiwi-tooltip> element.
 
 ## Simple Example:
 
@@ -22,7 +22,7 @@ Try it:
 
 ## Global Tooltips Attributes
 
-The kiwi tooltips can be configured to automatically monitor the DOM for certain attributes, and generate themselves when needed. This is the easiest way to create tooltips.
+Kiwi Components can be configured to automatically monitor the DOM for certain attributes, and generate tooltips when needed. This is the easiest way to create tooltips.
 
 To enable the global tooltips attributes you must import and execute the enableGlobalTooltips() function.
 
@@ -61,8 +61,8 @@ In order of priority:
 
 <!-- Targeting the parent -->
 <div>
-	<kiwi-tooltip></kiwi-tooltip>
 	target 2
+	<kiwi-tooltip></kiwi-tooltip>
 </div>
 
 <!-- Targeting the child -->
@@ -83,9 +83,9 @@ In order of priority:
 
 ## Attributes
 
-The kiwi tooltip elements can be configured using standard HTML attributes. The global attributes can also be used to create and configure tooltips.
+Tooltip elements can be configured using standard HTML attributes. The global attributes can also be used to create and configure tooltips.
 
-These following attributes are supported:
+The following attributes are supported:
 
 ### Global Attributes
 
@@ -111,7 +111,7 @@ These following attributes are supported:
 
 ## Styling
 
-The Kiwi Component tooltips can be styled using CSS variables.
+Tooltips can be styled using CSS variables.
 
 The following variables can be set:
 

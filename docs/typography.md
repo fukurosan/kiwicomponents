@@ -1,8 +1,8 @@
 # Typography
 
-Kiwi Components comes with responsive typography. This typography is already integrated into all components in the library, can be also be applied globally in your project. The typography will modify standard elements like headers (\<h1>, \<h2>, \<h3>, etc) and will add a few css-classes that can be used to style your elements.
+Kiwi Components comes with responsive typography. This typography is already integrated into all components in the library, but can also be be applied globally to your project. The typography will modify standard elements like headers (\<h1>, \<h2>, \<h3>, etc) and will add a few css-classes that can be used to style your elements.
 
-By updating your typography settings you can also adjust fonts by the various components of this library.
+By updating your typography settings you can also adjust what fonts are used by the various components of this library.
 
 ## Enabling Global Typography
 

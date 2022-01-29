@@ -3,18 +3,13 @@
 ## What is Kiwi Components?
 Kiwi Components is an SDK for web browsers.
 
-Kiwi Components aims to be a library that simplifies typically difficult or boilerplate-heavy parts of web application development. The SDK is in particular made for large, advanced applications with complex requirements. Kiwi Components allows you to easily add windows, toasts, context menus and the like to your application through a declarative API.
+The library aims to simplify typically difficult or boilerplate-heavy parts of web application development, and enables you to easily add functionality like window management, notifications, context menus and a whole bunch more through a declarative API.
 
-In some sense this entire library is pure self-defense. 
+The entire library is framework agnostic, and purely built on standard HTML, CSS and JavaScript. This means that regardless of what other technologies you are working with Kiwi Components will be compatible with them.
 
-?> Note that Kiwi Components is still in early beta. Feel free to use it for prototyping and fun, but beware of using it in production just yet.
+In some sense one could argue that this entire library was made out of pure self-defense against a myriad of requirements and needs from projects.
 
-## At a glance
-- Window Management
-- Notifications
-- Menus (Context Menus, Dropdown menus, etc)
-- Tooltips
-- And more!
+?> Note that Kiwi Components is still in early beta.
 
 ---
 

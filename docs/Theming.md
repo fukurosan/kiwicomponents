@@ -4,9 +4,9 @@ The components of this project can be themed by using CSS variables. For more in
 
 ## Project Colors
 
-Some components like toasts and buttons can be configured with a type, that changes their color. All these colors are configurable by using CSS variables.
+Some components like toasts and buttons can be configured with a type that changes their color. All these colors are configurable using CSS variables.
 
-Each color has a "with" version is the color that should preferably be rendered on top of the provided color (e.g. what text color fits on that specific background).
+Each color has a "with" version which is the color that should preferably be rendered in the foreground of it (i.e. on top of it). This is usually used for determining the text color to be used on top of it.
 
 The following CSS variables can be set:
 

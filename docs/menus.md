@@ -1,6 +1,6 @@
 # Menus
 
-Kiwi Component menus can be used to create either context menus or dropdown menus that position themselves relative to other elements or the mouse cursor. This is achieved using two web components:
+Kiwi Components menus can be used to create either context menus or dropdown menus that position themselves relative to other elements or the mouse cursor. This is achieved using two web components:
 
 -   \<kiwi-menu>
 -   \<kiwi-menu-item> (optional)
@@ -59,8 +59,8 @@ In order of priority:
 
 <!-- Targeting the parent -->
 <div>
-	<kiwi-menu></kiwi-menu>
 	target 2
+	<kiwi-menu></kiwi-menu>
 </div>
 
 <!-- Targeting the child -->
@@ -73,6 +73,7 @@ In order of priority:
 <script>
 	const menu = document.createElement("kiwi-menu")
 	menu.targetElement = document.getElementById("target-4")
+	document.body.appendChild(menu)
 </script>
 
 ```
@@ -81,7 +82,7 @@ In order of priority:
 
 ## kiwi-menu-item
 
-The kiwi menu can technically contain virtually any content. This being said a \<kiwi-menu-item> element can be used to cover most basic menu needs. This element is configured using attributes, and will automatically create a sub menu if a child is appended. This can be another \<kiwi-menu-item>, or any other element.
+The \<kiwi-menu> element can technically contain any content, but a \<kiwi-menu-item> element is provided to cover most basic needs. This element is configured using attributes, and will automatically create a sub menu if a child is appended. This can be another \<kiwi-menu-item>, or any other element.
 
 ### Example
 
@@ -111,7 +112,7 @@ Try it:
 
 ## Modes (dropdown, context menu)
 
-The kiwi menu can be configured into two different modes; dropdown or context menu. The dropdown mode (default) listens to left clicks on the target element, and renders the menu below the target. The context menu listens to right clicks on the target and renders the menu based on the mouse coordinates in the click event.
+The \<kiwi-menu> element can be configured to two different modes; dropdown or context menu. The dropdown mode (default) listens to left clicks on the target element, and renders the menu below the target. The context menu mode listens to right clicks on the target and renders the menu based on the mouse coordinates in the click event.
 
 The mode can be configured using the "mode" attribute.
 
@@ -153,7 +154,7 @@ Try it:
 
 The menu and menu item elements are configurable using standard HTML attributes.
 
-These following attributes are supported:
+The following attributes are supported:
 
 ### Kiwi Menu
 
@@ -170,9 +171,9 @@ These following attributes are supported:
 
 | option      | type   | description                                                                              |
 | ----------- | ------ | ---------------------------------------------------------------------------------------- |
-| icon        | string | Optional icon URL. Can be set to a blank value to simply use up the space.               |
-| text        | string | text value for the item.                                                                 |
-| detail      | string | Detail value for the item. (right aligned suffix)                                        |
+| icon        | string | Optional icon URL. Can be set to a blank string to simply fill the space.                |
+| text        | string | Text value for the item.                                                                 |
+| detail      | string | Detail text value for the item. (right aligned suffix)                                   |
 | disabled    | string | If set to any value the row will not respond to click events and the text will be faded. |
 | noanimation | string | If set to any value the element will not be animated.                                    |
 
@@ -180,17 +181,17 @@ These following attributes are supported:
 
 ## Styling
 
-The Kiwi Component toasts can be styled using CSS variables.
+The Kiwi Components toasts can be styled using CSS variables.
 
 The following variables can be set:
 
 | Variable                             | Description                                      |
 | ------------------------------------ | ------------------------------------------------ |
-| --kiwi-menu-background-color         | background of the menu content                   |
+| --kiwi-menu-background-color         | Background of the menu content                   |
 | --kiwi-menu-color                    | Color of the menu content                        |
 | --kiwi-menu-shadow                   | Box shadow of the menu                           |
 | --kiwi-menu-border-radius            | Border radius of the menu and the menu items     |
-| --kiwi-menu-animation-duration       | Animation duration in milliseconds of the menu   |
+| --kiwi-menu-animation-duration       | Animation duration of the menu                   |
 | --kiwi-menu-disabled-color           | Color of a disabled menu item                    |
 | --kiwi-menu-hover-background         | Background of a hovered menu item                |
 | --kiwi-menu-hover-color              | Color of a hovered menu item                     |

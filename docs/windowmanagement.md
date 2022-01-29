@@ -1,6 +1,6 @@
 # Window Management
 
-Kiwi Components can open up windows that are minimizable, maximizable, draggable and much more. All windows can be styled using CSS variables as specified further down, and are configurable with a number of settings.
+Kiwi Components enables you to launch windows that users can interact with and that may be manipulated programmatically. All windows can be styled using CSS variables as specified further down, and are configurable with a number of settings.
 
 ## Simple Example:
 
@@ -24,7 +24,7 @@ const myWindow = openWindow({
 
 The openWindow function will return an HTMLElement that represents the window. This object has a number of functions on it that can be used to interact with the window in different ways.
 
-These following functions are supported:
+The following functions are supported:
 
 | function                                                   | description                                                                                                           |
 | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -61,9 +61,9 @@ const myWindow = openWindow({
 
 ## Options
 
-When creating a window you are able to pass options to the creator function. These allow you to adjust things like what content you want to put inside the window, as well as toggle built-in functionality on and off.
+When creating a window you are able to pass options to the openWindow function. These allow you to adjust what content you want to put inside the window, as well as toggle built-in functionality on and off.
 
-These following options are supported:
+The following options are supported:
 
 | option      | type                                       | description                                                                                  |
 | ----------- | ------------------------------------------ | -------------------------------------------------------------------------------------------- |
@@ -78,7 +78,7 @@ These following options are supported:
 | mode        | "large" \| "default" \| "compact"          | Determines the general dimensions of the window's sections.                                  |
 | title       | string                                     | The title for the modal header.                                                              |
 | icon        | string                                     | Icon URL for the window.                                                                     |
-| noanimation | boolean                                    | If set the window will not animate.                                                          |
+| noanimation | boolean                                    | If true the window will not animate.                                                         |
 | body        | string \| HTMLElement \| () => HTMLElement | The main content of the window                                                               |
 | header      | string \| HTMLElement \| () => HTMLElement | A custom header for the window                                                               |
 | footer      | string \| HTMLElement \| () => HTMLElement | The footer content for the window                                                            |
@@ -96,7 +96,7 @@ const myWindow = openWindow({
 	modality: "clickable",
 	nomaximize: true,
 	nominimize: true,
-    mode: "large"
+	mode: "large"
 })
 ```
 
@@ -106,7 +106,7 @@ const myWindow = openWindow({
 
 ## Styling
 
-The Kiwi Component windows can be styled using CSS variables.
+The windows can be styled using CSS variables.
 
 The following variables can be set:
 
