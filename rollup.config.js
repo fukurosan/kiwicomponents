@@ -37,6 +37,17 @@ productionBuilds = Object.keys(bundles).map(bundle => {
 				name: LIBRARY_NAME,
 				format: "umd",
 				banner: BANNER
+			},
+			{
+				file: `${DIST_FOLDER}/build/${LIBRARY_NAME}-esm-${bundle}.js`,
+				format: "esm",
+				banner: BANNER
+			},
+			{
+				file: `docs/${LIBRARY_NAME}-${bundle}.js`,
+				name: LIBRARY_NAME,
+				format: "umd",
+				banner: BANNER
 			}
 		],
 		plugins: [

@@ -10,7 +10,7 @@ svg {
 #spinning-circle {
 	display: block;
 	fill: transparent;
-	stroke: $primary-color;
+	stroke: var(--kiwi-spinner-color, $primary-color);
 	stroke-linecap: round;
 	stroke-width: 12px;
 	transform-origin: 50% 50%;
@@ -21,7 +21,7 @@ svg {
 
 #background-circle {
 	fill: transparent;
-	stroke: #d7d7d7;
+	stroke: var(--kiwi-spinner-background-color, #d7d7d7);
 	stroke-linecap: initial;
 	stroke-width: 12px;
 }

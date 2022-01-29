@@ -1,4 +1,9 @@
-export const showNotification = options => {
+/**
+ * Shows a toast notification
+ * @param {import("./interfaces").showToastOptions} options
+ * @returns {HTMLElement} The toast element
+ */
+export const showToast = options => {
 	//Create the toast
 	const toast = document.createElement("kiwi-toast")
 	options.title && toast.setAttribute("title", options.title)
@@ -8,6 +13,15 @@ export const showNotification = options => {
 	options.type && toast.setAttribute("type", options.type)
 	options.noanimation && toast.setAttribute("noanimation", options.noanimation)
 	options.noclickclose && toast.setAttribute("noclickclose", options.noclickclose)
+	if (options.html) {
+		if (typeof options.html === "string") {
+			toast.innerHTML = options.html
+		} else if (options.html instanceof HTMLElement) {
+			toast.appendChild(options.html)
+		} else {
+			toast.appendChild(options.html())
+		}
+	}
 
 	//If a toast container matching the configuration already exists then use it, otherwise create a new one
 	let container = document.querySelector(

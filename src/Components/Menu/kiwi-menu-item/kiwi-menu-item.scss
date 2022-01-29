@@ -3,9 +3,9 @@
 
 #main {
 	@extend %body-2;
-	background-color: black;
-	color: white;
-	transition: background-color 200ms;
+	background: var(--kiwi-menu-background, black);
+	color: var(--kiwi-menu-color, white);
+	transition: background-color var(--kiwi-menu-animation-duration, 200ms);
 	display: flex;
 	flex-direction: row;
 	gap: 0.5em;
@@ -21,17 +21,17 @@
 }
 
 :host([disabled]) #main {
-	color: darkgray;
+	color: var(--kiwi-menu-disabled-color, gray);
 }
 
 :host(:not([disabled])) #main:hover {
-	background-color: white;
-	color: black;
+	background: var(--kiwi-menu-hover-background, white);
+	color: var(--kiwi-menu-hover-color, black);
 }
 
 :host(:not([disabled])) #main.has-submenu:hover {
-	background-color: darkgray;
-	color: black;
+	background: var(--kiwi-menu-submenu-hover-background, gray);
+	color: var(--kiwi-menu-submenu-hover-color, black);
 }
 
 .icon {
@@ -54,7 +54,6 @@
 }
 
 #detail {
-	color: coral;
 	justify-content: flex-end;
 }
 
@@ -62,19 +61,29 @@
 	display: none;
 }
 
+#right-arrow svg {
+	fill: var(--kiwi-menu-color, white);
+}
+
+:host([disabled]) #right-arrow path {
+	fill: var(--kiwi-menu-disabled-color, gray);
+}
+:host(:not([disabled])) #main.has-submenu:hover #right-arrow path {
+	fill: var(--kiwi-menu-submenu-hover-color, black);
+}
+
 #submenu {
 	position: absolute;
-	background-color: black;
 	left: 100%;
 	top: 0px;
 	/* Equal to the margin of the parent (to cancel it out) */
 	margin-top: calc(var(--margin) * -1);
 	/* Equal to the values of kiwi-menu */
-	background-color: black;
-	color: white;
-	box-shadow: $element-box-shadow;
-	border-radius: $component-border-radius;
-	transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+	background: var(--kiwi-menu-background-color, black);
+	color: var(--kiwi-menu-color, white);
+	box-shadow: var(--kiwi-menu-shadow, 0 2px 5px 0 rgba(0, 0, 0, 0.2));
+	border-radius: var(--kiwi-menu-border-radius, 0.5em);
+	transition: opacity var(--kiwi-menu-animation-duration, 200ms) ease-in-out, transform var(--kiwi-menu-animation-duration, 200ms) ease-in-out;
 	opacity: 0;
 	transform-origin: left;
 	transform: translateX(-3px) rotateY(20deg);
@@ -82,7 +91,7 @@
 
 	&.reversed {
 		transform-origin: right;
-		transform: translateX(3px) rotateY(-20deg);	
+		transform: translateX(3px) rotateY(-20deg);
 	}
 }
 

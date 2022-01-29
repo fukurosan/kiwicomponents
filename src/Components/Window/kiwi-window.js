@@ -13,21 +13,23 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  *
  * @attr {boolean} noheader - If set to any value the header will not be rendered.
  * @attr {boolean} nofooter - If set to any value the footer will not be rendered.
- * @attr {boolean} nominimize - If set to any value the maximize button will be removed.
+ * @attr {boolean} nominimize - If set to any value the minimize button will be removed.
  * @attr {boolean} nomaximize - If set to any value the maximize button will be removed.
  * @attr {boolean} noclose - If set to any value the window will not have a close button in the top right corner of the header.
  * @attr {boolean} nodrag - If set to any value the window will not be dragable.
  * @attr {boolean} noresize - If set to any value the window will not be resizable.
- * @attr {"none"|"clickable"|"disabled"} modality - If set to any value the window will not have a modality.
- * @attr {"large"|"default"|"compact"} mode - If set to any value the window header will become compact.
+ * @attr {"none"|"clickable"|"disabled"} modality - configures the backdrop of the window.
+ * @attr {"large"|"default"|"compact"} mode - Determines the general dimensions of the window's sections.
  * @attr {string} title - Header text.
  * @attr {string} icon - Header icon.
  * @attr {string} noanimation - If set no animations will take place.
  *
  * @function close - Will close the window
  * @function minimize - Will hide the window
- * @function normalize - Will show the window
+ * @function isMinimized - Returns true of the window is minimized
+ * @function reset - Will show the window
  * @function maximize - toggles the window size between the original size and the maximize size
+ * @function isMaximized - Returns true if the window is maximized
  * @function bringToFront - Brings the window in front
  * @function setPosition - Sets the position of the window
  * @function setSize - Sets the size of the window. Can be either integer (pixel) or string.
@@ -127,10 +129,11 @@ class WindowElement extends HTMLElement {
 				this.scaleToFit()
 				this.center()
 				this._animate(false)
-				const preferredHeaderButtonColor = computePreferredForegroundColor(this._headerElement)
-				if (preferredHeaderButtonColor === "black") {
+				const preferredHeaderWithColor = computePreferredForegroundColor(this._headerElement)
+				if (preferredHeaderWithColor === "black") {
 					this._headerButtonsContainerElement.style.filter = "invert()"
 				}
+				this._headerTextElement.style.color = preferredHeaderWithColor
 			})
 		}
 		window.addEventListener("resize", this._updateMinimizedPositions)

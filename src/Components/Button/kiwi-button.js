@@ -14,7 +14,7 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @attr {string} icon - Optional icon URL.
  * @attr {"before"|"after"} icon-placement - Icon position. Default is "before".
  * @attr {"primary"|"secondary"|"neutral"|"info"|"success"|"error"|"warning"} type - Determines the look and feel of the button. Defaults to "primary".
- * @attr {"small"|"medium"|"large"} type - Determines the size of the button. Defaults to "medium".
+ * @attr {"small"|"medium"|"large"} size - Determines the size of the button. Defaults to "medium".
  * @attr {"column"|"row"} direction - Determines the direction of the icon and button text (row or column). Default is row.
  * @attr {any} noanimation - If set the button background will not animate from left to right on hover.
  *

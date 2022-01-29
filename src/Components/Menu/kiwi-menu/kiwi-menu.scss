@@ -7,12 +7,13 @@
 	z-index: 1000;
 	left: 0;
 	top: 0;
-	background-color: black;
-	color: white;
-	box-shadow: $element-box-shadow;
-	border-radius: $component-border-radius;
+	background: var(--kiwi-menu-background, black);
+	color: var(--kiwi-menu-color, white);
+	box-shadow: var(--kiwi-menu-shadow, 0 2px 5px 0 rgba(0, 0, 0, 0.2));
+	border-radius: var(--kiwi-menu-border-radius, 0.5em);
 	user-select: none;
-	transition: transform 200ms ease-in-out, opacity 200ms ease-in-out, clip-path 200ms ease-in-out;
+	transition: transform var(--kiwi-menu-animation-duration, 200ms) ease-in-out, opacity var(--kiwi-menu-animation-duration, 200ms) ease-in-out,
+		clip-path var(--kiwi-menu-animation-duration, 200ms) ease-in-out;
 	opacity: 0;
 	transform-origin: top center;
 	transform: translateY(-5px) rotateX(-60deg);

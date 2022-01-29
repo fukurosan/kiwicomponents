@@ -41,12 +41,10 @@
 
 <body>
   <kiwi-navbar margin="1em" padding="0" height="130px" responsive-breakpoint="800">
-    <kiwi-navbar-item justify="left">Hello world</kiwi-navbar-item>
-    <kiwi-navbar-item justify="center">Hello world</kiwi-navbar-item>
-    <kiwi-navbar-item justify="right">Hello world</kiwi-navbar-item>
-    <kiwi-navbar-item slot="mobile" justify="right">
-      Hello World. This is some content right here!
-    </kiwi-navbar-item>
+    <kiwi-navbar-item justify="left">Logotype</kiwi-navbar-item>
+    <kiwi-navbar-item slot="1" justify="center">Hello world</kiwi-navbar-item>
+    <kiwi-navbar-item slot="1" justify="right">Hello world</kiwi-navbar-item>
+    <kiwi-navbar-item slot="0" justify="right"> Hello World. This is some mobile content right here!</kiwi-navbar-item>
   </kiwi-navbar>
 
   <div class="box">
@@ -88,6 +86,7 @@
 
   <div class="box">
     Spinners
+    <!--
     <div style="display:flex;gap:1rem;align-items: center;">
       <div style="width:100px;height:100px;">
         <kiwi-spinner></kiwi-spinner>
@@ -96,16 +95,17 @@
       <kiwi-spinner size="50px" usebackground></kiwi-spinner>
       <kiwi-spinner size="50px" percent="75" usebackground></kiwi-spinner>
     </div>
+    -->
   </div>
 
   <div class="box">
     Toasts
     <script>
       function showToast() {
-        kiwicomponents.showNotification({ title: "Hello World", icon: "./Icons/icon-rightarrow-dark.svg", left: true, bottom: true, body: "Hello World", type: "info", timeout: 5000 })
+        kiwicomponents.showToast({ title: "Hello World", icon: "./Icons/icon-rightarrow-dark.svg", left: true, bottom: true, body: "Hello World", type: "info", timeout: 5000 })
       }
       function showSnackbar() {
-        kiwicomponents.showNotification({ title: "Hello World", top: true, right: true, bottom: true, left: true, type: "warning", timeout: 5000, clearExisting: true })
+        kiwicomponents.showToast({ title: "Hello World", top: true, right: true, bottom: true, left: true, type: "warning", timeout: 5000, clearExisting: true })
       }
     </script>
     <kiwi-button onclick="showToast()">Show Toast</kiwi-button>
@@ -201,7 +201,7 @@
           icon: "./Icons/icon-rightarrow-dark.svg",
           title: "This is a window!",
           mode: mode,
-          content: `This is some content inside of the window.
+          body: `This is some content inside of the window.
           <div style="background-color: coral;margin:0 !important;">
             And this content is inside of a full size div inside
             of the window
@@ -221,7 +221,7 @@
   </div>
 
   <div class="box">
-    Graphs
+    Split
   </div>
 
 </body>

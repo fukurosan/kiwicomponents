@@ -46,7 +46,7 @@ class TooltipElement extends HTMLElement {
 			mousemove: this._handleMouseMove.bind(this),
 			mouseleave: this._hide.bind(this),
 			click: this._hide.bind(this),
-			targetRemoved: this.remove()
+			targetRemoved: this.remove.bind(this)
 		})
 		this._movementObserver = new MovementObserver()
 		this._bodySlotElement = this.shadowRoot.querySelector("slot:not([name])")

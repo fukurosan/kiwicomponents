@@ -1,6 +1,34 @@
 //Typography
-$font-family-heading: var(--kiwi-font-family-heading, Quicksand,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif);
-$font-family-body: var(--kiwi-font-family-body, Quicksand,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif);
+$font-family-heading: var(
+	--kiwi-font-family-heading,
+	Quicksand,
+	-apple-system,
+	BlinkMacSystemFont,
+	Segoe UI,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	Fira Sans,
+	Droid Sans,
+	Helvetica Neue,
+	sans-serif
+);
+$font-family-body: var(
+	--kiwi-font-family-body,
+	Quicksand,
+	-apple-system,
+	BlinkMacSystemFont,
+	Segoe UI,
+	Roboto,
+	Oxygen,
+	Ubuntu,
+	Cantarell,
+	Fira Sans,
+	Droid Sans,
+	Helvetica Neue,
+	sans-serif
+);
 
 //Accent Colors
 $primary-color-dark: var(--kiwi-primary-color-dark, #0a0a0a);
@@ -18,12 +46,6 @@ $with-secondary-color-dark: var(--kiwi-with-secondary-color-dark, #000000);
 $with-secondary-color: var(--kiwi-with-secondary-color, #000000);
 $with-secondary-color-light: var(--kiwi-with-secondary-color-light, #000000);
 
-//Element Colors
-$content-background-color: #f5f5f5;
-
-//With Element Colors
-$with-content-background-color: #323232;
-
 //Status Colors
 $success-color: var(--kiwi-success-color, #cbf782);
 $warning-color: var(--kiwi-warning-color, #f7e982);
@@ -35,28 +57,6 @@ $with-success-color: var(--kiwi-with-success-color, #587000);
 $with-warning-color: var(--kiwi-with-warning-color, #705000);
 $with-info-color: var(--kiwi-with-info-color, #13445d);
 $with-error-color: var(--kiwi-with-error-color, #5d2c13);
-
-//Borders and Outlines
-$component-border: var(--kiwi-component-border, none);
-$component-border-activated: var(--kiwi-border-activated, none);
-$element-border: var(--kiwi-element-border, none);
-$layout-border: var(--kiwi-layout-border, none);
-$component-outline: var(--kiwi-component-outline, none); 
-$component-outline-activated: var(--kiwi-component-outline-activated, none); 
-$element-outline: var(--kiwi-element-outline, none); 
-$layout-outline: var(--kiwi-layout-outline, none); 
-$component-border-radius: var(--kiwi-component-border-radius, 0.5em);
-$element-border-radius: var(--kiwi-element-border-radius, 1em);
-$layout-border-radius: var(--kiwi-layout-border-radius, 0);
-
-//Animations and Transitions
-$animation-time: var(--kiwi-animation-time, 500ms);
-
-//Shadows
-$component-box-shadow: none;
-$component-box-shadow-activated: none;
-$element-box-shadow: var(--kiwi-box-shadow, 0 2px 5px 0 rgba(0,0,0,.2));
-$layout-box-shadow: none;
 
 //Scrollbars Standard
 $scrollbar-width: var(--kiwi-scrollbar-width, thin);

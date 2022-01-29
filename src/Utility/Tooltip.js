@@ -1,4 +1,8 @@
-export const enableGlobalTooltips = options => {
+/**
+ * Enables global tooltips
+ * @returns {any}
+ */
+export const enableGlobalTooltips = () => {
 	const observer = new MutationObserver(mutations => {
 		const addedTargetElements = mutations.reduce((acc, mutation) => {
 			mutation.addedNodes.forEach(addedNode => {

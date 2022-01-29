@@ -13,16 +13,16 @@ button {
 	white-space: nowrap;
 	text-align: center;
 	width: 100%;
-	border: $component-border;
-	outline: $component-outline;
-	transition: all $animation-time, transform 0ms;
-	border-radius: $component-border-radius;
-	box-shadow: $component-box-shadow;
+	border: var(--kiwi-button-border, none);
+	outline: var(--kiwi-button-outline, none);
+	transition: all var(--kiwi-button-animation-duration, 500ms), transform 0ms;
+	border-radius: var(--kiwi-button-border-radius, 0.5em);
+	box-shadow: var(--kiwi-button-box-shadow, none);
 	&:active,
 	&:hover {
-		border: $component-border-activated;
-		outline: $component-outline-activated;
-		box-shadow: $component-box-shadow-activated;
+		border: var(--kiwi-button-border-activated, none);
+		outline: var(--kiwi-button-outline-activated, none);
+		box-shadow: var(--kiwi-button-box-shadow-activated, none);
 	}
 	&:active {
 		transform: translateY(2px);
@@ -45,7 +45,7 @@ button {
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
-		transition: opacity $animation-time, transform $animation-time;
+		transition: opacity var(--kiwi-button-animation-duration, 500ms), transform var(--kiwi-button-animation-duration, 500ms);
 		background-color: rgba(255, 255, 255, 0.15);
 		z-index: -1;
 		transform: translateX(-130%) skew(-30deg);

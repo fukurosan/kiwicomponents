@@ -6,7 +6,7 @@
 	position: fixed;
 	inset: 0;
 	background-color: black;
-	opacity: 0.5;
+	opacity: var(--kiwi-window-backdrop-opacity, 0.5);
 }
 
 #window {
@@ -14,11 +14,11 @@
 	position: fixed;
 	display: flex;
 	flex-direction: column;
-	box-shadow: $element-box-shadow;
-	border-radius: 0.5em;
-	animation-duration: 200ms;
+	box-shadow: var(--kiwi-window-shadow, 0 2px 5px 0 rgba(0, 0, 0, 0.2));
+	border-radius: var(--kiwi-window-border-radius, 0.5em);
+	animation-duration: var(--kiwi-window-animation-duration, 200ms);
 	animation-timing-function: ease-in-out;
-	transition: all 200ms;
+	transition: all var(--kiwi-window-animation-duration, 200ms);
 	&.noanimation {
 		transition: none !important;
 	}
@@ -42,21 +42,21 @@
  */
 #header,
 :host([noheader]) #body {
-	border-top-left-radius: 0.5em;
-	border-top-right-radius: 0.5em;
+	border-top-left-radius: var(--kiwi-window-border-radius, 0.5em);
+	border-top-right-radius: var(--kiwi-window-border-radius, 0.5em);
 }
 
 #footer,
 :host([nofooter]) #body {
-	border-bottom-left-radius: 0.5em;
-	border-bottom-right-radius: 0.5em;
+	border-bottom-left-radius: var(--kiwi-window-border-radius, 0.5em);
+	border-bottom-right-radius: var(--kiwi-window-border-radius, 0.5em);
 }
 
 #header {
 	@extend %h5;
 	font-weight: 600 !important;
-	background: white;
-	border-bottom: 1px solid lightgray;
+	background: var(--kiwi-window-header-background, white);
+	border-bottom: 1px solid var(--kiwi-window-separator-color, transparent);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -80,7 +80,7 @@
 	#close-icon {
 		cursor: pointer;
 		opacity: 0.4;
-		transition: opacity 200ms;
+		transition: opacity var(--kiwi-window-animation-duration, 200ms);
 		&:hover {
 			opacity: 1;
 		}
@@ -90,12 +90,12 @@
 #body {
 	height: 100%;
 	overflow: auto;
-	background: white;
+	background: var(--kiwi-window-body-background, white);
 }
 
 #footer {
-	background: white;
-	border-top: 1px solid lightgray;
+	background: var(--kiwi-window-footer-background, white);
+	border-top: 1px solid var(--kiwi-window-separator-color, transparent);;
 	display: flex;
 	flex-direction: row;
 	align-items: center;

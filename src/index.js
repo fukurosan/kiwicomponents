@@ -13,9 +13,9 @@ import "./Components/Table/kiwi-table"
 
 //Utilities
 import { injectStyle } from "./Utility/StyleInjection"
-import { showNotification } from "./Utility/Notifications"
+import { showToast } from "./Utility/Notifications"
 import { enableGlobalTooltips } from "./Utility/Tooltip"
 import { openWindow } from "./Utility/WindowManager"
 
 //Export
-export { injectStyle, showNotification, enableGlobalTooltips, openWindow }
+export { injectStyle, showToast, enableGlobalTooltips, openWindow }

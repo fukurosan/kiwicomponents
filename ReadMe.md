@@ -12,8 +12,9 @@
 ## What is this?
 Kiwi Components is a web SDK.
 
-Kiwi Components aims to be a library that simplifies the most boilerplate intensive work in web application development. few features include:
+Kiwi Components aims to be a library that simplifies the most boilerplate intensive work in web application development. 
 
+This includes things like:
 - Window Management
 - Tooltips
 - Context Menus

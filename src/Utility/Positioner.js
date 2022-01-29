@@ -124,7 +124,7 @@ export const computeViewportAdjustment = (x, y, width, height) => {
 
 /**
  * Computes if an element that is positioned to a given side of a target should be flipped to the opposite side.
- * Will return true if there is not enough space on the preferred size, but fully fits on the other. Otherwise false.
+ * Will return true if there is not enough space on the preferred side, but fully fits on the other. Otherwise false.
  * @param {DOMRect} elementBCR
  * @param {DOMRect} targetBCR
  * @param {"top"|"right"|"bottom"|"left"} preferredPosition
