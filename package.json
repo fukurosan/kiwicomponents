@@ -1,7 +1,7 @@
 {
   "name": "kiwicomponents",
-  "version": "0.0.1",
-  "description": "An SDK for the web.",
+  "version": "0.1.0",
+  "description": "An SDK for web browsers.",
   "main": "./dist/build/kiwicomponents-bundle.js",
   "unpkg": "./dist/build/kiwicomponents-bundle.js",
   "jsdelivr": "./dist/build/kiwicomponents-bundle.js",

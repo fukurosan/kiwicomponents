@@ -4,21 +4,15 @@
   <img src="https://img.shields.io/npm/v/kiwicomponents?color=1" style="display:inline-block;">
   <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" style="display:inline-block;">
   <br />
-  A collection of web components and web utilities. The SDK you need.
+  The web browser SDK you've been missing.
   <br>
   Check out the <a target="_blank" href="https://fukurosan.github.io/kiwicomponents/">Documentation</a> to learn more!
 </div>
 
 ## What is this?
-Kiwi Components is a web SDK.
 
-Kiwi Components aims to be a library that simplifies the most boilerplate intensive work in web application development. 
+Kiwi Components is an SDK for web browsers.
 
-This includes things like:
-- Window Management
-- Tooltips
-- Context Menus
-- Toast Notifications
+The library aims to simplify typically difficult or boilerplate-heavy parts of web application development, and enables you to easily add functionality like window management, notifications, context menus and a whole bunch more through a declarative API.
 
-## Work in progess..
-Note that this library is very much a work in progress right now. More to come later.
+The entire library is framework agnostic, and purely built on standard HTML, CSS and JavaScript. This means that regardless of what other technologies you are working with Kiwi Components will be compatible with them.
