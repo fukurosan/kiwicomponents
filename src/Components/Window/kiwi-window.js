@@ -292,25 +292,21 @@ class WindowElement extends HTMLElement {
 		if (!this.isMinimized()) {
 			this._windowElement.classList.add("minimized")
 			this._windowElement.style.top = `${window.innerHeight - this._windowElement.clientHeight}px`
-			//Some mobile devices will change their viewport size when displaying their UI
-			//Because of this we must fix the minimized window to bottom = 0
-			//But we still need to ensure the animation fires, which is dependent on the "top" attribute
-			const fixCoordinatesToBottom = () => {
-				this._windowElement.style.bottom = "0px"
-				this._windowElement.style.removeProperty("top")
-				this._windowElement.removeEventListener("transitionend", fixCoordinatesToBottom)
+			//Some (mobile) browsers change their viewport size when their UI is being displayed
+			//This is on purpose, and for a variety of reasons. Unfortunately it means that "bottom: 0" will not work
+			//and that we must recompute the coordinates every time the viewport size changes.
+			this._adjustSizeListener = () => {
+				this._windowElement.style.top = `${window.innerHeight - this._windowElement.clientHeight}px`
 			}
-			this._windowElement.addEventListener("transitionend", fixCoordinatesToBottom)
+			window.addEventListener("resize", this._adjustSizeListener)
 			this._updateMinimizedPositions()
 		} else {
-			this._windowElement.style.top = `${window.innerHeight - this._windowElement.clientHeight}px`
-			this._windowElement.style.removeProperty("bottom")
-			setTimeout(() => {
-				this._windowElement.classList.remove("minimized")
-				this._windowElement.style.removeProperty("max-width")
-				this.setPosition(this._xPosition, this._yPosition)
-				this._updateMinimizedPositions()
-			}, 10)
+			this._windowElement.classList.remove("minimized")
+			this._windowElement.style.removeProperty("max-width")
+			window.removeEventListener("resize", this._adjustSizeListener)
+			delete this._adjustSizeListener
+			this.setPosition(this._xPosition, this._yPosition)
+			this._updateMinimizedPositions()
 		}
 	}
 

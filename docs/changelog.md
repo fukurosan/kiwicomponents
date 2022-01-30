@@ -12,10 +12,15 @@
 - Add a split view component
 
 
-### 0.1.3 (TBR)
+### 0.1.4 (TBR)
 
 - Promise based API for: Confirm(), alert(), prompt()
 - Implement flipping for tooltips when scrolled out of view
+
+### 0.1.3
+
+- Improved minimization for windows
+- Increased resizing area for windows
 
 ### 0.1.2
 
