@@ -19,6 +19,7 @@
 	padding: 1em 1.5em;
 	user-select: none;
 	cursor: pointer;
+	position: relative;
 }
 
 .active {
@@ -44,4 +45,11 @@
 
 .disabled {
 	cursor: not-allowed;
+}
+.disabled::before {
+	content: " ";
+	position: absolute;
+	inset: 0;
+	background: white;
+	opacity: 0.5;
 }

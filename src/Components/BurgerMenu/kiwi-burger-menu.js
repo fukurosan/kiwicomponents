@@ -10,11 +10,12 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @element kiwi-burger-menu
  *
  * @attr {any} open - If set the drawer menu will open.
+ * @attr {"left"|"right"} direction - The direction from which the drawer opens.
  *
  */
 class KiwiBurgerMenu extends HTMLElement {
 	static get observedAttributes() {
-		return ["open"]
+		return ["open", "direction"]
 	}
 
 	constructor() {

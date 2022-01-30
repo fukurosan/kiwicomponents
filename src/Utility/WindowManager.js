@@ -119,11 +119,11 @@ export const confirm = message => {
 		})
 		cancelButton.addEventListener("click", () => {
 			window.close()
-			resolve(true)
+			resolve(false)
 		})
 		confirmButton.addEventListener("click", () => {
 			window.close()
-			resolve(false)
+			resolve(true)
 		})
 	})
 }

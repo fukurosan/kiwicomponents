@@ -1,6 +1,6 @@
 {
   "name": "kiwicomponents",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "An SDK for web browsers.",
   "main": "./dist/build/kiwicomponents-bundle.js",
   "unpkg": "./dist/build/kiwicomponents-bundle.js",
@@ -17,6 +17,19 @@
   },
   "author": "Henrik Olofsson",
   "license": "MIT",
+  "keywords": [
+    "browser-sdk",
+    "web-components",
+    "window-management",
+    "window",
+    "toast",
+    "notifications",
+    "tooltip",
+    "context-menu",
+    "kiwi",
+    "kiwi-components",
+    "web-sdk"
+  ],
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",

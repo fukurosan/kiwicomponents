@@ -217,6 +217,33 @@
   </div>
 
   <div class="box">
+    <div style="width:100px;height:100px;">
+      <kiwi-burger-menu>
+        Hello World
+      </kiwi-burger-menu>
+    </div>
+    <div style="width:200px;height:200px;">
+      <kiwi-burger-menu>
+        Hello World
+      </kiwi-burger-menu>
+    </div>
+  </div>
+
+  <div class="box">
+    Utility
+    <script>
+      async function confirmWithUser() {
+        const choice = await kiwicomponents.confirm("This action is irreversible. Proceed?")
+        console.log(choice)
+      }
+    </script>
+    <kiwi-button onclick="confirmWithUser()">Confirm</kiwi-button>
+  </div>
+
+
+
+
+  <div class="box">
     Tabs
     <kiwi-tabs labels="Hello World,Some Carpeting,Fun Stuff" disabled-tabs="Fun Stuff" active-tab="Some Carpeting">
       <div slot="Hello World">
