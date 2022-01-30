@@ -16,6 +16,7 @@
 
 - Promise based API for: Confirm(), alert(), prompt()
 - Implement flipping for tooltips when scrolled out of view
+- Add touch support for context menus
 
 ### 0.1.3
 
