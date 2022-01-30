@@ -3,6 +3,7 @@
 * [Toast Notifications](toast.md)
 * [Menus](menus.md)
 * [Tooltips](tooltips.md)
+* [Utility](utility.md)
 * [Components](components.md)
 * [Typography](typography.md)
 * [Scrollbars](scrollbars.md)

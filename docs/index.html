@@ -230,6 +230,9 @@
 			if (inputOptions) options = { ...options, ...inputOptions }
 			return kiwicomponents.showToast(options)
 		}
+		function confirmExample() {
+			kiwicomponents.confirm("This action is irreversible. Proceed?")
+		}
 		kiwicomponents.enableGlobalTooltips()
 	</script>
 </head>

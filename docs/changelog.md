@@ -10,13 +10,12 @@
 - Add burger menu to the navbar
 - Add a tab panel component
 - Add a split view component
-
-
-### 0.1.4 (TBR)
-
-- Promise based API for: Confirm(), alert(), prompt()
-- Implement flipping for tooltips when scrolled out of view
+- Implement flipping option for tooltips when scrolled out of view
 - Add touch support for context menus
+
+### 0.1.4
+
+- Added promise based API for confirm()
 
 ### 0.1.3
 
