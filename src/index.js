@@ -10,6 +10,7 @@ import "./Components/Menu/kiwi-menu/kiwi-menu"
 import "./Components/Menu/kiwi-menu-item/kiwi-menu-item"
 import "./Components/Window/kiwi-window"
 import "./Components/Table/kiwi-table"
+import "./Components/Tabs/kiwi-tabs"
 
 //Utilities
 import { injectStyle } from "./Utility/StyleInjection"

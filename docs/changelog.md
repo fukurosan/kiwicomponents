@@ -8,8 +8,11 @@
 - - Sticky headers
 - - Column resizing
 - Add burger menu to the navbar
-- Add a tab panel component
 - Add a split view component
+
+### 0.1.4
+
+- Added tab panel component
 
 ### 0.1.4
 

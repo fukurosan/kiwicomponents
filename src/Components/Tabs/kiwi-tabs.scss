@@ -1,0 +1,47 @@
+@import "../../Assets/Stylesheets/variables.scss";
+@import "../../Assets/Stylesheets/Components/typography.scss";
+
+#container {
+	display: flex;
+	flex-direction: column;
+}
+
+#tab-button-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.button {
+	@extend %button;
+	white-space: nowrap;
+	border-top-right-radius: var(--kiwi-tab-panel-border-radius, 0.5em);
+	border-top-left-radius: var(--kiwi-tab-panel-border-radius, 0.5em);
+	padding: 1em 1.5em;
+	user-select: none;
+	cursor: pointer;
+}
+
+.active {
+	background: var(--kiwi-tab-panel-tab-selected-background, $primary-color);
+	color: var(--kiwi-tab-panel-tab-selected-color, $with-primary-color);
+	&:not(.disabled):focus,
+	&:not(.disabled):active,
+	&:not(.disabled):hover {
+		background: var(--kiwi-tab-panel-tab-selected-active-background, $primary-color-light);
+		color: var(--kiwi-tab-panel-tab-selected-active-color, $with-primary-color-light);
+	}
+}
+.button:not(.active) {
+	background: var(--kiwi-tab-panel-tab-background, #e2e2e2);
+	color: var(--kiwi-tab-panel-tab-color, #000000);
+	&:not(.disabled):focus,
+	&:not(.disabled):active,
+	&:not(.disabled):hover {
+		background: var(--kiwi-tab-panel-tab-active-background, #cecece);
+		color: var(--kiwi-tab-panel-tab-active-color, #000000);
+	}
+}
+
+.disabled {
+	cursor: not-allowed;
+}

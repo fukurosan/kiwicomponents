@@ -103,9 +103,59 @@ The following CSS variables can be configured:
 | --kiwi-spinner-color            | Color of the spinner wheel            |
 | --kiwi-spinner-background-color | Color of the spinner wheel background |
 
+## \<kiwi-tabs>
+
+\<kiwi-tabs> is a tabbed panel. This component allows you to create tabs and display content depending on what tab is active. The motivation for this component is that many modern applications use these types of layouts, and creating them requires a lot of boilerplate and state management.
+
+Tab labels are provided as a comma separated string attribute "labels". For each provided value a tab will be created. To insert content into the tab simply set the slot attribute to the label. The currently open tab can be manipulated and inspected using the active-tab attribute
+
+### Example:
+
+```html
+<kiwi-tabs labels="Tab 1,Tab 2,Tab 3" active-tab="Tab 2" disabled-tabs="Tab 3">
+	<div slot="Tab 1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae.</div>
+	<div slot="Tab 2">Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc.</div>
+	<div slot="Tab 3">Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.</div>
+</kiwi-tabs>
+```
+
+Result:
+
+<kiwi-tabs labels="Tab 1,Tab 2,Tab 3" active-tab="Tab 2" disabled-tabs="Tab 3">
+	<div slot="Tab 1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae.</div>
+	<div slot="Tab 2">Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc.</div>
+	<div slot="Tab 3">Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.</div>
+</kiwi-tabs>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute     | type   | description                                    |
+| ------------- | ------ | ---------------------------------------------- |
+| labels        | string | Comma separated list of tab labels             |
+| active-tab    | string | Currently active tab                           |
+| disabled-tabs | string | Comma separated list of tabs that are disabled |
+
+### Styling
+
+The following CSS variables can be configured:
+
+| Variable                                        | Description                                      |
+| ----------------------------------------------- | ------------------------------------------------ |
+| --kiwi-tab-panel-border-radius                  | Border radius for the tabs                       |
+| --kiwi-tab-panel-tab-selected-background        | Background for the selected tab                  |
+| --kiwi-tab-panel-tab-selected-color             | Color for the selected tab                       |
+| --kiwi-tab-panel-tab-selected-active-background | background for the selected tab in active state  |
+| --kiwi-tab-panel-tab-selected-active-color      | Color for the selected tab in active state       |
+| --kiwi-tab-panel-tab-background                 | background for non-selected tabs                 |
+| --kiwi-tab-panel-tab-color                      | Color for non-selected tabs                      |
+| --kiwi-tab-panel-tab-active-background          | background for non-selected tabs in active state |
+| --kiwi-tab-panel-tab-active-color               | Color for non-selected tabs in active state      |
+
 ## \<kiwi-navbar>
 
-\<kiwi-navbar> is a modern navbar with responsiveness built in. 
+\<kiwi-navbar> is a modern navbar with responsiveness built in.
 
 The navbar can be used in tandem with \<kiwi-navbar-item> which is an element made specifically to be used together with it. These navbar items will all take up an equal amount of space inside of the navbar, allowing you to create equal sections, and center things inside.
 
