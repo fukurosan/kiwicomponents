@@ -15,6 +15,8 @@
 
 - Promise based API for: Confirm(), alert(), prompt()
 - Implement flipping for tooltips when scrolled out of view
+- Add touch support for windows
+- Improve touch support for button's active state
 
 ### 0.1.1
 
