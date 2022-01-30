@@ -292,12 +292,25 @@ class WindowElement extends HTMLElement {
 		if (!this.isMinimized()) {
 			this._windowElement.classList.add("minimized")
 			this._windowElement.style.top = `${window.innerHeight - this._windowElement.clientHeight}px`
+			//Some mobile devices will change their viewport size when displaying their UI
+			//Because of this we must fix the minimized window to bottom = 0
+			//But we still need to ensure the animation fires, which is dependent on the "top" attribute
+			const fixCoordinatesToBottom = () => {
+				this._windowElement.style.bottom = "0px"
+				this._windowElement.style.removeProperty("top")
+				this._windowElement.removeEventListener("transitionend", fixCoordinatesToBottom)
+			}
+			this._windowElement.addEventListener("transitionend", fixCoordinatesToBottom)
 			this._updateMinimizedPositions()
 		} else {
-			this._windowElement.classList.remove("minimized")
-			this._windowElement.style.removeProperty("max-width")
-			this.setPosition(this._xPosition, this._yPosition)
-			this._updateMinimizedPositions()
+			this._windowElement.style.top = `${window.innerHeight - this._windowElement.clientHeight}px`
+			this._windowElement.style.removeProperty("bottom")
+			setTimeout(() => {
+				this._windowElement.classList.remove("minimized")
+				this._windowElement.style.removeProperty("max-width")
+				this.setPosition(this._xPosition, this._yPosition)
+				this._updateMinimizedPositions()
+			}, 10)
 		}
 	}
 

@@ -126,25 +126,25 @@
 }
 .resizer.top,
 .resizer.bottom {
-	height: 10px;
+	height: 20px;
 	cursor: ns-resize;
 }
 .resizer.left,
 .resizer.right {
-	width: 10px;
+	width: 20px;
 	cursor: ew-resize;
 }
 .resizer.top {
-	top: -5px;
+	top: -15px;
 }
 .resizer.right {
-	right: -5px;
+	right: -15px;
 }
 .resizer.bottom {
-	bottom: -5px;
+	bottom: -15px;
 }
 .resizer.left {
-	left: -5px;
+	left: -15px;
 }
 .resizer.top.right,
 .resizer.bottom.left {
