@@ -10,7 +10,7 @@
 - Add burger menu to the navbar
 - Add a split view component
 
-### 0.1.4
+### 0.1.5
 
 - Added tab panel component
 
