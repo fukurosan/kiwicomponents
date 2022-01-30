@@ -7,8 +7,6 @@ The library aims to simplify typically difficult or boilerplate-heavy parts of w
 
 The entire library is framework agnostic, and purely built on standard HTML, CSS and JavaScript. This means that regardless of what other technologies you are working with Kiwi Components will be compatible with them.
 
-In some sense one could argue that this entire library was made out of pure self-defense against a myriad of requirements and needs from projects.
-
 ?> Note that Kiwi Components is still in early beta.
 
 ---
