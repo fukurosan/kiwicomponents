@@ -11,12 +11,16 @@
 - Add a tab panel component
 - Add a split view component
 
-### 0.1.2 (TBR)
+
+### 0.1.3 (TBR)
 
 - Promise based API for: Confirm(), alert(), prompt()
 - Implement flipping for tooltips when scrolled out of view
-- Add touch support for windows
-- Improve touch support for button's active state
+
+### 0.1.2
+
+- Added touch support for windows
+- Improved touch support for buttons
 
 ### 0.1.1
 

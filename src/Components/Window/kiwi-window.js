@@ -66,7 +66,6 @@ class WindowElement extends HTMLElement {
 		this._resizerElements = this.shadowRoot.querySelectorAll(".resizer")
 
 		//Init Icons
-		//TODO: Add new icons and fix color based on background issue
 		this._minimizeIconElement.setAttribute("src", ICON_MINIMIZE)
 		this._maximizeIconelement.setAttribute("src", ICON_MAXIMIZE)
 		this._closeIconElement.setAttribute("src", ICON_CLOSE)
@@ -112,14 +111,17 @@ class WindowElement extends HTMLElement {
 		this._dragY = 0
 		this._MINIMUM_VISIBLE_SPACE = 50
 		this._headerElement.addEventListener("mousedown", this._initDrag.bind(this), true)
+		this._headerElement.addEventListener("touchstart", this._initDrag.bind(this), true)
 
 		//Init bringToFrontListener
 		this._windowElement.addEventListener("mousedown", this.bringToFront.bind(this), false)
+		this._windowElement.addEventListener("touchstart", this.bringToFront.bind(this), false)
 
 		//Init resizer
 		this._MINIMUM_WIDTH = 150
 		this._MINIMUM_HEIGHT = 150
 		this._resizerElements.forEach(element => element.addEventListener("mousedown", this._resize.bind(this), true))
+		this._resizerElements.forEach(element => element.addEventListener("touchstart", this._resize.bind(this), true))
 	}
 
 	connectedCallback() {
@@ -373,7 +375,13 @@ class WindowElement extends HTMLElement {
 		if (this.hasAttribute("nodrag") || this.isMinimized()) {
 			return
 		}
-		event.preventDefault()
+		//If this is a touch event we need to extract the touch object
+		if (event.touches && event.touches[0]) {
+			event = event.touches[0]
+		} else {
+			//If its not a touch event we must prevent the default action of the event, or dragging the button icons will cause problems.
+			event.preventDefault()
+		}
 		//We store the initial cursor coordinates to be able to compute the delta movement.
 		//This is because the cursor position is not necessarily equal to the left position of the window.
 		this._dragX = event.clientX
@@ -382,16 +390,22 @@ class WindowElement extends HTMLElement {
 		const handleDragStateActivation = () => {
 			this._windowElement.classList.add("drag")
 			window.removeEventListener("mousemove", handleDragStateActivation)
+			window.removeEventListener("touchmove", handleDragStateActivation)
 		}
 		const handleMouseMove = this._drag.bind(this)
 		const handleMouseUp = () => {
 			this._windowElement.classList.remove("drag")
 			window.removeEventListener("mousemove", handleDragStateActivation)
 			window.removeEventListener("mousemove", handleMouseMove)
+			window.removeEventListener("touchmove", handleDragStateActivation)
+			window.removeEventListener("touchmove", handleMouseMove)
 		}
 		window.addEventListener("mousemove", handleDragStateActivation)
 		window.addEventListener("mousemove", handleMouseMove)
 		window.addEventListener("mouseup", handleMouseUp)
+		window.addEventListener("touchmove", handleDragStateActivation, { passive: false })
+		window.addEventListener("touchmove", handleMouseMove, { passive: false })
+		window.addEventListener("touchend", handleMouseUp)
 	}
 
 	/**
@@ -406,6 +420,9 @@ class WindowElement extends HTMLElement {
 			this.setPosition(event.clientX - this._windowElement.clientWidth / 2, 0)
 		}
 		event.preventDefault()
+		if (event.touches && event.touches[0]) {
+			event = event.touches[0]
+		}
 		const dragXDelta = event.clientX - this._dragX
 		const dragYDelta = event.clientY - this._dragY
 		this._dragX = event.clientX
@@ -435,10 +452,16 @@ class WindowElement extends HTMLElement {
 		this._windowElement.style.transition = "none"
 		const originalWidth = parseFloat(getComputedStyle(this._windowElement, null).getPropertyValue("width").replace("px", ""))
 		const originalHeight = parseFloat(getComputedStyle(this._windowElement, null).getPropertyValue("height").replace("px", ""))
+		if (event.touches && event.touches[0]) {
+			event = event.touches[0]
+		}
 		const originalMouseX = event.pageX
 		const originalMouseY = event.pageY
 
 		const resize = event => {
+			if (event.touches && event.touches[0]) {
+				event = event.touches[0]
+			}
 			const width = isReverseX ? originalWidth - (event.pageX - originalMouseX) : originalWidth + (event.pageX - originalMouseX)
 			const height = isReverseY ? originalHeight - (event.pageY - originalMouseY) : originalHeight + (event.pageY - originalMouseY)
 			if (shouldMoveX && width > this._MINIMUM_WIDTH) {
@@ -459,9 +482,13 @@ class WindowElement extends HTMLElement {
 			this._windowElement.style.removeProperty("transition")
 			window.removeEventListener("mousemove", resize)
 			window.removeEventListener("mouseup", mouseUp)
+			window.removeEventListener("touchmove", resize)
+			window.removeEventListener("touchend", mouseUp)
 		}
 		window.addEventListener("mousemove", resize)
 		window.addEventListener("mouseup", mouseUp)
+		window.addEventListener("touchmove", resize)
+		window.addEventListener("touchend", mouseUp)
 	}
 }
 

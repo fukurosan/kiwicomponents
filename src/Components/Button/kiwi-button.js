@@ -40,6 +40,14 @@ class KiwiButton extends HTMLElement {
 			MEDIUM: "0.75em",
 			LARGE: "1em"
 		})
+		//The active selector will not fire for touch input. So we handle this visual effect manually.
+		//The reason for not using touchstart and touchend is because user-select:none would cause a conflict.
+		this._buttonElement.addEventListener("click", () => {
+			this._buttonElement.style.transform = "translateY(2px)"
+			setTimeout(() => {
+				this._buttonElement.style.removeProperty("transform")
+			}, 50)
+		})
 		this._render()
 	}
 
