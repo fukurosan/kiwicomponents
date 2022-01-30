@@ -11,7 +11,6 @@
 - Add a tab panel component
 - Add a split view component
 - Implement flipping option for tooltips when scrolled out of view
-- Add touch support for context menus
 
 ### 0.1.4
 
