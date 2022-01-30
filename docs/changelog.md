@@ -10,7 +10,6 @@
 - Add burger menu to the navbar
 - Add a tab panel component
 - Add a split view component
-- Implement flipping option for tooltips when scrolled out of view
 
 ### 0.1.4
 
