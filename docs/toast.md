@@ -34,20 +34,21 @@ When launching a toast you are able to pass options to the showToast function. T
 
 The following options are supported:
 
-| option       | type                                                                                 | description                                                                     |
-| ------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
-| icon         | string                                                                               | Optional icon URL for the toast.                                                |
-| title        | string                                                                               | Optional title for the toast.                                                   |
-| body         | string                                                                               | Optional body for the toast.                                                    |
-| html         | string \| HTMLElement \| () => HTMLElement                                           | Optional rich, custom content for the toast. Usually used instead of title/body |
-| timeout      | number                                                                               | How many milliseconds before the toast should remove itself.                    |
-| type         | "primary" \| "secondary" \| "neutral" \| "info" \| "success" \| "error" \| "warning" | A type can be configured to change the colors of the toast.                     |
-| noanimation  | boolean                                                                              | If true the toast will not animate.                                             |
-| noclickclose | boolean                                                                              | If true the toast will not close when clicked.                                  |
-| top          | boolean                                                                              | Should the toast be placed towards the top of the screen?                       |
-| right        | boolean                                                                              | Should the toast be placed towards the right of the screen?                     |
-| bottom       | boolean                                                                              | Should the toast be placed towards the bottom of the screen?                    |
-| left         | boolean                                                                              | Should the toast be placed towards the left of the screen?                      |
+| option        | type                                                                                 | description                                                                      |
+| ------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| icon          | string                                                                               | Optional icon URL for the toast.                                                 |
+| title         | string                                                                               | Optional title for the toast.                                                    |
+| body          | string                                                                               | Optional body for the toast.                                                     |
+| html          | string \| HTMLElement \| () => HTMLElement                                           | Optional rich, custom content for the toast. Usually used instead of title/body  |
+| timeout       | number                                                                               | How many milliseconds before the toast should remove itself.                     |
+| type          | "primary" \| "secondary" \| "neutral" \| "info" \| "success" \| "error" \| "warning" | A type can be configured to change the colors of the toast.                      |
+| noanimation   | boolean                                                                              | If true the toast will not animate.                                              |
+| noclickclose  | boolean                                                                              | If true the toast will not close when clicked.                                   |
+| top           | boolean                                                                              | Should the toast be placed towards the top of the screen?                        |
+| right         | boolean                                                                              | Should the toast be placed towards the right of the screen?                      |
+| bottom        | boolean                                                                              | Should the toast be placed towards the bottom of the screen?                     |
+| left          | boolean                                                                              | Should the toast be placed towards the left of the screen?                       |
+| clearExisting | boolean                                                                              | If true any already existing toasts will be removed before the new one is added. |
 
 ### Example:
 
