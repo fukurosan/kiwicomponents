@@ -85,12 +85,12 @@ svg path {
 }
 
 :host([open]) #menu-panel {
-	right: 0;
+	right: 0%;
 }
 
 :host([direction="left"]) #menu-panel {
 	left: -100%;
 }
 :host([open][direction="left"]) #menu-panel {
-	left: 0;
+	left: 0%;
 }
