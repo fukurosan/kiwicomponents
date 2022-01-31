@@ -92,7 +92,6 @@ export const confirm = message => {
 			"style",
 			"display:flex;flex-direction:column;gap:1rem;width:100%;align-items:center;justify-content:center;min-width:300px;max-width:500px;text-align:center;"
 		)
-		body.setAttribute("style", "")
 		buttons.setAttribute("style", "display:flex;flex-direction:row;gap:0.5em;")
 		if (typeof message === "string") {
 			body.appendChild(document.createTextNode(message))
@@ -126,4 +125,38 @@ export const confirm = message => {
 			resolve(true)
 		})
 	})
+}
+
+/**
+ * @description Opens a modal spinner window
+ * @param {string=} message - An optional message to be displayed
+ * @returns {() => any} - Function that closes the spinner.
+ */
+export const showSpinner = message => {
+	const content = document.createElement("div")
+	const spinner = document.createElement("kiwi-spinner")
+	spinner.setAttribute("size", "100px")
+	const body = document.createElement("div")
+	content.appendChild(spinner)
+	content.appendChild(body)
+	content.setAttribute(
+		"style",
+		"padding:1rem;box-sizing:border-box;display:flex;flex-direction:column;gap:2rem;width:100%;align-items:center;justify-content:center;min-width:300px;max-width:500px;text-align:center;"
+	)
+	if (typeof message === "string") {
+		body.appendChild(document.createTextNode(message))
+	} else if (message instanceof HTMLElement) {
+		body.appendChild(message)
+	} else {
+		body.appendChild(message())
+	}
+	const spinnerModal = openWindow({
+		body: content,
+		mode: "large",
+		modality: "disabled",
+		noresize: true,
+		noheader: true,
+		nofooter: true
+	})
+	return () => spinnerModal.close()
 }

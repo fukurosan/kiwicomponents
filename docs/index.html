@@ -233,6 +233,12 @@
 		function confirmExample() {
 			kiwicomponents.confirm("This action is irreversible. Proceed?")
 		}
+		function pretendToLoad() {
+			const closeSpinner = kiwicomponents.showSpinner("Jumping up and down...")
+			setTimeout(() => {
+				closeSpinner()
+			}, 3000)
+		}
 		kiwicomponents.enableGlobalTooltips()
 	</script>
 </head>

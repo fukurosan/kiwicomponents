@@ -17,7 +17,7 @@ import "./Components/Drawer/kiwi-drawer"
 import { injectStyle } from "./Utility/StyleInjection"
 import { showToast } from "./Utility/Notifications"
 import { enableGlobalTooltips } from "./Utility/Tooltip"
-import { openWindow, confirm } from "./Utility/WindowManager"
+import { openWindow, confirm, showSpinner } from "./Utility/WindowManager"
 
 //Export
-export { injectStyle, showToast, enableGlobalTooltips, openWindow, confirm }
+export { injectStyle, showToast, enableGlobalTooltips, openWindow, confirm, showSpinner }

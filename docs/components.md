@@ -58,6 +58,8 @@ The following CSS variables can be configured:
 | --kiwi-button-outline-activated    | Outline when button is in :hover or :active mode |
 | --kiwi-button-box-shadow-activated | Shadow when button is in :hover or :active mode  |
 
+---
+
 ## \<kiwi-spinner>
 
 \<kiwi-spinner> is a loading indicator. The motivation for this component is that most modern applications require one, yet they can be cumbersome to develop.
@@ -102,6 +104,8 @@ The following CSS variables can be configured:
 | ------------------------------- | ------------------------------------- |
 | --kiwi-spinner-color            | Color of the spinner wheel            |
 | --kiwi-spinner-background-color | Color of the spinner wheel background |
+
+---
 
 ## \<kiwi-tabs>
 
@@ -152,6 +156,8 @@ The following CSS variables can be configured:
 | --kiwi-tab-panel-tab-color                      | Color for non-selected tabs                      |
 | --kiwi-tab-panel-tab-active-background          | background for non-selected tabs in active state |
 | --kiwi-tab-panel-tab-active-color               | Color for non-selected tabs in active state      |
+
+---
 
 ## \<kiwi-navbar>
 
@@ -204,6 +210,9 @@ The following CSS variables can be configured:
 | --kiwi-navbar-border-radius | Border radius for the navbar                                                   |
 | --kiwi-navbar-padding       | Padding for the content of the navbar                                          |
 | --kiwi-navbar-item-flex     | Flex for the kiwi-navbar-item elements. Can be used to target a specific item. |
+
+
+---
 
 ## \<kiwi-drawer>
 

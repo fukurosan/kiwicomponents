@@ -233,8 +233,15 @@
         const choice = await kiwicomponents.confirm("This action is irreversible. Proceed?")
         console.log(choice)
       }
+      function showSpinner() {
+        const closeSpinner = kiwicomponents.showSpinner("Jumping up and down...")
+        setTimeout(() => {
+          closeSpinner()
+        }, 3000);
+      }
     </script>
     <kiwi-button onclick="confirmWithUser()">Confirm</kiwi-button>
+    <kiwi-button onclick="showSpinner()">Show Spinner</kiwi-button>
   </div>
 
   <div class="box">

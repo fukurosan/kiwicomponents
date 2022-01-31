@@ -20,3 +20,24 @@ const confirmWithUser = async () => {
 <kiwi-button onclick="confirmExample()">Try it</kiwi-button>
 
 ---
+
+## showSpinner()
+
+The showSpinner() function opens up a modal spinner with a loading message, and returns a function that can be used to close it again.
+
+### Example
+
+```javascript
+import { showSpinner } from "kiwicomponents"
+
+const pretendToLoad = async () => {
+	const closeSpinner = showSpinner("Jumping up and down...")
+	setTimeout(() => {
+		closeSpinner()
+	}, 3000)
+}
+```
+
+<kiwi-button onclick="pretendToLoad()">Try it</kiwi-button>
+
+---

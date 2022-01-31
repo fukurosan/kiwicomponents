@@ -9,6 +9,10 @@
 - - Column resizing
 - Add a split view component
 
+### 0.1.9
+
+- Added showSpinner utility function
+
 ### 0.1.8
 
 - Various bug fixes
