@@ -7,6 +7,8 @@
 - - Tree view
 - - Sticky headers
 - - Column resizing
+- - Sorting
+- - Paging
 - Add a split view component
 
 ### 0.1.10
