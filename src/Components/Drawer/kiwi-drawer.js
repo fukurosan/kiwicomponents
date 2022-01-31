@@ -1,5 +1,5 @@
-import template from "./kiwi-burger-menu.html"
-import styles from "./kiwi-burger-menu.scss"
+import template from "./kiwi-drawer.html"
+import styles from "./kiwi-drawer.scss"
 
 const templateElement = document.createElement("template")
 templateElement.innerHTML = `<style>${styles}</style>${template}`
@@ -7,7 +7,7 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
 /**
  * Kiwi Burger Menu
  * A burger menu element that when clicked opens up a drawer area.
- * @element kiwi-burger-menu
+ * @element kiwi-drawer
  *
  * @attr {any} open - If set the drawer menu will open.
  * @attr {"left"|"right"} direction - The direction from which the drawer opens.
@@ -21,7 +21,8 @@ class KiwiBurgerMenu extends HTMLElement {
 	constructor() {
 		super()
 		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
-		this.shadowRoot.querySelector("#container").addEventListener("click", () => this.toggleAttribute("open"))
+		this.shadowRoot.querySelectorAll(".toggle").forEach(element => element.addEventListener("click", () => this.toggleAttribute("open")))
+		this.shadowRoot.querySelector("#backdrop").addEventListener("click", () => this.toggleAttribute("open"))
 		this._render()
 	}
 
@@ -31,11 +32,11 @@ class KiwiBurgerMenu extends HTMLElement {
 
 	_render() {
 		if (this.hasAttribute("open")) {
-			document.documentElement.style.overflow = "hidden"
+			document.body.style.overflow = "hidden"
 		} else {
-			document.documentElement.style.removeProperty("overflow")
+			document.body.style.removeProperty("overflow")
 		}
 	}
 }
 
-window.customElements.define("kiwi-burger-menu", KiwiBurgerMenu)
+window.customElements.define("kiwi-drawer", KiwiBurgerMenu)

@@ -7,8 +7,11 @@
 - - Tree view
 - - Sticky headers
 - - Column resizing
-- Add burger menu to the navbar
 - Add a split view component
+
+### 0.1.7
+
+- Added burger side drawer component
 
 ### 0.1.6
 

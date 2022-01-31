@@ -1,0 +1,92 @@
+@import "../../Assets/Stylesheets/variables.scss";
+
+.toggle {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: var(--kiwi-burger-drawer-button-size, 3em);
+	height: var(--kiwi-burger-drawer-button-size, 3em);
+	cursor: pointer;
+	transition: all var(--kiwi-burger-drawer-animation-duration, 300ms);
+	background: var(--kiwi-burger-drawer-button-background, transparent);
+	border-radius: var(--kiwi-burger-drawer-button-border-radius, 0.5em);
+	padding: var(--kiwi-burger-drawer-button-padding, 0.5em);
+	box-shadow: none;
+}
+
+.toggle:hover {
+	background: var(--kiwi-burger-drawer-button-hover-background, black);
+}
+
+svg path {
+	stroke: var(--kiwi-burger-drawer-button-line-color, black);
+	stroke-width: 3px;
+	stroke-linecap: round;
+	transition: all var(--kiwi-burger-drawer-animation-duration, 300ms);
+}
+
+.toggle:hover svg path {
+	stroke: var(--kiwi-burger-drawer-button-line-hover-color, white);
+}
+
+#close-toggle {
+	position: absolute;
+	right: var(--kiwi-burger-drawer-close-button-horizontal-offset, 1em);
+	top: var(--kiwi-burger-drawer-close-button-vertical-offset, 1em);
+}
+
+:host([direction="left"]) #close-toggle {
+	left: var(--kiwi-burger-drawer-close-button-horizontal-offset, 1em);
+	right: unset;
+}
+
+#menu-panel {
+	display: block;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	width: var(--kiwi-burger-drawer-width, 500px);
+	max-width: 100vw;
+	z-index: 99;
+	background: var(--kiwi-burger-drawer-background, white);
+	transition: all var(--kiwi-burger-drawer-animation-duration, 300ms);
+	box-shadow: none;
+}
+
+#backdrop {
+	pointer-events: none;
+	background: black;
+	opacity: 0;
+	position: fixed;
+	inset: 0;
+	transition: opacity var(--kiwi-burger-drawer-animation-duration, 300ms);
+	z-index: 98;
+}
+
+:host([open]) #backdrop {
+	pointer-events: all;
+	display: block;
+	opacity: 0.3;
+}
+
+:host([open]) #menu-panel {
+	opacity: 1;
+	pointer-events: unset;
+	box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+#menu-panel {
+	right: -100%;
+}
+
+:host([open]) #menu-panel {
+	right: 0;
+}
+
+:host([direction="left"]) #menu-panel {
+	left: -100%;
+}
+:host([open][direction="left"]) #menu-panel {
+	left: 0;
+}

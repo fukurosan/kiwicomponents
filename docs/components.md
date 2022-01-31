@@ -204,3 +204,50 @@ The following CSS variables can be configured:
 | --kiwi-navbar-border-radius | Border radius for the navbar                                                   |
 | --kiwi-navbar-padding       | Padding for the content of the navbar                                          |
 | --kiwi-navbar-item-flex     | Flex for the kiwi-navbar-item elements. Can be used to target a specific item. |
+
+## \<kiwi-drawer>
+
+\<kiwi-drawer> is a side drawer panel with a built-in toggle. This type of togglable side drawer can be found in most responsive applications today, and require a lot of work to set up.
+
+The drawer can either open from the left or from the right. You can adjust the positioning of the close-toggle inside the menu, the general look and feel, as well as if the drawer should open from the left or from the right. You can also programatically open and close the drawer by setting the "open" attribute. The attribute also allows you to monitor the component as it will always reflect the current state.
+
+### Example:
+
+```html
+Opens from the right side (default):
+<kiwi-drawer> Right Menu </kiwi-drawer>
+Opens from the left side:
+<kiwi-drawer direction="left"> Left Menu </kiwi-drawer>
+```
+
+Result:
+<kiwi-drawer> Right Menu </kiwi-drawer>
+<kiwi-drawer direction="left"> Left Menu </kiwi-drawer>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type            | description                                                                                    |
+| --------- | --------------- | ---------------------------------------------------------------------------------------------- |
+| direction | "left"\|"right" | Tells the component if the drawer should open from the left or right.                          |
+| open      | any             | If set to any value the drawer will open. Can also be used to monitor the state of the drawer. |
+
+### Styling
+
+The following CSS variables can be configured:
+
+| Variable                                            | Description                                              |
+| --------------------------------------------------- | -------------------------------------------------------- |
+| --kiwi-burger-drawer-button-size                    | Size for the toggle button                               |
+| --kiwi-burger-drawer-button-background              | Background for the toggle button                         |
+| --kiwi-burger-drawer-button-border-radius           | Border radius for the toggle button                      |
+| --kiwi-burger-drawer-button-padding                 | Padding for the toggle button                            |
+| --kiwi-burger-drawer-button-hover-background        | Hover background for the toggle button                   |
+| --kiwi-burger-drawer-button-line-color              | Line color for the toggle button                         |
+| --kiwi-burger-drawer-button-line-hover-color        | Hover line color for the toggle button                   |
+| --kiwi-burger-drawer-close-button-horizontal-offset | Horizontal offset for the close button inside the drawer |
+| --kiwi-burger-drawer-close-button-vertical-offset   | Vertical offset for the close button inside the drawer   |
+| --kiwi-burger-drawer-width                          | Prefered width of the open drawer                        |
+| --kiwi-burger-drawer-background                     | Background of the drawer                                 |
+| --kiwi-burger-drawer-animation-duration             | Animation duration for the drawer                        |
