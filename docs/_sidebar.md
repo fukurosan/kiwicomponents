@@ -7,5 +7,5 @@
 * [Components](components.md)
 * [Typography](typography.md)
 * [Scrollbars](scrollbars.md)
-* [Theming](theming.md)
+* [Theming](themingg.md)
 * [Change Log](changelog.md)
