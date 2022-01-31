@@ -19,6 +19,10 @@
 	background: var(--kiwi-burger-drawer-button-hover-background, black);
 }
 
+svg {
+	width: fit-content;
+}
+
 svg path {
 	stroke: var(--kiwi-burger-drawer-button-line-color, black);
 	stroke-width: 3px;

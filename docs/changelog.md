@@ -9,6 +9,10 @@
 - - Column resizing
 - Add a split view component
 
+### 0.1.8
+
+- Various bug fixes
+
 ### 0.1.7
 
 - Added burger side drawer component
