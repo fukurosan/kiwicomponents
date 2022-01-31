@@ -29,7 +29,7 @@ export const openWindow = options => {
 	}
 	if (options.footer) {
 		const footerContainer = document.createElement("div")
-		footerContainer.setAttribute("style", "width:100%;height:100%;")
+		footerContainer.setAttribute("style", "width:100%;height:100%;display:flex;align-items:center;")
 		footerContainer.setAttribute("slot", "footer")
 		if (typeof options.footer === "string") {
 			footerContainer.innerHTML = options.footer

@@ -119,8 +119,10 @@ export class TargetObserver {
 				mutations.forEach(mutation => {
 					mutation.removedNodes.forEach(removedNode => {
 						if (removedNode === this._targetElement) {
-							this._targetRemovalObserver.disconnect()
-							this._listeners.targetRemoved()
+							if (this._targetRemovalObserver) {
+								this._targetRemovalObserver.disconnect()
+								this._listeners.targetRemoved()
+							}
 						}
 					})
 				})
