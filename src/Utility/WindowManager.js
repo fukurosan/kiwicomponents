@@ -90,7 +90,7 @@ export const confirm = message => {
 		content.appendChild(buttons)
 		content.setAttribute(
 			"style",
-			"display:flex;flex-direction:column;gap:1rem;width:100%;align-items:center;justify-content:center;min-width:300px;max-width:500px;text-align:center;"
+			"display:flex;flex-direction:column;gap:1rem;width:100%;height:100%;align-items:center;justify-content:center;max-width:500px;text-align:center;"
 		)
 		buttons.setAttribute("style", "display:flex;flex-direction:row;gap:0.5em;")
 		if (typeof message === "string") {
@@ -141,7 +141,7 @@ export const showSpinner = message => {
 	content.appendChild(body)
 	content.setAttribute(
 		"style",
-		"padding:1rem;box-sizing:border-box;display:flex;flex-direction:column;gap:2rem;width:100%;align-items:center;justify-content:center;min-width:300px;max-width:500px;text-align:center;"
+		"padding:1rem;box-sizing:border-box;display:flex;flex-direction:column;gap:2rem;width:100%;height:100%;align-items:center;justify-content:center;max-width:500px;text-align:center;"
 	)
 	if (typeof message === "string") {
 		body.appendChild(document.createTextNode(message))

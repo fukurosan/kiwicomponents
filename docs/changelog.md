@@ -11,6 +11,14 @@
 - - Paging
 - Add a split view component
 
+### 0.1.12
+
+- Various bug fixes
+
+### 0.1.11
+
+- Various bug fixes
+
 ### 0.1.10
 
 - Various bug fixes
