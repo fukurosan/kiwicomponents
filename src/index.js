@@ -9,9 +9,9 @@ import "./Components/Tooltip/kiwi-tooltip"
 import "./Components/Menu/kiwi-menu/kiwi-menu"
 import "./Components/Menu/kiwi-menu-item/kiwi-menu-item"
 import "./Components/Window/kiwi-window"
-import "./Components/Table/kiwi-table"
 import "./Components/Tabs/kiwi-tabs"
 import "./Components/Drawer/kiwi-drawer"
+import "./Components/Table/kiwi-table"
 
 //Utilities
 import { injectStyle } from "./Utility/StyleInjection"

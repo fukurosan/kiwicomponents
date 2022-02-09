@@ -268,6 +268,201 @@
     </kiwi-tabs>
   </div>
 
+  <div class="box">
+    table
+    <div style="height: 350px;">
+      <input id="table-search">
+      <script>
+        window.addEventListener("load", () => {
+          document.getElementById("table-search").addEventListener("input", e => {
+            document.getElementById("example-table").filter(e.target.value)
+          })
+        })
+      </script>
+      <kiwi-table id="example-table" selection="tree" showtoggles>
+        <kiwi-th>Title</kiwi-th>
+        <kiwi-th>One</kiwi-th>
+        <kiwi-th>Two</kiwi-th>
+        <kiwi-th>Three</kiwi-th>
+        <kiwi-tr id="1">
+          <kiwi-td icon="./Icons/icon-rightarrow-dark.svg">A</kiwi-td>
+          <kiwi-td>Hello World 1</kiwi-td>
+          <kiwi-td>Hello World 2</kiwi-td>
+          <kiwi-td>Hello World 3</kiwi-td>
+        </kiwi-tr>
+        <kiwi-tr id="2">
+          <kiwi-td>C</kiwi-td>
+          <kiwi-td>Hello World 1</kiwi-td>
+          <kiwi-td>Hello World 2</kiwi-td>
+          <kiwi-td>Hello World 3</kiwi-td>
+          <kiwi-tr id="3">
+            <kiwi-td>C.1</kiwi-td>
+            <kiwi-td>Hello World 1</kiwi-td>
+            <kiwi-td>Hello World 2</kiwi-td>
+            <kiwi-td>Hello World 3</kiwi-td>
+            <kiwi-tr id="4">
+              <kiwi-td>C11</kiwi-td>
+              <kiwi-td>Hello World 1</kiwi-td>
+              <kiwi-td>Hello World 2</kiwi-td>
+              <kiwi-td>Hello World 3</kiwi-td>
+            </kiwi-tr>
+            <kiwi-tr id="5">
+              <kiwi-td>C.1.1</kiwi-td>
+              <kiwi-td>Hello World 1</kiwi-td>
+              <kiwi-td>Hello World 2</kiwi-td>
+              <kiwi-td>Hello World 3</kiwi-td>
+            </kiwi-tr>
+          </kiwi-tr>
+        </kiwi-tr>
+        <kiwi-tr id="6" icon="">
+          <kiwi-td icon="">B</kiwi-td>
+          <kiwi-td>Hello World 1</kiwi-td>
+          <kiwi-td>Hello World 2</kiwi-td>
+          <kiwi-td>Hello World 3</kiwi-td>
+        </kiwi-tr>
+        <kiwi-tr id="7">
+          <kiwi-td>C</kiwi-td>
+          <kiwi-td>Hello World 1</kiwi-td>
+          <kiwi-td>Hello World 2</kiwi-td>
+          <kiwi-td>Hello World 3</kiwi-td>
+          <kiwi-tr id="8">
+            <kiwi-td>C.1</kiwi-td>
+            <kiwi-td>Hello World 1</kiwi-td>
+            <kiwi-td>Hello World 2</kiwi-td>
+            <kiwi-td>Hello World 3</kiwi-td>
+            <kiwi-tr id="9">
+              <kiwi-td>C.1.1</kiwi-td>
+              <kiwi-td>Hello World 1</kiwi-td>
+              <kiwi-td>Hello World 2</kiwi-td>
+              <kiwi-td>Hello World 3</kiwi-td>
+            </kiwi-tr>
+          </kiwi-tr>
+        </kiwi-tr>
+      </kiwi-table>
+    </div>
+
+    <div style="height:350px">
+      <kiwi-table id="example-table-2" selection="tree" showtoggles>
+    </div>
+    <script>
+      window.addEventListener("load", () => {
+        const table = document.getElementById("example-table-2")
+        table.data = {
+          headers: ["Title", "One", "Two"],
+          rows: [
+            {
+              id: 1,
+              cells: [
+                {
+                  type: "text",
+                  value: "A"
+                },
+                {
+                  type: "text",
+                  value: "Hello World 1"
+                },
+                {
+                  type: "text",
+                  value: "Hello World 2"
+                }
+              ]
+            },
+            {
+              id: 2,
+              cells: [
+                {
+                  type: "text",
+                  value: "B"
+                },
+                {
+                  type: "text",
+                  value: "Hello World 1"
+                },
+                {
+                  type: "text",
+                  value: "Hello World 2"
+                }
+              ],
+              children: [
+                {
+                  id: 3,
+                  cells: [
+                    {
+                      type: "text",
+                      value: "B.1"
+                    },
+                    {
+                      type: "text",
+                      value: "Hello World 1"
+                    },
+                    {
+                      type: "text",
+                      value: "Hello World 2"
+                    }
+                  ]
+                },
+                {
+                  id: 4,
+                  cells: [
+                    {
+                      type: "text",
+                      value: "B.2"
+                    },
+                    {
+                      type: "text",
+                      value: "Hello World 1"
+                    },
+                    {
+                      type: "text",
+                      value: "Hello World 2"
+                    }
+                  ],
+                  children: [
+                    {
+                      id: 5,
+                      cells: [
+                        {
+                          type: "text",
+                          value: "B.2.1"
+                        },
+                        {
+                          type: "text",
+                          value: "Hello World 1"
+                        },
+                        {
+                          type: "text",
+                          value: "Hello World 2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: 6,
+              cells: [
+                {
+                  type: "text",
+                  value: "C"
+                },
+                {
+                  type: "text",
+                  value: "Hello World 1"
+                },
+                {
+                  type: "text",
+                  value: "Hello World 2"
+                }
+              ]
+            }
+          ]
+        }
+      })
+    </script>
+    <br><br><br><br><br><br>
+  </div>
+
 </body>
 
 </html>

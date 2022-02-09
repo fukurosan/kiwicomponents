@@ -1,15 +1,12 @@
 # Change Log
 
-### 0.2.0 (TBR)
+### 0.2.1 (TBR)
 
-- Add Table Component
-- - Filtering
-- - Tree view
-- - Sticky headers
-- - Column resizing
-- - Sorting
-- - Paging
 - Add a split view component
+
+### 0.2.0
+
+- Added Table Component
 
 ### 0.1.12
 
