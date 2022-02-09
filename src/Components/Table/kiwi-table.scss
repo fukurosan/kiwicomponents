@@ -31,20 +31,24 @@ thead {
 }
 
 tbody {
-	background: var(--kiwi-table-cell-background, white);
-	color: var(--kiwi-table-cell-color, black);
+	background: var(--kiwi-table-row-background, white);
+	color: var(--kiwi-table-row-color, black);
 }
 
 tbody tr {
 	&:hover {
-		background: var(--kiwi-table-cell-background-hover, #f6f6f6);
+		background: var(--kiwi-table-row-background-hover, #f6f6f6);
 	}
 	&.imploded {
 		display: none;
 	}
 	&.selected {
-		background: var(--kiwi-table-cell-background-selected, #dddddd) !important;
+		background: var(--kiwi-table-row-background-selected, #dddddd) !important;
 	}
+}
+
+tbody tr:nth-child(odd) {
+	background: var(--kiwi-table-odd-row-background, var(--kiwi-table-row-background, white));
 }
 
 th {

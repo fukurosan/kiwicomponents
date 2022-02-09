@@ -1,8 +1,18 @@
 # Change Log
 
-### 0.2.1 (TBR)
+### (TBR)
 
+- Add pagination to table
+- Added column sorting to table
+- Improve table content slotting
+- Add auto-flipping to tooltips when they overflow
 - Add a split view component
+- Add accordion component
+- Handle case where tab component overflows
+
+### 0.2.1
+
+- Added ability set odd row background for tables
 
 ### 0.2.0
 

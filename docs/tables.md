@@ -98,7 +98,7 @@ The kiwi-table element has a number of functions that can be executed to interac
 | makeSelection(id: string, shouldDispatchEvent: boolean)               | Alters the current selection without removing it by toggling an ID                                                                                                                                                                                                                         |
 | setSelection(idArray: string[], shouldDispatchEvent: boolean)         | Sets a new selection, overwriting any previous                                                                                                                                                                                                                                             |
 | filter(fnOrString: ((any) => boolean) \| string, columnIndex: number) | If a function is provided it will be fed with the data object of each row, returning true means that the row should be filtered, false means that it should not. If a string is provided (and optionally a column index) the table cells' actual text values will be searched for a match. |
-| clearFilter()                                                         | Clears any existing filters                                                                                                                                                                                                                                                               |
+| clearFilter()                                                         | Clears any existing filters                                                                                                                                                                                                                                                                |
 
 ---
 
@@ -355,25 +355,26 @@ The following attributes are supported:
 
 The following variables can be set:
 
-| Variable                              | Description                                                                     |
-| ------------------------------------- | ------------------------------------------------------------------------------- |
-| --kiwi-table-width                    | Width of the table (default 100%)                                               |
-| --kiwi-table-height                   | Height of the table (default 100%)                                              |
-| --kiwi-table-border                   | Border of the table container                                                   |
-| --kiwi-table-border-radius            | Border radius of the table                                                      |
-| --kiwi-table-area-background          | Background of the table container                                               |
-| --kiwi-table-header-background        | Table header background                                                         |
-| --kiwi-table-header-color             | Table header color                                                              |
-| --kiwi-table-cell-background          | Table cell background                                                           |
-| --kiwi-table-cell-color               | Table cell color                                                                |
-| --kiwi-table-cell-background-hover    | Table cell background on hover                                                  |
-| --kiwi-table-cell-background-selected | Table cell background on selected                                               |
-| --kiwi-table-row-height               | Row height (icons and indent space will scale relative to this)                 |
-| --kiwi-table-font-size                | Font size used in the table                                                     |
-| --kiwi-table-white-space              | If set to "nowrap" text in table rows will not wrap. Can also be set to "unset" |
-| --kiwi-table-header-vertical-border   | Border separating headers                                                       |
-| --kiwi-table-cell-vertical-border     | Border separating cells vertically                                              |
-| --kiwi-table-row-horizontal-border    | Border separating rows horizontally                                             |
-| --kiwi-table-checkbox-unchecked-url   | URL for uncheckbox checkbox icon (provide as url("iconurlhere"))                |
-| --kiwi-table-checkbox-checked-url     | URL for checked checkbox icon(provide as url("iconurlhere"))                    |
-| --kiwi-table-expand-arrow-icon-url    | URL for expand toggle icon(provide as url("iconurlhere"))                       |
+| Variable                             | Description                                                                     |
+| ------------------------------------ | ------------------------------------------------------------------------------- |
+| --kiwi-table-width                   | Width of the table (default 100%)                                               |
+| --kiwi-table-height                  | Height of the table (default 100%)                                              |
+| --kiwi-table-border                  | Border of the table container                                                   |
+| --kiwi-table-border-radius           | Border radius of the table                                                      |
+| --kiwi-table-area-background         | Background of the table container                                               |
+| --kiwi-table-header-background       | Table header background                                                         |
+| --kiwi-table-header-color            | Table header color                                                              |
+| --kiwi-table-row-background          | Table row background                                                            |
+| --kiwi-table-row-color               | Table row color                                                                 |
+| --kiwi-table-row-background-hover    | Table row background on hover                                                   |
+| --kiwi-table-row-background-selected | Table row background on selected                                                |
+| --kiwi-table-odd-row-background      | Table row background for odd rows                                               |
+| --kiwi-table-row-height              | Row height (icons and indent space will scale relative to this)                 |
+| --kiwi-table-font-size               | Font size used in the table                                                     |
+| --kiwi-table-white-space             | If set to "nowrap" text in table rows will not wrap. Can also be set to "unset" |
+| --kiwi-table-header-vertical-border  | Border separating headers                                                       |
+| --kiwi-table-cell-vertical-border    | Border separating cells vertically                                              |
+| --kiwi-table-row-horizontal-border   | Border separating rows horizontally                                             |
+| --kiwi-table-checkbox-unchecked-url  | URL for uncheckbox checkbox icon (provide as url("iconurlhere"))                |
+| --kiwi-table-checkbox-checked-url    | URL for checked checkbox icon(provide as url("iconurlhere"))                    |
+| --kiwi-table-expand-arrow-icon-url   | URL for expand toggle icon(provide as url("iconurlhere"))                       |
