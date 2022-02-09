@@ -2,8 +2,6 @@
 
 ### (TBR)
 
-- Add pagination to table
-- Added column sorting to table
 - Improve table content slotting
 - Add auto-flipping to tooltips when they overflow
 - Add a split view component
