@@ -24,11 +24,16 @@
     .box * {
       margin-bottom: 10px !important;
     }
+
+    .box input {
+      margin: 0px !important;
+    }
   </style>
   <script>
     kiwicomponents.injectStyle({
       scrollbar: true,
-      typography: true
+      typography: true,
+      forms: true
     })
     kiwicomponents.enableGlobalTooltips()
   </script>
@@ -460,8 +465,33 @@
         }
       })
     </script>
-    <br><br><br><br><br><br>
   </div>
+
+  <div class="box">
+    Forms
+    <kiwi-form-flow direction="column">
+      <kiwi-form-flow direction="row" label="User Info">
+        <input placeholder="Username">
+        <input placeholder="Password" type="password">
+      </kiwi-form-flow>
+      <kiwi-form-flow direction="row">
+        <input placeholder="Username">
+        <input placeholder="Password" type="password">
+      </kiwi-form-flow>
+      <kiwi-form-flow direction="row" label="Additional Info">
+        <input placeholder="Username">
+        <input placeholder="Password" type="password">
+        <select>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+      </kiwi-form-flow>
+    </kiwi-form-flow>
+  </div>
+
+  <br><br><br><br><br>
+  <br><br><br><br><br>
 
 </body>
 

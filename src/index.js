@@ -12,6 +12,7 @@ import "./Components/Window/kiwi-window"
 import "./Components/Tabs/kiwi-tabs"
 import "./Components/Drawer/kiwi-drawer"
 import "./Components/Table/kiwi-table"
+import "./Components/Form/kiwi-form-flow"
 
 //Utilities
 import { injectStyle } from "./Utility/StyleInjection"

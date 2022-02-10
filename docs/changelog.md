@@ -8,6 +8,10 @@
 - Add accordion component
 - Handle case where tab component overflows
 
+### 0.2.2
+
+- Added forms and form flow element
+
 ### 0.2.1
 
 - Added ability set odd row background for tables

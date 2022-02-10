@@ -1,0 +1,32 @@
+@import "../variables.scss";
+
+input,
+select {
+	display: block;
+	width: 100%;
+	padding: var(--kiwi-form-padding, 0.5rem 1rem);
+	font-family: $font-family-body;
+	font-size: var(--kiwi-form-font-size, 1rem);
+	line-height: var(--kiwi-form-line-height, 1.5);
+	color: var(--kiwi-form-color, black);
+	background: var(--kiwi-form-background, white);
+	border: var(--kiwi-form-border, 1px solid lightgray);
+	border-radius: var(--kiwi-form-border-radius, 0.5rem);
+	transition: all var(--kiwi-form-animation-duration, 200ms);
+	margin: var(--kiwi-form-margin, 0);
+	outline: none;
+}
+
+input:hover {
+	background: var(--kiwi-form-hover-background, #f9f9f9);
+}
+
+input:invalid {
+	border-color: $error-color;
+}
+
+input:focus,
+input:focus-visible {
+	background: var(--kiwi-form-background, white);
+	box-shadow: var(--kiwi-form-focus-box-shadow, 0 0 0 0.2rem rgba(0, 0, 0, 0.8));
+}
