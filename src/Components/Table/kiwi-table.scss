@@ -36,7 +36,7 @@ tbody {
 }
 
 tbody tr {
-	&:hover {
+	&:hover:hover {
 		background: var(--kiwi-table-row-background-hover, #f6f6f6);
 	}
 	&.imploded {

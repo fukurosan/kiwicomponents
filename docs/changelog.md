@@ -8,6 +8,10 @@
 - Add accordion component
 - Handle case where tab component overflows
 
+### 0.2.3
+
+- Various bug fixes
+
 ### 0.2.2
 
 - Added forms and form flow element
