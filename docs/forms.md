@@ -26,40 +26,62 @@ Quick example:
 ```html
 <kiwi-form-flow direction="column">
 	<kiwi-form-flow direction="row" label="User Info">
+		<input placeholder="First Name" />
+		<input placeholder="Last Name" />
+	</kiwi-form-flow>
+	<kiwi-form-flow direction="row">
 		<input placeholder="Username" />
 		<input placeholder="Password" type="password" />
 	</kiwi-form-flow>
-	<kiwi-form-flow direction="row">
-		<input placeholder="Email" />
-		<input placeholder="Other" />
-	</kiwi-form-flow>
 	<kiwi-form-flow direction="row" label="Additional Info">
+		<input placeholder="Disabled" disabled />
+		<input placeholder="Required" required />
 		<select>
 			<option>Option 1</option>
 			<option>Option 2</option>
 			<option>Option 3</option>
 		</select>
+	</kiwi-form-flow>
+	<kiwi-form-flow direction="row" label="Checkboxes">
+		<input type="checkbox" />
+		<input type="radio" />
+		<input type="checkbox" class="kiwi-switch" />
+		<input type="checkbox" disabled checked />
+		<input type="radio" disabled checked />
+		<input type="checkbox" class="kiwi-switch" disabled checked />
 	</kiwi-form-flow>
 </kiwi-form-flow>
 ```
 
 <kiwi-form-flow direction="column">
 	<kiwi-form-flow direction="row" label="User Info">
+		<input placeholder="First Name" />
+		<input placeholder="Last Name" />
+	</kiwi-form-flow>
+	<kiwi-form-flow direction="row">
 		<input placeholder="Username" />
 		<input placeholder="Password" type="password" />
 	</kiwi-form-flow>
-	<kiwi-form-flow direction="row">
-		<input placeholder="Email" />
-		<input placeholder="Other" />
-	</kiwi-form-flow>
 	<kiwi-form-flow direction="row" label="Additional Info">
+		<input placeholder="Disabled" disabled />
+		<input placeholder="Required" required />
 		<select>
 			<option>Option 1</option>
 			<option>Option 2</option>
 			<option>Option 3</option>
 		</select>
 	</kiwi-form-flow>
+	<kiwi-form-flow direction="row" label="Checkboxes">
+		<input type="checkbox" />
+		<input type="radio" />
+		<input type="checkbox" class="kiwi-switch" />
+		<input type="checkbox" disabled checked />
+		<input type="radio" disabled checked />
+		<input type="checkbox" class="kiwi-switch" disabled checked />
+	</kiwi-form-flow>
 </kiwi-form-flow>
+
+---
 
 The following attributes can be set on the element:
 
@@ -84,5 +106,8 @@ The following CSS variables can be set to configure your forms:
 | --kiwi-form-border-radius        | Border radius for form elements          |
 | --kiwi-form-animation-duration   | Animation duration for form elements     |
 | --kiwi-form-margin               | Margin between label and layout          |
-| --kiwi-form-focus-box-shadow     | Box shadow for focused form elements     |
+| --kiwi-form-focus-outline        | Outline for focused form elements        |
+| --kiwi-form-placeholder-color    | Color for form placeholder texts         |
+| --kiwi-form-checkbox-dark-color  | Dark color for checkboxes                |
+| --kiwi-form-checkbox-light-color | Light color for checkboxes               |
 | --kiwi-form-gap                  | Gap size between elements in form layout |

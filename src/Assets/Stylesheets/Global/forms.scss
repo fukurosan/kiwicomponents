@@ -1,6 +1,21 @@
 @import "../variables.scss";
 
-input,
+input:not([type]),
+input[type="text"],
+input[type="password"],
+input[type="textarea"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+textarea,
 select {
 	display: block;
 	width: 100%;
@@ -10,23 +25,172 @@ select {
 	line-height: var(--kiwi-form-line-height, 1.5);
 	color: var(--kiwi-form-color, black);
 	background: var(--kiwi-form-background, white);
-	border: var(--kiwi-form-border, 1px solid lightgray);
+	border: none;
+	border-bottom: var(--kiwi-form-border, 1px solid lightgray);
 	border-radius: var(--kiwi-form-border-radius, 0.5rem);
 	transition: all var(--kiwi-form-animation-duration, 200ms);
 	margin: var(--kiwi-form-margin, 0);
 	outline: none;
 }
 
-input:hover {
-	background: var(--kiwi-form-hover-background, #f9f9f9);
+input:not([type]):hover,
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="textarea"]:hover,
+input[type="date"]:hover,
+input[type="datetime-local"]:hover,
+input[type="email"]:hover,
+input[type="month"]:hover,
+input[type="number"]:hover,
+input[type="search"]:hover,
+input[type="tel"]:hover,
+input[type="text"]:hover,
+input[type="time"]:hover,
+input[type="url"]:hover,
+input[type="week"]:hover,
+textarea:hover {
+	background: var(--kiwi-form-hover-background, #f1f1f1);
 }
 
-input:invalid {
-	border-color: $error-color;
+input:disabled,
+textarea:disabled,
+select:disabled {
+	cursor: not-allowed;
 }
 
-input:focus,
-input:focus-visible {
+input:invalid,
+textarea:invalid,
+select:invalid {
+	border: 1px solid $error-color !important;
+}
+
+input:not([type]):focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="textarea"]:focus,
+input[type="date"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="month"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="text"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="week"]:focus,
+textarea:focus,
+select:focus,
+input:not([type]):focus-visible,
+input[type="text"]:focus-visible,
+input[type="password"]:focus-visible,
+input[type="textarea"]:focus-visible,
+input[type="date"]:focus-visible,
+input[type="datetime-local"]:focus-visible,
+input[type="email"]:focus-visible,
+input[type="month"]:focus-visible,
+input[type="number"]:focus-visible,
+input[type="search"]:focus-visible,
+input[type="tel"]:focus-visible,
+input[type="text"]:focus-visible,
+input[type="time"]:focus-visible,
+input[type="url"]:focus-visible,
+input[type="week"]:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
 	background: var(--kiwi-form-background, white);
-	box-shadow: var(--kiwi-form-focus-box-shadow, 0 0 0 0.2rem rgba(0, 0, 0, 0.8));
+	outline: var(--kiwi-form-focus-outline, 1px solid lightgray);
+}
+
+::placeholder {
+	color: var(--kiwi-form-placeholder-color, lightgray);
+	opacity: 1;
+}
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+	input[type="checkbox"],
+	input[type="radio"] {
+		display: inline-block;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		height: 21px;
+		width: 21px;
+		outline: none;
+		position: relative;
+		cursor: pointer;
+		border: 1px solid var(--kiwi-form-checkbox-dark-color, black);
+		background: var(--kiwi-form-checkbox-light-color, white);
+		transition: background var(--kiwi-form-animation-duration, 200ms);
+		&:after {
+			content: "";
+			display: block;
+			left: 0;
+			top: 0;
+			position: absolute;
+			transition: transform var(--kiwi-form-animation-duration, 200ms), opacity var(--kiwi-form-animation-duration, 200ms);
+		}
+		&:checked {
+			background: var(--kiwi-form-checkbox-dark-color, black);
+		}
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.7;
+		}
+		&:focus,
+		&:focus-visible {
+			outline: var(--kiwi-form-focus-outline, 1px solid lightgray);
+		}
+	}
+	input[type="checkbox"] {
+		&:not(.kiwi-switch) {
+			border-radius: 7px;
+			&:after {
+				width: 5px;
+				height: 9px;
+				border: 2px solid var(--kiwi-form-checkbox-light-color, white);
+				border-top: 0;
+				border-left: 0;
+				left: 6px;
+				top: 3px;
+				transform: rotate(20deg);
+			}
+			&:checked:after {
+				transform: rotate(43deg);
+			}
+		}
+		&.kiwi-switch {
+			width: 38px;
+			border-radius: 11px;
+			&:after {
+				left: 2px;
+				top: 2.5px;
+				border-radius: 50%;
+				width: 15px;
+				height: 15px;
+				background: var(--kiwi-form-checkbox-dark-color, black);
+				transform: translateX(0);
+			}
+			&:checked:after {
+				background: var(--kiwi-form-checkbox-light-color, white);
+				transform: translateX(17px);
+			}
+		}
+	}
+	input[type="radio"] {
+		border-radius: 50%;
+		&:after {
+			width: 19px;
+			height: 19px;
+			border-radius: 50%;
+			background: var(--kiwi-form-checkbox-light-color, white);
+			opacity: 0;
+			transform: scale(0.7);
+		}
+		&:checked:after {
+			opacity: 1;
+		}
+		&:checked:after {
+			transform: scale(0.5);
+		}
+	}
 }

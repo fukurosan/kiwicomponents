@@ -25,7 +25,8 @@
       margin-bottom: 10px !important;
     }
 
-    .box input {
+    .box input,
+    .box select {
       margin: 0px !important;
     }
   </style>
@@ -471,21 +472,29 @@
     Forms
     <kiwi-form-flow direction="column">
       <kiwi-form-flow direction="row" label="User Info">
-        <input placeholder="Username">
-        <input placeholder="Password" type="password">
+        <input placeholder="First Name">
+        <input placeholder="Last Name">
       </kiwi-form-flow>
       <kiwi-form-flow direction="row">
         <input placeholder="Username">
         <input placeholder="Password" type="password">
       </kiwi-form-flow>
       <kiwi-form-flow direction="row" label="Additional Info">
-        <input placeholder="Username">
-        <input placeholder="Password" type="password">
+        <input placeholder="Disabled" disabled>
+        <input placeholder="Required" required>
         <select>
           <option>Option 1</option>
           <option>Option 2</option>
           <option>Option 3</option>
         </select>
+      </kiwi-form-flow>
+      <kiwi-form-flow direction="row" label="Checkboxes">
+        <input type="checkbox">
+        <input type="radio">
+        <input type="checkbox" class="kiwi-switch">
+        <input type="checkbox" disabled checked>
+        <input type="radio" disabled checked>
+        <input type="checkbox" class="kiwi-switch" disabled checked>
       </kiwi-form-flow>
     </kiwi-form-flow>
   </div>
