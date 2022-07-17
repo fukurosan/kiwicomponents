@@ -8,6 +8,10 @@
 - Add accordion component
 - Handle case where tab component overflows
 
+### 0.2.5
+
+- Added global table styles injection
+
 ### 0.2.4
 
 - Improvements to forms

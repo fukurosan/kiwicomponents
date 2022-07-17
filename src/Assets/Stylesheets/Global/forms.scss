@@ -25,8 +25,7 @@ select {
 	line-height: var(--kiwi-form-line-height, 1.5);
 	color: var(--kiwi-form-color, black);
 	background: var(--kiwi-form-background, white);
-	border: none;
-	border-bottom: var(--kiwi-form-border, 1px solid lightgray);
+	border: var(--kiwi-form-border, 1px solid lightgray);
 	border-radius: var(--kiwi-form-border-radius, 0.5rem);
 	transition: all var(--kiwi-form-animation-duration, 200ms);
 	margin: var(--kiwi-form-margin, 0);

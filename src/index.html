@@ -34,7 +34,8 @@
     kiwicomponents.injectStyle({
       scrollbar: true,
       typography: true,
-      forms: true
+      forms: true,
+      tables: true
     })
     kiwicomponents.enableGlobalTooltips()
   </script>
@@ -277,9 +278,9 @@
   <div class="box">
     table
     <div style="height: 350px;">
-      <input id="table-search">
+      <input id="table-search" placeholder="Filter..." style="box-sizing: border-box;margin-bottom:4px !important;">
       <script>
-        window.addEventListener("load", () => {
+        window.addEventListener(" load", () => {
           document.getElementById("table-search").addEventListener("input", e => {
             document.getElementById("example-table").filter(e.target.value)
           })
@@ -466,6 +467,44 @@
         }
       })
     </script>
+    <div style="height:100px;overflow:auto;position:relative;border-radius:10px;">
+      <table id="table-3">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>One</th>
+            <th>Two</th>
+            <th>Three</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td>Hello World 1</td>
+            <td>Hello World 2</td>
+            <td>Hello World 3</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td>Hello World 1</td>
+            <td>Hello World 2</td>
+            <td>Hello World 3</td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>Hello World 1</td>
+            <td>Hello World 2</td>
+            <td>Hello World 3</td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>Hello World 1</td>
+            <td>Hello World 2</td>
+            <td>Hello World 3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="box">

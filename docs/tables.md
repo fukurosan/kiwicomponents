@@ -378,3 +378,15 @@ The following variables can be set:
 | --kiwi-table-checkbox-unchecked-url  | URL for uncheckbox checkbox icon (provide as url("iconurlhere"))                |
 | --kiwi-table-checkbox-checked-url    | URL for checked checkbox icon(provide as url("iconurlhere"))                    |
 | --kiwi-table-expand-arrow-icon-url   | URL for expand toggle icon(provide as url("iconurlhere"))                       |
+
+
+## Enabling Global Tables Styles
+
+To enable the global table styles you can use the injectStyle function, and set tables to true.
+
+```javascript
+import { injectStyle } from "kiwicomponents"
+kiwicomponents.injectStyle({
+	tables: true
+})
+```
