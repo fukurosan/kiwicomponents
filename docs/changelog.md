@@ -8,6 +8,12 @@
 - Add accordion component
 - Handle case where tab component overflows
 
+### 0.2.6
+
+- Added treelist component
+- Changed neutral button type to be transparent
+- Updated look and feel of spinner utility
+
 ### 0.2.5
 
 - Added global table styles injection

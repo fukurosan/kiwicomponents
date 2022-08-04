@@ -280,7 +280,7 @@
     <div style="height: 350px;">
       <input id="table-search" placeholder="Filter..." style="box-sizing: border-box;margin-bottom:4px !important;">
       <script>
-        window.addEventListener(" load", () => {
+        window.addEventListener("load", () => {
           document.getElementById("table-search").addEventListener("input", e => {
             document.getElementById("example-table").filter(e.target.value)
           })
@@ -536,6 +536,45 @@
         <input type="checkbox" class="kiwi-switch" disabled checked>
       </kiwi-form-flow>
     </kiwi-form-flow>
+  </div>
+
+  <div class="box">
+    Hierarchy
+    <div style="border: 1px solid lightgray;padding:1em; background-color: white;">
+      <kiwi-treelist-item text="With Icon"
+        icon="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='black' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>">
+        <kiwi-treelist-item text="Just text"
+          icon="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='black' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>">
+          <kiwi-treelist-item text="Only row content"
+            icon="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='black' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>">
+            <kiwi-treelist-item interactive="" text="Another Level!"
+              icon="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='black' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>">
+            </kiwi-treelist-item>
+            <kiwi-treelist-item interactive="" text="Another Level!"
+              icon="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='black' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>">
+            </kiwi-treelist-item>
+          </kiwi-treelist-item>
+        </kiwi-treelist-item>
+        <kiwi-treelist-item text="Just text">
+          <kiwi-treelist-item text="Only row content" icon="">
+            <kiwi-treelist-item interactive="" text="Another Level!">
+            </kiwi-treelist-item>
+          </kiwi-treelist-item>
+        </kiwi-treelist-item>
+      </kiwi-treelist-item>
+      <script>
+        const allSelectableItems = []
+        Array.from(document.querySelectorAll("kiwi-treelist-item")).forEach(element => {
+          if (!element.children.length) {
+            element.addEventListener("click", () => {
+              allSelectableItems.forEach(item => item.removeAttribute("selected"))
+              element.setAttribute("selected", "")
+            })
+            allSelectableItems.push(element)
+          }
+        })
+      </script>
+    </div>
   </div>
 
   <br><br><br><br><br>

@@ -13,6 +13,7 @@ import "./Components/Tabs/kiwi-tabs"
 import "./Components/Drawer/kiwi-drawer"
 import "./Components/Table/kiwi-table"
 import "./Components/Form/kiwi-form-flow"
+import "./Components/Tree/kiwi-treelist-item"
 
 //Utilities
 import { injectStyle } from "./Utility/StyleInjection"

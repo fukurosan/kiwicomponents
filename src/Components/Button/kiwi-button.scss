@@ -100,12 +100,12 @@ button[type="secondary"] {
 }
 
 button[type="neutral"] {
-	background: #f7f7f7;
+	background: transparent;
 	color: #000000;
 	&:focus,
 	&:active,
 	&:hover {
-		background: #f9f9f9;
+		background: transparent;
 		color: #000000;
 	}
 }

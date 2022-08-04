@@ -136,7 +136,9 @@ export const showSpinner = message => {
 	const content = document.createElement("div")
 	const spinner = document.createElement("kiwi-spinner")
 	spinner.setAttribute("size", "100px")
+	spinner.setAttribute("usebackground", "")
 	const body = document.createElement("div")
+	body.setAttribute("style", "font-weight:600;")
 	content.appendChild(spinner)
 	content.appendChild(body)
 	content.setAttribute(

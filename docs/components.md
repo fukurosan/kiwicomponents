@@ -159,6 +159,111 @@ The following CSS variables can be configured:
 
 ---
 
+## \<kiwi-treelist-item>
+
+\<kiwi-treelist-item> is a way of creating en expandable tree with optionally selectable items in it.
+
+The component can create visual hierarchies by nesting in the DOM. When you put a treelist item inside of another treelist item the first one will become explodable.
+
+By using the attributes on the items you can control which items are visually "selected" (highlighted). You can also use to the "interactive" attribute to help the component understand if the specific item is selectable or not. If set then an expandable item will for example only expand when the expansion arrow is pressed, rather than the whole item.
+
+This component is a great way of visualising and interacting with tree data, which is a fairly reoccuring need in most business applications that generally requires a lot of boilerplate to build.
+
+### Example:
+
+```html
+<div style="height:340px;padding:1em;background-color:white;border: 1px solid lightgray;border-radius:0.5em;">
+	<kiwi-treelist-item text="With Icon" icon="./example-icon-black.svg">
+		<kiwi-treelist-item text="Just text">
+			<kiwi-treelist-item text="Blank icon" icon="">
+				<kiwi-treelist-item interactive="" text="Selectable 1"></kiwi-treelist-item>
+				<kiwi-treelist-item interactive="" text="Selectable 2"></kiwi-treelist-item>
+			</kiwi-treelist-item>
+		</kiwi-treelist-item>
+		<kiwi-treelist-item text="Another option">
+			<kiwi-treelist-item text="Yet another option" icon="">
+				<kiwi-treelist-item interactive="" text="Selectable 3"></kiwi-treelist-item>
+			</kiwi-treelist-item>
+		</kiwi-treelist-item>
+	</kiwi-treelist-item>
+	<script>
+		const allInteractiveElements = []
+		Array.from(document.querySelectorAll("kiwi-treelist-item")).forEach(element => {
+			if (element.hasAttribute("interactive")) {
+				element.addEventListener("click", () => {
+					allInteractiveElements.forEach(item => item.removeAttribute("selected"))
+					element.setAttribute("selected", "")
+				})
+				allInteractiveElements.push(element)
+			}
+		})
+	</script>
+</div>
+```
+
+Result:
+
+<div style="height:340px;padding:1em;background-color:white;border: 1px solid lightgray;border-radius:0.5em;">
+	<kiwi-treelist-item text="With Icon" icon="./example-icon-black.svg">
+		<kiwi-treelist-item text="Just text">
+			<kiwi-treelist-item text="Blank icon" icon="">
+				<kiwi-treelist-item interactive="" text="Selectable 1"></kiwi-treelist-item>
+				<kiwi-treelist-item interactive="" text="Selectable 2"></kiwi-treelist-item>
+			</kiwi-treelist-item>
+		</kiwi-treelist-item>
+		<kiwi-treelist-item text="Another option">
+			<kiwi-treelist-item text="Yet another option" icon="">
+				<kiwi-treelist-item interactive="" text="Selectable 3"></kiwi-treelist-item>
+			</kiwi-treelist-item>
+		</kiwi-treelist-item>
+	</kiwi-treelist-item>
+	<script>
+		console.log("hey")
+		const allInteractiveElements = []
+		Array.from(document.querySelectorAll("kiwi-treelist-item")).forEach(element => {
+			if (element.hasAttribute("interactive")) {
+				element.addEventListener("click", () => {
+					allInteractiveElements.forEach(item => item.removeAttribute("selected"))
+					element.setAttribute("selected", "")
+				})
+				allInteractiveElements.push(element)
+			}
+		})
+	</script>
+</div>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute   | type   | description                                                                                          |
+| ----------- | ------ | ---------------------------------------------------------------------------------------------------- |
+| open        | any    | If set the item will explode its content                                                             |
+| text        | string | The text of the tree item                                                                            |
+| icon        | string | An icon URL. If set to an empty string an empty icon will be added.                                  |
+| interactive | any    | If set then exploding/imploding will only occur when clicking the arrow, rather than the whole item. |
+| selected    | any    | If set the item will be styled as selected                                                           |
+
+### Styling
+
+The following CSS variables can be configured:
+
+| Variable                              | Description                                                                 |
+| ------------------------------------- | --------------------------------------------------------------------------- |
+| --kiwi-treelist-font-size             | Font size for the tree list item (other measurements are relative to this!) |
+| --kiwi-treelist-font-weight           | Font weight of the tree list item                                           |
+| --kiwi-treelist-animation-duration    | Duration for all animations and transitions                                 |
+| --kiwi-treelist-line-color            | Color for the lines in the tree                                             |
+| --kiwi-treelist-expand-arrow-icon-url | Custom icon URL for the expand arrow                                        |
+| --kiwi-treelist-hover-background      | Background when hovered                                                     |
+| --kiwi-treelist-hover-color           | Color when hovered                                                          |
+| --kiwi-treelist-selected-background   | Background when selected                                                    |
+| --kiwi-treelist-selected-color        | Color when selected                                                         |
+| --kiwi-treelist-focus-background      | Background when focused                                                     |
+| --kiwi-treelist-focus-color           | Color when focused                                                          |
+
+---
+
 ## \<kiwi-navbar>
 
 \<kiwi-navbar> is a modern navbar with responsiveness built in.
@@ -210,7 +315,6 @@ The following CSS variables can be configured:
 | --kiwi-navbar-border-radius | Border radius for the navbar                                                   |
 | --kiwi-navbar-padding       | Padding for the content of the navbar                                          |
 | --kiwi-navbar-item-flex     | Flex for the kiwi-navbar-item elements. Can be used to target a specific item. |
-
 
 ---
 

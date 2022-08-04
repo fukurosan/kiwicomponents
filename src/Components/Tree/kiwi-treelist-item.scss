@@ -1,0 +1,130 @@
+@import "../../Assets/Stylesheets/variables.scss";
+@import "../../Assets/Stylesheets/Components/typography.scss";
+
+* {
+	box-sizing: border-box;
+	user-select: none;
+	-webkit-user-select: none;
+	scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+ul {
+	font-size: var(--kiwi-treelist-font-size, 14px);
+	font-weight: var(--kiwi-treelist-font-weight, 600);
+	outline: 0;
+	margin: 0;
+	padding-left: 2em;
+	overflow-y: auto;
+	transition: all var(--kiwi-treelist-animation-duration, 300ms);
+}
+
+li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	position: relative;
+}
+
+ul:not(.root) li::before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 2px;
+	height: 100%;
+	left: -0.75em;
+	background-color: var(--kiwi-treelist-line-color, lightgray);
+}
+
+:host(:last-of-type) ul:not(.root) li::before {
+	height: 1.4em;
+}
+
+#content {
+	width: 100%;
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 0.75em;
+	border-radius: 0.5em;
+	position: relative;
+	transition: background-color var(--kiwi-treelist-animation-duration, 300ms);
+}
+
+#content:hover {
+	background: var(--kiwi-treelist-hover-background, $secondary-color);
+	color: var(--kiwi-treelist-hover-color, $with-secondary-color);
+}
+
+:host([selected]) #content {
+	background: var(--kiwi-treelist-selected-background, $secondary-color);
+	color: var(--kiwi-treelist-selected-color, $with-secondary-color);
+}
+
+:host([selected]) #content:focus {
+	background: var(--kiwi-treelist-focus-background, $secondary-color-light);
+	color: var(--kiwi-treelist-focus-color, $with-secondary-color-light);
+}
+
+:host([interactive]) #content:active {
+	opacity: 0.8;
+}
+
+#content::before {
+	content: "";
+	position: absolute;
+	display: block;
+	width: 0.75em;
+	height: 2px;
+	left: 0;
+	top: 50%;
+	transform: translate(-100%, -50%);
+	background-color: var(--kiwi-treelist-line-color, lightgray);
+}
+
+#icon {
+	display: none;
+	object-fit: contain;
+	min-width: 1em;
+	width: 1em;
+	min-height: 1em;
+	height: 1em;
+	margin-right: 0.5em;
+}
+
+#icon.icon-visible {
+	display: inline-block
+}
+
+#text {
+	@extend %base-text;
+	font-size: 1em;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-right: 0.5em;
+	transition: color var(--kiwi-treelist-animation-duration, 300ms);
+}
+
+#expand-arrow {
+	height: 0.75em;
+	min-height: 0.75em;
+	width: 0.75em;
+	min-width: 0.75em;
+	object-fit: contain;
+	content: var(--kiwi-treelist-expand-arrow-icon-url,
+			url("data:image/svg+xml;utf-8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 492 492'><path d='M142.238,492.432c-9.79,0-19.588-3.736-27.05-11.209c-14.945-14.934-14.945-39.162,0-54.098l180.9-180.909   l-180.9-180.91c-14.945-14.935-14.945-39.163,0-54.098c14.926-14.944,39.172-14.944,54.098,0l207.96,207.958   c14.943,14.935,14.943,39.164,0,54.1l-207.96,207.957C161.824,488.697,152.026,492.432,142.238,492.432z' style='fill: %23000000;'/></svg>"));
+	transition: transform var(--kiwi-treelist-animation-duration, 300ms);
+	box-sizing: content-box;
+	padding: 0.5em;
+	margin: -0.5em;
+}
+
+:host([open]) #expand-arrow {
+	transform: rotate(90deg);
+}
