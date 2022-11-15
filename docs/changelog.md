@@ -1,12 +1,24 @@
 # Change Log
 
 ### (TBR)
-
-- Improve table content slotting
 - Add auto-flipping to tooltips when they overflow
-- Add a split view component
+- Add split view component
 - Add accordion component
+- Add link list component
 - Handle case where tab component overflows
+
+### 0.3.0
+- Added alert() utility function
+- Added prompt() utility function
+- Added additional arguments for window utility functions
+- Updated window manager interfaces
+- Added css variable for customizing window backdrop blur
+- Added scale attribute to windows for setting general sizes
+- Improved code quality for windows
+- Updated close icon for drawer menu
+- Fixed bug in drawer menu where menu would sometimes overflow on viewport resize
+- Updated sass dependency
+- Fixed issues with z-index in several components
 
 ### 0.2.6
 

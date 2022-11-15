@@ -25,7 +25,6 @@ table {
 thead {
 	position: sticky;
 	top: 0;
-	z-index: 1;
 	background: var(--kiwi-table-header-background, #1a1a1a);
 	color: var(--kiwi-table-header-color, white);
 }

@@ -54,7 +54,7 @@ svg path {
 	max-width: 100vw;
 	z-index: 99;
 	background: var(--kiwi-burger-drawer-background, white);
-	transition: all var(--kiwi-burger-drawer-animation-duration, 300ms);
+	transition: inset var(--kiwi-burger-drawer-animation-duration, 300ms);
 	box-shadow: none;
 }
 

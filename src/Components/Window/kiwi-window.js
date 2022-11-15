@@ -11,18 +11,19 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * A window that can be opened within the browser viewport. Can work either as a dialog or a modal.
  * @element kiwi-window
  *
- * @attr {boolean} noheader - If set to any value the header will not be rendered.
- * @attr {boolean} nofooter - If set to any value the footer will not be rendered.
- * @attr {boolean} nominimize - If set to any value the minimize button will be removed.
- * @attr {boolean} nomaximize - If set to any value the maximize button will be removed.
- * @attr {boolean} noclose - If set to any value the window will not have a close button in the top right corner of the header.
- * @attr {boolean} nodrag - If set to any value the window will not be dragable.
- * @attr {boolean} noresize - If set to any value the window will not be resizable.
+ * @attr {boolean} footer - If set to any value the footer will be rendered.
+ * @attr {boolean} useminimizable - If set to any value the minimize button will be added to the header.
+ * @attr {boolean} usemaximizable - If set to any value the maximize button will be added to the header and double clicking the header will maximize the window.
+ * @attr {boolean} useclosebutton - If set to any value the close button will be added to the header.
+ * @attr {boolean} usedraggable - If set to any value the window will be dragable.
+ * @attr {boolean} useresizable - If set to any value the window will be resizable.
+ * @attr {boolean} usecentered - If set to any value the window will be centered in the viewport.
+ * @attr {boolean} useautosize - If set to any value the window will automatically adjust its size to its content and the viewport.
  * @attr {"none"|"clickable"|"disabled"} modality - configures the backdrop of the window.
- * @attr {"large"|"default"|"compact"} mode - Determines the general dimensions of the window's sections.
+ * @attr {"none"|"compact"|"small"|"medium"|"large"} scale - Determines the general dimensions of the window's sections.
  * @attr {string} title - Header text.
  * @attr {string} icon - Header icon.
- * @attr {string} noanimation - If set no animations will take place.
+ * @attr {boolean} noanimation - If set to any value no animations will take place.
  *
  * @function close - Will close the window
  * @function minimize - Will hide the window
@@ -46,9 +47,9 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
 
 class WindowElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["noheader", "nofooter", "nominimize", "nomaximize", "noclose", "nodrag", "noresize", "modality", "mode", "title", "icon", "noanimation"]
-	}
-
+		return ["footer", "useminimizable", "usemaximizable", "useclosebutton", "usedraggable", "useresizable", "usecentered", "modality", "scale", "title", "icon", "noanimation"]
+	} 
+   
 	constructor() {
 		super()
 		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
@@ -82,7 +83,7 @@ class WindowElement extends HTMLElement {
 		//Init header double click handler
 		this._lastHeaderClickTimestamp = -Infinity
 		this._headerElement.addEventListener("click", () => {
-			if (this.hasAttribute("nomaximize")) {
+			if (!this.hasAttribute("usemaximizable")) {
 				return
 			}
 			//The reason for not using a dblclick listener is because the browser doesn't care if both clicks
@@ -381,7 +382,7 @@ class WindowElement extends HTMLElement {
 	 * Initializer function for when a user attempts to drag the window
 	 */
 	_initDrag(event) {
-		if (this.hasAttribute("nodrag") || this.isMinimized()) {
+		if (!this.hasAttribute("usedraggable") || this.isMinimized()) {
 			return
 		}
 		//If this is a touch event we need to extract the touch object
@@ -421,7 +422,7 @@ class WindowElement extends HTMLElement {
 	 * Executed when the user drags the window (on mousemove)
 	 */
 	_drag(event) {
-		if (this.hasAttribute("nodrag")) {
+		if (!this.hasAttribute("usedraggable")) {
 			return
 		}
 		if (this.isMaximized()) {

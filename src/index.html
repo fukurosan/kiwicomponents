@@ -203,23 +203,30 @@
   <div class="box">
     Window Management
     <script>
-      function openWindow(mode) {
+      function openWindow(scale) {
         const options = {
           icon: "./Icons/icon-rightarrow-dark.svg",
           title: "This is a window!",
-          mode: mode,
+          scale: scale,
+          draggable: true,
+          resizable: true,
+          minimizable: true,
+          maximizable: true,
+          closeButton: true,
           body: `This is some content inside of the window.
           <div style="background-color: coral;margin:0 !important;">
             And this content is inside of a full size div inside
             of the window
-          </div>
-          <div slot="footer" style="margin:0 !important;">And this is some footer content</div>`
+          </div>`,
+          footer: `<div style="margin:0 !important;">And this is some footer content</div>`
         }
         kiwicomponents.openWindow(options)
       }
-    </script>
-    <kiwi-button onclick="openWindow('default')">Open default window</kiwi-button>
+    </script>    
+    <kiwi-button onclick="openWindow('none')">Open none window</kiwi-button>
     <kiwi-button onclick="openWindow('compact')">Open compact window</kiwi-button>
+    <kiwi-button onclick="openWindow('small')">Open small window</kiwi-button>
+    <kiwi-button onclick="openWindow('medium')">Open default (medium) window</kiwi-button>
     <kiwi-button onclick="openWindow('large')">Open large window</kiwi-button>
   </div>
 
@@ -246,9 +253,19 @@
           closeSpinner()
         }, 3000);
       }
+      async function alertUser() {
+        await kiwicomponents.alert("Hello User", "This is an alert message, and it is very important.", "OK!", "warning")
+        console.log("Alert was closed.")
+      }
+      async function promptUser() {
+        const input = await kiwicomponents.prompt("Please fill in something here, thanks.")
+        console.log(input)
+      }
     </script>
     <kiwi-button onclick="confirmWithUser()">Confirm</kiwi-button>
     <kiwi-button onclick="showSpinner()">Show Spinner</kiwi-button>
+    <kiwi-button onclick="alertUser()">Alert</kiwi-button>
+    <kiwi-button onclick="promptUser()">Prompt</kiwi-button>
   </div>
 
   <div class="box">

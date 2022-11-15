@@ -5,8 +5,8 @@
 #backdrop {
 	position: fixed;
 	inset: 0;
-	background-color: black;
-	opacity: var(--kiwi-window-backdrop-opacity, 0.5);
+	background-color: rgba(0, 0, 0, var(--kiwi-window-backdrop-opacity, 0.5));
+	backdrop-filter: blur(var(--kiwi-window-backdrop-blur, 4px));
 }
 
 #window {
@@ -19,6 +19,7 @@
 	animation-duration: var(--kiwi-window-animation-duration, 200ms);
 	animation-timing-function: ease-in-out;
 	transition: all var(--kiwi-window-animation-duration, 200ms);
+
 	&.noanimation {
 		transition: none !important;
 	}
@@ -29,6 +30,7 @@
 		transform: scale(0.8);
 		opacity: 0;
 	}
+
 	to {
 		transform: scale(1);
 		opacity: 1;
@@ -41,19 +43,19 @@
  * Setting overflow hidden could cause issues in dropdowns, menus, tooltips or other position:fixed elements inside of the window.
  */
 #header,
-:host([noheader]) #body {
+:host(:not([title]):not([icon]):not([usedraggable]):not([useminimizable]):not([usemaximizable]):not([useclosebutton])) #body {
 	border-top-left-radius: var(--kiwi-window-border-radius, 0.5em);
 	border-top-right-radius: var(--kiwi-window-border-radius, 0.5em);
 }
 
 #footer,
-:host([nofooter]) #body {
+:host(:not([footer])) #body {
 	border-bottom-left-radius: var(--kiwi-window-border-radius, 0.5em);
 	border-bottom-right-radius: var(--kiwi-window-border-radius, 0.5em);
 }
 
 #header {
-	@extend %h5;
+	@extend %h4;
 	font-weight: 600 !important;
 	background: var(--kiwi-window-header-background, white);
 	border-bottom: 1px solid var(--kiwi-window-separator-color, transparent);
@@ -63,6 +65,7 @@
 	gap: 0.5em;
 	cursor: move;
 	user-select: none;
+
 	#header-text {
 		display: none;
 		flex: auto;
@@ -70,17 +73,22 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
+
 	#header-buttons {
 		display: flex;
 		flex-direction: row;
 		gap: 0.5em;
+		flex: auto;
+		justify-content: end;
 	}
+
 	#minimize-icon,
 	#maximize-icon,
 	#close-icon {
 		cursor: pointer;
 		opacity: 0.4;
 		transition: opacity var(--kiwi-window-animation-duration, 200ms);
+
 		&:hover {
 			opacity: 1;
 		}
@@ -95,7 +103,7 @@
 
 #footer {
 	background: var(--kiwi-window-footer-background, white);
-	border-top: 1px solid var(--kiwi-window-separator-color, transparent);;
+	border-top: 1px solid var(--kiwi-window-separator-color, transparent);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -110,13 +118,13 @@
 
 #header,
 #footer {
-	min-height: 1.5rem;
+	min-height: rem;
 }
 
 #header,
 #body,
 #footer {
-	padding: 0.5rem;
+	padding: 1rem;
 }
 
 .resizer {
@@ -124,32 +132,40 @@
 	height: 100%;
 	width: 100%;
 }
+
 .resizer.top,
 .resizer.bottom {
 	height: 20px;
 	cursor: ns-resize;
 }
+
 .resizer.left,
 .resizer.right {
 	width: 20px;
 	cursor: ew-resize;
 }
+
 .resizer.top {
 	top: -15px;
 }
+
 .resizer.right {
 	right: -15px;
 }
+
 .resizer.bottom {
 	bottom: -15px;
 }
+
 .resizer.left {
 	left: -15px;
 }
+
 .resizer.top.right,
 .resizer.bottom.left {
 	cursor: nesw-resize;
 }
+
 .resizer.bottom.right,
 .resizer.top.left {
 	cursor: nwse-resize;
@@ -157,14 +173,16 @@
 
 .icon {
 	display: block;
-	min-height: 1em;
-	min-width: 1em;
-	height: 1em;
-	width: 1em;
+	min-height: 1.5rem;
+	min-width: 1.5rem;
+	height: 1.5rem;
+	width: 1.5rem;
 	position: relative;
+
 	&[src=""] {
 		visibility: hidden;
 	}
+
 	&:not([src]) {
 		display: none;
 	}
@@ -172,24 +190,28 @@
 
 .minimized {
 	height: auto !important;
+
 	#body,
 	#footer {
 		display: none;
 	}
+
 	#header-buttons {
 		display: none !important;
 	}
+
 	#header {
 		user-select: none;
 		cursor: pointer;
 	}
 }
 
-.maximized:not(.minimized) {
+#window.maximized:not(.minimized) {
 	width: 100vw !important;
 	height: 100vh !important;
 	inset: 0 !important;
 	border-radius: 0 !important;
+
 	* {
 		border-radius: 0 !important;
 	}
@@ -200,69 +222,142 @@
 }
 
 /* Most configurable attributes can be handled by pure CSS */
-:host([noheader]) #header {
+:host(:not([title]):not([icon]):not([usedraggable]):not([useminimizable]):not([usemaximizable]):not([useclosebutton])) #header {
 	display: none;
 }
-:host([nofooter]) #footer {
+
+:host(:not([footer])) #footer {
 	display: none;
 }
-:host([nominimize]) #minimize-icon {
+
+:host(:not([useminimizable])) #minimize-icon {
 	display: none;
 }
-:host([nomaximize]) #maximize-icon {
+
+:host(:not([usemaximizable])) #maximize-icon {
 	display: none;
 }
-:host([noclose]) #close-icon {
+
+:host(:not([useclosebutton])) #close-icon {
 	display: none;
 }
-:host([noresize]) .resizer {
-	display: none;
-}
-:host([nodrag]) #header {
+
+:host(:not([usedraggable])) #header {
 	cursor: default;
 }
+
 :host([modality="none"]) #backdrop,
 :host(:not([modality])) #backdrop {
 	display: none;
 }
-:host([mode="large"]) {
+
+:host([scale="none"]) {
+
 	#header,
 	#footer {
-		min-height: 2rem;
-	}
-	.icon {
-		min-height: 1.5rem;
-		min-width: 1.5rem;
-		height: 1.5rem;
-		width: 1.5rem;
+		min-height: 0;
 	}
 	#header,
 	#body,
 	#footer {
-		padding: 1rem;
-	}
-	#header {
-		@extend %h4;
+		padding: 0;
 	}
 }
-:host([mode="compact"]) {
+
+:host([scale="compact"]) {
+
 	#header,
 	#footer {
 		min-height: 1rem;
 	}
+
 	#header {
 		@extend %subtitle-2;
 	}
+
 	#body,
 	#footer {
 		@extend %body-2;
 	}
+
+	#header,
+	#body,
+	#footer {
+		padding: 0.5rem;
+	}
+
+	.icon {
+		min-height: 1em;
+		min-width: 1em;
+		height: 1em;
+		width: 1em;
+	}
 }
+
+:host([scale="small"]) {
+	#header,
+	#footer {
+		min-height: 1.5rem;
+	}
+
+	.icon {
+		min-height: 1em;
+		min-width: 1em;
+		height: 1em;
+		width: 1em;
+	}
+
+	#header,
+	#body,
+	#footer {
+		padding: 0.5rem;
+	}
+
+	#header {
+		@extend %h5;
+	}
+}
+
+/* Medium means default values */
+
+:host([scale="large"]) {
+
+	#header,
+	#footer {
+		min-height: 2rem;
+	}
+
+	#header,
+	#body,
+	#footer {
+		padding: 1.5rem;
+	}
+
+	#header {
+		@extend %h4;
+		font-size: 2rem;
+	}
+}
+
 :host([noanimation]) {
 	* {
 		transition-duration: 0ms !important;
 	}
 }
-:host([noresize]) .resizer {
+
+:host([usecentered]) #window {
+	inset: 0 !important;
+	margin: auto !important;
+}
+
+:host([useautosize]) #window {
+	height: fit-content !important;
+	width: fit-content !important;
+	/* Note: a window can be "maximized" without being "resizable". */
+	max-height: calc(100vh - 2rem) !important;
+	max-width: calc(100vw - 2rem) !important;
+}
+
+:host(:not([useresizable])) .resizer {
 	display: none;
 }

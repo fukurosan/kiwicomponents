@@ -1,3 +1,6 @@
+import styles from "./WindowManager.scss"
+import { ICON_ROUND_CHECK, ICON_ROUND_ERROR, ICON_ROUND_QUESTION, ICON_ROUND_WARNING } from "../Assets/Icons/inline"
+
 /**
  * @description Opens a window
  * @param {import("./interfaces").OpenWindowOptions} options
@@ -6,17 +9,18 @@
 export const openWindow = options => {
 	//Create the window
 	const kiwiWindow = document.createElement("kiwi-window")
-	options.noheader && kiwiWindow.setAttribute("noheader", options.noheader)
-	options.nofooter && kiwiWindow.setAttribute("nofooter", options.nofooter)
-	options.nominimize && kiwiWindow.setAttribute("nominimize", options.nominimize)
-	options.nomaximize && kiwiWindow.setAttribute("nomaximize", options.nomaximize)
-	options.noclose && kiwiWindow.setAttribute("noclose", options.noclose)
-	options.nodrag && kiwiWindow.setAttribute("nodrag", options.nodrag)
-	options.noresize && kiwiWindow.setAttribute("noresize", options.noresize)
+	options.minimizable && kiwiWindow.setAttribute("useminimizable", options.minimizable)
+	options.maximizable && kiwiWindow.setAttribute("usemaximizable", options.maximizable)
+	options.closeButton && kiwiWindow.setAttribute("useclosebutton", options.closebutton)
+	options.draggable && kiwiWindow.setAttribute("usedraggable", options.draggable)
+	options.resizable && kiwiWindow.setAttribute("useresizable", options.resizable)
+	options.centered && kiwiWindow.setAttribute("usecentered", options.centered)
+	options.autosize && kiwiWindow.setAttribute("useautosize", options.autosize)
 	options.modality && kiwiWindow.setAttribute("modality", options.modality)
-	options.mode && kiwiWindow.setAttribute("mode", options.mode)
+	options.scale && kiwiWindow.setAttribute("scale", options.scale)
 	options.title && kiwiWindow.setAttribute("title", options.title)
 	options.icon && kiwiWindow.setAttribute("icon", options.icon)
+	options.footer && kiwiWindow.setAttribute("footer", "true")
 	options.noanimation && kiwiWindow.setAttribute("noanimation", options.noanimation)
 	if (options.body) {
 		if (typeof options.body === "string") {
@@ -29,7 +33,7 @@ export const openWindow = options => {
 	}
 	if (options.footer) {
 		const footerContainer = document.createElement("div")
-		footerContainer.setAttribute("style", "width:100%;height:100%;display:flex;align-items:center;")
+		footerContainer.classList.add("kiwi-windowmanager-general-footer")
 		footerContainer.setAttribute("slot", "footer")
 		if (typeof options.footer === "string") {
 			footerContainer.innerHTML = options.footer
@@ -42,7 +46,7 @@ export const openWindow = options => {
 	}
 	if (options.header) {
 		const headerContainer = document.createElement("div")
-		headerContainer.setAttribute("style", "width:100%;height:100%;")
+		headerContainer.classList.add("kiwi-windowmanager-general-header")
 		headerContainer.setAttribute("slot", "footer")
 		if (typeof options.header === "string") {
 			headerContainer.innerHTML = options.header
@@ -54,12 +58,15 @@ export const openWindow = options => {
 		kiwiWindow.appendChild(headerContainer)
 	}
 
-	//If a toast container matching the configuration already exists then use it, otherwise create a new one
+	//If a window container matching the configuration already exists then use it, otherwise create a new one
 	let container = document.querySelector("#kiwi-window-container")
 	if (!container) {
 		container = document.createElement("div")
 		container.setAttribute("id", "kiwi-window-container")
-		//When the container eventually becomes empty from toasts, remove the container.
+		const styleElement = document.createElement("style")
+		styleElement.innerHTML = styles
+		container.appendChild(styleElement)
+		//When the container eventually becomes empty from windows, remove the container.
 		const observer = new MutationObserver(() => {
 			if (container.children.length === 0) {
 				observer.disconnect()
@@ -67,55 +74,56 @@ export const openWindow = options => {
 			}
 		})
 		observer.observe(container, { childList: true })
-		document.documentElement.appendChild(container)
+		document.body.appendChild(container)
 	}
 	container.appendChild(kiwiWindow)
-
 	return kiwiWindow
 }
 
 /**
  * @description Opens a confirmation window
  * @param {string} message - The message to be displayed
+ * @param {string=} title - The title to be displayed
+ * @param {string=} cancelLabel - Label for the cancel button
+ * @param {string=} confirmLabel - Label for the confirm button
  * @returns {Promise<boolean>} - Promise that will resolve to the choice made by the user.
  */
-export const confirm = message => {
+export const confirm = (message, title, cancelLabel, confirmLabel) => {
+	const content = document.createElement("div")
+	const body = document.createElement("div")
+	const buttons = document.createElement("div")
+	const titleElement = document.createElement("div")
+	titleElement.appendChild(document.createTextNode(title || "Please Confirm"))
+	titleElement.classList.add("kiwi-windowmanager-generic-title")
+	content.appendChild(titleElement)
+	content.appendChild(body)
+	content.appendChild(buttons)
+	content.classList.add("kiwi-windowmanager-generic-content")
+	content.classList.add("kiwi-windowmanager-generic-message")
+	buttons.classList.add("kiwi-windowmanager-generic-buttons")
+	if (typeof message === "string") {
+		body.appendChild(document.createTextNode(message))
+	} else if (message instanceof HTMLElement) {
+		body.appendChild(message)
+	} else if (typeof message === "function") {
+		body.appendChild(message())
+	}
+	const cancelButton = document.createElement("kiwi-button")
+	cancelButton.innerText = cancelLabel || "Cancel"
+	cancelButton.setAttribute("type", "secondary")
+	const confirmButton = document.createElement("kiwi-button")
+	confirmButton.innerText = confirmLabel || "Confirm"
+	confirmButton.setAttribute("type", "primary")
+	buttons.appendChild(cancelButton)
+	buttons.appendChild(confirmButton)
+	const window = openWindow({
+		body: content,
+		scale: "large",
+		modality: "disabled",
+		autosize: true,
+		centered: true
+	})
 	return new Promise(resolve => {
-		const content = document.createElement("div")
-		const body = document.createElement("div")
-		const buttons = document.createElement("div")
-		const title = "<div style='font-size:1.25rem;font-weight:bold;letter-spacing:0.5px;line-height:1.2;'>Please Confirm</div>"
-		content.innerHTML = title
-		content.appendChild(body)
-		content.appendChild(buttons)
-		content.setAttribute(
-			"style",
-			"display:flex;flex-direction:column;gap:1rem;width:100%;height:100%;align-items:center;justify-content:center;max-width:500px;text-align:center;"
-		)
-		buttons.setAttribute("style", "display:flex;flex-direction:row;gap:0.5em;")
-		if (typeof message === "string") {
-			body.appendChild(document.createTextNode(message))
-		} else if (message instanceof HTMLElement) {
-			body.appendChild(message)
-		} else {
-			body.appendChild(message())
-		}
-		const cancelButton = document.createElement("kiwi-button")
-		cancelButton.innerText = "Cancel"
-		cancelButton.setAttribute("type", "secondary")
-		const confirmButton = document.createElement("kiwi-button")
-		confirmButton.innerText = "Confirm"
-		confirmButton.setAttribute("type", "primary")
-		buttons.appendChild(cancelButton)
-		buttons.appendChild(confirmButton)
-		const window = openWindow({
-			body: content,
-			mode: "large",
-			modality: "disabled",
-			noresize: true,
-			noheader: true,
-			nofooter: true
-		})
 		cancelButton.addEventListener("click", () => {
 			window.close()
 			resolve(false)
@@ -138,27 +146,140 @@ export const showSpinner = message => {
 	spinner.setAttribute("size", "100px")
 	spinner.setAttribute("usebackground", "")
 	const body = document.createElement("div")
-	body.setAttribute("style", "font-weight:600;")
+	body.classList.add("kiwi-windowmanager-generic-title")
 	content.appendChild(spinner)
 	content.appendChild(body)
-	content.setAttribute(
-		"style",
-		"padding:1rem;box-sizing:border-box;display:flex;flex-direction:column;gap:2rem;width:100%;height:100%;align-items:center;justify-content:center;max-width:500px;text-align:center;"
-	)
+	content.classList.add("kiwi-windowmanager-spinner-content")
+	content.classList.add("kiwi-windowmanager-generic-content")
 	if (typeof message === "string") {
 		body.appendChild(document.createTextNode(message))
 	} else if (message instanceof HTMLElement) {
 		body.appendChild(message)
-	} else {
+	} else if (typeof message === "function") {
 		body.appendChild(message())
 	}
 	const spinnerModal = openWindow({
 		body: content,
-		mode: "large",
+		scale: "large",
 		modality: "disabled",
-		noresize: true,
-		noheader: true,
-		nofooter: true
+		autosize: true,
+		centered: true
 	})
 	return () => spinnerModal.close()
+}
+
+/**
+ * @description Opens an alert modal to the user that must be actively dismissed.
+ * @param {string=} title - An optional title to be displayed
+ * @param {string=} message - An optional message to be displayed
+ * @param {string=} buttonText - An optional button text to be displayed
+ * @param {"success" | "question" | "warning" | "error"} type - An optional message type
+ * @param {string} icon - Optional icon url
+ * @returns {() => void} - A function that closes the alert
+ */
+export const alert = (title, message, buttonText, type, icon) => {
+	const content = document.createElement("div")
+	const iconImg = document.createElement("img")
+	iconImg.classList.add("kiwi-windowmanager-alert-content-icon")
+	let iconURL
+	if (type === "success") iconURL = ICON_ROUND_CHECK
+	else if (type === "question") iconURL = ICON_ROUND_QUESTION
+	else if (type === "error") iconURL = ICON_ROUND_ERROR
+	else iconURL = ICON_ROUND_WARNING
+	iconImg.setAttribute("src", icon ? icon : iconURL)
+	const header = document.createElement("div")
+	header.classList.add("kiwi-windowmanager-generic-title")
+	header.appendChild(document.createTextNode(title ? title : "Alert"))
+	const body = document.createElement("div")
+	body.classList.add("kiwi-windowmanager-generic-message")
+	body.classList.add("kiwi-windowmanager-alert-body")
+	const buttons = document.createElement("div")
+	buttons.classList.add("kiwi-windowmanager-generic-buttons")
+	const closeButton = document.createElement("kiwi-button")
+	closeButton.appendChild(document.createTextNode(buttonText ? buttonText : "Close"))
+	buttons.appendChild(closeButton)
+	content.appendChild(iconImg)
+	content.appendChild(header)
+	content.appendChild(body)
+	content.appendChild(buttons)
+	content.classList.add("kiwi-windowmanager-generic-content")
+	if (typeof message === "string") {
+		body.appendChild(document.createTextNode(message))
+	} else if (message instanceof HTMLElement) {
+		body.appendChild(message)
+	} else if (typeof message === "function") {
+		body.appendChild(message())
+	}
+	const alertModal = openWindow({
+		body: content,
+		scale: "large",
+		modality: "disabled",
+		autosize: true,
+		centered: true
+	})
+	return new Promise(resolve => {
+		closeButton.addEventListener("click", () => {
+			alertModal.close()
+			resolve()
+		})
+	})
+}
+
+/**
+ * @description Opens a prompt modal to the user that must be actively dismissed.
+ * @param {string=} message - An optional title to be displayed
+ * @param {string=} attributes - Attributes to be applied on the input field element
+ * @param {string=} cancelLabel - Label for the cancel button
+ * @param {string=} confirmLabel - Label for the confirm button
+ * @returns {Promise<any>} - Promise that will resolve to the value inserted by the user. If the user cancels the value will resolve to null.
+ */
+export const prompt = (message, attributes, cancelLabel, confirmLabel) => {
+	const content = document.createElement("div")
+	const buttons = document.createElement("div")
+	if (message) {
+		const title = document.createElement("div")
+		title.appendChild(document.createTextNode(message))
+		title.classList.add("kiwi-windowmanager-generic-title")
+		content.appendChild(title)
+	}
+	const input = document.createElement("input")
+	if (attributes) {
+		Object.keys(attributes).forEach(key => {
+			input.setAttribute(key, attributes[key])
+		})
+	}
+	input.style.width = "100%"
+	input.style.boxSizing = "border-box"
+	content.appendChild(input)
+	content.appendChild(buttons)
+	content.classList.add("kiwi-windowmanager-generic-content")
+	content.classList.add("kiwi-windowmanager-generic-message")
+	buttons.classList.add("kiwi-windowmanager-generic-buttons")
+	const cancelButton = document.createElement("kiwi-button")
+	cancelButton.innerText = cancelLabel || "Cancel"
+	cancelButton.setAttribute("type", "secondary")
+	const confirmButton = document.createElement("kiwi-button")
+	confirmButton.innerText = confirmLabel || "Confirm"
+	confirmButton.setAttribute("type", "primary")
+	buttons.appendChild(cancelButton)
+	buttons.appendChild(confirmButton)
+	const window = openWindow({
+		body: content,
+		scale: "large",
+		modality: "disabled",
+		autosize: true,
+		centered: true
+	})
+	return new Promise(resolve => {
+		cancelButton.addEventListener("click", () => {
+			window.close()
+			resolve(null)
+		})
+		confirmButton.addEventListener("click", () => {
+			if (input.checkValidity()) {
+				window.close()
+				resolve(input.value)
+			}
+		})
+	})
 }

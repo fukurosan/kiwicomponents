@@ -1,27 +1,27 @@
 export interface OpenWindowOptions {
-	/** If true the window will have no built-in header. */
-	noheader?: boolean
-	/** If true the window will have no built-in footer. */
-	nofooter?: boolean
-	/** If true the window will have no minimize button. */
-	nominimize?: boolean
-	/** If true the window will have no maximize button. */
-	nomaximize?: boolean
-	/** If true the window will have no close button. */
-	noclose?: boolean
-	/** If true the window will not be draggable. */
-	nodrag?: boolean
-	/** If true the window will not be resizable. */
-	noresize?: boolean
-	/** Determines if the window has a backdrop, and if the backdrop closes the window when clicked. */
-	modality?: "none" | "clickable" | "disabled"
+	/** If set to any value the minimize button will be added to the header. */
+	minimizable?: boolean
+	/** If set to any value the maximize button will be added to the header and if the header is double clicked the window will maximize. */
+	maximizable?: boolean
+	/** If set to any value the close button will be added to the header. */
+	closebutton?: boolean
+	/** If set to any value the window will be dragable. */
+	draggable?: boolean
+	/** If set to any value the window will be resizable. */
+	resizable?: boolean
+	/** If set to any value the window will be centered in the viewport. */
+	centered?: boolean
+	/** If set to any value the window's size will be automatically adjusted based on its content and the viewport. */
+	autosize?: boolean
+	/** configures the backdrop of the window. */
+	modality?: "none"|"clickable"|"disabled"
 	/** Determines the general dimensions of the window's sections. */
-	mode?: "large" | "default" | "compact"
-	/** The title for the modal header. */
+	scale?: "none"|"compact"|"small"|"medium"|"large"
+	/** Header text. */
 	title?: string
-	/** Icon URL for the window. */
+	/** Header icon. */
 	icon?: string
-	/** If set the window will not animate. */
+	/** If set to any value no animations will take place. */
 	noanimation?: boolean
 	/** The main content of the window */
 	body?: string | HTMLElement | ((...args: any[]) => HTMLElement)

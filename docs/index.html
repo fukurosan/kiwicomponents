@@ -239,6 +239,13 @@
 				closeSpinner()
 			}, 3000)
 		}
+		const openAlert = async () => {
+			kiwicomponents.alert("Important Alert", "This is an important message for the user", "Dismiss", "warning", null)
+		}
+		async function promptUser() {
+			const input = await kiwicomponents.prompt("Please fill in something here, thanks.", { value: 'Some initial value' })
+			console.log(input)
+		}
 		kiwicomponents.enableGlobalTooltips()
 		kiwicomponents.injectStyle({
 			forms: true

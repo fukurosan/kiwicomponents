@@ -1,6 +1,5 @@
 import resolve from "@rollup/plugin-node-resolve"
 import commonjs from "@rollup/plugin-commonjs"
-import babel from "@rollup/plugin-babel"
 import json from "@rollup/plugin-json"
 import pkg from "./package.json"
 import { terser } from "rollup-plugin-terser"
@@ -62,11 +61,6 @@ productionBuilds = Object.keys(bundles).map(bundle => {
 			}),
 			string({
 				include: ["**/*.html"]
-			}),
-			babel({
-				exclude: "node_modules/**",
-				extensions: [".js"],
-				babelHelpers: "bundled"
 			}),
 			terser({
 				format: {

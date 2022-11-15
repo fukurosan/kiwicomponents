@@ -41,3 +41,40 @@ const pretendToLoad = async () => {
 <kiwi-button onclick="pretendToLoad()">Try it</kiwi-button>
 
 ---
+
+## alert()
+
+The alert() function opens up a modal with an important message for the user that must be actively dismissed.
+
+### Example
+
+```javascript
+import { alert } from "kiwicomponents"
+
+const openAlert = async () => {
+	alert("Important Alert", "This is an important message for the user", "Dismiss", "warning", null)
+}
+```
+
+<kiwi-button onclick="openAlert()">Try it</kiwi-button>
+
+---
+
+## prompt()
+
+The prompt() function opens up a modal with an input field to receive user input and returns a promise that will resolve with the input value. If the user cancels the prompt a null value will be resolved.
+
+### Example
+
+```javascript
+import { prompt } from "kiwicomponents"
+
+async function promptUser() {
+	const input = await kiwicomponents.prompt("Please fill in something here, thanks.", { value: "Some initial value" })
+	console.log(input)
+}
+```
+
+<kiwi-button onclick="promptUser()">Try it</kiwi-button>
+
+---
