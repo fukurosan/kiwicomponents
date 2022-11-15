@@ -354,8 +354,8 @@
 	height: fit-content !important;
 	width: fit-content !important;
 	/* Note: a window can be "maximized" without being "resizable". */
-	max-height: calc(100vh - 2rem) !important;
-	max-width: calc(100vw - 2rem) !important;
+	max-height: calc(100vh - 3rem) !important;
+	max-width: calc(100vw - 3rem) !important;
 }
 
 :host(:not([useresizable])) .resizer {
