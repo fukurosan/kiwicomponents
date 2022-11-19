@@ -222,7 +222,7 @@
         }
         kiwicomponents.openWindow(options)
       }
-    </script>    
+    </script>
     <kiwi-button onclick="openWindow('none')">Open none window</kiwi-button>
     <kiwi-button onclick="openWindow('compact')">Open compact window</kiwi-button>
     <kiwi-button onclick="openWindow('small')">Open small window</kiwi-button>
@@ -552,6 +552,10 @@
         <input type="radio" disabled checked>
         <input type="checkbox" class="kiwi-switch" disabled checked>
       </kiwi-form-flow>
+      <kiwi-form-flow direction="row" label="Range Slider">
+        <input type="range">
+        <input type="range" disabled>
+      </kiwi-form-flow>
     </kiwi-form-flow>
   </div>
 
@@ -592,6 +596,103 @@
         })
       </script>
     </div>
+  </div>
+
+  <div class="box">
+    Accordions
+    <kiwi-accordion title="Accordion 1" icon="./Icons/icon-rightarrow-dark.svg">
+      <div style="padding:1rem;box-sizing:border-box;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor
+        lacinia vitae. Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend
+        rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.
+      </div>
+    </kiwi-accordion>
+    <kiwi-accordion title="Accordion 2">
+      <div style="padding:1rem;box-sizing:border-box;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor
+        lacinia vitae. Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend
+        rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.
+      </div>
+    </kiwi-accordion>
+    <kiwi-accordion>
+      <div style="padding:1rem;box-sizing:border-box;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor
+        lacinia vitae. Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend
+        rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.
+      </div>
+    </kiwi-accordion>
+  </div>
+
+  <div class="box">
+    Scroll list
+    <kiwi-scroll-list>
+      <a style="margin:0.5rem 0 !important;" class="link">hello world 1</a>
+      <a style="margin:0.5rem 0 !important;" class="link">hello world 2</a>
+      <a style="margin:0.5rem 0 !important;">hello world 3</a>
+      <a style="margin:0.5rem 0 !important;">hello world 4</a>
+      <a style="margin:0.5rem 0 !important;">hello world 5</a>
+      <a style="margin:0.5rem 0 !important;">hello world 6</a>
+    </kiwi-scroll-list>
+  </div>
+
+  <div class="box" style="display:flex;flex-direction:column;">
+    Alerts
+    <kiwi-alert>
+      <h4>Default</h4>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+        molestie ultricies magna, quis gravida dolor lacinia vitae.
+      </div>
+    </kiwi-alert>
+    <kiwi-alert type="primary" useclosebutton="">
+      <h4>Primary</h4>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+        molestie ultricies magna, quis gravida dolor lacinia vitae.
+      </div>
+    </kiwi-alert>
+    <kiwi-alert type="secondary" useclosebutton="">
+      <h4>Secondary</h4>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Cras molestie ultricies magna, quis gravida dolor lacinia vitae.
+      </div>
+    </kiwi-alert>
+    <kiwi-alert type="neutral" useclosebutton="">
+      <h4>Neutral</h4>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+        molestie ultricies magna, quis gravida dolor lacinia vitae.
+      </div>
+    </kiwi-alert>
+    <kiwi-alert type="info" useclosebutton="">
+      <h4>Info</h4>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+        molestie ultricies magna, quis gravida dolor lacinia vitae.
+      </div>
+    </kiwi-alert>
+    <kiwi-alert type="success">
+      <h4>Success</h4>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies
+        magna, quis gravida dolor lacinia vitae.
+      </div>
+    </kiwi-alert>
+    <kiwi-alert type="warning">
+      <h4>Warning</h4>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies
+        magna, quis gravida dolor lacinia vitae.
+      </div>
+    </kiwi-alert>
+    <kiwi-alert type="error">
+      <h4>Error</h4>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies
+        magna, quis gravida dolor lacinia vitae.
+      </div>
+    </kiwi-alert>
   </div>
 
   <br><br><br><br><br>

@@ -102,6 +102,22 @@
 	text-transform: none;
 }
 
+%link {
+	font-family: $font-family-body;
+	font-size: 1rem;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: 0.5px;
+	text-transform: none;
+	text-decoration: underline;
+}
+
+%link-hovered {
+	text-decoration: none;
+	cursor: pointer;
+}
+
 %button {
 	font-family: $font-family-body;
 	font-size: 0.75rem;

@@ -28,6 +28,7 @@ CSS Classes:
 -   .body-1 (For most text)
 -   .body-2 (For smaller secondary text)
 -   .button (For button labels)
+-   .link (For link labels)
 -   .caption (For captions)
 -   .overline (For overline)
 

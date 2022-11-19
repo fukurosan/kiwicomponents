@@ -47,9 +47,22 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
 
 class WindowElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["footer", "useminimizable", "usemaximizable", "useclosebutton", "usedraggable", "useresizable", "usecentered", "modality", "scale", "title", "icon", "noanimation"]
-	} 
-   
+		return [
+			"footer",
+			"useminimizable",
+			"usemaximizable",
+			"useclosebutton",
+			"usedraggable",
+			"useresizable",
+			"usecentered",
+			"modality",
+			"scale",
+			"title",
+			"icon",
+			"noanimation"
+		]
+	}
+
 	constructor() {
 		super()
 		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))

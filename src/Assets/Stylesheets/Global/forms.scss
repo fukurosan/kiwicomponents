@@ -26,7 +26,7 @@ select {
 	color: var(--kiwi-form-color, black);
 	background: var(--kiwi-form-background, white);
 	border: var(--kiwi-form-border, 1px solid lightgray);
-	border-radius: var(--kiwi-form-border-radius, 0.5rem);
+	border-radius: var(--kiwi-form-border-radius, 6px);
 	transition: all var(--kiwi-form-animation-duration, 200ms);
 	margin: var(--kiwi-form-margin, 0);
 	outline: none;
@@ -98,7 +98,7 @@ input[type="week"]:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
 	background: var(--kiwi-form-background, white);
-	border: var(--kiwi-form-focus-outline, 1px solid cornflowerblue);;
+	border: var(--kiwi-form-focus-outline, 1px solid cornflowerblue);
 }
 
 ::placeholder {
@@ -192,4 +192,86 @@ select:focus-visible {
 			transform: scale(0.5);
 		}
 	}
+}
+
+input[type="range"] {
+	margin: 0;
+	padding: 0;
+	height: 1.25rem;
+	width: 100%;
+	background-color: transparent;
+	appearance: none;
+}
+input[type="range"]:focus {
+	outline: none;
+}
+
+input[type="range"]::-moz-range-track {
+	-moz-appearance: none;
+	width: 100%;
+	height: 0.5rem;
+	cursor: pointer;
+	background: white;
+	background-color: white;
+	border-radius: 1rem;
+	border: 1px solid #000000;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 0.5rem;
+	cursor: pointer;
+	background: white;
+	background-color: white;
+	border-radius: 1rem;
+	border: 1px solid #000000;
+}
+
+input[type="range"]::-moz-range-thumb {
+	-moz-appearance: none;
+	border: 1px solid #000000;
+	height: 1.25rem;
+	width: 1.25rem;
+	border-radius: 50%;
+	background: black;
+	cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: 1px solid #000000;
+	height: 1.25rem;
+	width: 1.25rem;
+	margin-top: -0.4rem;
+	border-radius: 50%;
+	background: black;
+	cursor: pointer;
+}
+
+input[type="range"]:active::-moz-range-thumb {
+	background: darkgray;
+	cursor: pointer;
+}
+input[type="range"]:active::-webkit-slider-thumb {
+	background-color: darkgray;
+	cursor: pointer;
+}
+
+input:disabled::-moz-range-track {
+	cursor: not-allowed;
+	background-color: lightgray;
+}
+input:disabled::-webkit-slider-runnable-track {
+	cursor: not-allowed;
+	background-color: lightgray;
+}
+input:disabled::-moz-range-thumb {
+	cursor: not-allowed;
+	background-color: gray;
+	border: none;
+}
+input:disabled::-webkit-slider-thumb {
+	cursor: not-allowed;
+	background-color: gray;
+	border: none;
 }

@@ -36,7 +36,7 @@ class KiwiButton extends HTMLElement {
 		this._slotElement = this.shadowRoot.querySelector("slot")
 		this._buttonElement = this.shadowRoot.querySelector("button")
 		this._SIZES = Object.freeze({
-			SMALL: "0.5em",
+			SMALL: "0.625em",
 			MEDIUM: "0.75em",
 			LARGE: "1em"
 		})

@@ -1,0 +1,70 @@
+@import "../../Assets/Stylesheets/variables.scss";
+@import "../../Assets/Stylesheets/Components/typography.scss";
+
+#container {
+	margin: 0;
+	padding: 0;
+	width: var(--kiwi-scroll-list-width, 100%);
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	position: relative;
+	flex-wrap: nowrap;
+}
+
+.scroll-arrow {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	min-height: 100%;
+	position: absolute;
+	background-color: var(--kiwi-scroll-list-background-color, white);
+	cursor: pointer;
+}
+
+.scroll-arrow::before {
+	background: linear-gradient(to left, var(--kiwi-scroll-list-background-color, white) 0%, transparent 100%);
+	height: 100%;
+	width: 2rem;
+	content: "";
+	pointer-events: none;
+	position: absolute;
+	left: -2rem;
+}
+
+.scroll-arrow svg {
+	fill: var(--kiwi-scroll-list-arrow-color, black);
+	width: var(--kiwi-scroll-list-icon-size, 1rem);
+	min-width: var(--kiwi-scroll-list-icon-size, 1rem);
+}
+
+#left-scroll {
+	left: 0px;
+	transform: rotate(180deg);
+}
+
+#right-scroll {
+	right: 0px;
+}
+
+#link-container {
+	flex: auto;
+	display: flex;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	overflow: hidden;
+	gap: var(--kiwi-scroll-list-gap, 2rem);
+	height: 100%;
+	width: 100%;
+	white-space: nowrap;
+}
+
+/* Safari 11+ */
+@media not all and (min-resolution: 0.001dpcm) {
+	@supports (-webkit-appearance: none) and (stroke-color: transparent) {
+		#link-container {
+			/* Safari 15.5 cannot handle scrollBy() while having scroll-behavior: smooth set. */
+			scroll-behavior: auto;
+		}
+	}
+}

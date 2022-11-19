@@ -114,29 +114,25 @@ class TreeListItem extends HTMLElement {
 	}
 
 	_toggleVisible() {
-		if (this._mainContainer.style.height === "0px") {
-			this._mainContainer.style.height = "auto"
-			const height = this._mainContainer.getBoundingClientRect().height
-			this._mainContainer.style.height = 0
-			setTimeout(() => {
-				this._mainContainer.style.height = `${height}px`
-				this._mainContainer.style.opacity = 1
-				this._isVisible = true
-			}, 1)
-		} else {
-			const height = this._mainContainer.getBoundingClientRect().height
-			this._mainContainer.style.height = `${height}px`
-			setTimeout(() => {
-				this._mainContainer.style.height = 0
-				this._mainContainer.style.opacity = 0
-				this._isVisible = false
-			}, 1)
-		}
 		const listener = () => {
 			if (this._isVisible) this._mainContainer.style.height = "auto"
 			this._mainContainer.removeEventListener("transitionend", listener)
 		}
-		this._mainContainer.addEventListener("transitionend", listener)
+		if (this._mainContainer.style.height === "0px") {
+			const height = this._mainContainer.scrollHeight
+			this._mainContainer.style.height = `${height}px`
+			this._mainContainer.style.opacity = 1
+			this._isVisible = true
+			this._mainContainer.addEventListener("transitionend", listener)
+		} else {
+			this._mainContainer.style.height = `${this._mainContainer.scrollHeight}px`
+			setTimeout(() => {
+				this._isVisible = false
+				this._mainContainer.style.height = 0
+				this._mainContainer.style.opacity = 0
+				this._mainContainer.addEventListener("transitionend", listener)
+			}, 10)
+		}
 	}
 }
 

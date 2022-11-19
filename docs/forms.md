@@ -50,6 +50,10 @@ Quick example:
 		<input type="radio" disabled checked />
 		<input type="checkbox" class="kiwi-switch" disabled checked />
 	</kiwi-form-flow>
+	<kiwi-form-flow direction="row" label="Range Slider">
+        <input type="range">
+        <input type="range" disabled>
+    </kiwi-form-flow>
 </kiwi-form-flow>
 ```
 
@@ -79,6 +83,10 @@ Quick example:
 		<input type="radio" disabled checked />
 		<input type="checkbox" class="kiwi-switch" disabled checked />
 	</kiwi-form-flow>
+	<kiwi-form-flow direction="row" label="Range Slider">
+        <input type="range">
+        <input type="range" disabled>
+    </kiwi-form-flow>
 </kiwi-form-flow>
 
 ---

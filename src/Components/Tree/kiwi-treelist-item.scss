@@ -57,8 +57,8 @@ ul:not(.root) li::before {
 }
 
 #content:hover {
-	background: var(--kiwi-treelist-hover-background, $secondary-color);
-	color: var(--kiwi-treelist-hover-color, $with-secondary-color);
+	background: var(--kiwi-treelist-hover-background, $secondary-color-light);
+	color: var(--kiwi-treelist-hover-color, $with-secondary-color-light);
 }
 
 :host([selected]) #content {
@@ -67,8 +67,8 @@ ul:not(.root) li::before {
 }
 
 :host([selected]) #content:focus {
-	background: var(--kiwi-treelist-focus-background, $secondary-color-light);
-	color: var(--kiwi-treelist-focus-color, $with-secondary-color-light);
+	background: var(--kiwi-treelist-focus-background, $secondary-color-dark);
+	color: var(--kiwi-treelist-focus-color, $with-secondary-color-dark);
 }
 
 :host([interactive]) #content:active {

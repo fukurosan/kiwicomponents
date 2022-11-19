@@ -34,17 +34,17 @@ $font-family-body: var(
 $primary-color-dark: var(--kiwi-primary-color-dark, #0a0a0a);
 $primary-color: var(--kiwi-primary-color, #1a1a1a);
 $primary-color-light: var(--kiwi-primary-color-light, #3a3a3a);
-$secondary-color-dark: var(--kiwi-secondary-color-dark, #f7f7f7);
+$secondary-color-dark: var(--kiwi-secondary-color-dark, #cecece);
 $secondary-color: var(--kiwi-secondary-color, #e2e2e2);
-$secondary-color-light: var(--kiwi-secondary-color-light, #cecece);
+$secondary-color-light: var(--kiwi-secondary-color-light, #f7f7f7);
 
 //With Accent Colors
 $with-primary-color-dark: var(--kiwi-with-primary-color-dark, #ffffff);
 $with-primary-color: var(--kiwi-with-primary-color, #ffffff);
 $with-primary-color-light: var(--kiwi-with-primary-color-light, #ffffff);
-$with-secondary-color-dark: var(--kiwi-with-secondary-color-dark, #000000);
-$with-secondary-color: var(--kiwi-with-secondary-color, #000000);
-$with-secondary-color-light: var(--kiwi-with-secondary-color-light, #000000);
+$with-secondary-color-dark: var(--kiwi-with-secondary-color-dark, #444444);
+$with-secondary-color: var(--kiwi-with-secondary-color, #444444);
+$with-secondary-color-light: var(--kiwi-with-secondary-color-light, #444444);
 
 //Status Colors
 $success-color: var(--kiwi-success-color, #cbf782);

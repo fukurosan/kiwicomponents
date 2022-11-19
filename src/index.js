@@ -14,6 +14,9 @@ import "./Components/Drawer/kiwi-drawer"
 import "./Components/Table/kiwi-table"
 import "./Components/Form/kiwi-form-flow"
 import "./Components/Tree/kiwi-treelist-item"
+import "./Components/Accordion/kiwi-accordion"
+import "./Components/ScrollList/kiwi-scroll-list"
+import "./Components/Alert/kiwi-alert"
 
 //Utilities
 import { injectStyle } from "./Utility/StyleInjection"

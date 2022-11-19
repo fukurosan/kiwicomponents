@@ -14,11 +14,19 @@
 - Updated window manager interfaces
 - Added css variable for customizing window backdrop blur
 - Added scale attribute to windows for setting general sizes
+- Added usecentered attribute for centering windows in the viewport
 - Improved code quality for windows
 - Updated close icon for drawer menu
 - Fixed bug in drawer menu where menu would sometimes overflow on viewport resize
 - Updated sass dependency
 - Fixed issues with z-index in several components
+- Updated form styles
+- Added link typography
+- Added accordion component
+- Added range input styles
+- Added scroll list component
+- Added alert component
+- Optimized kiwi-tree-item animation
 
 ### 0.2.6
 

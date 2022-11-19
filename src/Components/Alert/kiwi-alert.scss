@@ -1,0 +1,160 @@
+@import "../../Assets/Stylesheets/variables.scss";
+@import "../../Assets/Stylesheets/Components/typography.scss";
+
+#container {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	padding: var(--kiwi-alert-padding, 1rem);
+	border-radius: var(--kiwi-alert-border-radius, 0.5rem);
+	border: var(--kiwi-alert-border, none);
+	background: $primary-color;
+	color: $with-primary-color;
+	stroke: $with-primary-color;
+	&:focus,
+	&:active,
+	&:hover {
+		stroke: $with-primary-color-light;
+	}
+}
+
+::slotted(*) {
+	color: $with-primary-color !important;
+}
+
+#content {
+	flex: auto;
+}
+
+#close-icon {
+	min-width: var(--kiwi-alert-icon-size, 1.5rem);
+	width: var(--kiwi-alert-icon-size, 1.5rem);
+	min-height: var(--kiwi-alert-icon-size, 1.5rem);
+	height: var(--kiwi-alert-icon-size, 1.5rem);
+	cursor: pointer;
+	opacity: 0.7;
+	transition: opacity var(--kiwi-alert-animation-time, 200ms);
+	stroke-width: 0.25rem;
+	stroke-linecap: round;
+}
+
+#close-icon:hover {
+	opacity: 1;
+}
+
+:host(:not([useclosebutton])) #close-icon {
+	display: none;
+}
+
+:host([type="primary"]) {
+	#container {
+		background: $primary-color;
+		color: $with-primary-color;
+		stroke: $with-primary-color;
+		&:focus,
+		&:active,
+		&:hover {
+			stroke: $with-primary-color-light;
+		}
+	}
+	::slotted(*) {
+		color: $with-primary-color !important;
+	}
+}
+
+:host([type="secondary"]) {
+	#container {
+		background: $secondary-color;
+		color: $with-secondary-color;
+		stroke: $with-secondary-color;
+		&:focus,
+		&:active,
+		&:hover {
+			stroke: $with-secondary-color-light;
+		}
+	}
+	::slotted(*) {
+		color: $with-secondary-color !important;
+	}
+}
+
+:host([type="neutral"]) {
+	#container {
+		background: transparent;
+		color: #000000;
+		stroke: #000000;
+		&:focus,
+		&:active,
+		&:hover {
+			stroke: #000000;
+		}
+	}
+	::slotted(*) {
+		color: #000000 !important;
+	}
+}
+
+:host([type="info"]) {
+	#container {
+		background: $info-color;
+		color: $with-info-color;
+		stroke: $with-info-color;
+		&:focus,
+		&:active,
+		&:hover {
+			stroke: $with-info-color;
+		}
+	}
+	::slotted(*) {
+		color: $with-info-color !important;
+	}
+}
+
+:host([type="success"]) {
+	#container {
+		background: $success-color;
+		color: $with-success-color;
+		stroke: $with-success-color;
+		&:focus,
+		&:active,
+		&:hover {
+			stroke: $with-success-color;
+		}
+	}
+	::slotted(*) {
+		color: $with-success-color !important;
+	}
+}
+
+:host([type="warning"]) {
+	#container {
+		background: $warning-color;
+		color: $with-warning-color;
+		stroke: $with-warning-color;
+		&:focus,
+		&:active,
+		&:hover {
+			stroke: $with-warning-color;
+		}
+	}
+	::slotted(*) {
+		color: $with-warning-color !important;
+	}
+}
+
+:host([type="error"]) {
+	#container {
+		background: $error-color;
+		color: $with-error-color;
+		stroke: $with-error-color;
+		&:focus,
+		&:active,
+		&:hover {
+			stroke: $with-error-color;
+		}
+	}
+	::slotted(*) {
+		color: $with-error-color !important;
+	}
+}

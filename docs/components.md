@@ -364,3 +364,253 @@ The following CSS variables can be configured:
 | --kiwi-burger-drawer-width                          | Prefered width of the open drawer                        |
 | --kiwi-burger-drawer-background                     | Background of the drawer                                 |
 | --kiwi-burger-drawer-animation-duration             | Animation duration for the drawer                        |
+
+---
+
+## \<kiwi-accordion>
+
+\<kiwi-accordion> is an accordion component where when clicking on it a content panel expands below it. This type of component can be found in a great deal of applications, and requires quite a lot of boilerplate.
+
+If several accordion components are placed as direct siblings in the DOM then opening one drawer will close the others. If you do not want this behaviour then you need to place a blank element in between them.
+
+You can manually control if the accordion is open or not by using the "open" attribute.
+
+### Example:
+
+```html
+<kiwi-accordion title="Accordion 1" icon="./Icons/icon-rightarrow-dark.svg">
+	<div style="padding:1rem;box-sizing:border-box;">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae. Vestibulum vitae mi ac urna
+		molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis
+		lorem.
+	</div>
+</kiwi-accordion>
+<kiwi-accordion title="Accordion 2">
+	<div style="padding:1rem;box-sizing:border-box;">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae. Vestibulum vitae mi ac urna
+		molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis
+		lorem.
+	</div>
+</kiwi-accordion>
+<kiwi-accordion>
+	<div style="padding:1rem;box-sizing:border-box;">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae. Vestibulum vitae mi ac urna
+		molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis
+		lorem.
+	</div>
+</kiwi-accordion>
+```
+
+Result:
+
+<kiwi-accordion title="Accordion 1" icon="./example-icon-black.svg">
+	<div style="padding:1rem;box-sizing:border-box;">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae. Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.
+	</div>
+</kiwi-accordion>
+<kiwi-accordion title="Accordion 2">
+	<div style="padding:1rem;box-sizing:border-box;">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae. Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.
+	</div>
+</kiwi-accordion>
+<kiwi-accordion>
+	<div style="padding:1rem;box-sizing:border-box;">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae. Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.
+	</div>
+</kiwi-accordion>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type   | description                                       |
+| --------- | ------ | ------------------------------------------------- |
+| open      | any    | If set to any value the accordion will be opened. |
+| title     | string | Configures the title text on the button.          |
+| icon      | string | Optionally configures an icon for the button      |
+
+### Styling
+
+The following CSS variables can be configured:
+
+| Variable                                        | Description                                                   |
+| ----------------------------------------------- | ------------------------------------------------------------- |
+| --kiwi-accordion-button-background-color        | Background color for the button                               |
+| --kiwi-accordion-button-color                   | Text color for the button                                     |
+| --kiwi-accordion-active-button-background-color | Background color for the button when active (hovered or open) |
+| --kiwi-accordion-active-button-color            | Text color for the button when active (hovered or open)       |
+| --kiwi-accordion-panel-background-color         | Content background color                                      |
+| --kiwi-accordion-border                         | Component border                                              |
+| --kiwi-accordion-animation-time                 | Open and close animation time                                 |
+
+---
+
+## \<kiwi-scroll-list>
+
+\<kiwi-scroll-list> is a horizontal list that renders arrow buttons to scroll when overflowing. Perfect for lists of links, chips or similar.
+
+### Example:
+
+```html
+<div style="width:100%;">
+	<kiwi-scroll-list>
+		<a>Link #1</a>
+		<a>Link #2</a>
+		<a>Link #3</a>
+		<a>Link #4</a>
+		<a>Link #5</a>
+		<a>Link #6</a>
+		<a>Link #7</a>
+		<a>Link #8</a>
+	</kiwi-scroll-list>
+</div>
+```
+
+Result:
+
+<kiwi-scroll-list>
+    <a>Link #1</a>
+    <a>Link #2</a>
+    <a>Link #3</a>
+    <a>Link #4</a>
+    <a>Link #5</a>
+    <a>Link #6</a>
+    <a>Link #7</a>
+    <a>Link #8</a>
+</kiwi-scroll-list>
+
+### Styling
+
+The following CSS variables can be configured:
+
+| Variable                            | Description                                                                                |
+| ----------------------------------- | ------------------------------------------------------------------------------------------ |
+| --kiwi-scroll-list-width            | Width for the list, defaults to 100%                                                       |
+| --kiwi-scroll-list-background-color | Background color to match the content behind the list. Necessary for the arrow backgrounds |
+| --kiwi-scroll-list-arrow-color      | Color of the arrows                                                                        |
+| --kiwi-scroll-list-icon-size        | Size of the arrows                                                                         |
+| --kiwi-scroll-list-gap              | width of the gap between items in the list                                                 |
+
+---
+
+## \<kiwi-alert>
+
+\<kiwi-alert> is an accordion component where when clicking on it a content panel expands below it. This type of component can be found in a great deal of applications, and requires quite a lot of boilerplate.
+
+If several accordion components are placed as direct siblings in the DOM then opening one drawer will close the others. If you do not want this behaviour then you need to place a blank element in between them.
+
+You can manually control if the accordion is open or not by using the "open" attribute.
+
+### Example:
+
+```html
+<kiwi-alert>
+	<h4>Default</h4>
+	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+</kiwi-alert>
+<kiwi-alert type="primary" useclosebutton="">
+	<h4>Primary</h4>
+	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+</kiwi-alert>
+<kiwi-alert type="secondary" useclosebutton="">
+	<h4>Secondary</h4>
+	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+</kiwi-alert>
+<kiwi-alert type="neutral" useclosebutton="">
+	<h4>Neutral</h4>
+	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+</kiwi-alert>
+<kiwi-alert type="info" useclosebutton="">
+	<h4>Info</h4>
+	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+</kiwi-alert>
+<kiwi-alert type="success">
+	<h4>Success</h4>
+	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+</kiwi-alert>
+<kiwi-alert type="warning">
+	<h4>Warning</h4>
+	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+</kiwi-alert>
+<kiwi-alert type="error">
+	<h4>Error</h4>
+	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+</kiwi-alert>
+```
+
+Result:
+
+<kiwi-alert style="display:block;margin-bottom:1rem;">
+  <h4 style="margin-top:0;margin-bottom:0.5rem;">Default</h4>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+</kiwi-alert>
+<kiwi-alert style="display:block;margin-bottom:1rem;" type="primary" useclosebutton="">
+  <h4 style="margin-top:0;margin-bottom:0.5rem;">Primary</h4>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+</kiwi-alert>
+<kiwi-alert style="display:block;margin-bottom:1rem;" type="secondary" useclosebutton="">
+  <h4 style="margin-top:0;margin-bottom:0.5rem;">Secondary</h4>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+</kiwi-alert>
+<kiwi-alert style="display:block;margin-bottom:1rem;" type="neutral" useclosebutton="">
+  <h4 style="margin-top:0;margin-bottom:0.5rem;">Neutral</h4>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+</kiwi-alert>
+<kiwi-alert style="display:block;margin-bottom:1rem;" type="info" useclosebutton="">
+  <h4 style="margin-top:0;margin-bottom:0.5rem;">Info</h4>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+</kiwi-alert>
+<kiwi-alert style="display:block;margin-bottom:1rem;" type="success">
+  <h4 style="margin-top:0;margin-bottom:0.5rem;">Success</h4>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+</kiwi-alert>
+<kiwi-alert style="display:block;margin-bottom:1rem;" type="warning">
+  <h4 style="margin-top:0;margin-bottom:0.5rem;">Warning</h4>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+</kiwi-alert>
+<kiwi-alert style="display:block;margin-bottom:1rem;" type="error">
+  <h4 style="margin-top:0;margin-bottom:0.5rem;">Error</h4>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+</kiwi-alert>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute      | type | description                                          |
+| -------------- | ---- | ---------------------------------------------------- |
+| useclosebutton | any  | If set a close button will be rendered on the alert. |
+
+### Events
+
+| event          | description                                  |
+| -------------- | -------------------------------------------- |
+| useclosebutton | Fired when the element is closed by the user |
+
+### Styling
+
+The following CSS variables can be configured:
+
+| Variable                    | Description                          |
+| --------------------------- | ------------------------------------ |
+| --kiwi-alert-padding        | Padding for the container's content  |
+| --kiwi-alert-border-radius  | Border radius of the alert container |
+| --kiwi-alert-border         | Border for the alert                 |
+| --kiwi-alert-icon-size      | Size of the close icon               |
+| --kiwi-alert-animation-time | Animation duration                   |
