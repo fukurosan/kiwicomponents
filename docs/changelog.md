@@ -5,6 +5,9 @@
 - Add split view component
 - Handle case where tab component overflows
 
+### 0.3.2
+- Fixed error where drawer icon would not be visible
+
 ### 0.3.1
 - Patch for error in window manager configuration
 ### 0.3.0

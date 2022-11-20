@@ -20,7 +20,8 @@
 }
 
 svg {
-	width: fit-content;
+	width: var(--kiwi-burger-drawer-button-size, 3em);
+	height: var(--kiwi-burger-drawer-button-size, 3em);
 }
 
 svg path {
