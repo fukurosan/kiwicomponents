@@ -98,7 +98,7 @@ input[type="week"]:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
 	background: var(--kiwi-form-background, white);
-	border: var(--kiwi-form-focus-outline, 1px solid cornflowerblue);
+	border: var(--kiwi-form-focus-outline, 1px solid $primary-color);
 }
 
 ::placeholder {

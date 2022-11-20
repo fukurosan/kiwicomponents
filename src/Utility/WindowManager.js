@@ -228,12 +228,12 @@ export const alert = (title, message, buttonText, type, icon) => {
 /**
  * @description Opens a prompt modal to the user that must be actively dismissed.
  * @param {string=} message - An optional title to be displayed
- * @param {string=} attributes - Attributes to be applied on the input field element
+ * @param {(string | HTMLFormElement | {[key: string]: any})=} formOrInputAttributes - Attributes to be applied on the input field element, or a form as an HTML element or a string
  * @param {string=} cancelLabel - Label for the cancel button
  * @param {string=} confirmLabel - Label for the confirm button
  * @returns {Promise<any>} - Promise that will resolve to the value inserted by the user. If the user cancels the value will resolve to null.
  */
-export const prompt = (message, attributes, cancelLabel, confirmLabel) => {
+export const prompt = (message, formOrInputAttributes, cancelLabel, confirmLabel) => {
 	const content = document.createElement("div")
 	const buttons = document.createElement("div")
 	if (message) {
@@ -242,15 +242,28 @@ export const prompt = (message, attributes, cancelLabel, confirmLabel) => {
 		title.classList.add("kiwi-windowmanager-generic-title")
 		content.appendChild(title)
 	}
-	const input = document.createElement("input")
-	if (attributes) {
-		Object.keys(attributes).forEach(key => {
-			input.setAttribute(key, attributes[key])
-		})
+	//If a form was provided then use that
+	let form
+	if (formOrInputAttributes instanceof HTMLFormElement && formOrInputAttributes.tagName === "FORM") {
+		form = formOrInputAttributes
 	}
-	input.style.width = "100%"
-	input.style.boxSizing = "border-box"
-	content.appendChild(input)
+	//If a string was provided then parse it to an HTML element and assume it is a form
+	else if (typeof formOrInputAttributes === "string") {
+		form = new DOMParser().parseFromString(formOrInputAttributes, "text/html").body.children[0]
+	}
+	//Otherwise configure a form with a single input field
+	else {
+		const input = document.createElement("input")
+		if (typeof formOrInputAttributes === "object" && formOrInputAttributes !== null) {
+			Object.keys(formOrInputAttributes).forEach(key => {
+				input.setAttribute(key, formOrInputAttributes[key])
+			})
+		}
+		form = document.createElement("form")
+		form.appendChild(input)
+	}
+	form.style.width = "100%"
+	content.appendChild(form)
 	content.appendChild(buttons)
 	content.classList.add("kiwi-windowmanager-generic-content")
 	content.classList.add("kiwi-windowmanager-generic-message")
@@ -276,9 +289,28 @@ export const prompt = (message, attributes, cancelLabel, confirmLabel) => {
 			resolve(null)
 		})
 		confirmButton.addEventListener("click", () => {
-			if (input.checkValidity()) {
-				window.close()
-				resolve(input.value)
+			if (form.reportValidity()) {
+				//If its a user provided form, format the data into an object
+				if (formOrInputAttributes instanceof HTMLElement || typeof formOrInputAttributes === "string") {
+					const formData = Array.from(new FormData(form).entries()).reduce((obj, item) => {
+						if (obj[item[0]]) {
+							!Array.isArray(obj[item[0]]) && (obj[item[0]] = [obj[item[0]]])
+							obj[item[0]].push(item[1])
+						} else {
+							obj[item[0]] = item[1]
+						}
+						return obj
+					}, {})
+					window.close()
+					resolve(formData)
+				}
+				//If its just a simple input field, return the value as is
+				else {
+					if (form.reportValidity()) {
+						window.close()
+						resolve(form.children[0].value)
+					}
+				}
 			}
 		})
 	})

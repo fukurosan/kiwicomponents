@@ -246,6 +246,18 @@
 			const input = await kiwicomponents.prompt("Please fill in something here, thanks.", { value: 'Some initial value' })
 			console.log(input)
 		}
+		async function promptUserWithForm() {
+			const formString = `
+        <form style="display:flex;flex-direction:column;gap:0.5rem;">
+          <input placeholder="First Name" name="firstName" required>
+          <input placeholder="Last Name" name="lastName" value="Smith" required>
+          <input placeholder="Second Last Name" name="lastName" required>
+        </form>
+        `
+			const form = new DOMParser().parseFromString(formString, "text/html").body.children[0]
+			const input = await kiwicomponents.prompt("Important form", form)
+			console.log(input)
+		}
 		kiwicomponents.enableGlobalTooltips()
 		kiwicomponents.injectStyle({
 			forms: true

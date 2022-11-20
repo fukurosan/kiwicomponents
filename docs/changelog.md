@@ -3,8 +3,6 @@
 ### (TBR)
 - Add auto-flipping to tooltips when they overflow
 - Add split view component
-- Add accordion component
-- Add link list component
 - Handle case where tab component overflows
 
 ### 0.3.0

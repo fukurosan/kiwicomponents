@@ -258,7 +258,19 @@
         console.log("Alert was closed.")
       }
       async function promptUser() {
-        const input = await kiwicomponents.prompt("Please fill in something here, thanks.")
+        const input = await kiwicomponents.prompt("Please fill in something here, thanks.", { required: "true" })
+        console.log(input)
+      }
+      async function promptUserForm() {
+        const formString = `
+        <form style="display:flex;flex-direction:column;gap:0.5rem;">
+          <input placeholder="First Name" name="firstName">
+          <input placeholder="Last Name" name="lastName" value="Smith">
+          <input placeholder="Last Name 2" name="lastName" required>
+        </form>
+        `
+        const form = new DOMParser().parseFromString(formString, 'text/html').body.children[0]
+        const input = await kiwicomponents.prompt("Important form", form)
         console.log(input)
       }
     </script>
@@ -266,6 +278,7 @@
     <kiwi-button onclick="showSpinner()">Show Spinner</kiwi-button>
     <kiwi-button onclick="alertUser()">Alert</kiwi-button>
     <kiwi-button onclick="promptUser()">Prompt</kiwi-button>
+    <kiwi-button onclick="promptUserForm()">Prompt Form</kiwi-button>
   </div>
 
   <div class="box">
