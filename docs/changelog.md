@@ -25,6 +25,7 @@
 - Added scroll list component
 - Added alert component
 - Optimized kiwi-tree-item animation
+- Added thread planner
 
 ### 0.2.6
 

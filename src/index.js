@@ -23,6 +23,7 @@ import { injectStyle } from "./Utility/StyleInjection"
 import { showToast } from "./Utility/Notifications"
 import { enableGlobalTooltips } from "./Utility/Tooltip"
 import { openWindow, confirm, showSpinner, alert, prompt } from "./Utility/WindowManager"
+import { getThreadPlanner } from "./ThreadPlanner/api"
 
 //Export
-export { injectStyle, showToast, enableGlobalTooltips, openWindow, confirm, showSpinner, alert, prompt }
+export { injectStyle, showToast, enableGlobalTooltips, openWindow, confirm, showSpinner, alert, prompt, getThreadPlanner }

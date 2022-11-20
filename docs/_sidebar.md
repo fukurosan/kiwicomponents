@@ -7,6 +7,7 @@
 * [Forms](forms.md)
 * [Utility](utility.md)
 * [Components](components.md)
+* [Thread Planner](threadplanner.md)
 * [Typography](typography.md)
 * [Scrollbars](scrollbars.md)
 * [Theming](themingg.md)

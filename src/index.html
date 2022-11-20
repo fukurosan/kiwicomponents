@@ -708,6 +708,94 @@
     </kiwi-alert>
   </div>
 
+  <div class="box" style="display:flex;flex-direction:column;">
+    Thread Planner
+    <kiwi-button id="thread-one-button" onclick="startThread()">Start Thread</kiwi-button>
+    <kiwi-button id="thread-one-button" onclick="warmup()">Warmup</kiwi-button>
+    <kiwi-button id="thread-one-button" onclick="asPrototype()">Run through prototype</kiwi-button>
+    <kiwi-button id="thread-many-button" onclick="runManyInThread()">Run Many In Thread</kiwi-button>
+    <kiwi-button id="thread-terminate-button" onclick="terminateThreads()">Terminate All Threads</kiwi-button>
+    <kiwi-button id="thread-terminate-button" onclick="setMaxThreads()">Set Max Threads to 2</kiwi-button>
+    <kiwi-button id="thread-meta-button" onclick="startMonitoringThreadPlanner()">Monitor</kiwi-button>
+    <div id="threads-meta"></div>
+    <div id="threads-executing"></div>
+    <script defer>
+      const threadPlanner = kiwicomponents.getThreadPlanner()
+      const startMonitoringThreadPlanner = () => {
+        setInterval(() => {
+          document.getElementById("threads-meta").innerHTML = `
+          <div>Max Thread Count: ${threadPlanner.getMaxThreadCount()}</div>
+          <div>Max Idle Time: ${threadPlanner.getMaxThreadIdleTime()}</div>
+          <div>Running jobs: ${threadPlanner.getNumberOfRunningJobs()}</div>
+          <div>Queued Jobs: ${threadPlanner.getNumberOfQueuedJobs()}</div>
+        `
+        }, 100)
+      }
+
+      function someHeavyFunction(numberOne, numberTwo) {
+        const start = Date.now()
+        while (start + 2000 > Date.now()) { }
+        return numberOne + numberTwo
+      }
+
+      const startThread = () => {
+        const div = document.createElement("div")
+        div.innerHTML = `Thread Queued 🟠`
+        threadPlanner.runThread(someHeavyFunction, 1, 2)
+          .then(result => {
+            div.innerHTML = `Thread Completed 🟢`
+            console.log(result)
+          }).catch(error => {
+            div.innerHTML = `Thread Terminated 🔴`
+            console.log(error)
+          })
+        document.getElementById("threads-executing").appendChild(div)
+      }
+
+      const runManyInThread = () => {
+        const div = document.createElement("div")
+        div.innerHTML = `Many Ops Thread Queued 🟠`
+        threadPlanner.runManyInThread(someHeavyFunction, [1, 2], [1, 2], [1, 2])
+          .then(result => {
+            div.innerHTML = `Many Ops Thread Completed 🟢`
+            console.log(result)
+          }).catch(error => {
+            div.innerHTML = `Many Ops Thread Terminated 🔴`
+            console.log(error)
+          })
+        document.getElementById("threads-executing").appendChild(div)
+      }
+
+      const terminateThreads = () => {
+        threadPlanner.terminateAllThreads()
+      }
+
+      const setMaxThreads = () => {
+        threadPlanner.setMaxThreadCount(2)
+      }
+
+      const warmup = () => {
+        threadPlanner.warmupThreads(someHeavyFunction, 0)
+      }
+
+      threadPlanner.enableGlobalThreadPlanner()
+
+      const asPrototype = () => {
+        const div = document.createElement("div")
+        div.innerHTML = `Thread Queued 🟠`
+        someHeavyFunction.runThread(1, 2)
+          .then(result => {
+            div.innerHTML = `Thread Completed 🟢`
+            console.log(result)
+          }).catch(error => {
+            div.innerHTML = `Thread Terminated 🔴`
+            console.log(error)
+          })
+        document.getElementById("threads-executing").appendChild(div)
+      }
+    </script>
+  </div>
+
   <br><br><br><br><br>
   <br><br><br><br><br>
 
