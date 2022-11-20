@@ -94,7 +94,7 @@ async function promptUserWithForm() {
         `
 	//Or you can provide an actual HTML form element
 	const form = new DOMParser().parseFromString(formString, "text/html").body.children[0]
-	const input = await kiwicomponents.prompt("Important form", form)
+	const input = await kiwicomponents.prompt("Fill in the details below", form)
 	//In this case the result will be a json object, where each key is the name attribute of the input field.
 	console.log(input) // -> { firstName: "User inputed value", lastName: ["Value 1", "Value 2"] }
 }
