@@ -121,7 +121,7 @@ export const confirm = (message, title, cancelLabel, confirmLabel) => {
 		scale: "large",
 		modality: "disabled",
 		autosize: true,
-		centered: true
+		centered: "scroll"
 	})
 	return new Promise(resolve => {
 		cancelButton.addEventListener("click", () => {
@@ -163,7 +163,7 @@ export const showSpinner = message => {
 		scale: "large",
 		modality: "disabled",
 		autosize: true,
-		centered: true
+		centered: "scroll"
 	})
 	return () => spinnerModal.close()
 }
@@ -215,7 +215,7 @@ export const alert = (title, message, buttonText, type, icon) => {
 		scale: "large",
 		modality: "disabled",
 		autosize: true,
-		centered: true
+		centered: "scroll"
 	})
 	return new Promise(resolve => {
 		closeButton.addEventListener("click", () => {
@@ -281,7 +281,7 @@ export const prompt = (message, formOrInputAttributes, cancelLabel, confirmLabel
 		scale: "large",
 		modality: "disabled",
 		autosize: true,
-		centered: true
+		centered: "scroll"
 	})
 	return new Promise(resolve => {
 		cancelButton.addEventListener("click", () => {

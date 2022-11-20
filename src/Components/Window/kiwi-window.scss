@@ -355,6 +355,12 @@
 	max-width: calc(100vw - 3rem) !important;
 }
 
+/* Necessary for Safari */
+:host([usecentered]) #body {
+	height: fit-content !important;
+	width: fit-content !important;
+}
+
 :host(:not([useresizable])) .resizer {
 	display: none;
 }
@@ -365,6 +371,14 @@
 	margin-top: 3rem !important;
 	max-height: unset !important;
 }
+/*
+:host([usecentered="scroll"]:not([footer])) #body {
+	margin-bottom: 3rem !important;
+}
+:host([usecentered="scroll"]) #footer {
+	margin-bottom: 3rem !important;
+}
+*/
 
 :host([usecentered="scroll"]) #window-container {
 	position: fixed;
