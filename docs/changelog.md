@@ -10,6 +10,7 @@
 
 ### 0.3.1
 - Patch for error in window manager configuration
+
 ### 0.3.0
 - Added alert() utility function
 - Added prompt() utility function
