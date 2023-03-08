@@ -1,4 +1,4 @@
-# Thread Planner (Beta)
+# Thread Planner
 
 The thread planner is meant to help make multi threading easier in the web browser. You do not need to deal with creating worker objects, terminating workers after execution, nor do you need to keep track of how many threads are running at any given point in time. This all handled for you.
 

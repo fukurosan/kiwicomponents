@@ -6,11 +6,11 @@
 	z-index: 9999999;
 	display: none;
 	position: fixed;
-	background: var(--kiwi-tooltip-background, black);
-	color: var(--kiwi-tooltip-color, white);
-	padding: 0.5rem 0.75rem;
-	border-radius: var(--kiwi-tooltip-border-radius, 0.5em);
-	max-width: var(--kiwi-tooltip-max-width, 300px);
+	background: $neutral-color-900;
+	color: $with-color-above-400;
+	padding: var(--kiwi-tooltip-padding, 0.5rem 0.75rem);
+	border-radius: $section-border-radius;
+	max-width: var(--kiwi-tooltip-max-width, 18.75rem);
 	user-select: none;
 	pointer-events: none;
 	opacity: 0;
@@ -38,7 +38,7 @@
 	margin-left: calc(0px - var(--arrow-size));
 	top: 100%;
 	left: 50%;
-	border-top-color: var(--kiwi-tooltip-background, black) !important;
+	border-top-color: $neutral-color-900 !important;
 }
 :host([position="right"]) #main {
 	transform-origin: left;
@@ -47,7 +47,7 @@
 	margin-top: calc(0px - var(--arrow-size));
 	top: 50%;
 	right: 100%;
-	border-right-color: var(--kiwi-tooltip-background, black) !important;
+	border-right-color: $neutral-color-900 !important;
 }
 :host([position="bottom"]) #main {
 	transform-origin: top;
@@ -56,7 +56,7 @@
 	margin-left: calc(0px - var(--arrow-size));
 	bottom: 100%;
 	left: 50%;
-	border-bottom-color: var(--kiwi-tooltip-background, black) !important;
+	border-bottom-color: $neutral-color-900 !important;
 }
 :host([position="left"]) #main {
 	transform-origin: right;
@@ -65,5 +65,5 @@
 	margin-top: calc(0px - var(--arrow-size));
 	top: 50%;
 	left: 100%;
-	border-left-color: var(--kiwi-tooltip-background, black) !important;
+	border-left-color: $neutral-color-900 !important;
 }

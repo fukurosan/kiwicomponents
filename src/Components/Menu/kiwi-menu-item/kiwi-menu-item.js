@@ -38,8 +38,6 @@ class MenuItemElement extends HTMLElement {
 		this._submenuSlotElement.addEventListener("slotchange", this._handleSubMenuChanged.bind(this))
 		this._mainContainerElement.addEventListener("click", this._handleDisabledClick.bind(this))
 		this._mainContainerElement.addEventListener("mouseenter", this._computePosition.bind(this))
-		this._MARGIN = 4
-		this._mainContainerElement.style.setProperty("--margin", `${this._MARGIN}px`)
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
@@ -111,11 +109,13 @@ class MenuItemElement extends HTMLElement {
 		const targetBCR = this._mainContainerElement.getBoundingClientRect()
 		let adjustment
 		//If the entire submenu cannot fit to the right (default) but it can fully fit to the left, then put it to the left instead.
+		const margin = window.getComputedStyle(clone).margin
+		const marginInt = parseInt(margin.substring(0, margin.indexOf("px")))
 		if (mainElementBCR.x + mainElementBCR.width + targetBCR.width > window.innerWidth && mainElementBCR.x - mainElementBCR.width > 0) {
-			adjustment = computePositionAdjustment(mainElementBCR, targetBCR, "left", "start", null, null, -this._MARGIN)
+			adjustment = computePositionAdjustment(mainElementBCR, targetBCR, "left", "start", null, null, marginInt)
 			this._submenuContainerElement.classList.add("reversed")
 		} else {
-			adjustment = computePositionAdjustment(mainElementBCR, targetBCR, "right", "start", null, null, -this._MARGIN)
+			adjustment = computePositionAdjustment(mainElementBCR, targetBCR, "right", "start", null, null, marginInt)
 			this._submenuContainerElement.classList.remove("reversed")
 		}
 		//Apply new coordinates and dispose of the clone

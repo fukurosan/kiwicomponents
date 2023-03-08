@@ -65,6 +65,7 @@ const openAlert = async () => {
 The prompt() function opens up a modal with a form to receive user input and returns a promise that will resolve with the input value(s). If the user cancels the prompt a null value will be resolved.
 
 The simplest way to use the function is to provide a title, as well as an optional object of attributes that should be applied to the form input field.
+
 ### Example
 
 ```javascript

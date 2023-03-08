@@ -15,7 +15,6 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @attr {"top"|"right"|"bottom"|"left"|"mouse"|"follow"} position - Determines how the tooltip should be positioned relative to the target element.
  * @attr {string} target - Target css selector of element.
  * @attr {number} delay - Delay in ms before the tooltip should be displayed.
- * @attr {string} padding - Padding for the tooltip.
  * @attr {any} noanimation - If provided the tooltip will not animate on insert/remove.
  *
  * @prop {HTMLElement} targetElement - Target for the tooltip element
@@ -33,7 +32,7 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  */
 class TooltipElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["position", "target", "delay", "padding", "noanimation"]
+		return ["position", "target", "delay", "noanimation"]
 	}
 
 	constructor() {
@@ -79,8 +78,6 @@ class TooltipElement extends HTMLElement {
 			this._updateTargetQuery(newValue)
 		} else if (name === "noanimation") {
 			this._updateNoAnimation(newValue)
-		} else if (name === "padding") {
-			this._updatePadding(newValue)
 		}
 	}
 
@@ -94,14 +91,6 @@ class TooltipElement extends HTMLElement {
 			this._mainElement.style.transition = "none"
 		} else {
 			this._mainElement.style.removeProperty("transition")
-		}
-	}
-
-	_updatePadding(newValue) {
-		if (newValue) {
-			this._mainElement.style.padding = newValue
-		} else {
-			this._mainElement.style.removeProperty("padding")
 		}
 	}
 

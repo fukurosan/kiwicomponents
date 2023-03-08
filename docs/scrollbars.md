@@ -7,15 +7,14 @@ The scrollbar styling implementation differs greatly between browsers. There is 
 It should be noted that the above W3C specification explicitly states: _"Exposing the scrollbar-related ::-webkit- prefixed pseudo-elements to the Web is considered a mistake by both the CSS Working Group and Webkit."_. Implementing such scrollbar settings should in other words be done at your own risk.
 
 
-## Enabling Global Scrollbars
+## Enabling Scrollbars
 
-To enable global scrollbar styling in your project you can use the injectStyle function and set scrollbars to true.
+To enable scrollbar styling in your project you can either import the specific css file, or the entire bundle:
 
 ```javascript
-import { injectStyle } from "kiwicomponents"
-kiwicomponents.injectStyle({
-	scrollbars: true
-})
+import "kiwicomponents/dist/scrollbar.css"
+//OR
+import "kiwicomponents/dist/bundle.css"
 ```
 
 ## CSS Variables

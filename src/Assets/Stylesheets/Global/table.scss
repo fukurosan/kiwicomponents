@@ -1,70 +1,56 @@
 @import "../variables.scss";
 
-$default-row-height: 2.5rem;
-$default-font-size: 1rem;
-
 table {
 	width: 100%;
 	border-collapse: separate;
 	border-spacing: 0px;
-	border: var(--kiwi-table-border, none);
-	border-radius: var(--kiwi-table-border-radius, 0.5rem);
-}
-
-thead {
-	position: sticky;
-	top: 0;
-	background: var(--kiwi-table-header-background, #1a1a1a);
-	color: var(--kiwi-table-header-color, white);
-}
-
-tbody {
-	background: var(--kiwi-table-row-background, white);
-	color: var(--kiwi-table-row-color, black);
-}
-
-tbody tr {
-	&:hover:hover {
-		background: var(--kiwi-table-row-background-hover, #f6f6f6);
-	}
-	&.imploded {
-		display: none;
-	}
-	&.selected {
-		background: var(--kiwi-table-row-background-selected, #dddddd) !important;
-	}
-}
-
-tbody tr:nth-child(odd) {
-	background: var(--kiwi-table-odd-row-background, var(--kiwi-table-row-background, white));
 }
 
 th {
-	font-weight: bold;
-	&:not(:last-child) {
-		border-right: var(--kiwi-table-header-vertical-border, none);
-	}
-	&:last-child {
-		border-top-right-radius: var(--kiwi-table-border-radius, 0.5rem);
-	}
-	&:first-child {
-		border-top-left-radius: var(--kiwi-table-border-radius, 0.5rem);
-	}
-}
-
-td {
-	&:not(:last-child) {
-		border-right: var(--kiwi-table-cell-vertical-border, none);
-	}
+	text-align: left;
+	font-weight: 700;
+	border-bottom: 2px solid $neutral-color-300;
 }
 
 th,
 td {
-	padding: 0px calc(var(--kiwi-table-row-height, #{$default-row-height}) / 2) 0px calc(var(--kiwi-table-row-height, #{$default-row-height}) / 2);
-	font-size: var(--kiwi-table-font-size, $default-font-size);
-	border-bottom: var(--kiwi-table-row-horizontal-border, 1px solid #d0d0d0);
-	white-space: var(--kiwi-table-white-space, unset);
+	padding: 0.75em 1em;
+}
+
+table.sticky-headers {
+	position: relative;
+	thead {
+		position: sticky;
+		top: 0;
+		background-color: $primary-color-600;
+		th {
+			color: $with-color-above-400;
+		}
+	}
+}
+
+table.fixed {
+	table-layout: fixed;
+}
+
+table.hover-effect tbody tr:hover {
+	background: $neutral-color-100;
+}
+
+table.striped tbody tr:nth-child(odd) {
+	background: $neutral-color-100;
+}
+
+table.border-v :is(th, td):not(:last-child) {
+	border-right: 1px solid $neutral-color-300;
+}
+
+table.border-h tr:not(:last-child) td {
+	border-bottom: 1px solid $neutral-color-300;
+}
+
+table.nowrap :is(th, td) {
+	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	height: var(--kiwi-table-row-height, 2.5rem)
 }

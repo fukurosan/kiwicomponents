@@ -12,7 +12,7 @@ const myWindow = openWindow({
 	draggable: true,
 	resizable: true,
 	minimizable: true,
-	maximizeButton: true,
+	maximizable: true,
 	closeButton: true,
 	body: `<div>This is some content inside of the window.</div> 
 			<div>With multiple rows.</div>`,
@@ -21,7 +21,7 @@ const myWindow = openWindow({
 //Note that the body and footer can be either a string, an HTML element or a function that returns an HTML element.
 ```
 
-<kiwi-button onclick="openWindow({draggable: true, resizable: true, minimizable: true, maximizeButton: true, closeButton: true})">Try it</kiwi-button>
+<kiwi-button onclick="openWindow({draggable: true, resizable: true, minimizable: true, maximizable: true, closeButton: true})">Try it</kiwi-button>
 
 ---
 
@@ -56,7 +56,7 @@ const myWindow = openWindow({
 	draggable: true,
 	resizable: true,
 	minimizable: true,
-	maximizeButton: true,
+	maximizable: true,
 	closeButton: true,
 	body: `<div>This is some content inside of the window.</div>
 			<div>With multiple rows.</div>`,
@@ -65,7 +65,7 @@ const myWindow = openWindow({
 })
 ```
 
-<kiwi-button onclick="openWindow({draggable: true, resizable: true, minimizable: true, maximizeButton: true, closeButton: true}).setSize(500, 500);">Try it</kiwi-button>
+<kiwi-button onclick="openWindow({draggable: true, resizable: true, minimizable: true, maximizable: true, closeButton: true}).setSize(500, 500);">Try it</kiwi-button>
 
 ---
 
@@ -75,22 +75,22 @@ When creating a window you are able to pass options to the openWindow function. 
 
 The following options are supported:
 
-| option         | type                                                  | description                                                          |
-| -------------- | ----------------------------------------------------- | -------------------------------------------------------------------- |
-| minimizable    | boolean                                               | If set to any value the minimize button will be added to the header. |
-| maximizebutton | boolean                                               | If set to any value the maximize button will be added to the header. |
-| closebutton    | boolean                                               | If set to any value the close button will be added to the header.    |
-| draggable      | boolean                                               | If set to any value the window will be dragable.                     |
-| resizable      | boolean                                               | If set to any value the window will be resizable.                    |
-| centered       | boolean                                               | If set to any value the window will be centered in the viewport.     |
-| modality       | "none" \| "clickable" \| "disabled"                   | configures the backdrop of the window.                               |
-| scale          | "none" \| "compact" \| "small "\| "medium" \| "large" | Determines the general dimensions of the window's sections.          |
-| title          | string                                                | Header text.                                                         |
-| icon           | string                                                | Header icon.                                                         |
-| noanimation    | boolean                                               | If set to any value no animations will take place.                   |
-| body           | string \| HTMLElement \| () => HTMLElement            | The main content of the window                                       |
-| header         | string \| HTMLElement \| () => HTMLElement            | A custom header for the window                                       |
-| footer         | string \| HTMLElement \| () => HTMLElement            | The footer content for the window                                    |
+| option      | type                                                  | description                                                          |
+| ----------- | ----------------------------------------------------- | -------------------------------------------------------------------- |
+| minimizable | boolean                                               | If set to any value the minimize button will be added to the header. |
+| maximizable | boolean                                               | If set to any value the maximize button will be added to the header. |
+| closebutton | boolean                                               | If set to any value the close button will be added to the header.    |
+| draggable   | boolean                                               | If set to any value the window will be dragable.                     |
+| resizable   | boolean                                               | If set to any value the window will be resizable.                    |
+| centered    | boolean                                               | If set to any value the window will be centered in the viewport.     |
+| modality    | "none" \| "clickable" \| "disabled"                   | configures the backdrop of the window.                               |
+| scale       | "none" \| "compact" \| "small "\| "medium" \| "large" | Determines the general dimensions of the window's sections.          |
+| title       | string                                                | Header text.                                                         |
+| icon        | string                                                | Header icon.                                                         |
+| noanimation | boolean                                               | If set to any value no animations will take place.                   |
+| body        | string \| HTMLElement \| () => HTMLElement            | The main content of the window                                       |
+| header      | string \| HTMLElement \| () => HTMLElement            | A custom header for the window                                       |
+| footer      | string \| HTMLElement \| () => HTMLElement            | The footer content for the window                                    |
 
 ### Example:
 
@@ -122,26 +122,7 @@ The following variables can be set:
 
 | Variable                         | Description                                                                           |
 | -------------------------------- | ------------------------------------------------------------------------------------- |
-| --kiwi-window-backdrop-opacity   | Sets the opacity of the window backdrop (if applicable)                               |
-| --kiwi-window-shadow             | Sets the box shadow of the window element                                             |
-| --kiwi-window-border-radius      | Sets the border radius of the window                                                  |
 | --kiwi-window-animation-duration | Sets the animation duration for when the window is opened or closed                   |
-| --kiwi-window-header-background  | Sets the background for the window header                                             |
 | --kiwi-window-separator-color    | Sets the color for the separator lines between the body section and the header/footer |
 | --kiwi-window-body-background    | Sets the background for the window body                                               |
 | --kiwi-window-footer-background  | Sets the background for the window footer                                             |
-| --kiwi-window-backdrop-blur      | Sets the amount of background blur for the window backdrop                            |
-
-### Example:
-
-```html
-<style>
-	:root {
-		--kiwi-window-animation-duration: 600ms;
-		--kiwi-window-body-background: lightgreen;
-		--kiwi-window-border-radius: 30px;
-	}
-</style>
-```
-
-<kiwi-button onclick="openWindow({closeButton: true}).setAttribute('style', '--kiwi-window-animation-duration:600ms;--kiwi-window-header-background:lightgreen;--kiwi-window-border-radius:30px;');">Try it</kiwi-button>

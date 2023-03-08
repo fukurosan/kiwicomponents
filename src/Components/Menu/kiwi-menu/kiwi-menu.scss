@@ -7,10 +7,10 @@
 	z-index: 1000;
 	left: 0;
 	top: 0;
-	background: var(--kiwi-menu-background, black);
-	color: var(--kiwi-menu-color, white);
-	box-shadow: var(--kiwi-menu-shadow, 0 2px 5px 0 rgba(0, 0, 0, 0.2));
-	border-radius: var(--kiwi-menu-border-radius, 0.5em);
+	background: $white;
+	color: $neutral-color-900;
+	box-shadow: $section-shadow;
+	border-radius: $section-border-radius;
 	user-select: none;
 	transition: transform var(--kiwi-menu-animation-duration, 200ms) ease-in-out, opacity var(--kiwi-menu-animation-duration, 200ms) ease-in-out,
 		clip-path var(--kiwi-menu-animation-duration, 200ms) ease-in-out;

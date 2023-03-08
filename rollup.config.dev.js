@@ -8,6 +8,8 @@ import { string } from "rollup-plugin-string"
 import copy from "rollup-plugin-copy"
 import serve from "rollup-plugin-serve"
 import livereload from "rollup-plugin-livereload"
+import sass from "sass"
+import fs from "fs"
 
 const DIST_FOLDER = "development"
 const HTML_TEST_FILE = "index.html"
@@ -26,10 +28,10 @@ const BANNER = `/** @preserve @license @cc_on
  */\n`
 
 export default {
-	input: "./src/index.js",
+	input: "./src/index.bundle.js",
 	output: [
 		{
-			file: `${DIST_FOLDER}/${LIBRARY_NAME}-bundle.js`,
+			file: `${DIST_FOLDER}/bundle.js`,
 			name: LIBRARY_NAME,
 			format: "umd",
 			banner: BANNER,
@@ -60,7 +62,13 @@ export default {
 					src: `src/${HTML_TEST_FILE}`,
 					dest: `${DIST_FOLDER}/`,
 					rename: "index.html",
-					transform: content => content.toString().replace("<head>", `<head><script src="./${LIBRARY_NAME}-bundle.js"></script>`)
+					transform: content =>
+						content
+							.toString()
+							.replace(
+								"<head>",
+								`<head><script src="./bundle.js"></script><link rel="stylesheet" href="./bundle.css">`
+							)
 				},
 				{
 					src: "src/Assets/Icons",
@@ -69,6 +77,19 @@ export default {
 			],
 			copyOnce: true
 		}),
+		{
+			name: "build-kiwi-stylesheets",
+			buildEnd() {
+				fs.readdirSync("./src/Assets/Stylesheets/Global/").map(fileName => {
+					const css = sass.compile(`./src/Assets/Stylesheets/Global/${fileName}`, {
+						style: "compressed",
+						sourceMap: false
+					})
+					fs.writeFileSync(`${DIST_FOLDER}/${fileName.replace(/.scss$/, "")}.css`, `${BANNER}${css.css}`, "utf-8")
+				})
+				return null
+			}
+		},
 		serve({
 			open: true,
 			openPage: "/index.html",

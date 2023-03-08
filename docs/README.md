@@ -1,6 +1,7 @@
 # Getting started
 
 ## What is Kiwi Components?
+
 Kiwi Components is an SDK for web browsers.
 
 The library aims to simplify typically difficult or boilerplate-heavy parts of web application development, and enables you to easily add functionality like window management, notifications, context menus and a whole bunch more through a declarative API.
@@ -13,26 +14,42 @@ The entire library is framework agnostic, and purely built on standard HTML, CSS
 
 > ## Installation
 
+### NPM
+
 Install using npm:
 
 ```bash
 $ npm install kiwicomponents
 ```
 
-Load using a script element:
-```html
-<script src="https://unpkg.com/kiwicomponents"></script>
+You can then use the library like so:
+
+```javascript
+import "kiwicomponents" // -> Initializes the library
+import { alert } from "kiwicomponents" // -> Imports the function(s) from the library
+import "kiwicomponents/dist/css/bundle.css" // -> Imports CSS file(s)
+
+//If you are working with some form of SSR framework you may get errors like "document is not defined".
+//For these cases you need to ensure that the library initialization takes place in the client and not the server
+//And then you need to change all your function imports like so:
+import { alert } from "kiwicomponents/dist/js/utility"
 ```
 
-!> **Tip**  
-*If you load the library bundle using a script element then a global variable called `kiwicomponents` will be created. All examples in these docs use standard ES import statements, but in this case you can omit these and instead access the necessary parts of the library by using `kiwicomponents.x`
+You can also load the entire library using a script element like so:
+
+```html
+<script src="https://unpkg.com/kiwicomponents"></script>
+<link rel="stylesheet" href="https://unpkg.com/kiwicomponents/dist/css/bundle.css">
+```
+
+If you load the library bundle using a script element then a global variable called `kiwicomponents` will be created. All examples in these docs use standard ES import statements, but in this case you can omit these and instead access the necessary parts of the library by using `kiwicomponents.x`
 
 ```html
 <script>
-//No
-import { x } from "kiwicomponents"
-//Yes
-kiwicomponents.x
+	//No
+	import { x } from "kiwicomponents"
+	//Yes
+	kiwicomponents.x
 </script>
 ```
 

@@ -6,20 +6,18 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
 
 /**
  * Kiwi Table
- * A table that can be based either on markup or a data structure provided as a property.
+ * A table wrapper element that allows developers to add interactivity to their tables
  * @element kiwi-table
  *
- * @prop {any} data - Data structure that populates the table
- *
- * @attr {string} fixed - Sets the table to be of a fixed table layour. A comma separated list of width values can be provided to affect how the table is sized.
+ * @attr {string} fixed - Sets the table to be of a fixed table layout. A comma separated list of width values can be provided to affect how the table is sized.
  * @attr {any} showtoggles - If set tree nodes can be toggled open or closed by a button injected into the first cell of each row
  * @attr {"tree"|"false"|"true"} selection - Configures if rows are selectable. If tree is set then a parent node's selection state is the sum of its children and vice verca.
  *
- * @slot - Markup using kiwi-tr and kiwi-td to generate a table with.
+ * @slot - Default slot for the wrapped table. The wrapped table *must* contain a tbody, and for headers (if applicable) a thead.
  *
  * @function explodeAllRows - Explodes all rows
  * @function implodeAllRows - Implodes all rows
- * @function getSelectedIDs - Returns all currently selected IDs
+ * @function getSelectedRows - Returns all currently selected IDs
  * @function clearSelection - Clears any current selection
  * @function selectAllRows - Selects all rows in the table
  * @function makeSelection - Alters the current selection without removing it
@@ -39,77 +37,39 @@ class TableElement extends HTMLElement {
 	constructor() {
 		super()
 		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
-		this._tableContainer = this.shadowRoot.querySelector("#table-container")
-		this._table = this.shadowRoot.querySelector("table")
-		this._thead = this.shadowRoot.querySelector("thead")
-		this._tbody = this.shadowRoot.querySelector("tbody")
+		/** @type {Map<HTMLElement, HTMLElement[]>} Mapping a row to its child rows */
 		this._childMap = new Map()
+		/** @type {Map<HTMLElement, HTMLElement>} Mapping a row to its parent row */
 		this._parentMap = new Map()
-		this._rowMap = new Map()
-		this._selection = new Set()
-		this._data = null
+		/** @type {Map<string, number>} Holds the depth of each row in the hierarchy */
+		this._depthMap = new Map()
+		this._working = false
+		/** Mutation observer that updates the indices etc whenever changes are made by the user */
 		this._mutationObserver = new MutationObserver(mutations => {
-			this._setDataFromMarkup()
+			//The component should not react to its own mutations, so we need to filter them out
+			const validUpdates = []
+			const isNodeValid = node => {
+				return node instanceof HTMLElement && !node.matches("._kiwi-table-injection")
+			}
+			mutations.forEach(mutation => {
+				mutation.removedNodes.forEach(node => {
+					isNodeValid(node) && validUpdates.push(node)
+				})
+				mutation.addedNodes.forEach(node => {
+					isNodeValid(node) && validUpdates.push(node)
+				})
+			})
+			validUpdates.length && this._updateTable()
 		})
-		this._mutationObserver.observe(this, { attributes: false, childList: true, subtree: true, characterData: true })
-	}
-
-	set data(newData) {
-		this._data = newData
-		this._render()
-	}
-
-	get data() {
-		return this._data
+		this._mutationObserver.observe(this, { attributes: false, childList: true, subtree: true, characterData: false })
 	}
 
 	connectedCallback() {
-		if (this.children.length) {
-			this._setDataFromMarkup()
-		}
+		this._updateTable()
 	}
 
 	attributeChangedCallback() {
-		this._render()
-	}
-
-	_setDataFromMarkup() {
-		const data = {
-			rows: [],
-			headers: []
-		}
-		Array.from(this.children).forEach(child => {
-			if (child.tagName.toUpperCase() === "KIWI-TR") {
-				data.rows.push(this._processMarkupChildRow(child))
-			} else if (child.tagName.toUpperCase() === "KIWI-TH") {
-				data.headers.push(child.textContent)
-			}
-		})
-		this.data = data
-	}
-
-	_processMarkupChildRow(kiwitr) {
-		const row = {}
-		kiwitr.hasAttribute("id") && (row.id = kiwitr.getAttribute("id"))
-		kiwitr.hasAttribute("kiwistyle") && (row.style = kiwitr.getAttribute("kiwistyle"))
-		kiwitr.data && (row.data = kiwitr.data)
-		kiwitr.hasAttribute("selectable") && (row.selectable = kiwitr.getAttribute("selectable") !== "false")
-		row.cells = []
-		row.children = []
-		Array.from(kiwitr.children).forEach(child => {
-			child.tagName.toUpperCase() === "KIWI-TR" && row.children.push(this._processMarkupChildRow(child))
-			child.tagName.toUpperCase() === "KIWI-TD" && row.cells.push(this._processMarkupChildCell(child))
-		})
-		return row
-	}
-
-	_processMarkupChildCell(kiwitd) {
-		const cell = {}
-		cell.type = "unsafehtml"
-		cell.value = kiwitd.innerHTML
-		kiwitd.hasAttribute("colspan") && (cell.colspan = kiwitd.getAttribute("colspan"))
-		kiwitd.hasAttribute("icon") && (cell.icon = kiwitd.getAttribute("icon"))
-		return cell
+		this._updateTable()
 	}
 
 	_getDivWithClass(classToAdd) {
@@ -121,8 +81,8 @@ class TableElement extends HTMLElement {
 	_explodeRow(childRows, deep) {
 		if (childRows) {
 			childRows.forEach(child => {
-				child.classList.remove("imploded")
-				if (deep || child.classList.contains("open")) {
+				child.classList.remove("_kiwi-table-imploded")
+				if (deep || child.classList.contains("_kiwi-table-open")) {
 					this._explodeRow(this._childMap.get(child), deep)
 				}
 			})
@@ -132,7 +92,7 @@ class TableElement extends HTMLElement {
 	_implodeRow(childRows, deep) {
 		if (childRows) {
 			childRows.forEach(child => {
-				child.classList.add("imploded")
+				child.classList.add("_kiwi-table-imploded")
 				if (deep) {
 					this._implodeRow(this._childMap.get(child), deep)
 				}
@@ -142,72 +102,64 @@ class TableElement extends HTMLElement {
 
 	explodeAllRows() {
 		this._childMap.forEach((value, key) => {
-			key.classList.add("open")
+			key.classList.add("_kiwi-table-open")
 			this._explodeRow(value)
 		})
 	}
 
 	implodeAllRows() {
 		this._childMap.forEach((value, key) => {
-			key.classList.remove("open")
+			key.classList.remove("_kiwi-table-open")
 			this._implodeRow(value)
 		})
 	}
 
-	getSelectedIDs() {
-		return [...this._selection].map(tr => tr.getAttribute("id"))
+	getSelectedRows() {
+		return [...this.querySelectorAll("._kiwi-table-selected")].map(tr => tr.getAttribute("kiwi-row-id"))
 	}
 
 	clearSelection(dispatchEvent = true) {
-		const oldSelection = this.getSelectedIDs()
-		Array.from(this._selection).forEach(tr => {
-			tr.classList.remove("selected")
+		const oldSelection = this.getSelectedRows()
+		this.querySelectorAll("._kiwi-table-selected").forEach(tr => {
+			tr.classList.remove("_kiwi-table-selected")
 		})
-		this._selection.clear()
 		dispatchEvent && this._dispatchSelectionEvent(oldSelection)
 	}
 
 	selectAllRows(dispatchEvent = true) {
-		const oldSelection = this.getSelectedIDs()
-		this.shadowRoot.querySelectorAll("tr").forEach(tr => {
+		const oldSelection = this.getSelectedRows()
+		this.querySelectorAll("tr").forEach(tr => {
 			if (this._isTRSelectable(tr)) {
-				tr.classList.add("selected")
-				this._selection.add(tr)
+				tr.classList.add("_kiwi-table-selected")
 			}
 		})
 		dispatchEvent && this._dispatchSelectionEvent(oldSelection)
 	}
 
-	makeSelection(id, dispatchEvent = true) {
-		const oldSelection = this.getSelectedIDs()
-		const tr = this.shadowRoot.getElementById(id)
-		if (!tr) {
-			return
-		}
+	makeSelection(tr, dispatchEvent = true) {
+		const oldSelection = this.getSelectedRows()
 		this._makeSelection(tr)
 		dispatchEvent && this._dispatchSelectionEvent(oldSelection)
 	}
 
 	setSelection(idArray, dispatchEvent = true) {
-		const oldSelection = this.getSelectedIDs()
+		const oldSelection = this.getSelectedRows()
 		this.clearSelection(false)
-		this.shadowRoot.querySelectorAll("tr").forEach(tr => {
+		this.querySelectorAll("tr").forEach(tr => {
 			if (this._isTRSelectable(tr) && idArray.includes(tr.getAttribute("id"))) {
-				tr.classList.add("selected")
-				this._selection.add(tr)
+				tr.classList.add("_kiwi-table-selected")
 			}
 		})
 		dispatchEvent && this._dispatchSelectionEvent(oldSelection)
 	}
 
 	filter(fnOrText, columnIndex) {
-		this._tableContainer.classList.add("filter-active")
 		if (!fnOrText) {
 			this.clearFilter()
 			return
 		}
 		const seenAncestry = new Set()
-		this.shadowRoot.querySelectorAll("tr").forEach(tr => {
+		this.querySelectorAll("tr").forEach(tr => {
 			if (tr.firstElementChild.tagName.toUpperCase() !== "TD") {
 				return
 			}
@@ -231,12 +183,12 @@ class TableElement extends HTMLElement {
 				match = fnOrText(rowData)
 			}
 			if (match) {
-				tr.classList.remove("filtered-hidden")
-				tr.classList.add("filtered-visible")
+				tr.classList.remove("_kiwi-table-filtered-hidden")
+				tr.classList.add("_kiwi-table-filtered-visible")
 				this._filterShowParentsUpwards(tr, seenAncestry)
 			} else {
-				tr.classList.add("filtered-hidden")
-				tr.classList.remove("filtered-visible")
+				tr.classList.add("_kiwi-table-filtered-hidden")
+				tr.classList.remove("_kiwi-table-filtered-visible")
 			}
 		})
 	}
@@ -254,16 +206,14 @@ class TableElement extends HTMLElement {
 	}
 
 	clearFilter() {
-		this.shadowRoot.querySelectorAll("tr").forEach(tr => {
-			tr.classList.remove("filtered-hidden")
-			tr.classList.remove("filtered-visible")
+		this.querySelectorAll("tr").forEach(tr => {
+			tr.classList.remove("_kiwi-table-filtered-hidden")
+			tr.classList.remove("_kiwi-table-filtered-visible")
 		})
-		this._tableContainer.classList.remove("filter-active")
-		this.hasAttribute("useconnections") && this._drawConnections()
 	}
 
 	_dispatchSelectionEvent(oldSelection) {
-		const newSelection = this.getSelectedIDs()
+		const newSelection = this.getSelectedRows()
 		const added = newSelection.filter(newID => !oldSelection.some(oldID => newID === oldID))
 		const removed = oldSelection.filter(oldID => !newSelection.some(newID => oldID === newID))
 		const detail = {
@@ -276,7 +226,7 @@ class TableElement extends HTMLElement {
 
 	_makeSelection(tr) {
 		let shouldRemove
-		if (this._selection.has(tr)) {
+		if (tr.classList.contains("_kiwi-table-selected")) {
 			shouldRemove = true
 		} else {
 			shouldRemove = false
@@ -290,18 +240,15 @@ class TableElement extends HTMLElement {
 
 	_updateSelectionOfRow(tr, shouldRemove) {
 		if (shouldRemove) {
-			tr.classList.remove("selected")
-			this._selection.delete(tr)
+			tr.classList.remove("_kiwi-table-selected")
+			tr.querySelector("._kiwi-table-injection input[type='checkbox']").checked = false
 		} else {
-			tr.classList.add("selected")
-			this._selection.add(tr)
+			tr.classList.add("_kiwi-table-selected")
+			tr.querySelector("._kiwi-table-injection input[type='checkbox']").checked = true
 		}
 	}
 
 	_makeSelectionDownwards(tr, shouldRemove) {
-		if (!this._isTRSelectable(tr)) {
-			return
-		}
 		this._updateSelectionOfRow(tr, shouldRemove)
 		if (this._childMap.has(tr)) {
 			this._childMap.get(tr).forEach(childTR => {
@@ -311,189 +258,168 @@ class TableElement extends HTMLElement {
 	}
 
 	_makeSelectionUpwards(tr) {
-		if (!this._isTRSelectable(tr)) {
-			return
-		}
 		if (this._parentMap.has(tr)) {
 			const parent = this._parentMap.get(tr)
-			if (!this._isTRSelectable(parent)) {
-				return
-			}
 			const siblings = this._childMap.get(parent)
-			const shouldParentBeSelected = siblings.every(siblingTR => this._selection.has(siblingTR) || !this._isTRSelectable(siblingTR))
+			const shouldParentBeSelected = siblings.every(siblingTR => siblingTR.classList.contains("_kiwi-table-selected"))
 			let statusChanged = false
-			if (shouldParentBeSelected && !this._selection.has(parent)) {
+			if (shouldParentBeSelected && !parent.classList.contains("_kiwi-table-selected")) {
 				this._updateSelectionOfRow(parent, false)
 				statusChanged = true
-			} else if (!shouldParentBeSelected && this._selection.has(parent)) {
+			} else if (!shouldParentBeSelected && parent.classList.contains("_kiwi-table-selected")) {
 				this._updateSelectionOfRow(parent, true)
 				statusChanged = true
 			}
-			if (statusChanged && this._parentMap.has(parent)) {
+			if (statusChanged) {
 				this._makeSelectionUpwards(parent)
 			}
 		}
 	}
 
-	_isRowSelectable(row) {
-		return row.id && (row.selectable || !row.hasOwnProperty("selectable"))
-	}
-
-	_isTRSelectable(tr) {
-		return !tr.hasAttribute("noselect")
-	}
-
-	_getHeader(value) {
-		const th = document.createElement("th")
-		const div = this._getDivWithClass("cell-content")
-		div.appendChild(document.createTextNode(value))
-		th.appendChild(div)
-		return th
-	}
-
-	_processRow(row, parent = null, depth = 0) {
-		const tr = document.createElement("tr")
-		row.id && tr.setAttribute("id", row.id)
-		this._rowMap.set(row.id, row)
-		!this._isRowSelectable(row) && tr.setAttribute("noselect", true)
-		parent && this.hasAttribute("showtoggles") && tr.classList.add("imploded")
-		if (this.hasAttribute("selection") && this.getAttribute("selection") !== "false") {
-			tr.appendChild(this._getSelectionCell(row))
-		}
-		row.cells &&
-			row.cells.forEach((cell, index) => {
-				const td = this._processCell(cell, row, index, depth)
-				tr.appendChild(td)
-			})
-		if (row.onClick) {
-			tr.addEventListener("click", () => row.onClick(row))
-		}
-		if (row.style) {
-			tr.setAttribute("style", row.style)
-		}
-		this._tbody.appendChild(tr)
-		if (row.children) {
-			const childRows = row.children.map(child => this._processRow(child, row, depth + 1))
-			if (childRows.length > 0) {
-				this._childMap.set(tr, childRows)
+	/**
+	 * Injects any custom functionality into the provided row.
+	 * The function is dependant on the local indices being up to date.
+	 * @param {HTMLElement} tr - The row to be processed
+	 */
+	_renderInjections(tr) {
+		//Handle parent structure
+		if (this.hasAttribute("showtoggles") && this.getAttribute("showtoggles") !== "false") {
+			const parent = this._parentMap.get(tr)
+			parent && tr.classList.add("_kiwi-table-imploded")
+			const td = document.createElement("td")
+			td.classList.add("_kiwi-table-injection")
+			const cellDiv = this._getDivWithClass("_kiwi-table-cell")
+			const depth = this._depthMap.get(tr)
+			if (depth > 0) {
+				for (let i = 0; i < depth; i++) {
+					cellDiv.appendChild(this._getDivWithClass("_kiwi-table-indent"))
+				}
 			}
-			childRows.forEach(childTR => this._parentMap.set(childTR, tr))
-			if (this.hasAttribute("showtoggles")) {
-				tr.children[this.hasAttribute("selection") && this.getAttribute("selection") !== "false" ? 1 : 0]
-					.querySelector(".expand-arrow")
-					?.addEventListener("click", () => {
-						if (tr.classList.contains("open")) {
-							this._implodeRow(childRows, true)
-						} else {
-							this._explodeRow(childRows, false)
-						}
-						tr.classList.toggle("open")
-					})
-			}
-		}
-		return tr
-	}
-
-	_processCell(cell, row, cellIndex, rowDepth) {
-		const td = document.createElement("td")
-		const div = this._getDivWithClass("cell-content")
-		if (cell.colspan) {
-			td.setAttribute("colspan", cell.colspan)
-		}
-		if (cellIndex === 0) {
-			for (let i = 0; i < rowDepth; i++) {
-				div.appendChild(this._getDivWithClass("indent"))
-			}
-		}
-		if (this.hasAttribute("showtoggles") && cellIndex === 0) {
 			const arrow = document.createElement("img")
-			arrow.classList.add("icon")
-			arrow.classList.add("expand-arrow")
-			if (!row.children || !row.children.length) {
+			arrow.classList.add("_kiwi-table-expand-arrow")
+			const childRows = this._childMap.get(tr)
+			if (!childRows.length) {
 				arrow.style.visibility = "hidden"
-			}
-			div.appendChild(arrow)
-		}
-		if (cell.icon !== undefined) {
-			const img = document.createElement("img")
-			img.classList.add("icon")
-			if (cell.icon !== "") {
-				img.setAttribute("src", cell.icon)
 			} else {
-				img.style.visibility = "hidden"
+				arrow.addEventListener("click", () => {
+					if (tr.classList.contains("_kiwi-table-open")) {
+						this._implodeRow(childRows, true)
+					} else {
+						this._explodeRow(childRows, false)
+					}
+					tr.classList.toggle("_kiwi-table-open")
+				})
 			}
-			div.appendChild(img)
+			cellDiv.appendChild(arrow)
+			const icon = tr.getAttribute("kiwi-row-icon")
+			if (icon) {
+				const img = document.createElement("img")
+				img.classList.add("_kiwi-table-icon")
+				if (icon !== "") {
+					img.setAttribute("src", icon)
+				} else {
+					img.style.visibility = "hidden"
+				}
+				cellDiv.appendChild(img)
+			}
+			const titleDiv = this._getDivWithClass("_kiwi-table-title")
+			const title = tr.getAttribute("kiwi-row-title")
+			titleDiv.innerHTML = title
+			cellDiv.appendChild(titleDiv)
+			td.appendChild(cellDiv)
+			tr.prepend(td)
 		}
-		const userContent = this._getDivWithClass("user-cell-content")
-		if (cell.type === "text" || !cell.type) {
-			userContent.appendChild(document.createTextNode(cell.value))
-		} else if (cell.type === "function") {
-			userContent.appendChild(cell.value())
-		} else if (cell.type === "unsafehtml") {
-			userContent.innerHTML = cell.value
-		}
-		div.appendChild(userContent)
-		td.appendChild(div)
-		if (cell.onClick) {
-			td.addEventListener("click", () => cell.onClick(cell))
-		}
-		return td
-	}
-
-	_getSelectionCell(row) {
-		const td = document.createElement("td")
-		if (row.id && this._isRowSelectable(row)) {
-			const div = this._getDivWithClass("cell-content")
-			const checkboxIcon = document.createElement("img")
-			checkboxIcon.classList.add("checkbox")
-			td.addEventListener("click", e => {
-				this.makeSelection(row.id, true, e)
+		//Handle selection structure
+		if (this.hasAttribute("selection") && this.getAttribute("selection") !== "false") {
+			const td = document.createElement("td")
+			td.classList.add("_kiwi-table-injection")
+			const cellDiv = this._getDivWithClass("_kiwi-table-cell")
+			const checkbox = document.createElement("input")
+			checkbox.setAttribute("type", "checkbox")
+			checkbox.addEventListener("click", e => {
+				this.makeSelection(tr, true, e)
 			})
-			div.appendChild(checkboxIcon)
-			td.appendChild(div)
+			cellDiv.appendChild(checkbox)
+			td.appendChild(cellDiv)
+			tr.prepend(td)
 		}
-		return td
 	}
 
-	_render() {
-		if (!this._data) {
+	/**
+	 * Updates the table and all local indices
+	 */
+	_updateTable() {
+		if (this._working) return
+		this._working = true
+		//Take us out of the flow to speed up all dom updates
+		this.style.display = "none"
+		//Clear all state
+		this._parentMap.clear()
+		this._childMap.clear()
+		this.clearFilter()
+		const table = this.querySelector("table")
+		if (!table) {
+			this._working = false
 			return
 		}
-		while (this._thead.firstChild) {
-			this._thead.firstChild.remove()
+		//Create all parent-child mappings and create a lookup table
+		const rowMap = new Map()
+		const getDepth = (next, depth = 0) => {
+			return this._parentMap.has(next) ? getDepth(this._parentMap.get(next), depth + 1) : depth
 		}
-		while (this._tbody.firstChild) {
-			this._tbody.firstChild.remove()
-		}
-		if (this._data.headers && this._data.headers.length) {
-			const row = document.createElement("tr")
-			if (this.hasAttribute("selection") && this.getAttribute("selection") !== "false") {
-				row.appendChild(document.createElement("th"))
+		Array.from(this.querySelectorAll("tr")).forEach(tr => {
+			const id = tr.getAttribute("kiwi-row-id")
+			const parentID = tr.getAttribute("kiwi-row-parent-id")
+			if (id) {
+				rowMap.set(id, tr)
 			}
-			this._data.headers.forEach(header => row.appendChild(this._getHeader(header)))
-			this._thead.appendChild(row)
+			if (parentID) {
+				const parent = rowMap.get(parentID)
+				this._parentMap.set(tr, parent)
+				this._childMap.get(parent).push(tr)
+			}
+			this._depthMap.set(tr, getDepth(tr))
+			this._childMap.set(tr, [])
+		})
+		//Clear ny previous injections
+		this.querySelectorAll("._kiwi-table-injection").forEach(element => element.remove())
+		this.querySelectorAll("._kiwi-table-open").forEach(element => element.classList.remove("_kiwi-table-open"))
+		this.querySelectorAll("._kiwi-table-imploded").forEach(element => element.classList.remove("_kiwi-table-imploded"))
+		this.querySelectorAll("._kiwi-table-selected").forEach(element => element.classList.remove("_kiwi-table-selected"))
+		//Render Injections
+		Array.from(this.querySelectorAll("tbody tr")).forEach(tr => this._renderInjections(tr))
+		if (this.hasAttribute("selection") && this.getAttribute("selection") !== "false") {
+			const theadtr = this.querySelector("thead tr")
+			const th = document.createElement("th")
+			th.classList.add("_kiwi-table-injection")
+			theadtr && theadtr.prepend(th)
 		}
-		if (this._data.rows) {
-			this._childMap.clear()
-			this._parentMap.clear()
-			this._rowMap.clear()
-			this._data.rows.forEach(row => this._processRow(row))
-		}
+		//Handle fixed attribute
 		if (this.hasAttribute("fixed")) {
-			this._table.style.tableLayout = "fixed"
+			table.style.tableLayout = "fixed"
 			const measurements = this.getAttribute("fixed").split(" ")
 			if (measurements.length > 0) {
-				const row = this.shadowRoot.querySelector("tr")
+				const row = this.querySelector("thead") ? this.querySelector("thead tr") : this.querySelector("tbody tr")
 				row &&
 					Array.from(row.children).forEach((cell, index) => {
 						measurements[index] && (cell.style.width = measurements[index])
 					})
 			}
 		} else {
-			this._table.style.removeProperty("tableLayout")
-			const row = this.shadowRoot.querySelector("tr")
+			table.style.removeProperty("tableLayout")
+			const row = this.querySelector("thead") ? this.querySelector("thead tr") : this.querySelector("tbody tr")
 			row && Array.from(row.children).forEach(cell => cell.style.removeProperty("width"))
 		}
+		//Apply styles in lightdom
+		if (!this.querySelector("style")) {
+			const lightdomcss = document.createElement("style")
+			lightdomcss.classList.add("_kiwi-table-injection")
+			lightdomcss.innerHTML = styles
+			this.appendChild(lightdomcss)
+		}
+		//Take us back into the flow after completing all operations
+		this.style.removeProperty("display")
+		this._working = false
 	}
 }
 window.customElements.define("kiwi-table", TableElement)

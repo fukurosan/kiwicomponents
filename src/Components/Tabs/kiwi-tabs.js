@@ -6,17 +6,16 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
 
 /**
  * Kiwi Tab Panel
- * A tab panel that generates tabs and slots content in depending on tab that is selected.
+ * A tab panel that generates a tabbed layout
  * @element kiwi-tabs
  *
- * @attr {string} labels - Comma separated list of tab labels
- * @attr {string} active-tab - Currently active tabs
- * @attr {string} disabled-tabs - Currently disabled tabs
+ * @attr {number} active-tab-index - Index of the currently active tab
+ * @attr {"row"|"column"} direction - Direction of the tab layout
  *
  */
 class KiwiTabs extends HTMLElement {
 	static get observedAttributes() {
-		return ["labels", "active-tab", "disabled-tabs"]
+		return ["active-tab-index", "direction"]
 	}
 
 	constructor() {
@@ -24,44 +23,31 @@ class KiwiTabs extends HTMLElement {
 		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
 		this._mainContainer = this.shadowRoot.querySelector("#container")
 		this._buttonContainer = this.shadowRoot.querySelector("#tab-button-container")
-		this._slot = this.shadowRoot.querySelector("slot")
+		this._slot = this.shadowRoot.querySelector("slot[name]")
+		this.addEventListener("click", this._handleClick.bind(this))
+		this.shadowRoot.querySelector("slot:not([name])").addEventListener("slotchange", this._updateActiveTab.bind(this))
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
-		if (name === "labels") {
-			this._buttonContainer.innerHTML = ""
-			const labels = newValue.split(",")
-			labels.forEach(label => {
-				const button = document.createElement("div")
-				button.appendChild(document.createTextNode(label))
-				button.classList.add("button")
-				button.addEventListener("click", () => {
-					if (!button.classList.contains("disabled")) {
-						this.setAttribute("active-tab", label)
-					}
-				})
-				button.setAttribute("data-label", label)
-				this._buttonContainer.appendChild(button)
-			})
-			if (!this.hasAttribute("active-tab")) {
-				this.setAttribute("active-tab", labels[0])
-			}
-		} else if (name === "active-tab") {
+		if (name === "active-tab-index") {
 			this._slot.setAttribute("name", newValue ? newValue : "not-initialized")
-			const oldActive = this.shadowRoot.querySelector(`[data-label='${oldValue}']`)
-			const newActive = this.shadowRoot.querySelector(`[data-label='${newValue}']`)
-			oldValue && oldActive.classList.remove("active")
-			newActive && newActive.classList.add("active")
-		} else if (name === "disabled-tabs") {
-			this.shadowRoot.querySelectorAll(".disabled").forEach(button => button.classList.remove("disabled"))
-			if (newValue) {
-				newValue.split(",").forEach(label => {
-					const button = this.shadowRoot.querySelector(`[data-label='${label}']`)
-					if (button) {
-						button.classList.add("disabled")
-					}
-				})
-			}
+			this._updateActiveTab()
+		}
+	}
+
+	_updateActiveTab() {
+		const tabs = Array.from(this.querySelectorAll("kiwi-tab"))
+		tabs.forEach(tab => tab.removeAttribute("active-tab"))
+		const index = this.getAttribute("active-tab-index")
+		if (index === null) return
+		const newActiveTab = tabs[index]
+		newActiveTab && newActiveTab.setAttribute("active-tab", "")
+	}
+
+	_handleClick(e) {
+		if (e.target.tagName.toLowerCase() === "kiwi-tab" && !e.target.hasAttribute("disabled")) {
+			const tabs = this.querySelectorAll("kiwi-tab")
+			this.setAttribute("active-tab-index", Array.from(tabs).indexOf(e.target))
 		}
 	}
 }

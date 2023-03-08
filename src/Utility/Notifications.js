@@ -8,11 +8,11 @@ export const showToast = options => {
 	const toast = document.createElement("kiwi-toast")
 	options.title && toast.setAttribute("title", options.title)
 	options.icon && toast.setAttribute("icon", options.icon)
-	options.body && toast.setAttribute("body", options.body)
+	options.subtitle && toast.setAttribute("subtitle", options.subtitle)
 	options.timeout && toast.setAttribute("timeout", options.timeout)
 	options.type && toast.setAttribute("type", options.type)
 	options.noanimation && toast.setAttribute("noanimation", options.noanimation)
-	options.noclickclose && toast.setAttribute("noclickclose", options.noclickclose)
+	options.closeMode && toast.setAttribute("closemode", options.closeMode)
 	if (options.html) {
 		if (typeof options.html === "string") {
 			toast.innerHTML = options.html

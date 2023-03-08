@@ -1,4 +1,5 @@
-<div id="backdrop"></div>
+<div class="backdrop" id="backdrop-color"></div>
+<div class="backdrop" id="backdrop-blur"></div>
 <!-- The window-container is just added for making the experimental scroll feature work. -->
 <div id="window-container">
   <div id="window">
@@ -15,9 +16,25 @@
       <span id="header-text"></span>
       <slot name="header"></slot>
       <div id="header-buttons">
-        <img class="icon" id="minimize-icon"></img>
-        <img class="icon" id="maximize-icon"></img>
-        <img class="icon" id="close-icon"></img>
+        <span class="icon" id="minimize-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 2">
+            <path d="M8 0h7a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2h7z" />
+          </svg>
+        </span>
+        <span class="icon" id="maximize-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+            <path
+              d="M20 71.311C15.34 69.67 12 65.23 12 60V20c0-6.63 5.37-12 12-12h40c5.23 0 9.67 3.34 11.311 8H24c-2.21 0-4 1.79-4 4v51.311z" />
+            <path
+              d="M92 76V36c0-6.63-5.37-12-12-12H40c-6.63 0-12 5.37-12 12v40c0 6.63 5.37 12 12 12h40c6.63 0 12-5.37 12-12zm-52 4c-2.21 0-4-1.79-4-4V36c0-2.21 1.79-4 4-4h40c2.21 0 4 1.79 4 4v40c0 2.21-1.79 4-4 4H40z" />
+          </svg>
+        </span>
+        <span class="icon" id="close-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 18 18">
+            <path
+              d="m1.613.21.094.083L8 6.585 14.293.293l.094-.083a1 1 0 0 1 1.403 1.403l-.083.094L9.415 8l6.292 6.293a1 1 0 0 1-1.32 1.497l-.094-.083L8 9.415l-6.293 6.292-.094.083A1 1 0 0 1 .21 14.387l.083-.094L6.585 8 .293 1.707A1 1 0 0 1 1.613.21z" />
+          </svg>
+        </span>
       </div>
     </div>
     <div id="body">

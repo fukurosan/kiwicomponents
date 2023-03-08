@@ -1,5 +1,3 @@
-import { ICON_CLOSE, ICON_MAXIMIZE, ICON_MINIMIZE } from "../../Assets/Icons/inline"
-import { computePreferredForegroundColor } from "../../Utility/Color"
 import template from "./kiwi-window.html"
 import styles from "./kiwi-window.scss"
 
@@ -17,7 +15,7 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @attr {boolean} useclosebutton - If set to any value the close button will be added to the header.
  * @attr {boolean} usedraggable - If set to any value the window will be dragable.
  * @attr {boolean} useresizable - If set to any value the window will be resizable.
- * @attr {boolean} usecentered - If set to any value the window will be centered in the viewport.
+ * @attr {boolean} usecentered - If set to any value the window will be centered in the viewport. If set to scroll the page will scroll instead of the body.
  * @attr {boolean} useautosize - If set to any value the window will automatically adjust its size to its content and the viewport.
  * @attr {"none"|"clickable"|"disabled"} modality - configures the backdrop of the window.
  * @attr {"none"|"compact"|"small"|"medium"|"large"} scale - Determines the general dimensions of the window's sections.
@@ -66,7 +64,7 @@ class WindowElement extends HTMLElement {
 	constructor() {
 		super()
 		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
-		this._backdropElement = this.shadowRoot.querySelector("#backdrop")
+		this._backdropElement = this.shadowRoot.querySelector("#backdrop-blur")
 		this._windowElement = this.shadowRoot.querySelector("#window")
 		this._headerElement = this.shadowRoot.querySelector("#header")
 		this._headerTextElement = this.shadowRoot.querySelector("#header-text")
@@ -80,9 +78,6 @@ class WindowElement extends HTMLElement {
 		this._resizerElements = this.shadowRoot.querySelectorAll(".resizer")
 
 		//Init Icons
-		this._minimizeIconElement.setAttribute("src", ICON_MINIMIZE)
-		this._maximizeIconelement.setAttribute("src", ICON_MAXIMIZE)
-		this._closeIconElement.setAttribute("src", ICON_CLOSE)
 		this._minimizeIconElement.addEventListener("click", this.minimize.bind(this))
 		this._maximizeIconelement.addEventListener("click", this.maximize.bind(this))
 		this._closeIconElement.addEventListener("click", this.close.bind(this))
@@ -145,11 +140,13 @@ class WindowElement extends HTMLElement {
 				this.scaleToFit()
 				this.center()
 				this._animate(false)
+				/*
 				const preferredHeaderWithColor = computePreferredForegroundColor(this._headerElement)
 				if (preferredHeaderWithColor === "black") {
 					this._headerButtonsContainerElement.style.filter = "invert()"
 				}
 				this._headerTextElement.style.color = preferredHeaderWithColor
+				*/
 			})
 		}
 		window.addEventListener("resize", this._updateMinimizedPositions)

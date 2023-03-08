@@ -1,0 +1,27 @@
+@import "../../Assets/Stylesheets/variables.scss";
+
+#toggle {
+	box-sizing: border-box;
+	width: var(--kiwi-burger-menu-button-size, 3em);
+	height: var(--kiwi-burger-menu-button-size, 3em);
+	cursor: pointer;
+	transition: all var(--kiwi-burger-menu-animation-duration, 300ms);
+	padding: var(--kiwi-burger-menu-button-padding, 0.5em);
+	opacity: 0.6;
+
+	svg {
+		display: block;
+		max-width: var(--kiwi-burger-menu-button-size, 3em);
+		max-height: var(--kiwi-burger-menu-button-size, 3em);
+	}
+
+	svg path {
+		stroke: var(--kiwi-burger-menu-color, $black);
+		stroke-width: 3px;
+		stroke-linecap: round;
+	}
+
+	&:hover {
+		opacity: 1;
+	}
+}

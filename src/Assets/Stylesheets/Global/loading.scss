@@ -1,0 +1,56 @@
+@import "../variables.scss";
+
+[aria-busy="true"] {
+	cursor: progress;
+	&::before {
+		z-index: 1;
+		display: inline-block;
+		width: 0.75em;
+		height: 0.75em;
+		border: 0.1875em solid;
+		border-left-color: transparent;
+		border-radius: 50%;
+		content: "";
+		vertical-align: text-bottom;
+		vertical-align: -0.125em;
+		animation: rotate 0.75s linear infinite;
+		opacity: 0.7;
+	}
+
+	&:not(:empty) {
+		&::before {
+			margin-right: 0.5em;
+		}
+	}
+
+	&:empty {
+		text-align: center;
+	}
+
+	&[aria-disabled="true"] {
+		&::before {
+			position: absolute;
+			inset: 0;
+			margin: auto;
+		}
+	}
+}
+
+[aria-disabled="true"] {
+	position: relative;
+	pointer-events: none;
+	&::after {
+		position: absolute;
+		inset: 0;
+		background-color: $white;
+		opacity: 0.5;
+		content: "";
+	}
+}
+
+// Animation: rotate
+@keyframes rotate {
+	to {
+		transform: rotate(360deg);
+	}
+}

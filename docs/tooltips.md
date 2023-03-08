@@ -94,7 +94,6 @@ The following attributes are supported:
 | kiwi-tooltip             | string | Text inside of the tooltip                  |
 | kiwi-tooltip-position    | string | Equivalent to "position" of kiwi-tooltip    |
 | kiwi-tooltip-delay       | number | Equivalent to "delay" of kiwi-tooltip       |
-| kiwi-tooltip-padding     | string | Equivalent to "padding" of kiwi-tooltip     |
 | kiwi-tooltip-noanimation | any    | Equivalent to "noanimation" of kiwi-tooltip |
 
 ### Kiwi Tooltip Attributes
@@ -104,7 +103,6 @@ The following attributes are supported:
 | position    | "top" \| "right" \| "bottom" \| "left" \| "mouse" \| "follow" | Determines how the tooltip should be positioned relative to the target element.                                 |
 | target      | string                                                        | Target css selector. The tooltip will attempt to find the closest(!) element in the DOM that matches the query. |
 | delay       | number                                                        | Delay in ms before the tooltip should be displayed.                                                             |
-| padding     | string                                                        | Padding expressed as a valid css measurement string.                                                            |
 | noanimation | string                                                        | If set to any value the element will not be animated.                                                           |
 
 ---
@@ -117,28 +115,6 @@ The following variables can be set:
 
 | Variable                          | Description                                  |
 | --------------------------------- | -------------------------------------------- |
-| --kiwi-tooltip-background         | Background of the tooltip                    |
-| --kiwi-tooltip-color              | Color of the tooltip content                 |
-| --kiwi-tooltip-border-radius      | Border radius of the tooltip                 |
+| --kiwi-tooltip-padding            | Padding of the tooltip                       |
 | --kiwi-tooltip-max-width          | Maximum width of the tooltip before it wraps |
 | --kiwi-tooltip-animation-duration | Animation duration                           |
-
-### Example:
-
-```html
-<style>
-	:root {
-		--kiwi-tooltip-animation-duration: 300ms;
-		--kiwi-tooltip-background: lightgoldenrodyellow;
-		--kiwi-tooltip-color: black;
-		--kiwi-tooltip-border-radius: 0px;
-	}
-</style>
-```
-
-Try it:
-
-<div style="width:100px;height:100px;background:lightgoldenrodyellow;">
-	Hover Me!
-	<kiwi-tooltip style="--kiwi-tooltip-animation-duration: 300ms;--kiwi-tooltip-background: lightgoldenrodyellow; --kiwi-tooltip-color: black;--kiwi-tooltip-border-radius: 0px;" position="top">This is a tooltip!</kiwi-tooltip>
-</div>

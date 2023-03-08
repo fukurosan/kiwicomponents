@@ -1,0 +1,55 @@
+@import "../variables.scss";
+
+$spacing: var(--kiwi-navigation-spacing, 0.5rem);
+
+nav,
+nav ul {
+	display: flex;
+}
+
+nav {
+	justify-content: space-between;
+
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	li {
+		display: inline-block;
+		padding: calc(#{$spacing} * 2) #{$spacing};
+	}
+
+	&[aria-label="breadcrumb"] {
+		align-items: center;
+		justify-content: start;
+
+		& ul li {
+			&:not(:first-child) {
+				margin-left: #{$spacing};
+			}
+
+			&:not(:last-child)::after {
+				position: absolute;
+				width: calc(#{$spacing} * 2);
+				margin-left: calc(#{$spacing} / 2);
+				content: "/";
+				font-weight: 600;
+				color: $neutral-color-400;
+				text-align: center;
+			}
+		}
+	}
+}
+
+aside {
+	nav,
+	ul,
+	li {
+		display: block;
+	}
+	li {
+		padding: #{$spacing} #{$spacing};
+	}
+}

@@ -6,7 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kiwi Frame Web Components Test Area</title>
   <style>
-    * {
+    body,
+    html,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin: 0;
     }
 
@@ -21,22 +28,11 @@
       margin-bottom: 50px;
     }
 
-    .box * {
-      margin-bottom: 10px !important;
-    }
-
-    .box input,
-    .box select {
-      margin: 0px !important;
+    .box:not(.nomarginrule) * {
+      margin-bottom: 10px;
     }
   </style>
   <script>
-    kiwicomponents.injectStyle({
-      scrollbar: true,
-      typography: true,
-      forms: true,
-      tables: true
-    })
     kiwicomponents.enableGlobalTooltips()
   </script>
   <style>
@@ -55,10 +51,10 @@
   </kiwi-navbar>
 
   <div class="box">
-    Typography
+    <h3>Typography</h3>
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>
-    <h3 style="width:fit-content;">Heading 3</h3>
+    <h3>Heading 3</h3>
     <h4>Heading 4</h4>
     <h5>Heading 5</h5>
     <h6>Heading 6</h6>
@@ -66,33 +62,87 @@
     <div class="subtitle-2">Subtitle 2</div>
     <div class="body-1">Body 1</div>
     <div class="body-2">Body 2</div>
+    <div class="body-3">Body 3</div>
     <div class="button">Button</div>
     <div class="caption">Caption</div>
     <div class="overline">Overline</div>
+    <br /><br />
+    Header Group:
+    <hgroup>
+      <h2>Header</h2>
+      <h3>Sub Header</h3>
+    </hgroup>
+    <br /><br />
+    <div>
+      <div><strong>Bold</strong> [strong, b]</div>
+      <div><em>Italic</em> [i, em]</div>
+      <div><s>Strikethrough</s> [s]</div>
+      <div><u>Underline</u> [u]</div>
+      <div>Text <sub>Sub</sub> [sub]</div>
+      <div>Text <sup>Sup</sup> [sup]</div>
+      <div><del>Deleted</del> [del]</div>
+      <div><ins>Inserted</ins> [ins]</div>
+      <div><abbr title="Abbreviation">Abbr.</abbr> [abbr]</div>
+      <div><kbd>Ctrl + S</kbd> [kbd]</div>
+      <div><mark>Highlighted</mark> [mark]</div>
+      <div><code>Code block</code> [code]</div>
+    </div>
+    <br /><br />
+    Quote:
+    <div>
+      <blockquote>
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ea obcaecati iusto, temporibus sapiente
+        doloremque maiores incidunt magnam libero culpa, nulla eos suscipit, aperiam laborum. Laudantium maxime
+        cupiditate nemo fuga."
+        <cite>- Someone</cite>
+      </blockquote>
+    </div>
   </div>
 
   <div style="width:200px;height:200px;overflow:auto;" class="box">
-    Scrollbars
+    <h3>Scrollbars</h3>
     <div style="width:400px;height:400px;"></div>
   </div>
 
   <div class="box">
-    Buttons
+    <h3>Buttons</h3>
     <kiwi-button>Default</kiwi-button>
     <kiwi-button type="primary">Primary</kiwi-button>
+    <kiwi-button type="primary" fill="light">Primary</kiwi-button>
+    <kiwi-button type="primary" fill="link">Primary</kiwi-button>
+    <kiwi-button type="primary" fill="none">Primary</kiwi-button>
     <kiwi-button type="secondary">Secondary</kiwi-button>
+    <kiwi-button type="secondary" fill="light">Secondary</kiwi-button>
+    <kiwi-button type="secondary" fill="link">Secondary</kiwi-button>
+    <kiwi-button type="secondary" fill="none">Secondary</kiwi-button>
     <kiwi-button type="neutral">Neutral</kiwi-button>
+    <kiwi-button type="neutral" fill="light">Neutral</kiwi-button>
+    <kiwi-button type="neutral" fill="link">Neutral</kiwi-button>
+    <kiwi-button type="neutral" fill="none">Neutral</kiwi-button>
     <kiwi-button type="info">Info</kiwi-button>
+    <kiwi-button type="info" fill="light">Info</kiwi-button>
+    <kiwi-button type="info" fill="link">Info</kiwi-button>
+    <kiwi-button type="info" fill="none">Info</kiwi-button>
     <kiwi-button type="success">Success</kiwi-button>
+    <kiwi-button type="success" fill="light">Success</kiwi-button>
+    <kiwi-button type="success" fill="link">Success</kiwi-button>
+    <kiwi-button type="success" fill="none">Success</kiwi-button>
     <kiwi-button type="warning">Warning</kiwi-button>
+    <kiwi-button type="warning" fill="light">Warning</kiwi-button>
+    <kiwi-button type="warning" fill="link">Warning</kiwi-button>
+    <kiwi-button type="warning" fill="none">Warning</kiwi-button>
     <kiwi-button type="error">Error</kiwi-button>
+    <kiwi-button type="error" fill="light">Error</kiwi-button>
+    <kiwi-button type="error" fill="link">Error</kiwi-button>
+    <kiwi-button type="error" fill="none">Error</kiwi-button>
     <kiwi-button icon="./Icons/icon-rightarrow.svg">With Icon</kiwi-button>
     <kiwi-button icon-placement="after" icon="./Icons/icon-rightarrow.svg">With Reverse Icon</kiwi-button>
     <kiwi-button direction="column" icon="./Icons/icon-rightarrow.svg">With Column</kiwi-button>
+    <a role="button" class="type-primary fill-link" href="#">A button link</a>
   </div>
 
   <div class="box">
-    Spinners
+    <h3>Spinners</h3>
     <!--
     <div style="display:flex;gap:1rem;align-items: center;">
       <div style="width:100px;height:100px;">
@@ -102,14 +152,41 @@
       <kiwi-spinner size="50px" usebackground></kiwi-spinner>
       <kiwi-spinner size="50px" percent="75" usebackground></kiwi-spinner>
     </div>
+    Progress 25%
+    <br />
+    <progress value="25" max="100"></progress>
+    <br /><br />
+    Progress Indeterminate
+    <br />
+    <progress indeterminate></progress>
+    <br />
+    Aria Busy
+    <br />
+    <div style="min-height:300px;background-color:#323232;" aria-busy="true"></div>
+    <br /><br />
+    <kiwi-button>
+      <div aria-busy="true" style="margin:0;color:white;">A loading Button...</div>
+    </kiwi-button>
+    <br /><br />
+    Aria Disabled
+    <br />
+    <div style="min-height:300px;background-color:#323232;" aria-disabled="true"></div>
+    <br /><br />
+    <kiwi-button aria-disabled="true">A loading Button...</kiwi-button>
+    <br /><br />
+    Aria Busy and Aria Disabled
+    <br />
+    <div style="min-height:300px;background-color:#323232;" aria-busy="true" aria-disabled="true"></div>
+    <br /><br />
+    <kiwi-button aria-busy="true" aria-disabled="true">A loading Button...</kiwi-button>
     -->
   </div>
 
   <div class="box">
-    Toasts
+    <h3>Toasts</h3>
     <script>
       function showToast() {
-        kiwicomponents.showToast({ title: "Hello World", icon: "./Icons/icon-rightarrow-dark.svg", left: true, bottom: true, body: "Hello World", type: "info", timeout: 5000 })
+        kiwicomponents.showToast({ title: "Hello World", icon: "./Icons/icon-check.svg", left: true, bottom: true, subtitle: "Hello World", type: "info", timeout: 500000 })
       }
       function showSnackbar() {
         kiwicomponents.showToast({ title: "Hello World", top: true, right: true, bottom: true, left: true, type: "warning", timeout: 5000, clearExisting: true })
@@ -120,53 +197,68 @@
   </div>
 
   <div class="box">
-    Tooltips
-    <h3 style="width:fit-content;">
-      Top
-      <kiwi-tooltip position="top">Top</kiwi-tooltip>
-    </h3>
-    <h3 style="width:fit-content;">
-      Right
-      <kiwi-tooltip position="right">Right</kiwi-tooltip>
-    </h3>
-    <h3 style="width:fit-content;">
-      Bottom
-      <kiwi-tooltip position="bottom">Bottom</kiwi-tooltip>
-    </h3>
-    <h3 style="width:fit-content;">
-      Left
-      <kiwi-tooltip position="left">Left</kiwi-tooltip>
-    </h3>
-    <h3 style="width:fit-content;">
-      Mouse Position
-      <kiwi-tooltip position="mouse">Mouse Position</kiwi-tooltip>
-    </h3>
-    <h3 style="width:fit-content;">
-      Follow
-      <kiwi-tooltip position="follow">Follow</kiwi-tooltip>
-    </h3>
-    <h3 style="width:fit-content;">
-      Rich Content
-      <kiwi-tooltip padding="0">
-        <div style="width:100px;height:100px;background:coral;margin:0 !important;padding:1em;">Rich Content</div>
-      </kiwi-tooltip>
-    </h3>
-    <h3 style="width:fit-content;">
-      No animation
-      <kiwi-tooltip noanimation="">No Animation</kiwi-tooltip>
-    </h3>
-    <h3 style="width:fit-content;" id="tooltip-target-1">Target</h3>
-    <kiwi-tooltip target="#tooltip-target-1">Target</kiwi-tooltip>
-    <kiwi-tooltip>
-      Slotted
-      <h3 style="width:fit-content;" slot="target">Slotted</h3>
-    </kiwi-tooltip>
-    <h3 style="width:fit-content;" kiwi-tooltip="Generated">Generated</h3>
+    <h3>Drawers</h3>
+    <script>
+      function openFullDrawer() {
+        kiwicomponents.openDrawer({ title: "Hello World", direction: "right", type: "primary", body: "Some content inside the drawer!", subtitle: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique veniam, impedit iure molestias sit tenetur voluptate odit praesentium delectus, nostrum magni dignissimos nam hic aliquid, unde minus quis eaque recusandae?" })
+      }
+      function openBasicDrawer() {
+        kiwicomponents.openDrawer({ direction: "left", body: "Some content inside the drawer!", backdrop: true })
+      }
+    </script>
+    <kiwi-button onclick="openFullDrawer()">Open Drawer</kiwi-button>
+    <kiwi-button onclick="openBasicDrawer()">Open Basic Drawer</kiwi-button>
+    <kiwi-burger style="--kiwi-burger-menu-color: black;">Some content inside the menu</kiwi-burger>
   </div>
 
   <div class="box">
-    Menus
-    <h3>
+    <h3>Tooltips</h3>
+    <h4 style="width:fit-content;">
+      Top
+      <kiwi-tooltip position="top">Top</kiwi-tooltip>
+    </h4>
+    <h4 style="width:fit-content;">
+      Right
+      <kiwi-tooltip position="right">Right</kiwi-tooltip>
+    </h4>
+    <h4 style="width:fit-content;">
+      Bottom
+      <kiwi-tooltip position="bottom">Bottom</kiwi-tooltip>
+    </h4>
+    <h4 style="width:fit-content;">
+      Left
+      <kiwi-tooltip position="left">Left</kiwi-tooltip>
+    </h4>
+    <h4 style="width:fit-content;">
+      Mouse Position
+      <kiwi-tooltip position="mouse">Mouse Position</kiwi-tooltip>
+    </h4>
+    <h4 style="width:fit-content;">
+      Follow
+      <kiwi-tooltip position="follow">Follow</kiwi-tooltip>
+    </h4>
+    <h4 style="width:fit-content;">
+      Rich Content
+      <kiwi-tooltip style="--kiwi-tooltip-padding:0;">
+        <div style="width:100px;height:100px;background:coral;margin:0 !important;padding:1em;">Rich Content</div>
+      </kiwi-tooltip>
+    </h4>
+    <h4 style="width:fit-content;">
+      No animation
+      <kiwi-tooltip noanimation="">No Animation</kiwi-tooltip>
+    </h4>
+    <h4 style="width:fit-content;" id="tooltip-target-1">Target</h4>
+    <kiwi-tooltip target="#tooltip-target-1">Target</kiwi-tooltip>
+    <kiwi-tooltip>
+      Slotted
+      <h4 style="width:fit-content;" slot="target">Slotted</h4>
+    </kiwi-tooltip>
+    <h4 style="width:fit-content;" kiwi-tooltip="Generated">Generated</h4>
+  </div>
+
+  <div class="box">
+    <h3>Menus</h3>
+    <h4>
       Dropdown Menu
       <kiwi-menu>
         <div>This</div>
@@ -174,8 +266,8 @@
         <div>a</div>
         <div>menu</div>
       </kiwi-menu>
-    </h3>
-    <h3>
+    </h4>
+    <h4>
       Context Menu
       <kiwi-menu mode="contextmenu">
         <div>This</div>
@@ -183,25 +275,25 @@
         <div>a</div>
         <div>menu</div>
       </kiwi-menu>
-    </h3>
-    <h3>
+    </h4>
+    <h4>
       With sub menu
       <kiwi-menu mode="contextmenu">
-        <kiwi-menu-item icon="./Icons/icon-rightarrow.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
+        <kiwi-menu-item icon="./Icons/icon-check.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
         <kiwi-menu-item icon="" text="Option 2"></kiwi-menu-item>
         <kiwi-menu-item icon="" text="Option 3">
-          <kiwi-menu-item icon="./Icons/icon-rightarrow.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
+          <kiwi-menu-item icon="./Icons/icon-check.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
           <kiwi-menu-item icon="" text="Option 2" disabled=""></kiwi-menu-item>
-          <hr>
+          <hr style="margin:0.25rem 1rem;color:black;opacity:0.3;">
           <kiwi-menu-item text="Option 3">
           </kiwi-menu-item>
         </kiwi-menu-item>
       </kiwi-menu>
-    </h3>
+    </h4>
   </div>
 
   <div class="box">
-    Window Management
+    <h3>Window Management</h3>
     <script>
       function openWindow(scale) {
         const options = {
@@ -231,7 +323,7 @@
   </div>
 
   <div class="box">
-    Burger Menus
+    <h3>Burger Menus</h3>
     <kiwi-drawer direction="left">
       Left Menu
     </kiwi-drawer>
@@ -241,7 +333,7 @@
   </div>
 
   <div class="box">
-    Utility
+    <h3>Utility</h3>
     <script>
       async function confirmWithUser() {
         const choice = await kiwicomponents.confirm("This action is irreversible. Proceed?")
@@ -281,22 +373,49 @@
     <kiwi-button onclick="promptUserForm()">Prompt Form</kiwi-button>
   </div>
 
-  <div class="box">
-    Tabs
-    <kiwi-tabs labels="Hello World,Some Carpeting,Fun Stuff" disabled-tabs="Fun Stuff" active-tab="Some Carpeting">
-      <div slot="Hello World">
+  <div class="box nomarginrule">
+    <h3>Tabs</h3>
+    <kiwi-tabs active-tab-index="1">
+      <kiwi-tab>Hello World</kiwi-tab>
+      <kiwi-tab>Some Carpeting</kiwi-tab>
+      <kiwi-tab disabled>Fun Stuff</kiwi-tab>
+      <div slot="0">
         Tab 1 content
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem
         consequatur odit, iusto aperiam quos pariatur eum perspiciatis ipsam eveniet natus non eius ipsum dolorem hic
         rem! Nisi?
       </div>
-      <div slot="Some Carpeting">
+      <div slot="1">
         Tab 2 content
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem
         consequatur odit, iusto aperiam quos pariatur eum perspiciatis ipsam eveniet natus non eius ipsum dolorem hic
         rem! Nisi?
       </div>
-      <div slot="Fun Stuff">
+      <div slot="2">
+        Tab 3 content
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem
+        consequatur odit, iusto aperiam quos pariatur eum perspiciatis ipsam eveniet natus non eius ipsum dolorem hic
+        rem! Nisi?
+      </div>
+    </kiwi-tabs>
+    <br><br>
+    <kiwi-tabs direction="column">
+      <kiwi-tab>Hello World</kiwi-tab>
+      <kiwi-tab>Some Carpeting</kiwi-tab>
+      <kiwi-tab disabled>Fun Stuff</kiwi-tab>
+      <div slot="0">
+        Tab 1 content
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem
+        consequatur odit, iusto aperiam quos pariatur eum perspiciatis ipsam eveniet natus non eius ipsum dolorem hic
+        rem! Nisi?
+      </div>
+      <div slot="1">
+        Tab 2 content
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem
+        consequatur odit, iusto aperiam quos pariatur eum perspiciatis ipsam eveniet natus non eius ipsum dolorem hic
+        rem! Nisi?
+      </div>
+      <div slot="2">
         Tab 3 content
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem
         consequatur odit, iusto aperiam quos pariatur eum perspiciatis ipsam eveniet natus non eius ipsum dolorem hic
@@ -305,200 +424,82 @@
     </kiwi-tabs>
   </div>
 
-  <div class="box">
-    table
-    <div style="height: 350px;">
+  <div class="box nomarginrule">
+    <h3>Table</h3>
+    <div style="height:300px;display:flex;flex-direction: column;gap: 0.5rem;">
       <input id="table-search" placeholder="Filter..." style="box-sizing: border-box;margin-bottom:4px !important;">
-      <script>
-        window.addEventListener("load", () => {
-          document.getElementById("table-search").addEventListener("input", e => {
-            document.getElementById("example-table").filter(e.target.value)
+      <div style="flex: auto;overflow: auto;border: 1px solid #d1d5db;border-radius:10px;background-color: white;">
+        <script>
+          window.addEventListener("load", () => {
+            document.getElementById("table-search").addEventListener("input", e => {
+              document.getElementById("example-table").filter(e.target.value)
+            })
           })
-        })
-      </script>
-      <kiwi-table id="example-table" selection="tree" showtoggles>
-        <kiwi-th>Title</kiwi-th>
-        <kiwi-th>One</kiwi-th>
-        <kiwi-th>Two</kiwi-th>
-        <kiwi-th>Three</kiwi-th>
-        <kiwi-tr id="1">
-          <kiwi-td icon="./Icons/icon-rightarrow-dark.svg">A</kiwi-td>
-          <kiwi-td>Hello World 1</kiwi-td>
-          <kiwi-td>Hello World 2</kiwi-td>
-          <kiwi-td>Hello World 3</kiwi-td>
-        </kiwi-tr>
-        <kiwi-tr id="2">
-          <kiwi-td>C</kiwi-td>
-          <kiwi-td>Hello World 1</kiwi-td>
-          <kiwi-td>Hello World 2</kiwi-td>
-          <kiwi-td>Hello World 3</kiwi-td>
-          <kiwi-tr id="3">
-            <kiwi-td>C.1</kiwi-td>
-            <kiwi-td>Hello World 1</kiwi-td>
-            <kiwi-td>Hello World 2</kiwi-td>
-            <kiwi-td>Hello World 3</kiwi-td>
-            <kiwi-tr id="4">
-              <kiwi-td>C11</kiwi-td>
-              <kiwi-td>Hello World 1</kiwi-td>
-              <kiwi-td>Hello World 2</kiwi-td>
-              <kiwi-td>Hello World 3</kiwi-td>
-            </kiwi-tr>
-            <kiwi-tr id="5">
-              <kiwi-td>C.1.1</kiwi-td>
-              <kiwi-td>Hello World 1</kiwi-td>
-              <kiwi-td>Hello World 2</kiwi-td>
-              <kiwi-td>Hello World 3</kiwi-td>
-            </kiwi-tr>
-          </kiwi-tr>
-        </kiwi-tr>
-        <kiwi-tr id="6" icon="">
-          <kiwi-td icon="">B</kiwi-td>
-          <kiwi-td>Hello World 1</kiwi-td>
-          <kiwi-td>Hello World 2</kiwi-td>
-          <kiwi-td>Hello World 3</kiwi-td>
-        </kiwi-tr>
-        <kiwi-tr id="7">
-          <kiwi-td>C</kiwi-td>
-          <kiwi-td>Hello World 1</kiwi-td>
-          <kiwi-td>Hello World 2</kiwi-td>
-          <kiwi-td>Hello World 3</kiwi-td>
-          <kiwi-tr id="8">
-            <kiwi-td>C.1</kiwi-td>
-            <kiwi-td>Hello World 1</kiwi-td>
-            <kiwi-td>Hello World 2</kiwi-td>
-            <kiwi-td>Hello World 3</kiwi-td>
-            <kiwi-tr id="9">
-              <kiwi-td>C.1.1</kiwi-td>
-              <kiwi-td>Hello World 1</kiwi-td>
-              <kiwi-td>Hello World 2</kiwi-td>
-              <kiwi-td>Hello World 3</kiwi-td>
-            </kiwi-tr>
-          </kiwi-tr>
-        </kiwi-tr>
-      </kiwi-table>
+        </script>
+        <kiwi-table id="example-table" selection="tree" showtoggles>
+          <table class="hover-effect border-h nowrap sticky-headers">
+            <thead>
+              <th>Title</th>
+              <th>One</th>
+              <th>Two</th>
+              <th>Three</th>
+            </thead>
+            <tbody>
+              <tr kiwi-row-id="1" kiwi-row-icon="./Icons/icon-rightarrow-dark.svg" kiwi-row-title="A">
+                <td>Hello World 1</td>
+                <td>Hello World 2</td>
+                <td>Hello World 3</td>
+              </tr>
+              <tr kiwi-row-id="2" kiwi-row-title="C">
+                <td>Hello World 1</td>
+                <td>Hello World 2</td>
+                <td>Hello World 3</td>
+              </tr>
+              <tr kiwi-row-id="3" kiwi-row-parent-id="2" kiwi-row-title="C.1">
+                <td>Hello World 1</td>
+                <td>Hello World 2</td>
+                <td>Hello World 3</td>
+              </tr>
+              <tr kiwi-row-id="5" kiwi-row-parent-id="3" kiwi-row-title="C.1.1">
+                <td>Hello World 1</td>
+                <td>Hello World 2</td>
+                <td>Hello World 3</td>
+              </tr>
+              <tr kiwi-row-id="4" kiwi-row-parent-id="2" kiwi-row-title="C.2">
+                <td>Hello World 1</td>
+                <td>Hello World 2</td>
+                <td>Hello World 3</td>
+              </tr>
+              <tr kiwi-row-id="6" icon="" kiwi-row-title="B">
+                <td>Hello World 1</td>
+                <td>Hello World 2</td>
+                <td>Hello World 3</td>
+              </tr>
+              <tr kiwi-row-id="7" kiwi-row-title="D">
+                <td>Hello World 1</td>
+                <td>Hello World 2</td>
+                <td>Hello World 3</td>
+              </tr>
+              <tr kiwi-row-id="8" kiwi-row-parent-id="7" kiwi-row-title="D.1">
+                <td>Hello World 1</td>
+                <td>Hello World 2</td>
+                <td>Hello World 3</td>
+              </tr>
+              <tr kiwi-row-id="9" kiwi-row-parent-id="8" kiwi-row-title="D.1.1">
+                <td>Hello World 1</td>
+                <td>Hello World 2</td>
+                <td>Hello World 3</td>
+              </tr>
+            </tbody>
+          </table>
+        </kiwi-table>
+      </div>
     </div>
 
-    <div style="height:350px">
-      <kiwi-table id="example-table-2" selection="tree" showtoggles>
-    </div>
-    <script>
-      window.addEventListener("load", () => {
-        const table = document.getElementById("example-table-2")
-        table.data = {
-          headers: ["Title", "One", "Two"],
-          rows: [
-            {
-              id: 1,
-              cells: [
-                {
-                  type: "text",
-                  value: "A"
-                },
-                {
-                  type: "text",
-                  value: "Hello World 1"
-                },
-                {
-                  type: "text",
-                  value: "Hello World 2"
-                }
-              ]
-            },
-            {
-              id: 2,
-              cells: [
-                {
-                  type: "text",
-                  value: "B"
-                },
-                {
-                  type: "text",
-                  value: "Hello World 1"
-                },
-                {
-                  type: "text",
-                  value: "Hello World 2"
-                }
-              ],
-              children: [
-                {
-                  id: 3,
-                  cells: [
-                    {
-                      type: "text",
-                      value: "B.1"
-                    },
-                    {
-                      type: "text",
-                      value: "Hello World 1"
-                    },
-                    {
-                      type: "text",
-                      value: "Hello World 2"
-                    }
-                  ]
-                },
-                {
-                  id: 4,
-                  cells: [
-                    {
-                      type: "text",
-                      value: "B.2"
-                    },
-                    {
-                      type: "text",
-                      value: "Hello World 1"
-                    },
-                    {
-                      type: "text",
-                      value: "Hello World 2"
-                    }
-                  ],
-                  children: [
-                    {
-                      id: 5,
-                      cells: [
-                        {
-                          type: "text",
-                          value: "B.2.1"
-                        },
-                        {
-                          type: "text",
-                          value: "Hello World 1"
-                        },
-                        {
-                          type: "text",
-                          value: "Hello World 2"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              id: 6,
-              cells: [
-                {
-                  type: "text",
-                  value: "C"
-                },
-                {
-                  type: "text",
-                  value: "Hello World 1"
-                },
-                {
-                  type: "text",
-                  value: "Hello World 2"
-                }
-              ]
-            }
-          ]
-        }
-      })
-    </script>
-    <div style="height:100px;overflow:auto;position:relative;border-radius:10px;">
-      <table id="table-3">
+    <h3>CSS Table</h3>
+    <div
+      style="height:300px;overflow:auto;position:relative;border-radius:10px;background-color: white;border: 1px solid #d1d5db;">
+      <table class="hover-effect striped border-v border-h nowrap fixed sticky-headers" id="table-3" style="margin: 0;">
         <thead>
           <tr>
             <th>Title</th>
@@ -532,48 +533,95 @@
             <td>Hello World 2</td>
             <td>Hello World 3</td>
           </tr>
+          <tr>
+            <td>E</td>
+            <td>Hello World 1</td>
+            <td>Hello World 2</td>
+            <td>Hello World 3</td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>Hello World 1</td>
+            <td>Hello World 2</td>
+            <td>Hello World 300000000000000000000</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <div class="box">
-    Forms
-    <kiwi-form-flow direction="column">
-      <kiwi-form-flow direction="row" label="User Info">
-        <input placeholder="First Name">
-        <input placeholder="Last Name">
-      </kiwi-form-flow>
-      <kiwi-form-flow direction="row">
-        <input placeholder="Username">
-        <input placeholder="Password" type="password">
-      </kiwi-form-flow>
-      <kiwi-form-flow direction="row" label="Additional Info">
-        <input placeholder="Disabled" disabled>
-        <input placeholder="Required" required>
-        <select>
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-        </select>
-      </kiwi-form-flow>
-      <kiwi-form-flow direction="row" label="Checkboxes">
-        <input type="checkbox">
-        <input type="radio">
-        <input type="checkbox" class="kiwi-switch">
-        <input type="checkbox" disabled checked>
-        <input type="radio" disabled checked>
-        <input type="checkbox" class="kiwi-switch" disabled checked>
-      </kiwi-form-flow>
-      <kiwi-form-flow direction="row" label="Range Slider">
-        <input type="range">
-        <input type="range" disabled>
-      </kiwi-form-flow>
-    </kiwi-form-flow>
+  <div class="box nomarginrule">
+    <h3>Forms</h3>
+    <form>
+      <div class="flex-down">
+        <div class="flex-right">
+          <label>
+            First Name
+            <input placeholder="First Name">
+          </label>
+          <label>
+            Last Name
+            <input placeholder="Last Name">
+          </label>
+        </div>
+        <div class="flex-right">
+          <input placeholder="Username">
+          <input placeholder="Password" type="password">
+        </div>
+        <fieldset>
+          <legend>Additional info</legend>
+          <div class="flex-right">
+            <input placeholder="Disabled" disabled>
+            <input placeholder="Required" required>
+            <select>
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </div>
+        </fieldset>
+        <fieldset class="label">
+          <legend>Additional info</legend>
+          <div class="flex-right">
+            <input placeholder="Disabled" disabled>
+            <input placeholder="Required" required>
+            <select>
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </div>
+        </fieldset>
+        <label>
+          Multiple
+          <select multiple size="4">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+            <option>Option 5</option>
+          </select>
+        </label>
+        <label>Checkboxes</label>
+        <div class="flex-right">
+          <input type="checkbox">
+          <input type="radio">
+          <input type="checkbox" role="switch">
+          <input type="checkbox" disabled checked>
+          <input type="radio" disabled checked>
+          <input type="checkbox" role="switch" disabled checked>
+        </div>
+        <label>Range Slider</label>
+        <div class="flex-right">
+          <input type="range">
+          <input type="range" disabled>
+        </div>
+      </div>
+    </form>
   </div>
 
   <div class="box">
-    Hierarchy
+    <h3>Hierarchy</h3>
     <div style="border: 1px solid lightgray;padding:1em; background-color: white;">
       <kiwi-treelist-item text="With Icon"
         icon="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='black' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>">
@@ -612,7 +660,7 @@
   </div>
 
   <div class="box">
-    Accordions
+    <h3>Accordions</h3>
     <kiwi-accordion title="Accordion 1" icon="./Icons/icon-rightarrow-dark.svg">
       <div style="padding:1rem;box-sizing:border-box;">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor
@@ -637,7 +685,7 @@
   </div>
 
   <div class="box">
-    Scroll list
+    <h3>Scroll list</h3>
     <kiwi-scroll-list>
       <a style="margin:0.5rem 0 !important;" class="link">hello world 1</a>
       <a style="margin:0.5rem 0 !important;" class="link">hello world 2</a>
@@ -645,62 +693,65 @@
       <a style="margin:0.5rem 0 !important;">hello world 4</a>
       <a style="margin:0.5rem 0 !important;">hello world 5</a>
       <a style="margin:0.5rem 0 !important;">hello world 6</a>
+      <a style="margin:0.5rem 0 !important;">hello world 7</a>
+      <a style="margin:0.5rem 0 !important;">hello world 8</a>
+      <a style="margin:0.5rem 0 !important;">hello world 9</a>
     </kiwi-scroll-list>
   </div>
 
   <div class="box" style="display:flex;flex-direction:column;">
-    Alerts
+    <h3>Alerts</h3>
     <kiwi-alert>
-      <h4>Default</h4>
+      <div class="subtitle-1">Default</div>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
         molestie ultricies magna, quis gravida dolor lacinia vitae.
       </div>
     </kiwi-alert>
     <kiwi-alert type="primary" useclosebutton="">
-      <h4>Primary</h4>
+      <div class="subtitle-1">Primary</div>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
         molestie ultricies magna, quis gravida dolor lacinia vitae.
       </div>
     </kiwi-alert>
     <kiwi-alert type="secondary" useclosebutton="">
-      <h4>Secondary</h4>
+      <div class="subtitle-1">Secondary</div>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Cras molestie ultricies magna, quis gravida dolor lacinia vitae.
       </div>
     </kiwi-alert>
     <kiwi-alert type="neutral" useclosebutton="">
-      <h4>Neutral</h4>
+      <div class="subtitle-1">Neutral</div>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
         molestie ultricies magna, quis gravida dolor lacinia vitae.
       </div>
     </kiwi-alert>
     <kiwi-alert type="info" useclosebutton="">
-      <h4>Info</h4>
+      <div class="subtitle-1">Info</div>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
         molestie ultricies magna, quis gravida dolor lacinia vitae.
       </div>
     </kiwi-alert>
     <kiwi-alert type="success">
-      <h4>Success</h4>
+      <div class="subtitle-1">Success</div>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies
         magna, quis gravida dolor lacinia vitae.
       </div>
     </kiwi-alert>
     <kiwi-alert type="warning">
-      <h4>Warning</h4>
+      <div class="subtitle-1">Warning</div>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies
         magna, quis gravida dolor lacinia vitae.
       </div>
     </kiwi-alert>
     <kiwi-alert type="error">
-      <h4>Error</h4>
+      <div class="subtitle-1">Error</div>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies
         magna, quis gravida dolor lacinia vitae.
@@ -709,7 +760,7 @@
   </div>
 
   <div class="box" style="display:flex;flex-direction:column;">
-    Thread Planner
+    <h3>Thread Planner</h3>
     <kiwi-button id="thread-one-button" onclick="startThread()">Start Thread</kiwi-button>
     <kiwi-button id="thread-one-button" onclick="warmup()">Warmup</kiwi-button>
     <kiwi-button id="thread-one-button" onclick="asPrototype()">Run through prototype</kiwi-button>
@@ -794,6 +845,119 @@
         document.getElementById("threads-executing").appendChild(div)
       }
     </script>
+  </div>
+
+  <div class="box">
+    <script>
+      const stateManager = kiwicomponents.getStateManager()
+      function smTest1() {
+        stateManager.setState("fruits", ["apple", "orange", "banana"])
+        stateManager.setState("vegetables", ["cucumber", "tomato", "paprika"])
+        const allKeys = stateManager.listAllKeys()
+        console.log(allKeys.length === 2)
+        console.log(allKeys[0] === "fruits")
+        const allState = stateManager.listAllState()
+        console.log(allState.length === 2)
+        console.log(allState[0].length === 2)
+        console.log(JSON.stringify(allState[0][1]) === JSON.stringify(["apple", "orange", "banana"]))
+        stateManager.clearState("fruits")
+        console.log(stateManager.getState("fruits") === undefined)
+        console.log(stateManager.listAllKeys().length === 1)
+        console.log(JSON.stringify(stateManager.getState("vegetables")) === JSON.stringify(["cucumber", "tomato", "paprika"]))
+        stateManager.clearAllState()
+        console.log(stateManager.listAllKeys().length === 0)
+        stateManager.reset()
+      }
+      function smTest2() {
+        let listenerOneTimes = 0
+        let listenerTwoTimes = 0
+        const listenerOne = () => listenerOneTimes++
+        const listenerTwo = () => listenerTwoTimes++
+        stateManager.addListener("fruit", listenerOne)
+        stateManager.setState("fruit", "apple")
+        console.log(listenerOneTimes === 1)
+        stateManager.addListener("fruit", listenerTwo)
+        stateManager.setState("fruit", "apple")
+        console.log(listenerOneTimes === 2)
+        console.log(listenerTwoTimes === 1)
+        stateManager.removeListener("fruit", listenerOne)
+        stateManager.setState("fruit", "apple")
+        console.log(listenerOneTimes === 2)
+        console.log(listenerTwoTimes === 2)
+        stateManager.forceUpdate("fruit")
+        console.log(listenerOneTimes === 2)
+        console.log(listenerTwoTimes === 3)
+        stateManager.reset()
+      }
+      function smTest3() {
+        stateManager.addMiddleware("set", value => value + 1)
+        stateManager.addMiddleware("get", JSON.stringify)
+        stateManager.setState("number", 1)
+        console.log(stateManager.getState("number") === "2")
+        stateManager.removeMiddleware("get", JSON.stringify)
+        console.log(stateManager.getState("number") === 2)
+        stateManager.reset()
+      }
+    </script>
+    <h3>State Manager</h3>
+    <kiwi-button onclick="smTest1()">Test 1</kiwi-button>
+    <kiwi-button onclick="smTest2()">Test 2</kiwi-button>
+    <kiwi-button onclick="smTest3()">Test 3</kiwi-button>
+  </div>
+
+  <h3>Navigation</h3>
+  <div style="background:lightgray;width:100%;">
+    <nav>
+      <ul>
+        <li>Left Item</li>
+      </ul>
+      <ul>
+        <li>Right Item 1</li>
+        <li>Right Item 2</li>
+        <li>Right Item 3</li>
+      </ul>
+    </nav>
+  </div>
+  <br /><br />
+  <div style="background:lightgray;width:100%;">
+    <aside>
+      <nav>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+      </nav>
+    </aside>
+  </div>
+  <br />
+  <div style="background:white;width:100%;">
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li><span>Item 1</span></li>
+        <li><span>Item 2</span></li>
+        <li><span>Item 3</span></li>
+      </ul>
+    </nav>
+  </div>
+
+  <h3>Containers</h3>
+  <div class="container" style="background:coral; height:200px">Hello.</div>
+  <div class="fluid-container" style="background:coral; height:200px">Hello.</div>
+  <div class="grid"
+    style="--kiwi-grid-column-min-measurement: 200px;background-color: gray; width:75vw; margin: auto;padding: 1rem;">
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
+    <div style="background:white;">Hello World</div>
   </div>
 
   <br><br><br><br><br>

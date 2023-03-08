@@ -1,14 +1,16 @@
+<div class="backdrop" id="backdrop-color"></div>
+<div class="backdrop" id="backdrop-blur"></div>
 <div id="menu-panel">
-  <div class="toggle" id="close-toggle">
+  <div id="close-icon">
     <svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'>
       <path d='M6 6l18 18M24 6l-18 18'></path>
     </svg>
   </div>
-  <slot></slot>
-</div>
-<div id="backdrop"></div>
-<div class="toggle">
-  <svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'>
-    <path d='M4 7h22M4 15h22M4 23h22'></path>
-  </svg>
+  <div id="header">
+    <div id="title"></div>
+    <div id="subtitle"></div>
+  </div>
+  <div id="body">
+    <slot></slot>
+  </div>
 </div>

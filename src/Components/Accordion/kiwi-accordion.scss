@@ -15,8 +15,8 @@
 }
 
 button {
-	background-color: var(--kiwi-accordion-button-background-color, var(--kiwi-secondary-color, white));
-	color: var(--kiwi-accordion-button-color, $with-secondary-color-light);
+	background-color: var(--kiwi-accordion-button-background-color, $white);
+	color: var(--kiwi-accordion-button-color, $neutral-color-900);
 	cursor: pointer;
 	padding: 1rem 1.5rem;
 	width: 100%;
@@ -31,10 +31,9 @@ button {
 	margin: 0;
 }
 
-.active,
 button:hover {
-	background-color: var(--kiwi-accordion-active-button-background-color, var(--kiwi-secondary-color-light, $secondary-color-light));
-	color: var(--kiwi-accordion-active-button-color, $with-secondary-color-light);
+	background-color: var(--kiwi-accordion-active-button-background-color, var(--kiwi-secondary-color-light, $neutral-color-100));
+	color: var(--kiwi-accordion-active-button-color, $neutral-color-900);
 }
 
 #text {

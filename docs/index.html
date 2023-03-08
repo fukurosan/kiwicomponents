@@ -9,7 +9,7 @@
 	<meta name="viewport"
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
-	<script src="kiwicomponents-bundle.js"></script>
+	<script src="./js/bundle.js"></script>
 	<style>
 		@import url(https://fonts.googleapis.com/css?family=Fira+Mono);
 		/*
@@ -209,11 +209,15 @@
 		[alt="logo"] {
 			width: 200px;
 		}
+
+		iframe {
+			border: 0 !important;
+		}
 	</style>
 	<script>
 		function openWindow(inputOptions) {
 			let options = {
-				icon: "./example-icon-black.svg",
+				icon: "./img/example-icon-black.svg",
 				title: "This is a header!",
 				body: `<div>This is some content inside of the window.</div> 
 					<div>With multiple rows.</div>`,
@@ -224,7 +228,7 @@
 		}
 		function showToast(inputOptions) {
 			let options = {
-				icon: "./example-icon-black.svg",
+				icon: "./img/example-icon-black.svg",
 				title: "This is a toast!",
 			}
 			if (inputOptions) options = { ...options, ...inputOptions }
@@ -258,11 +262,41 @@
 			const input = await kiwicomponents.prompt("Fill in the details below", form)
 			console.log(input)
 		}
+		function openDrawer(options) {
+			kiwicomponents.openDrawer({ ...options })
+		}
+		function loadTreeLists(button) {
+			button.remove()
+			const allInteractiveElements = []
+			Array.from(document.querySelectorAll("kiwi-treelist-item")).forEach(element => {
+				element.style.display = "block"
+				if (element.hasAttribute("interactive")) {
+					element.addEventListener("click", () => {
+						allInteractiveElements.forEach(item => item.removeAttribute("selected"))
+						element.setAttribute("selected", "")
+					})
+					allInteractiveElements.push(element)
+				}
+			})
+		}
 		kiwicomponents.enableGlobalTooltips()
-		kiwicomponents.injectStyle({
-			forms: true
-		})
+
+		const templateElement = document.createElement("template")
+		templateElement.innerHTML = "<link rel='stylesheet' href='./css/bundle.css'>"
+		class KiwiDemo extends HTMLElement {
+			constructor() {
+				super()
+				this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+			}
+
+			connectedCallback() {
+				Array.from(this.children).forEach(child => this.shadowRoot.appendChild(child))
+			}
+		}
+		window.customElements.define("kiwi-scoped-demo", KiwiDemo)
+
 	</script>
+	<link rel="stylesheet" href="./css/forms.css" />
 </head>
 
 <body>

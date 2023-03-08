@@ -1,9 +1,21 @@
 # Change Log
 
-### (TBR)
-- Add auto-flipping to tooltips when they overflow
-- Add split view component
-- Handle case where tab component overflows
+### 0.4.0
+- Added drawer functionality and openDrawer utility function
+- Created new CSS utilities 
+- Migrated some functionality to CSS-only
+- Updated typography system
+- Revamped color system & theming system
+- Added support for text markup elements
+- Added support for progress elements
+- Improved separation between interaction and UI
+- Added state manager
+- Major rewrite of how tables are implemented
+- Added additional options for toasts
+- Improved alert window icons
+- Improved tab component
+- Created split JS builds to allow for easier use with SSR frameworks
+- Various improvements and bug fixes
 
 ### 0.3.2
 - Fixed error where drawer icon would not be visible

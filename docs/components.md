@@ -10,6 +10,7 @@ Kiwi Components come with a number of web components that most applications need
 
 ```html
 <kiwi-button>Default</kiwi-button>
+<kiwi-button type="primary" fill="light">Light</kiwi-button>
 <kiwi-button type="error">Error</kiwi-button>
 <kiwi-button icon="YourIconURLHere">With Icon</kiwi-button>
 <kiwi-button icon-placement="after" icon="YourIconURLHere">With Reverse Icon</kiwi-button>
@@ -17,16 +18,16 @@ Kiwi Components come with a number of web components that most applications need
 ```
 
 Result:
-<br><br>
+
+<div style="display:flex;flex-direction:column;gap:0.75rem;">
 <kiwi-button>Default</kiwi-button>
-<br><br>
-<kiwi-button type="error">Error</kiwi-button>
-<br><br>
-<kiwi-button icon="./example-icon-white.svg">With Icon</kiwi-button>
-<br><br>
-<kiwi-button icon-placement="after" icon="./example-icon-white.svg">With Reverse Icon</kiwi-button>
-<br><br>
-<kiwi-button direction="column" icon="./example-icon-white.svg">With Column Layout</kiwi-button>
+<kiwi-button useanimation="">Useanimation = true</kiwi-button>
+<kiwi-button type="primary" fill="light">Fill = Light</kiwi-button>
+<kiwi-button type="error">Type = Error</kiwi-button>
+<kiwi-button icon="./img/example-icon-white.svg">With Icon</kiwi-button>
+<kiwi-button icon-placement="after" icon="./img/example-icon-white.svg">With Reverse Icon</kiwi-button>
+<kiwi-button direction="column" icon="./img/example-icon-white.svg">With Column Layout</kiwi-button>
+</div>
 
 ### Attributes
 
@@ -41,22 +42,7 @@ The following attributes can be configured:
 | type           | "primary" \| "secondary" \| "neutral" \| "info" \| "success" \| "error" \| "warning" | Determines the look and feel of the button.                                                  |
 | size           | "small" \| "medium" \| "large"                                                       | Determines the size of the button. Defaults to "medium".                                     |
 | direction      | "column" \| "row"                                                                    | Determines the direction of the icon and button text (row or column). Default is row.        |
-| noanimation    | any                                                                                  | If set to any value the button background will not animate on hover.                         |
-
-### Styling
-
-The following CSS variables can be configured:
-
-| Variable                           | Description                                      |
-| ---------------------------------- | ------------------------------------------------ |
-| --kiwi-button-border               | Border of the button                             |
-| --kiwi-button-outline              | Outline of the button                            |
-| --kiwi-button-animation-duration   | Hove animation duration                          |
-| --kiwi-button-border-radius        | Border radius of the button                      |
-| --kiwi-button-box-shadow           | Box shadow of the button                         |
-| --kiwi-button-border-activated     | Border when button is in :hover or :active mode  |
-| --kiwi-button-outline-activated    | Outline when button is in :hover or :active mode |
-| --kiwi-button-box-shadow-activated | Shadow when button is in :hover or :active mode  |
+| useanimation   | "dark"\|"light"\|"link"\|"none"                                                      | Determines The contrast balance in the button and the hover/active/focus look and feel.      |
 
 ---
 
@@ -96,66 +82,74 @@ The following attributes can be configured:
 | percent       | number | Percentage (0-100) loaded. If not set the spinner will start spinning.            |
 | usebackground | any    | If set to any value a background will be displayed behind the spinner wheel.      |
 
-### Styling
-
-The following CSS variables can be configured:
-
-| Variable                        | Description                           |
-| ------------------------------- | ------------------------------------- |
-| --kiwi-spinner-color            | Color of the spinner wheel            |
-| --kiwi-spinner-background-color | Color of the spinner wheel background |
-
 ---
 
 ## \<kiwi-tabs>
 
-\<kiwi-tabs> is a tabbed panel. This component allows you to create tabs and display content depending on what tab is active. The motivation for this component is that many modern applications use these types of layouts, and creating them requires a lot of boilerplate and state management.
+\<kiwi-tabs> is a tabbed panel. This component allows you to create tabs and display content depending on what tab is active. The motivation for this component is that many most applications use these types of layouts, and creating them requires a lot of boilerplate and state management.
 
-Tab labels are provided as a comma separated string attribute "labels". For each provided value a tab will be created. To insert content into the tab simply set the slot attribute to the label. The currently open tab can be manipulated and inspected using the active-tab attribute
+Tabs are defined using \<kiwi-tab> elements placed inside the \<kiwi-tabs> element. Use the attribute "disabled" to disable a given tab.
+
+To change which tab is selected, set the active-tab-index attribute on the \<kiwi-tabs> element to the index of the tab (starting from 0).
+
+To place content inside of a slot, set the slot attribute on the content to the index of the tab it should be in (starting from 0).
 
 ### Example:
 
 ```html
-<kiwi-tabs labels="Tab 1,Tab 2,Tab 3" active-tab="Tab 2" disabled-tabs="Tab 3">
-	<div slot="Tab 1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae.</div>
-	<div slot="Tab 2">Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc.</div>
-	<div slot="Tab 3">Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.</div>
+<kiwi-tabs active-tab-index="1">
+	<kiwi-tab>Hello World</kiwi-tab>
+	<kiwi-tab>Some Carpeting</kiwi-tab>
+	<kiwi-tab disabled>Fun Stuff</kiwi-tab>
+	<div slot="0">
+		Tab 1 content Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem consequatur odit, iusto aperiam quos pariatur eum
+		perspiciatis ipsam eveniet natus non eius ipsum dolorem hic rem! Nisi?
+	</div>
+	<div slot="1">
+		Tab 2 content Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem consequatur odit, iusto aperiam quos pariatur eum
+		perspiciatis ipsam eveniet natus non eius ipsum dolorem hic rem! Nisi?
+	</div>
+	<div slot="2">
+		Tab 3 content Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem consequatur odit, iusto aperiam quos pariatur eum
+		perspiciatis ipsam eveniet natus non eius ipsum dolorem hic rem! Nisi?
+	</div>
 </kiwi-tabs>
 ```
 
 Result:
 
-<kiwi-tabs labels="Tab 1,Tab 2,Tab 3" active-tab="Tab 2" disabled-tabs="Tab 3">
-	<div slot="Tab 1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae.</div>
-	<div slot="Tab 2">Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc.</div>
-	<div slot="Tab 3">Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.</div>
+<kiwi-tabs active-tab-index="1">
+  <kiwi-tab>Hello World</kiwi-tab>
+  <kiwi-tab>Some Carpeting</kiwi-tab>
+  <kiwi-tab disabled>Fun Stuff</kiwi-tab>
+  <div slot="0">
+    Tab 1 content
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem
+    consequatur odit, iusto aperiam quos pariatur eum perspiciatis ipsam eveniet natus non eius ipsum dolorem hic
+    rem! Nisi?
+  </div>
+  <div slot="1">
+    Tab 2 content
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem
+    consequatur odit, iusto aperiam quos pariatur eum perspiciatis ipsam eveniet natus non eius ipsum dolorem hic
+    rem! Nisi?
+  </div>
+  <div slot="2">
+    Tab 3 content
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sed asperiores autem
+    consequatur odit, iusto aperiam quos pariatur eum perspiciatis ipsam eveniet natus non eius ipsum dolorem hic
+    rem! Nisi?
+  </div>
 </kiwi-tabs>
 
 ### Attributes
 
 The following attributes can be configured:
 
-| attribute     | type   | description                                    |
-| ------------- | ------ | ---------------------------------------------- |
-| labels        | string | Comma separated list of tab labels             |
-| active-tab    | string | Currently active tab                           |
-| disabled-tabs | string | Comma separated list of tabs that are disabled |
-
-### Styling
-
-The following CSS variables can be configured:
-
-| Variable                                        | Description                                      |
-| ----------------------------------------------- | ------------------------------------------------ |
-| --kiwi-tab-panel-border-radius                  | Border radius for the tabs                       |
-| --kiwi-tab-panel-tab-selected-background        | Background for the selected tab                  |
-| --kiwi-tab-panel-tab-selected-color             | Color for the selected tab                       |
-| --kiwi-tab-panel-tab-selected-active-background | background for the selected tab in active state  |
-| --kiwi-tab-panel-tab-selected-active-color      | Color for the selected tab in active state       |
-| --kiwi-tab-panel-tab-background                 | background for non-selected tabs                 |
-| --kiwi-tab-panel-tab-color                      | Color for non-selected tabs                      |
-| --kiwi-tab-panel-tab-active-background          | background for non-selected tabs in active state |
-| --kiwi-tab-panel-tab-active-color               | Color for non-selected tabs in active state      |
+| attribute        | type            | description                                                            |
+| ---------------- | --------------- | ---------------------------------------------------------------------- |
+| active-tab-index | number          | index of the selected tab                                              |
+| direction        | "row"\|"column" | If set to row the tab menu will top to bottom, otherwise left to right |
 
 ---
 
@@ -173,7 +167,7 @@ This component is a great way of visualising and interacting with tree data, whi
 
 ```html
 <div style="height:340px;padding:1em;background-color:white;border: 1px solid lightgray;border-radius:0.5em;">
-	<kiwi-treelist-item text="With Icon" icon="./example-icon-black.svg">
+	<kiwi-treelist-item text="With Icon" icon="./img/example-icon-black.svg">
 		<kiwi-treelist-item text="Just text">
 			<kiwi-treelist-item text="Blank icon" icon="">
 				<kiwi-treelist-item interactive="" text="Selectable 1"></kiwi-treelist-item>
@@ -202,9 +196,10 @@ This component is a great way of visualising and interacting with tree data, whi
 ```
 
 Result:
+<kiwi-button onclick="loadTreeLists(this)">Load Content</kiwi-button>
 
 <div style="height:340px;padding:1em;background-color:white;border: 1px solid lightgray;border-radius:0.5em;">
-	<kiwi-treelist-item text="With Icon" icon="./example-icon-black.svg">
+	<kiwi-treelist-item text="With Icon" icon="./img/example-icon-black.svg" style="display:none;">
 		<kiwi-treelist-item text="Just text">
 			<kiwi-treelist-item text="Blank icon" icon="">
 				<kiwi-treelist-item interactive="" text="Selectable 1"></kiwi-treelist-item>
@@ -217,19 +212,6 @@ Result:
 			</kiwi-treelist-item>
 		</kiwi-treelist-item>
 	</kiwi-treelist-item>
-	<script>
-		console.log("hey")
-		const allInteractiveElements = []
-		Array.from(document.querySelectorAll("kiwi-treelist-item")).forEach(element => {
-			if (element.hasAttribute("interactive")) {
-				element.addEventListener("click", () => {
-					allInteractiveElements.forEach(item => item.removeAttribute("selected"))
-					element.setAttribute("selected", "")
-				})
-				allInteractiveElements.push(element)
-			}
-		})
-	</script>
 </div>
 
 ### Attributes
@@ -243,24 +225,6 @@ The following attributes can be configured:
 | icon        | string | An icon URL. If set to an empty string an empty icon will be added.                                  |
 | interactive | any    | If set then exploding/imploding will only occur when clicking the arrow, rather than the whole item. |
 | selected    | any    | If set the item will be styled as selected                                                           |
-
-### Styling
-
-The following CSS variables can be configured:
-
-| Variable                              | Description                                                                 |
-| ------------------------------------- | --------------------------------------------------------------------------- |
-| --kiwi-treelist-font-size             | Font size for the tree list item (other measurements are relative to this!) |
-| --kiwi-treelist-font-weight           | Font weight of the tree list item                                           |
-| --kiwi-treelist-animation-duration    | Duration for all animations and transitions                                 |
-| --kiwi-treelist-line-color            | Color for the lines in the tree                                             |
-| --kiwi-treelist-expand-arrow-icon-url | Custom icon URL for the expand arrow                                        |
-| --kiwi-treelist-hover-background      | Background when hovered                                                     |
-| --kiwi-treelist-hover-color           | Color when hovered                                                          |
-| --kiwi-treelist-selected-background   | Background when selected                                                    |
-| --kiwi-treelist-selected-color        | Color when selected                                                         |
-| --kiwi-treelist-focus-background      | Background when focused                                                     |
-| --kiwi-treelist-focus-color           | Color when focused                                                          |
 
 ---
 
@@ -318,52 +282,39 @@ The following CSS variables can be configured:
 
 ---
 
-## \<kiwi-drawer>
+## \<kiwi-burger>
 
 \<kiwi-drawer> is a side drawer panel with a built-in toggle. This type of togglable side drawer can be found in most responsive applications today, and require a lot of work to set up.
 
-The drawer can either open from the left or from the right. You can adjust the positioning of the close-toggle inside the menu, the general look and feel, as well as if the drawer should open from the left or from the right. You can also programatically open and close the drawer by setting the "open" attribute. The attribute also allows you to monitor the component as it will always reflect the current state.
+You can programatically open and close the drawer by setting the "open" attribute. The attribute also allows you to monitor the component as it will always reflect the current state.
 
 ### Example:
 
 ```html
-Opens from the right side (default):
-<kiwi-drawer> Right Menu </kiwi-drawer>
-Opens from the left side:
-<kiwi-drawer direction="left"> Left Menu </kiwi-drawer>
+<kiwi-burger> Menu Content</kiwi-burger>
 ```
 
 Result:
-<kiwi-drawer> Right Menu </kiwi-drawer>
-<kiwi-drawer direction="left"> Left Menu </kiwi-drawer>
+<kiwi-burger> Menu Content</kiwi-burger>
 
 ### Attributes
 
 The following attributes can be configured:
 
-| attribute | type            | description                                                                                    |
-| --------- | --------------- | ---------------------------------------------------------------------------------------------- |
-| direction | "left"\|"right" | Tells the component if the drawer should open from the left or right.                          |
-| open      | any             | If set to any value the drawer will open. Can also be used to monitor the state of the drawer. |
+| attribute | type | description                                                                                    |
+| --------- | ---- | ---------------------------------------------------------------------------------------------- |
+| open      | any  | If set to any value the drawer will open. Can also be used to monitor the state of the drawer. |
 
 ### Styling
 
 The following CSS variables can be configured:
 
-| Variable                                            | Description                                              |
-| --------------------------------------------------- | -------------------------------------------------------- |
-| --kiwi-burger-drawer-button-size                    | Size for the toggle button                               |
-| --kiwi-burger-drawer-button-background              | Background for the toggle button                         |
-| --kiwi-burger-drawer-button-border-radius           | Border radius for the toggle button                      |
-| --kiwi-burger-drawer-button-padding                 | Padding for the toggle button                            |
-| --kiwi-burger-drawer-button-hover-background        | Hover background for the toggle button                   |
-| --kiwi-burger-drawer-button-line-color              | Line color for the toggle button                         |
-| --kiwi-burger-drawer-button-line-hover-color        | Hover line color for the toggle button                   |
-| --kiwi-burger-drawer-close-button-horizontal-offset | Horizontal offset for the close button inside the drawer |
-| --kiwi-burger-drawer-close-button-vertical-offset   | Vertical offset for the close button inside the drawer   |
-| --kiwi-burger-drawer-width                          | Prefered width of the open drawer                        |
-| --kiwi-burger-drawer-background                     | Background of the drawer                                 |
-| --kiwi-burger-drawer-animation-duration             | Animation duration for the drawer                        |
+| Variable                                | Description                       |
+| --------------------------------------- | --------------------------------- |
+| --kiwi-burger-drawer-button-size        | Size for the toggle button        |
+| --kiwi-burger-drawer-button-padding     | Padding for the toggle button     |
+| --kiwi-burger-drawer-color              | Line color for the toggle button  |
+| --kiwi-burger-drawer-animation-duration | Animation duration for the drawer |
 
 ---
 
@@ -403,7 +354,7 @@ You can manually control if the accordion is open or not by using the "open" att
 
 Result:
 
-<kiwi-accordion title="Accordion 1" icon="./example-icon-black.svg">
+<kiwi-accordion title="Accordion 1" icon="./img/example-icon-black.svg">
 	<div style="padding:1rem;box-sizing:border-box;">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor lacinia vitae. Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend rhoncus nunc. Donec augue sapien, consequat et purus lacinia, egestas sagittis lorem.
 	</div>
@@ -428,20 +379,6 @@ The following attributes can be configured:
 | open      | any    | If set to any value the accordion will be opened. |
 | title     | string | Configures the title text on the button.          |
 | icon      | string | Optionally configures an icon for the button      |
-
-### Styling
-
-The following CSS variables can be configured:
-
-| Variable                                        | Description                                                   |
-| ----------------------------------------------- | ------------------------------------------------------------- |
-| --kiwi-accordion-button-background-color        | Background color for the button                               |
-| --kiwi-accordion-button-color                   | Text color for the button                                     |
-| --kiwi-accordion-active-button-background-color | Background color for the button when active (hovered or open) |
-| --kiwi-accordion-active-button-color            | Text color for the button when active (hovered or open)       |
-| --kiwi-accordion-panel-background-color         | Content background color                                      |
-| --kiwi-accordion-border                         | Component border                                              |
-| --kiwi-accordion-animation-time                 | Open and close animation time                                 |
 
 ---
 
@@ -495,11 +432,9 @@ The following CSS variables can be configured:
 
 ## \<kiwi-alert>
 
-\<kiwi-alert> is an accordion component where when clicking on it a content panel expands below it. This type of component can be found in a great deal of applications, and requires quite a lot of boilerplate.
+\<kiwi-alert> is a component that visually communicates a strong message. It can optionally be dismissable. The alert element is part of the regular flow of elements in the DOM tree, making it distinct from similar elements like toast notifications.
 
-If several accordion components are placed as direct siblings in the DOM then opening one drawer will close the others. If you do not want this behaviour then you need to place a blank element in between them.
-
-You can manually control if the accordion is open or not by using the "open" attribute.
+Any heading element placed inside of the kiwi-alert will be styled fittingly.
 
 ### Example:
 
@@ -599,18 +534,19 @@ The following attributes can be configured:
 
 ### Events
 
-| event          | description                                  |
-| -------------- | -------------------------------------------- |
-| useclosebutton | Fired when the element is closed by the user |
+| event | description                                  |
+| ----- | -------------------------------------------- |
+| close | Fired when the element is closed by the user |
 
 ### Styling
 
 The following CSS variables can be configured:
 
-| Variable                    | Description                          |
-| --------------------------- | ------------------------------------ |
-| --kiwi-alert-padding        | Padding for the container's content  |
-| --kiwi-alert-border-radius  | Border radius of the alert container |
-| --kiwi-alert-border         | Border for the alert                 |
-| --kiwi-alert-icon-size      | Size of the close icon               |
-| --kiwi-alert-animation-time | Animation duration                   |
+| Variable                        | Description                    |
+| ------------------------------- | ------------------------------ |
+| --kiwi-alert-border-color       | Color of the left side border  |
+| --kiwi-alert-background-color   | Background color for the alert |
+| --kiwi-alert-header-color       | Header text color              |
+| --kiwi-alert-body-color         | Body text color                |
+| --kiwi-alert-stroke-color       | Close icon color               |
+| --kiwi-alert-stroke-hover-color | Close icon hover color         |

@@ -5,36 +5,65 @@ const templateElement = document.createElement("template")
 templateElement.innerHTML = `<style>${styles}</style>${template}`
 
 /**
- * Kiwi Burger Menu
- * A burger menu element that when clicked opens up a drawer area.
+ * Drawer Menu
+ * A drawer menu element that opens up a side area.
  * @element kiwi-drawer
  *
  * @attr {any} open - If set the drawer menu will open.
+ * @attr {string} title - Drawer title (optional).
+ * @attr {string} subtitle - Drawer subtitle (optional).
+ * @attr {any} usebackdrop - If set to any value adds a clickable backdrop
+ * @attr {any} nocloseicon - If set to any value the close button will be disabled
  * @attr {"left"|"right"} direction - The direction from which the drawer opens.
+ * @attr {"primary"|"secondary"|"neutral"|"info"|"success"|"error"|"warning"} type - Determines the look and feel of the header. Defaults to "neutral".
  *
+ * @fires open - Event that fires when the drawer opens and closes
  */
 class KiwiBurgerMenu extends HTMLElement {
 	static get observedAttributes() {
-		return ["open", "direction"]
+		return ["open", "direction", "type", "title", "subtitle", "usebackdrop", "nocloseicon"]
 	}
 
 	constructor() {
 		super()
 		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
-		this.shadowRoot.querySelectorAll(".toggle").forEach(element => element.addEventListener("click", () => this.toggleAttribute("open")))
-		this.shadowRoot.querySelector("#backdrop").addEventListener("click", () => this.toggleAttribute("open"))
-		this._render()
+		this.shadowRoot.querySelector("#close-icon").addEventListener("click", () => this.toggleAttribute("open"))
+		this.shadowRoot.querySelector("#backdrop-blur").addEventListener("click", () => this.toggleAttribute("open"))
+		this.shadowRoot.querySelector("#menu-panel").addEventListener("transitionend", () => {
+			this.dispatchEvent(new CustomEvent("open", { detail: this.hasAttribute("open") }))
+		})
+		this._titleElement = this.shadowRoot.querySelector("#title")
+		this._subtitleElement = this.shadowRoot.querySelector("#subtitle")
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
-		this._render()
+		if (name === "title") {
+			this._updateTitle(newValue)
+		}
+		if (name === "subtitle") {
+			this._updateSubtitle(newValue)
+		}
 	}
 
-	_render() {
-		if (this.hasAttribute("open")) {
-			document.body.style.overflow = "hidden"
+	close() {
+		this.removeAttribute("open")
+	}
+
+	_updateTitle(text) {
+		if (typeof text === "string") {
+			this._titleElement.style.display = "block"
+			this._titleElement.innerText = text
 		} else {
-			document.body.style.removeProperty("overflow")
+			this._titleElement.style.display = "none"
+		}
+	}
+
+	_updateSubtitle(text) {
+		if (typeof text === "string") {
+			this._subtitleElement.style.display = "block"
+			this._subtitleElement.innerText = text
+		} else {
+			this._subtitleElement.style.display = "none"
 		}
 	}
 }

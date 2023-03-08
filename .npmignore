@@ -13,23 +13,19 @@ package-lock.json
 yarn.lock
 
 # project files
-src
-CHANGELOG.md
-.babelrc
-.gitignore
 __tests__
+development
+docs
+src
+.editorconfig
+.eslintignore
+.eslintrc.json
+.gitignore
+.huskyrc
+.lintstagedrc
+.prettierignore
+.prettierrc
+babel.config.js
+jest.config.js
 .rollup.config.js
 .rollup.config.dev.js
-jest.config.js
-custom-elements-example.json
-babel.config.js
-.prettierrc
-.prettierignore
-.npmignore
-.lintstagedrc
-.huskyrc
-.gitignore
-.eslintrc.json
-.eslintignore
-.editorconfig
-development

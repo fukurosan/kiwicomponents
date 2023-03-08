@@ -6,6 +6,8 @@ import { terser } from "rollup-plugin-terser"
 import scss from "rollup-plugin-scss"
 import { string } from "rollup-plugin-string"
 import bundleSize from "rollup-plugin-bundle-size"
+import sass from "sass"
+import fs from "fs"
 
 const DIST_FOLDER = "dist"
 const LIBRARY_NAME = pkg.name
@@ -23,7 +25,9 @@ const BANNER = `/** @preserve @license @cc_on
  */\n`
 
 const bundles = {
-	bundle: "./src/index.js"
+	init: "./src/index.wc.js",
+	utility: "./src/index.utility.js",
+	bundle: "./src/index.bundle.js"
 }
 
 let productionBuilds = []
@@ -32,18 +36,18 @@ productionBuilds = Object.keys(bundles).map(bundle => {
 		input: bundles[bundle],
 		output: [
 			{
-				file: `${DIST_FOLDER}/build/${LIBRARY_NAME}-${bundle}.js`,
+				file: `${DIST_FOLDER}/js/${bundle}.js`,
 				name: LIBRARY_NAME,
 				format: "umd",
 				banner: BANNER
 			},
 			{
-				file: `${DIST_FOLDER}/build/${LIBRARY_NAME}-esm-${bundle}.js`,
+				file: `${DIST_FOLDER}/js/esm-${bundle}.js`,
 				format: "esm",
 				banner: BANNER
 			},
 			{
-				file: `docs/${LIBRARY_NAME}-${bundle}.js`,
+				file: `docs/js/${bundle}.js`,
 				name: LIBRARY_NAME,
 				format: "umd",
 				banner: BANNER
@@ -73,6 +77,23 @@ productionBuilds = Object.keys(bundles).map(bundle => {
 					}
 				}
 			}),
+			{
+				name: "build-kiwi-stylesheets",
+				buildEnd() {
+					fs.mkdirSync(`${DIST_FOLDER}/css`, { recursive: true })
+					fs.readdirSync("./src/Assets/Stylesheets/Global/").map(fileName => {
+						const css = sass.compile(`./src/Assets/Stylesheets/Global/${fileName}`, {
+							style: "compressed",
+							sourceMap: false
+						})
+						fs.writeFileSync(`${DIST_FOLDER}/css/${fileName.replace(/.scss$/, "")}.css`, `${BANNER}${css.css}`, "utf-8")
+						if (fileName.startsWith("bundle") || fileName.startsWith("form")) {
+							fs.writeFileSync(`docs/css/${fileName.replace(/.scss$/, "")}.css`, `${BANNER}${css.css}`, "utf-8")
+						}
+					})
+					return null
+				}
+			},
 			bundleSize()
 		]
 	}

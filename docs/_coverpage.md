@@ -1,4 +1,4 @@
-![logo](logo.png)
+![logo](./img/logo.png)
 
 # Kiwi Components
 

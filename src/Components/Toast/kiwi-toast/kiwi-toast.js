@@ -3,7 +3,7 @@ import styles from "./kiwi-toast.scss"
 
 const templateElement = document.createElement("template")
 templateElement.innerHTML = `<style>${styles}</style>${template}`
-const DEFAULT_TIMEOUT_LENGTH_MS = 5000
+const DEFAULT_TIMEOUT_LENGTH_MS = 30000
 
 /**
  * Kiwi Toast
@@ -12,30 +12,32 @@ const DEFAULT_TIMEOUT_LENGTH_MS = 5000
  *
  * @attr {string} icon - Toast icon (optional).
  * @attr {string} title - Toast title (optional).
- * @attr {string} body - Toast body (optional).
+ * @attr {string} subtitle - Toast subtitle (optional).
  * @attr {number} timeout - How long before toast toast should remove itself.
  * @attr {"primary"|"secondary"|"neutral"|"info"|"success"|"error"|"warning"} type - Defines what color the toast should be based on.
  * @attr {any} noanimation - If set the toast will not animate
- * @attr {any} noclickclose - If set the toast will not close when clicked
+ * @attr {"icon"|"click"|"none"} closemode - Configures how a user can interact to close the toast. Icon = X button, click = click anywhere, none = not closable
  *
  * @slot - Optional rich toast content.
  *
- * @function delete - Animates the toast and then removes it.
+ * @function close - Animates the toast and then removes it.
  *
  */
 class ToastElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["icon", "title", "body", "timeout", "type", "noanimation", "noclickclose"]
+		return ["icon", "title", "subtitle", "timeout", "type", "noanimation", "closemode"]
 	}
 
 	constructor() {
 		super()
 		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
 		this._mainContainerElement = this.shadowRoot.querySelector("#main")
-		this._mainContainerElement.addEventListener("click", () => !this.hasAttribute("noclickclose") && this.delete())
+		this._mainContainerElement.addEventListener("click", () => this.getAttribute("closemode") === "click" && this.close())
+		this._closeIconElement = this.shadowRoot.querySelector("#close-icon")
+		this._closeIconElement.addEventListener("click", this.close.bind(this))
 		this._iconElement = this.shadowRoot.querySelector("#icon")
 		this._titleElement = this.shadowRoot.querySelector("#title")
-		this._bodyElement = this.shadowRoot.querySelector("#body")
+		this._subtitleElement = this.shadowRoot.querySelector("#subtitle")
 		this._timeoutMs = DEFAULT_TIMEOUT_LENGTH_MS
 		this._timeout = null
 	}
@@ -54,8 +56,8 @@ class ToastElement extends HTMLElement {
 		if (name === "title") {
 			this._updateTitle(newValue)
 		}
-		if (name === "body") {
-			this._updateBody(newValue)
+		if (name === "subtitle") {
+			this._updateSubtitle(newValue)
 		}
 		if (name === "timeout") {
 			this._updateTimeout(parseInt(newValue))
@@ -81,12 +83,12 @@ class ToastElement extends HTMLElement {
 		}
 	}
 
-	_updateBody(text) {
+	_updateSubtitle(text) {
 		if (typeof text === "string") {
-			this._bodyElement.style.display = "block"
-			this._bodyElement.innerText = text
+			this._subtitleElement.style.display = "block"
+			this._subtitleElement.innerText = text
 		} else {
-			this._bodyElement.style.display = "none"
+			this._subtitleElement.style.display = "none"
 		}
 	}
 
@@ -100,7 +102,7 @@ class ToastElement extends HTMLElement {
 
 	_setTimeout() {
 		this._timeout = setTimeout(() => {
-			this.delete()
+			this.close()
 		}, this._timeoutMs)
 	}
 
@@ -123,7 +125,7 @@ class ToastElement extends HTMLElement {
 		return promise
 	}
 
-	async delete() {
+	async close() {
 		if (!this.hasAttribute("noanimation")) {
 			await this._animate(true)
 		}

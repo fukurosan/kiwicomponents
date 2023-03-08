@@ -16,7 +16,7 @@ Kiwi Components menus can be used to create either context menus or dropdown men
 		<kiwi-menu-item icon="" text="Option 3">
 			<kiwi-menu-item icon="" text="Option 1" detail="Detail"></kiwi-menu-item>
 			<kiwi-menu-item icon="" text="Option 2" disabled=""></kiwi-menu-item>
-			<hr />
+			<hr style="margin:0.25rem 1rem;color:transparent;border-top:1px solid black;opacity:0.1;" />
 			<kiwi-menu-item text="Option 3"> </kiwi-menu-item>
 		</kiwi-menu-item>
 	</kiwi-menu>
@@ -33,7 +33,7 @@ Try it:
 		<kiwi-menu-item icon="" text="Option 3">
 			<kiwi-menu-item icon="" text="Option 1" detail="Detail"></kiwi-menu-item>
 			<kiwi-menu-item icon="" text="Option 2" disabled=""></kiwi-menu-item>
-			<hr style="margin:0;border-bottom-color:gray;" />
+			<hr style="margin:0.25rem 1rem;color:transparent;border-top:1px solid black;opacity:0.1;">
 			<kiwi-menu-item text="Option 3"> </kiwi-menu-item>
 		</kiwi-menu-item>
 	</kiwi-menu>
@@ -181,19 +181,10 @@ The following attributes are supported:
 
 ## Styling
 
-The Kiwi Components toasts can be styled using CSS variables.
+The Kiwi Components menus can be styled using CSS variables.
 
 The following variables can be set:
 
-| Variable                             | Description                                      |
-| ------------------------------------ | ------------------------------------------------ |
-| --kiwi-menu-background-color         | Background of the menu content                   |
-| --kiwi-menu-color                    | Color of the menu content                        |
-| --kiwi-menu-shadow                   | Box shadow of the menu                           |
-| --kiwi-menu-border-radius            | Border radius of the menu and the menu items     |
-| --kiwi-menu-animation-duration       | Animation duration of the menu                   |
-| --kiwi-menu-disabled-color           | Color of a disabled menu item                    |
-| --kiwi-menu-hover-background         | Background of a hovered menu item                |
-| --kiwi-menu-hover-color              | Color of a hovered menu item                     |
-| --kiwi-menu-submenu-hover-background | Background of a hovered item that has a sub menu |
-| --kiwi-menu-submenu-hover-color      | Color of a hovered item that has a sub menu      |
+| Variable                       | Description                    |
+| ------------------------------ | ------------------------------ |
+| --kiwi-menu-animation-duration | Animation duration of the menu |

@@ -1,6 +1,6 @@
 module.exports = Object.freeze({
     snapshotPath: "./__tests__/__snapshots__/",
-    bundlePath: "./dist/build/kiwicomponents-bundle.js",
+    bundlePath: "./dist/js/bundle.js",
     isDebugMode: false,
     DEFAULT_IMAGE_CONFIG: {
         blur: 1,

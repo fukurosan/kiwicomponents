@@ -1,0 +1,37 @@
+@import "../Components/typography.scss";
+
+.container {
+	margin-inline: auto;
+	max-width: 100%;
+}
+
+@media (min-width: 768px) {
+	.container {
+		max-width: calc(100% - 48px);
+	}
+}
+
+@media (min-width: 1248px) {
+	.container {
+		max-width: 1200px;
+	}
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(var(--kiwi-grid-column-min-measurement, 0%), 1fr));
+	grid-column-gap: var(--kiwi-grid-gap, 0.5rem);
+	grid-row-gap: var(--kiwi-grid-gap, 0.5rem);
+}
+
+.flex-right {
+	display: flex;
+	flex-direction: row;
+	gap: var(--kiwi-flex-gap, 1rem);
+}
+
+.flex-down {
+	display: flex;
+	flex-direction: column;
+	gap: var(--kiwi-flex-gap, 1rem);
+}

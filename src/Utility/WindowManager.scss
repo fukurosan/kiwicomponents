@@ -14,12 +14,13 @@
 }
 
 .kiwi-windowmanager-generic-title {
-    @extend %h4;
-    font-weight: bold;
+    @extend %h5;
+    font-weight: 600
 }
 
 .kiwi-windowmanager-generic-message {
-    @extend %body-1;
+    @extend %body-2;
+    color: $with-color-below-500-faded;
 }
 
 .kiwi-windowmanager-generic-content {
@@ -41,7 +42,7 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-    min-width: 200px;
+    width: 100%;
 }
 
 .kiwi-windowmanager-spinner-content {
@@ -49,12 +50,40 @@
     padding: 0.5rem;
 }
 
-.kiwi-windowmanager-alert-body {
+.kiwi-windowmanager-alert-title {
     margin-top: 0.5rem;
+}
+
+.kiwi-windowmanager-alert-body {
     margin-bottom: 0.5rem;
 }
 
 .kiwi-windowmanager-alert-content-icon {
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    svg {
+        border-radius: 50%;
+        stroke-width: 0;
+        stroke: none;
+        path {
+            transform: scale(0.9);
+            transform-origin: center;
+        }
+        &.success {
+            fill: $success-color-700;
+            background-color: $success-color-200;    
+        }
+        &.error {
+            fill: $error-color-700;
+            background-color: $error-color-200;    
+        }
+        &.question {
+            fill: $info-color-700;
+            background-color: $info-color-200;    
+        }
+        &.warning {
+            fill: $warning-color-700;
+            background-color: $warning-color-200;    
+        }
+    }
 }

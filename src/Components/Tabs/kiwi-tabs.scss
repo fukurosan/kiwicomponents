@@ -3,53 +3,58 @@
 
 #container {
 	display: flex;
-	flex-direction: column;
 }
 
 #tab-button-container {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-bottom: 0.75rem;
 }
 
-.button {
-	@extend %button;
+:host(:not([direction="column"])) #container {
+	flex-direction: column;
+}
+
+:host([direction="column"]) #container {
+	flex-direction: row;
+	#tab-button-container {
+		flex-direction: column;
+		border-bottom: 0;
+		margin: 0;
+		margin-right: 0.75rem;
+	}
+	::slotted(kiwi-tab) {
+		border: 0;
+		padding: 0.75rem;
+		border-right: 2px solid transparent;
+	}
+	::slotted(kiwi-tab:hover:not([disabled])) {
+		border-right: 2px solid $neutral-color-400;
+	}
+	::slotted(kiwi-tab[active-tab]:not([disabled])) {
+		border-right: 2px solid $primary-color-600;
+	}
+}
+
+::slotted(kiwi-tab) {
+	padding: 0.625rem 0.5rem;
 	white-space: nowrap;
-	border-top-right-radius: var(--kiwi-tab-panel-border-radius, 0.5em);
-	border-top-left-radius: var(--kiwi-tab-panel-border-radius, 0.5em);
-	padding: 1em 1.5em;
-	user-select: none;
+	border-right: 2px solid transparent;
+	opacity: 0.7;
 	cursor: pointer;
-	position: relative;
 }
-
-.active {
-	background: var(--kiwi-tab-panel-tab-selected-background, $primary-color);
-	color: var(--kiwi-tab-panel-tab-selected-color, $with-primary-color);
-	&:not(.disabled):focus,
-	&:not(.disabled):active,
-	&:not(.disabled):hover {
-		background: var(--kiwi-tab-panel-tab-selected-active-background, $primary-color-light);
-		color: var(--kiwi-tab-panel-tab-selected-active-color, $with-primary-color-light);
-	}
-}
-.button:not(.active) {
-	background: var(--kiwi-tab-panel-tab-background, #e2e2e2);
-	color: var(--kiwi-tab-panel-tab-color, #000000);
-	&:not(.disabled):focus,
-	&:not(.disabled):active,
-	&:not(.disabled):hover {
-		background: var(--kiwi-tab-panel-tab-active-background, #cecece);
-		color: var(--kiwi-tab-panel-tab-active-color, #000000);
-	}
-}
-
-.disabled {
+::slotted(kiwi-tab[disabled]) {
 	cursor: not-allowed;
+	opacity: 0.4;
 }
-.disabled::before {
-	content: " ";
-	position: absolute;
-	inset: 0;
-	background: white;
-	opacity: 0.5;
+::slotted(kiwi-tab:hover:not([disabled])) {
+	opacity: 1;
+	color: $primary-color-600 !important;
+}
+::slotted(kiwi-tab[active-tab]:not([disabled])) {
+	opacity: 1;
+	border-bottom: 2px solid $primary-color-600;
+	color: $primary-color-600 !important;
 }
