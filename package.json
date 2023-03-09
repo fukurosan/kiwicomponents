@@ -6,7 +6,7 @@
   "unpkg": "./dist/js/bundle.js",
   "jsdelivr": "./dist/js/bundle.js",
   "module": "./dist/js/esm-bundle.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/types/index.bundle.d.ts",
   "scripts": {
     "lint:fix": "prettier \"src/**/*.js\" --write && eslint \"src/**/*.js\" --fix",
     "test": "jest --no-cache --verbose",
