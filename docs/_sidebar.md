@@ -1,7 +1,7 @@
 * [Getting Started](/)
 * [Window Management](windowmanagement.md)
 * [Toast Notifications](toast.md)
-* [Drawers](Drawers.md)
+* [Drawers](drawers.md)
 * [Menus](menus.md)
 * [Tooltips](tooltips.md)
 * [Tables](tables.md)
