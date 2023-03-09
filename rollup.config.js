@@ -66,6 +66,26 @@ productionBuilds = Object.keys(bundles).map(bundle => {
 			string({
 				include: ["**/*.html"]
 			}),
+			{
+				name: "kiwi-ssr-support-transform",
+				transform(code, id) {
+					let generatedCode = code
+					if (id.match(/Components\/.*\/kiwi-.*.js/)) {
+						const searchString = "const templateElement = document.createElement(\"template\")"
+						if (code.includes(searchString)) {
+							generatedCode = `${code.replace(
+								searchString,
+								`if(typeof document !== "undefined" && typeof window !== "undefined"){\n${searchString}`
+							)}}`
+						} else {
+							generatedCode = `${code.replace("/**", "if(typeof document !== \"undefined\" && typeof window !== \"undefined\"){\n/**")}}`
+						}
+					}
+					return {
+						code: generatedCode
+					}
+				}
+			},
 			terser({
 				format: {
 					comments(node, comment) {

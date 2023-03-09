@@ -1,6 +1,6 @@
 /** @preserve @license @cc_on
  * ----------------------------------------------------------
- * kiwicomponents version 0.4.0
+ * kiwicomponents version 0.4.1
  * An SDK for web browsers.
  * Copyright (c) 2023 Henrik Olofsson
  * All Rights Reserved. MIT License

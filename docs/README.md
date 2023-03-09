@@ -28,12 +28,9 @@ You can then use the library like so:
 import "kiwicomponents" // -> Initializes the library
 import { alert } from "kiwicomponents" // -> Imports the function(s) from the library
 import "kiwicomponents/dist/css/bundle.css" // -> Imports CSS file(s)
-
-//If you are working with some form of SSR framework you may get errors like "document is not defined".
-//For these cases you need to ensure that the library initialization takes place in the client and not the server
-//And then you need to change all your function imports like so:
-import { alert } from "kiwicomponents/dist/js/utility"
 ```
+
+If you are working with some form of SSR framework you may get errors like "document is not defined" when executing functions from the library. For these cases you need to ensure that the functions imported are only executed in the client.
 
 You can also load the entire library using a script element like so:
 

@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.4.1
+- Improved support for using the library with SSR frameworks
+
 ### 0.4.0
 - Added drawer functionality and openDrawer utility function
 - Created new CSS utilities 
