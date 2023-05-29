@@ -15,6 +15,7 @@
 		vertical-align: -0.125em;
 		animation: rotate 0.75s linear infinite;
 		opacity: 0.7;
+		box-sizing: content-box;
 	}
 
 	&:not(:empty) {

@@ -19,10 +19,12 @@ td {
 
 table.sticky-headers {
 	position: relative;
+
 	thead {
 		position: sticky;
 		top: 0;
 		background-color: $primary-color-600;
+
 		th {
 			color: $with-color-above-400;
 		}
@@ -53,4 +55,40 @@ table.nowrap :is(th, td) {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 768px) {
+	table.responsive {
+		thead {
+			display: none;
+		}
+
+		td {
+			display: grid;
+			grid-template-columns: var(--kiwi-table-responsive-header-width, 30%) 70%;
+			grid-gap: 0.75em;
+			padding: 0.5rem 1rem;
+			border: none !important;
+		}
+
+		table.border-h tr:not(:last-child) td:last-child {
+			border-bottom: 1px solid var(--kiwi-neutral-color-300, #d1d5db) !important;
+		}
+
+		td:before {
+			content: attr(kiwi-header) ": ";
+			font-weight: bold;
+			text-transform: capitalize;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		td:first-child {
+			padding-top: 1.25rem;
+		}
+
+		td:last-child {
+			padding-bottom: 1.25rem;
+		}
+	}
 }

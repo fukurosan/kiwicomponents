@@ -3,6 +3,7 @@
 Kiwi Components enables you to create tables with a variety of built-in functionality right out of the box. It does this by enhancing your tables through the kiwi-table web component. This means that irregardless of how you choose to style your table you can still use kiwi components to make them interactive. Of course, you can also use the kiwi components CSS bundle to create beautiful tables out of the box.
 
 ## \<kiwi-table>
+
 ### Simple Example:
 
 ```html
@@ -143,15 +144,16 @@ By importing either the table.css stylesheet file from kiwi components, or the f
 
 You will on top of this get access to a few different css classes that you can attach to your table element to style it according to your needs:
 
-| class           | description                                              |
-| --------------- | -------------------------------------------------------- |
-| .sticky-headers | Makes the headers sticky                                 |
-| .fixed          | Fixes the width of the table to stop horizontal overflow |
-| .hover-effect   | Adds a hover effect for rows                             |
-| .striped        | Makes every second row striped                           |
-| .border-v       | Adds vertical borders                                    |
-| .border-h       | Adds horizontal borders                                  |
-| .nowrap         | Makes cell content not wrap                              |
+| class           | description                                                                                                                                      |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| .sticky-headers | Makes the headers sticky                                                                                                                         |
+| .fixed          | Fixes the width of the table to stop horizontal overflow                                                                                         |
+| .hover-effect   | Adds a hover effect for rows                                                                                                                     |
+| .striped        | Makes every second row striped                                                                                                                   |
+| .border-v       | Adds vertical borders                                                                                                                            |
+| .border-h       | Adds horizontal borders                                                                                                                          |
+| .nowrap         | Makes cell content not wrap                                                                                                                      |
+| .responsive     | Makes rows wrap vertically on mobile resolutions. Note that you must add a "kiwi-header" attribute to all tds with the corresponding header text |
 
 import either only the table css file, or the full bundle.
 
@@ -166,7 +168,7 @@ After doing so all your standard form elements should now look better.
 ### Example
 
 ```html
-<table class="sticky-headers striped border-h nowrap fixed">
+<table class="sticky-headers striped border-h nowrap fixed responsive">
 	<thead>
 		<th>One</th>
 		<th>Two</th>
@@ -174,26 +176,26 @@ After doing so all your standard form elements should now look better.
 	</thead>
 	<tbody>
 		<tr>
-			<td>Hello World 1</td>
-			<td>Hello World 2</td>
-			<td>Hello Wooooooorld 3</td>
+			<td kiwi-header="One">Hello World 1</td>
+			<td kiwi-header="Two">Hello World 2</td>
+			<td kiwi-header="Three">Hello Wooooooorld 3</td>
 		</tr>
 		<tr>
-			<td>Hello World 1</td>
-			<td>Hello World 2</td>
-			<td>Hello Wooooooorld 3</td>
+			<td kiwi-header="One">Hello World 1</td>
+			<td kiwi-header="Two">Hello World 2</td>
+			<td kiwi-header="Three">Hello Wooooooorld 3</td>
 		</tr>
 		<tr>
-			<td>Hello World 1</td>
-			<td>Hello World 2</td>
-			<td>Hello Wooooooorld 3</td>
+			<td kiwi-header="One">Hello World 1</td>
+			<td kiwi-header="Two">Hello World 2</td>
+			<td kiwi-header="Three">Hello Wooooooorld 3</td>
 		</tr>
 	</tbody>
 </table>
 ```
 
 <kiwi-scoped-demo>
-    <table class="sticky-headers striped border-h nowrap fixed">
+    <table class="sticky-headers striped border-h nowrap fixed responsive">
         <thead>
             <th>One</th>
             <th>Two</th>
@@ -201,19 +203,19 @@ After doing so all your standard form elements should now look better.
         </thead>
         <tbody>
             <tr>
-                <td>Hello World 1</td>
-                <td>Hello World 2</td>
-                <td>Hello Wooooooorld 3</td>
+                <td kiwi-header="One">Hello World 1</td>
+                <td kiwi-header="Two">Hello World 2</td>
+                <td kiwi-header="Three">Hello Wooooooorld 3</td>
             </tr>
             <tr>
-                <td>Hello World 1</td>
-                <td>Hello World 2</td>
-                <td>Hello Wooooooorld 3</td>
+                <td kiwi-header="One">Hello World 1</td>
+                <td kiwi-header="Two">Hello World 2</td>
+                <td kiwi-header="Three">Hello Wooooooorld 3</td>
             </tr>
             <tr>
-                <td>Hello World 1</td>
-                <td>Hello World 2</td>
-                <td>Hello Wooooooorld 3</td>
+                <td kiwi-header="One">Hello World 1</td>
+                <td kiwi-header="Two">Hello World 2</td>
+                <td kiwi-header="Three">Hello Wooooooorld 3</td>
             </tr>
         </tbody>
     </table>

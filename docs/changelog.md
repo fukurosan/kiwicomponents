@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.4.2
+- Added responsiveness class for table elements
+
 ### 0.4.1
 - Improved support for using the library with SSR frameworks
 
