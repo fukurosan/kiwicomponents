@@ -70,7 +70,7 @@ productionBuilds = Object.keys(bundles).map(bundle => {
 				name: "kiwi-ssr-support-transform",
 				transform(code, id) {
 					let generatedCode = code
-					if (id.match(/Components\/.*\/kiwi-.*.js/)) {
+					if (id.match(/Components[/\\].*[/\\]kiwi-.*.js/)) {
 						const searchString = "const templateElement = document.createElement(\"template\")"
 						if (code.includes(searchString)) {
 							generatedCode = `${code.replace(
