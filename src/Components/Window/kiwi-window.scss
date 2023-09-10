@@ -27,8 +27,8 @@
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
-	box-shadow: $section-shadow;
-	border-radius: $section-border-radius;
+	box-shadow: $shadow-medium;
+	border-radius: $border-radius-medium;
 	animation-duration: var(--kiwi-window-animation-duration, 200ms);
 	animation-timing-function: ease-in-out;
 	transition: all var(--kiwi-window-animation-duration, 200ms);
@@ -57,14 +57,14 @@
  */
 #header,
 :host(:not([title]):not([icon]):not([usedraggable]):not([useminimizable]):not([usemaximizable]):not([useclosebutton])) #body {
-	border-top-left-radius: $section-border-radius;
-	border-top-right-radius: $section-border-radius;
+	border-top-left-radius: $border-radius-medium;
+	border-top-right-radius: $border-radius-medium;
 }
 
 #footer,
 :host(:not([footer])) #body {
-	border-bottom-left-radius: $section-border-radius;
-	border-bottom-right-radius: $section-border-radius;
+	border-bottom-left-radius: $border-radius-medium;
+	border-bottom-right-radius: $border-radius-medium;
 }
 
 /* Header Body and Footer container sections */

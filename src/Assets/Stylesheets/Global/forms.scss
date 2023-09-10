@@ -159,7 +159,7 @@ select[multiple] {
 	input[type="checkbox"]:not([role="switch"]) {
 		background-color: $white;
 		border-color: $neutral-color-400;
-		border-radius: $component-border-radius;
+		border-radius: $border-radius-small;
 		&:checked,
 		&:checked:active,
 		&:checked:focus {
@@ -341,7 +341,7 @@ form fieldset:not([class="label"]) {
 	margin: 0;
 	padding: 1rem;
 	border: 1px solid $neutral-color-300;
-	border-radius: $component-border-radius;
+	border-radius: $border-radius-small;
 	legend {
 		@extend %subtitle-2;
 		padding: 0 calc(var(--kiwi-flex-gap, 1rem) * 0.5);

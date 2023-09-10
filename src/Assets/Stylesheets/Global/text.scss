@@ -143,7 +143,7 @@ del {
 code {
 	display: inline-block;
 	padding: 0.5em 0.5em;
-	border-radius: $component-border-radius;
+	border-radius: $border-radius-small;
 	background: $neutral-color-200;
 	font-weight: bold;
 	font-size: 0.875rem;
@@ -156,7 +156,7 @@ em {
 
 kbd {
 	display: inline-block;
-	border-radius: $component-border-radius;
+	border-radius: $border-radius-small;
 	padding: 0.5em 0.5em;
 	background-color: $black;
 	color: $white;

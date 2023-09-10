@@ -10,10 +10,10 @@ progress {
 	height: 0.5rem;
 	overflow: hidden;
 	border: 0;
-	border-radius: $component-border-radius;
+	border-radius: $border-radius-small;
 	background-color: $neutral-color-300;
 	&::-webkit-progress-bar {
-		border-radius: $component-border-radius;
+		border-radius: $border-radius-small;
 		background: none;
 	}
 	&[value]::-webkit-progress-value {

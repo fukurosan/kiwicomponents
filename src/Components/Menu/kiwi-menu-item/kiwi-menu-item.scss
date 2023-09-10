@@ -14,7 +14,7 @@
 	height: 1.5em;
 	margin: var(--margin);
 	padding: 0.375em 0.75em;
-	border-radius: $component-border-radius;
+	border-radius: $border-radius-small;
 	user-select: none;
 	cursor: pointer;
 	min-width: 200px;
@@ -97,8 +97,8 @@
 	/* Equal to the values of kiwi-menu */
 	background: $white;
 	color: $neutral-color-900;
-	box-shadow: $section-shadow;
-	border-radius: $section-border-radius;
+	box-shadow: $shadow-medium;
+	border-radius: $border-radius-medium;
 	transition: opacity var(--kiwi-menu-animation-duration, 200ms) ease-in-out, transform var(--kiwi-menu-animation-duration, 200ms) ease-in-out;
 	opacity: 0;
 	transform-origin: left;

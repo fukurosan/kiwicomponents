@@ -7,8 +7,8 @@
 
 #main {
 	background: var(--kiwi-toast-background, $white);
-	box-shadow: $section-shadow;
-	border-radius: $section-border-radius;
+	box-shadow: $shadow-medium;
+	border-radius: $border-radius-medium;
 	outline: none;
 	border: none;
 	margin-bottom: 1rem;

@@ -9,8 +9,8 @@
 	top: 0;
 	background: $white;
 	color: $neutral-color-900;
-	box-shadow: $section-shadow;
-	border-radius: $section-border-radius;
+	box-shadow: $shadow-medium;
+	border-radius: $border-radius-medium;
 	user-select: none;
 	transition: transform var(--kiwi-menu-animation-duration, 200ms) ease-in-out, opacity var(--kiwi-menu-animation-duration, 200ms) ease-in-out,
 		clip-path var(--kiwi-menu-animation-duration, 200ms) ease-in-out;

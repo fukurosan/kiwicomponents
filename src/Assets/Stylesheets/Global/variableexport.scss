@@ -1,0 +1,104 @@
+@import "../Tokens/borderradius.scss";
+@import "../Tokens/colors.scss";
+@import "../Tokens/shadows.scss";
+@import "../Tokens/text.scss";
+
+:root {
+	//text
+	--kiwi-font-family-heading: #{$font-heading};
+	--kiwi-font-family-body: #{$font-body};
+
+	//Roundness
+	--kiwi-border-radius-small: #{$radius-small};
+	--kiwi-border-radius-medium: #{$radius-medium};
+	--kiwi-border-radius-large: #{$radius-large};
+
+	//Shadows
+	--kiwi-section-shadow: #{$medium-shadow};
+
+	//Colors
+	--kiwi-black: #{$dark-base};
+	--kiwi-white: #{$light-base};
+
+	--kiwi-with-dark-color: #{$with-above-400};
+	--kiwi-with-dark-color-faded: #{$with-above-400-faded};
+	--kiwi-with-light-color: #{$with-below-500};
+	--kiwi-with-light-color-faded: #{$with-below-500-faded};
+
+	--kiwi-primary-color-50: #{$primary-50};
+	--kiwi-primary-color-100: #{$primary-100};
+	--kiwi-primary-color-200: #{$primary-200};
+	--kiwi-primary-color-300: #{$primary-300};
+	--kiwi-primary-color-400: #{$primary-400};
+	--kiwi-primary-color-500: #{$primary-500};
+	--kiwi-primary-color-600: #{$primary-600};
+	--kiwi-primary-color-700: #{$primary-700};
+	--kiwi-primary-color-800: #{$primary-800};
+	--kiwi-primary-color-900: #{$primary-900};
+
+	--kiwi-secondary-color-50: #{$secondary-50};
+	--kiwi-secondary-color-100: #{$secondary-100};
+	--kiwi-secondary-color-200: #{$secondary-200};
+	--kiwi-secondary-color-300: #{$secondary-300};
+	--kiwi-secondary-color-400: #{$secondary-400};
+	--kiwi-secondary-color-500: #{$secondary-500};
+	--kiwi-secondary-color-600: #{$secondary-600};
+	--kiwi-secondary-color-700: #{$secondary-700};
+	--kiwi-secondary-color-800: #{$secondary-800};
+	--kiwi-secondary-color-900: #{$secondary-900};
+
+	--kiwi-neutral-color-50: #{$neutral-50};
+	--kiwi-neutral-color-100: #{$neutral-100};
+	--kiwi-neutral-color-200: #{$neutral-200};
+	--kiwi-neutral-color-300: #{$neutral-300};
+	--kiwi-neutral-color-400: #{$neutral-400};
+	--kiwi-neutral-color-500: #{$neutral-500};
+	--kiwi-neutral-color-600: #{$neutral-600};
+	--kiwi-neutral-color-700: #{$neutral-700};
+	--kiwi-neutral-color-800: #{$neutral-800};
+	--kiwi-neutral-color-900: #{$neutral-900};
+
+	--kiwi-info-color-50: #{$info-50};
+	--kiwi-info-color-100: #{$info-100};
+	--kiwi-info-color-200: #{$info-200};
+	--kiwi-info-color-300: #{$info-300};
+	--kiwi-info-color-400: #{$info-400};
+	--kiwi-info-color-500: #{$info-500};
+	--kiwi-info-color-600: #{$info-600};
+	--kiwi-info-color-700: #{$info-700};
+	--kiwi-info-color-800: #{$info-800};
+	--kiwi-info-color-900: #{$info-900};
+
+	--kiwi-success-color-50: #{$success-50};
+	--kiwi-success-color-100: #{$success-100};
+	--kiwi-success-color-200: #{$success-200};
+	--kiwi-success-color-300: #{$success-300};
+	--kiwi-success-color-400: #{$success-400};
+	--kiwi-success-color-500: #{$success-500};
+	--kiwi-success-color-600: #{$success-600};
+	--kiwi-success-color-700: #{$success-700};
+	--kiwi-success-color-800: #{$success-800};
+	--kiwi-success-color-900: #{$success-900};
+
+	--kiwi-warning-color-50: #{$warning-50};
+	--kiwi-warning-color-100: #{$warning-100};
+	--kiwi-warning-color-200: #{$warning-200};
+	--kiwi-warning-color-300: #{$warning-300};
+	--kiwi-warning-color-400: #{$warning-400};
+	--kiwi-warning-color-500: #{$warning-500};
+	--kiwi-warning-color-600: #{$warning-600};
+	--kiwi-warning-color-700: #{$warning-700};
+	--kiwi-warning-color-800: #{$warning-800};
+	--kiwi-warning-color-900: #{$warning-900};
+
+	--kiwi-error-color-50: #{$error-50};
+	--kiwi-error-color-100: #{$error-100};
+	--kiwi-error-color-200: #{$error-200};
+	--kiwi-error-color-300: #{$error-300};
+	--kiwi-error-color-400: #{$error-400};
+	--kiwi-error-color-500: #{$error-500};
+	--kiwi-error-color-600: #{$error-600};
+	--kiwi-error-color-700: #{$error-700};
+	--kiwi-error-color-800: #{$error-800};
+	--kiwi-error-color-900: #{$error-900};
+}
