@@ -336,21 +336,21 @@
     <h3>Utility</h3>
     <script>
       async function confirmWithUser() {
-        const choice = await kiwicomponents.confirm("This action is irreversible. Proceed?")
+        const choice = await kiwicomponents.confirm({ title: "Please Confirm", message: "This action is irreversible. Proceed?" })
         console.log(choice)
       }
       function showSpinner() {
-        const closeSpinner = kiwicomponents.showSpinner("Jumping up and down...")
+        const spinner = kiwicomponents.showSpinner({ message: "Jumping up and down..." })
         setTimeout(() => {
-          closeSpinner()
+          spinner.close()
         }, 3000);
       }
       async function alertUser() {
-        await kiwicomponents.alert("Hello User", "This is an alert message, and it is very important.", "OK!", "warning")
+        await kiwicomponents.alert({ title: "Hello User", message: "This is an alert message, and it is very important.", buttonText: "OK!", type: "warning" })
         console.log("Alert was closed.")
       }
       async function promptUser() {
-        const input = await kiwicomponents.prompt("Please fill in something here, thanks.", { required: "true" })
+        const input = await kiwicomponents.prompt({ message: "Please fill in something here, thanks.", formOrInputAttributes: { required: "true" } })
         console.log(input)
       }
       async function promptUserForm() {
@@ -362,7 +362,7 @@
         </form>
         `
         const form = new DOMParser().parseFromString(formString, 'text/html').body.children[0]
-        const input = await kiwicomponents.prompt("Important form", form)
+        const input = await kiwicomponents.prompt({ message: "Important form", formOrInputAttributes: form })
         console.log(input)
       }
     </script>

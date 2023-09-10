@@ -18,6 +18,10 @@
     font-weight: 600
 }
 
+.kiwi-windowmanager-generic-title:empty {
+    display: none;
+}
+
 .kiwi-windowmanager-generic-message {
     @extend %body-2;
     color: $with-color-below-500-faded;
@@ -50,17 +54,14 @@
     padding: 0.5rem;
 }
 
-.kiwi-windowmanager-alert-title {
+.kiwi-windowmanager-alert-buttons {
     margin-top: 0.5rem;
-}
-
-.kiwi-windowmanager-alert-body {
-    margin-bottom: 0.5rem;
 }
 
 .kiwi-windowmanager-alert-content-icon {
     width: 4.5rem;
     height: 4.5rem;
+    margin-bottom: 0.5rem;
     svg {
         border-radius: 50%;
         stroke-width: 0;

@@ -235,19 +235,36 @@
 			return kiwicomponents.showToast(options)
 		}
 		function confirmExample() {
-			kiwicomponents.confirm("This action is irreversible. Proceed?")
+			const options = {
+				title: "Please Confirm", 
+				message: "This action is irreversible. Proceed?"
+			}
+			kiwicomponents.confirm(options)
 		}
 		function pretendToLoad() {
-			const closeSpinner = kiwicomponents.showSpinner("Jumping up and down...")
+			const options = {
+				message: "Jumping up and down..."
+			}
+			const spinner = kiwicomponents.showSpinner(options)
 			setTimeout(() => {
-				closeSpinner()
+				spinner.close()
 			}, 3000)
 		}
 		const openAlert = async () => {
-			kiwicomponents.alert("Important Alert", "This is an important message for the user", "Dismiss", "warning", null)
+			const options = {
+				title: "Important Alert",
+				message: "This is an important message for the user",
+				buttonText: "Dismiss",
+				type: "warning"
+			}
+			kiwicomponents.alert(options)
 		}
 		async function promptUser() {
-			const input = await kiwicomponents.prompt("Please fill in something here, thanks.", { value: 'Some initial value' })
+			const options = {
+				message: "Please fill in something here, thanks.",
+				formOrInputAttributes: { value: 'Some initial value' }
+			}
+			const input = await kiwicomponents.prompt(options)
 			console.log(input)
 		}
 		async function promptUserWithForm() {
@@ -259,7 +276,11 @@
         </form>
         `
 			const form = new DOMParser().parseFromString(formString, "text/html").body.children[0]
-			const input = await kiwicomponents.prompt("Fill in the details below", form)
+			const options = {
+				message: "Fill in the details below",
+				formOrInputAttributes: form
+			}
+			const input = await kiwicomponents.prompt(options)
 			console.log(input)
 		}
 		function openDrawer(options) {

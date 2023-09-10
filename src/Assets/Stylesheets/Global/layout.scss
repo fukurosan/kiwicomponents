@@ -35,3 +35,15 @@
 	flex-direction: column;
 	gap: var(--kiwi-flex-gap, 1rem);
 }
+
+@media (max-width: 768px) {
+	.desktop-only {
+		display: none !important;
+	}
+}
+
+@media (min-width: 768px) {
+	.mobile-only {
+		display: none !important;
+	}
+}

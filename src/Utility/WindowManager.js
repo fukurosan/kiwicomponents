@@ -3,7 +3,7 @@ import styles from "./WindowManager.scss"
 /**
  * @description Opens a window
  * @param {import("./interfaces").OpenWindowOptions} options
- * @returns {import("../Components/Window/interface").WindowElement} - The window element
+ * @returns {import("../Components/Window/interface").IWindowElement} - The window element
  */
 export const openWindow = options => {
 	//Create the window
@@ -83,32 +83,32 @@ export const openWindow = options => {
 
 /**
  * @description Opens a confirmation window
- * @param {string} message - The message to be displayed
- * @param {string=} title - The title to be displayed
- * @param {string=} cancelLabel - Label for the cancel button
- * @param {string=} confirmLabel - Label for the confirm button
+ * @param {import("./interfaces").confirmOptions} options - Confirm dialog options
  * @returns {Promise<boolean>} - Promise that will resolve to the choice made by the user.
  */
-export const confirm = (message, title, cancelLabel, confirmLabel) => {
+export const confirm = (options = {}) => {
+	const { message, title, cancelLabel, confirmLabel } = options
 	const content = document.createElement("div")
-	const body = document.createElement("div")
 	const buttons = document.createElement("div")
-	const titleElement = document.createElement("div")
-	titleElement.appendChild(document.createTextNode(title || "Please Confirm"))
-	titleElement.classList.add("kiwi-windowmanager-generic-title")
-	content.appendChild(titleElement)
-	content.appendChild(body)
-	content.appendChild(buttons)
-	content.classList.add("kiwi-windowmanager-generic-content")
-	body.classList.add("kiwi-windowmanager-generic-message")
-	buttons.classList.add("kiwi-windowmanager-generic-buttons")
-	if (typeof message === "string") {
-		body.appendChild(document.createTextNode(message))
-	} else if (message instanceof HTMLElement) {
-		body.appendChild(message)
-	} else if (typeof message === "function") {
-		body.appendChild(message())
+	if (title) {
+		const titleElement = document.createElement("div")
+		titleElement.appendChild(document.createTextNode(title || "Please Confirm"))
+		titleElement.classList.add("kiwi-windowmanager-generic-title")
+		content.appendChild(titleElement)
 	}
+	if (message) {
+		const body = document.createElement("div")
+		body.classList.add("kiwi-windowmanager-generic-message")
+		if (typeof message === "string") {
+			body.appendChild(document.createTextNode(message))
+		} else if (message instanceof HTMLElement) {
+			body.appendChild(message)
+		} else if (typeof message === "function") {
+			body.appendChild(message())
+		}
+		content.appendChild(body)
+	}
+	buttons.classList.add("kiwi-windowmanager-generic-buttons")
 	const cancelButton = document.createElement("kiwi-button")
 	cancelButton.innerText = cancelLabel || "Cancel"
 	cancelButton.setAttribute("type", "neutral")
@@ -118,6 +118,8 @@ export const confirm = (message, title, cancelLabel, confirmLabel) => {
 	confirmButton.setAttribute("type", "primary")
 	buttons.appendChild(cancelButton)
 	buttons.appendChild(confirmButton)
+	content.appendChild(buttons)
+	content.classList.add("kiwi-windowmanager-generic-content")
 	const window = openWindow({
 		body: content,
 		scale: "large",
@@ -139,10 +141,11 @@ export const confirm = (message, title, cancelLabel, confirmLabel) => {
 
 /**
  * @description Opens a modal spinner window
- * @param {string=} message - An optional message to be displayed
- * @returns {() => any} - Function that closes the spinner.
+ * @param {import("./interfaces").showSpinnerOptions} options - Options for the spinner dialog
+ * @returns {import("./interfaces").showSpinnerDialog} - Show spinner dialog
  */
-export const showSpinner = message => {
+export const showSpinner = (options = {}) => {
+	const { message } = options
 	const content = document.createElement("div")
 	const spinner = document.createElement("kiwi-spinner")
 	spinner.setAttribute("size", "100px")
@@ -153,13 +156,17 @@ export const showSpinner = message => {
 	content.appendChild(body)
 	content.classList.add("kiwi-windowmanager-spinner-content")
 	content.classList.add("kiwi-windowmanager-generic-content")
-	if (typeof message === "string") {
-		body.appendChild(document.createTextNode(message))
-	} else if (message instanceof HTMLElement) {
-		body.appendChild(message)
-	} else if (typeof message === "function") {
-		body.appendChild(message())
+	const applyMessage = message => {
+		body.innerHTML = ""
+		if (typeof message === "string") {
+			body.appendChild(document.createTextNode(message))
+		} else if (message instanceof HTMLElement) {
+			body.appendChild(message)
+		} else if (typeof message === "function") {
+			body.appendChild(message())
+		}
 	}
+	applyMessage(message)
 	const spinnerModal = openWindow({
 		body: content,
 		scale: "large",
@@ -167,19 +174,23 @@ export const showSpinner = message => {
 		autosize: true,
 		centered: true
 	})
-	return () => spinnerModal.close()
+	const updateMessage = newMessage => {
+		applyMessage(newMessage)
+	}
+	return {
+		close: () => spinnerModal.close(),
+		dialog: spinnerModal,
+		updateMessage
+	}
 }
 
 /**
  * @description Opens an alert modal to the user that must be actively dismissed.
- * @param {string=} title - An optional title to be displayed
- * @param {string=} message - An optional message to be displayed
- * @param {string=} buttonText - An optional button text to be displayed
- * @param {"success" | "question" | "warning" | "error"} type - An optional message type
- * @param {string} icon - Optional icon url
- * @returns {() => void} - A function that closes the alert
+ * @param {import("./interfaces").alertOptions} options - Options for the alert
+ * @returns {import("./interfaces").alertDialog} - Alert dialog
  */
-export const alert = (title, message, buttonText, type, icon) => {
+export const alert = (options = {}) => {
+	const { title, message, buttonText, type, icon } = options
 	const content = document.createElement("div")
 	const iconDiv = document.createElement("div")
 	iconDiv.classList.add("kiwi-windowmanager-alert-content-icon")
@@ -204,30 +215,34 @@ export const alert = (title, message, buttonText, type, icon) => {
 		}
 		iconDiv.innerHTML = svg
 	}
-	const header = document.createElement("div")
-	header.classList.add("kiwi-windowmanager-generic-title")
-	header.classList.add("kiwi-windowmanager-alert-title")
-	header.appendChild(document.createTextNode(title ? title : "Alert"))
-	const body = document.createElement("div")
-	body.classList.add("kiwi-windowmanager-generic-message")
-	body.classList.add("kiwi-windowmanager-alert-body")
+	content.appendChild(iconDiv)
+	if (title) {
+		const header = document.createElement("div")
+		header.classList.add("kiwi-windowmanager-generic-title")
+		header.appendChild(document.createTextNode(title))
+		content.appendChild(header)
+	}
+	if (message) {
+		const body = document.createElement("div")
+		body.classList.add("kiwi-windowmanager-generic-message")
+		body.classList.add("kiwi-windowmanager-alert-body")
+		if (typeof message === "string") {
+			body.appendChild(document.createTextNode(message))
+		} else if (message instanceof HTMLElement) {
+			body.appendChild(message)
+		} else if (typeof message === "function") {
+			body.appendChild(message())
+		}
+		content.appendChild(body)
+	}
 	const buttons = document.createElement("div")
 	buttons.classList.add("kiwi-windowmanager-generic-buttons")
+	buttons.classList.add("kiwi-windowmanager-alert-buttons")
 	const closeButton = document.createElement("kiwi-button")
 	closeButton.appendChild(document.createTextNode(buttonText ? buttonText : "Close"))
 	buttons.appendChild(closeButton)
-	content.appendChild(iconDiv)
-	content.appendChild(header)
-	content.appendChild(body)
 	content.appendChild(buttons)
 	content.classList.add("kiwi-windowmanager-generic-content")
-	if (typeof message === "string") {
-		body.appendChild(document.createTextNode(message))
-	} else if (message instanceof HTMLElement) {
-		body.appendChild(message)
-	} else if (typeof message === "function") {
-		body.appendChild(message())
-	}
 	const alertModal = openWindow({
 		body: content,
 		scale: "large",
@@ -235,23 +250,24 @@ export const alert = (title, message, buttonText, type, icon) => {
 		autosize: true,
 		centered: true
 	})
-	return new Promise(resolve => {
-		closeButton.addEventListener("click", () => {
-			alertModal.close()
-			resolve()
+	return {
+		dialog: alertModal,
+		closeButtonListener: new Promise(resolve => {
+			closeButton.addEventListener("click", () => {
+				alertModal.close()
+				resolve()
+			})
 		})
-	})
+	}
 }
 
 /**
  * @description Opens a prompt modal to the user that must be actively dismissed.
- * @param {string=} message - An optional title to be displayed
- * @param {(string | HTMLFormElement | {[key: string]: any})=} formOrInputAttributes - Attributes to be applied on the input field element, or a form as an HTML element or a string
- * @param {string=} cancelLabel - Label for the cancel button
- * @param {string=} confirmLabel - Label for the confirm button
+ * @param {import("./interfaces").promptOptions} options - Options for the prompt
  * @returns {Promise<any>} - Promise that will resolve to the value inserted by the user. If the user cancels the value will resolve to null.
  */
-export const prompt = (message, formOrInputAttributes, cancelLabel, confirmLabel) => {
+export const prompt = (options = {}) => {
+	const { message, formOrInputAttributes, cancelLabel, confirmLabel } = options
 	const content = document.createElement("div")
 	const buttons = document.createElement("div")
 	if (message) {

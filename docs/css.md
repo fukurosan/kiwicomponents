@@ -94,6 +94,19 @@ You can use the .container class to create a responsive base container on your p
 <div class="container" style="background-color:aliceblue;padding:1rem;">Hello World</div>
 </kiwi-scoped-demo>
 
+### Desktop and Mobile
+
+```html
+<div class="desktop-only">Hello Desktop</div>
+<div class="mobile-only">Hello Mobile</div>
+```
+
+<kiwi-scoped-demo>
+<div class="desktop-only">Hello Desktop</div>
+<div class="mobile-only">Hello Mobile</div>
+</kiwi-scoped-demo>
+
+
 ### Grids
 
 Creating responsive grids is super easy. By using the .grid class combined with configuring --kiwi-grid-column-min-measurement to the minimum allowed measurement of the containers inside the grid kiwi components can figure out the rest. You can also use --kiwi-grid-gap to define the gap between elements in the grid.
