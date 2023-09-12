@@ -63,7 +63,8 @@ button {
 	@extend %button;
 }
 
-.caption {
+.caption,
+figcaption {
 	@extend %caption;
 }
 

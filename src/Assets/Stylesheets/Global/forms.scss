@@ -107,7 +107,8 @@ select[multiple] {
 	padding: 0;
 	height: auto;
 	width: 100%;
-	option {
+	option,
+	optgroup {
 		padding: 0.5rem 1rem;
 	}
 	option:checked {
