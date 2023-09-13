@@ -8,7 +8,7 @@ The following files can be imported:
 | -------------- | ------------------------------------------------------------------------ |
 | bundle.css     | Full bundle with all stylesheets included                                |
 | button.css     | Button styles                                                            |
-| colors.css     | Makes the color system available as CSS variables                        |
+| tokens.css     | Makes the design system tokens available as CSS variables                |
 | layout.css     | Contains different layout modules to help structure elements and content |
 | loading.css    | CSS utility for putting elements in a loading state                      |
 | forms.css      | Form styling                                                             |
@@ -105,7 +105,6 @@ You can use the .container class to create a responsive base container on your p
 <div class="desktop-only">Hello Desktop</div>
 <div class="mobile-only">Hello Mobile</div>
 </kiwi-scoped-demo>
-
 
 ### Grids
 
@@ -256,9 +255,9 @@ These styles will make standard \<progress> elements look better.
 These styles will make standard \<meter> elements look better.
 
 ```html
-    <meter value="40" min="0" max="100" low="50" optimum="20" high="80"></meter>
-    <meter value="70" min="0" max="100" low="50" optimum="20" high="80"></meter>
-    <meter value="90" min="0" max="100" low="50" optimum="20" high="80"></meter>
+<meter value="40" min="0" max="100" low="50" optimum="20" high="80"></meter>
+<meter value="70" min="0" max="100" low="50" optimum="20" high="80"></meter>
+<meter value="90" min="0" max="100" low="50" optimum="20" high="80"></meter>
 ```
 
 <kiwi-scoped-demo>
