@@ -251,6 +251,28 @@ These styles will make standard \<progress> elements look better.
 <progress indeterminate></progress>
 </kiwi-scoped-demo>
 
+## Meter
+
+These styles will make standard \<meter> elements look better.
+
+```html
+    <meter value="40" min="0" max="100" low="50" optimum="20" high="80"></meter>
+    <meter value="70" min="0" max="100" low="50" optimum="20" high="80"></meter>
+    <meter value="90" min="0" max="100" low="50" optimum="20" high="80"></meter>
+```
+
+<kiwi-scoped-demo>
+    <meter value="40" min="0" max="100" low="50" optimum="20" high="80"></meter>
+	<br><br>
+    <meter value="70" min="0" max="100" low="50" optimum="20" high="80"></meter>
+	<br><br>
+    <meter value="90" min="0" max="100" low="50" optimum="20" high="80"></meter>
+</kiwi-scoped-demo>
+
+## Image
+
+These styles will improve your image elements
+
 ## Navigation
 
 For all navigation styling you can use --kiwi-navigation-spacing to configure the spacing and padding. All measurements will adjust to this one value
