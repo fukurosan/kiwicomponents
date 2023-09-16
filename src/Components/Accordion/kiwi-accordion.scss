@@ -4,6 +4,17 @@
 #container {
 	border: var(--kiwi-accordion-border, 1px solid lightgray);
 	border-bottom: none;
+	overflow: hidden;
+}
+
+:host(:first-of-type) #container {
+	border-top-left-radius: $border-radius-medium;
+	border-top-right-radius: $border-radius-medium;
+}
+
+:host(:last-of-type) #container {
+	border-bottom-left-radius: $border-radius-medium;
+	border-bottom-right-radius: $border-radius-medium;
 }
 
 :host(:not(:first-of-type)) #container {
