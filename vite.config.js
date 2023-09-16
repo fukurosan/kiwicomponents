@@ -17,16 +17,17 @@ const BANNER = `/** @preserve @license @cc_on
  * All Rights Reserved. MIT License
  * https://mit-license.org/
  * ----------------------------------------------------------
- */\n`
+ */
+`
 
 export default defineConfig({
 	build: {
-		target: "es2020",
+		target: "esnext",
 		outDir: "./dist",
 		emptyOutDir: false,
-		minify: "esbuild",
+		minify: "terser",
 		lib: {
-			entry: "./src/index.bundle.js",
+			entry: "./src/index.js",
 			formats: ["es", "umd"],
 			name: LIBRARY_NAME,
 			fileName: format => {
@@ -37,10 +38,10 @@ export default defineConfig({
 	plugins: [
 		{
 			//We want html imports and scss imports to be strings
-			//With scss files it works, except there is no way to tell Vite to not spit out random css files in the output dir
-			//without polluting the source code files' import statements with "?inline" everywhere
-			//With HTML the only way to do it is to also pollute the source code files' import statements - with "?raw"
-			//So we have to write a plugin to tell Vite to stop being a jerk.
+			//With scss files it works, except there is seemlingly no way to tell Vite to not spit out css files in the output dir without polluting the source code files' import statements with "?inline" everywhere which causes different side effects
+			//With html files the only way to do it seems to similarly be to pollute the source code files' import statements with "?raw"
+			//Solving this with a simple transform plugin works with rollup, but not vite. Seems like vite is doing some magic that causes the content argument to be empty for some file extensions
+			//This plugin is a bit of a hack but solves it globally and isolates the issue within the vite config file by manually adding these suffixes at the resolver level
 			name: "kiwi-inline-html-and-scss-imports",
 			enforce: "pre",
 			apply: "build",
@@ -58,26 +59,7 @@ export default defineConfig({
 			}
 		},
 		{
-			name: "kiwi-ssr-support-transform",
-			transform(code, id) {
-				let generatedCode = code
-				if (id.match(/Components[/\\].*[/\\]kiwi-.*.js/)) {
-					const searchString = 'const templateElement = document.createElement("template")'
-					if (code.includes(searchString)) {
-						generatedCode = `${code.replace(
-							searchString,
-							`if(typeof document !== "undefined" && typeof window !== "undefined"){\n${searchString}`
-						)}}`
-					} else {
-						generatedCode = `${code.replace("/**", 'if(typeof document !== "undefined" && typeof window !== "undefined"){\n/**')}}`
-					}
-				}
-				return {
-					code: generatedCode
-				}
-			}
-		},
-		{
+			//After the JS build has completed we build all the css assets manually
 			name: "build-kiwi-stylesheets",
 			buildEnd() {
 				fs.mkdirSync(`${DIST_FOLDER}/css`, { recursive: true })
@@ -95,10 +77,10 @@ export default defineConfig({
 			}
 		},
 		{
+			//Vite does not put the banner specified in rollupConfig at the very top of the file, but instead inside the UMD module for some reason
+			//This plugin adds the banner at the top at the very end.
 			name: "banner",
 			async writeBundle(_, bundle) {
-				//Vite does not put the banner specified in rollupConfig at the very top of the file, but inside the UMD module
-				//So we have to write a plugin to tell Vite to stop being a jerk.
 				for (const fileName of Object.entries(bundle)) {
 					const file = fileName[0]
 					if (file.match(/\.(css|js)$/i)) {
@@ -111,9 +93,10 @@ export default defineConfig({
 			}
 		},
 		{
+			//There seems to be no easy way to add multiple output directories to the build for Vite
+			//To solve this we just manually copy the bundle file at the end of the build into the docs folder.
 			name: "copy-js-to-kiwi-docs",
 			buildEnd() {
-				//Copy the built files from dist to docs
 				fs.copyFileSync(`${DIST_FOLDER}/js/bundle.js`, `${DOCS_FOLDER}/js/bundle.js`)
 				return null
 			}
