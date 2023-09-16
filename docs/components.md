@@ -284,7 +284,7 @@ The following CSS variables can be configured:
 
 ## \<kiwi-burger> Components.Burger
 
-\<kiwi-drawer> is a side drawer panel with a built-in toggle. This type of togglable side drawer can be found in most responsive applications today, and require a lot of work to set up.
+\<kiwi-burger> is a side drawer panel with a built-in toggle. This type of togglable side drawer can be found in most responsive applications today, and require a lot of work to set up.
 
 You can programatically open and close the drawer by setting the "open" attribute. The attribute also allows you to monitor the component as it will always reflect the current state.
 

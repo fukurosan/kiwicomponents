@@ -1,6 +1,11 @@
 @import "../../Assets/Stylesheets/variables.scss";
 @import "../../Assets/Stylesheets/Components/typography.scss";
 
+* {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
 #container {
 	margin: 0;
 	padding: 0;
@@ -50,6 +55,7 @@
 #link-container {
 	flex: auto;
 	display: flex;
+	overflow-x: scroll;
 	scroll-snap-type: x mandatory;
 	scroll-behavior: smooth;
 	overflow: hidden;
