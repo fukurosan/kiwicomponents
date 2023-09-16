@@ -56,22 +56,16 @@ ul:not(.root) li::before {
 	transition: background-color var(--kiwi-treelist-animation-duration, 300ms);
 }
 
-#content:hover {
+#content:hover,
+:host([selected]) #content {
 	background: var(--kiwi-treelist-hover-background, $neutral-color-100);
 	#text {
 		color: var(--kiwi-treelist-hover-color, $with-color-below-500);
 	}
 }
 
-:host([selected]) #content {
-	background: var(--kiwi-treelist-selected-background, $primary-color-50);
-	#text {
-		color: var(--kiwi-treelist-selected-color, $with-color-below-500);
-	}
-}
-
 :host([selected]) #content:focus {
-	background: var(--kiwi-treelist-focus-background, $primary-color-100);
+	background: var(--kiwi-treelist-focus-background, $neutral-color-200);
 	#text {
 		color: var(--kiwi-treelist-focus-color, $with-color-below-500);
 	}
