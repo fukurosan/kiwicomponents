@@ -255,17 +255,17 @@ These styles will make standard \<progress> elements look better.
 These styles will make standard \<meter> elements look better.
 
 ```html
-<meter value="40" min="0" max="100" low="50" optimum="20" high="80"></meter>
-<meter value="70" min="0" max="100" low="50" optimum="20" high="80"></meter>
-<meter value="90" min="0" max="100" low="50" optimum="20" high="80"></meter>
+<meter min="0" max="100" optimum="100" low="30" high="50" value="25"></meter>
+<meter min="0" max="100" optimum="100" low="30" high="50" value="50"></meter>
+<meter min="0" max="100" optimum="100" low="30" high="50" value="75"></meter>
 ```
 
 <kiwi-scoped-demo>
-    <meter value="40" min="0" max="100" low="50" optimum="20" high="80"></meter>
+	<meter min="0" max="100" optimum="100" low="30" high="50" value="25"></meter>
 	<br><br>
-    <meter value="70" min="0" max="100" low="50" optimum="20" high="80"></meter>
+	<meter min="0" max="100" optimum="100" low="30" high="50" value="50"></meter>
 	<br><br>
-    <meter value="90" min="0" max="100" low="50" optimum="20" high="80"></meter>
+	<meter min="0" max="100" optimum="100" low="30" high="50" value="75"></meter>
 </kiwi-scoped-demo>
 
 ## Image

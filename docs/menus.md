@@ -5,6 +5,17 @@ Kiwi Components menus can be used to create either context menus or dropdown men
 -   \<kiwi-menu>
 -   \<kiwi-menu-item> (optional)
 
+To use the menu you will need to import it:
+```javascript
+import { Components } from "kiwicomponents"
+Components.Menu()
+
+//Or initialize all components:
+
+import { init } from "kiwicomponents"
+init()
+```
+
 ## Simple Example:
 
 ```html

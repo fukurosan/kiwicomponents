@@ -1,3 +1,4 @@
+import { Components } from "../Components/index"
 import styles from "./WindowManager.scss"
 
 /**
@@ -6,6 +7,7 @@ import styles from "./WindowManager.scss"
  * @returns {import("../Components/Window/interface").IWindowElement} - The window element
  */
 export const openWindow = options => {
+	Components.Window()
 	//Create the window
 	const kiwiWindow = document.createElement("kiwi-window")
 	options.minimizable && kiwiWindow.setAttribute("useminimizable", options.minimizable)

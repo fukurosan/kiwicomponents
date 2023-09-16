@@ -1,9 +1,6 @@
 import template from "./kiwi-alert.html"
 import styles from "./kiwi-alert.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Alert
  * Renders a kiwi alert.
@@ -22,7 +19,12 @@ class KiwiAlert extends HTMLElement {
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiAlert._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiAlert._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiAlert._template.content.cloneNode(true))
 		const closeButton = this.shadowRoot.querySelector("#close-icon")
 		closeButton.addEventListener("click", () => {
 			this.dispatchEvent(new CustomEvent("close"))
@@ -31,4 +33,4 @@ class KiwiAlert extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-alert", KiwiAlert)
+export { KiwiAlert }

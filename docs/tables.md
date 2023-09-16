@@ -2,6 +2,17 @@
 
 Kiwi Components enables you to create tables with a variety of built-in functionality right out of the box. It does this by enhancing your tables through the kiwi-table web component. This means that irregardless of how you choose to style your table you can still use kiwi components to make them interactive. Of course, you can also use the kiwi components CSS bundle to create beautiful tables out of the box.
 
+To use the Table web component you will need to import it:
+```javascript
+import { Components } from "kiwicomponents"
+Components.Table()
+
+//Or initialize all components:
+
+import { init } from "kiwicomponents"
+init()
+```
+
 ## \<kiwi-table>
 
 ### Simple Example:

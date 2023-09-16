@@ -1,9 +1,6 @@
 import template from "./kiwi-drawer.html"
 import styles from "./kiwi-drawer.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Drawer Menu
  * A drawer menu element that opens up a side area.
@@ -19,14 +16,19 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  *
  * @fires open - Event that fires when the drawer opens and closes
  */
-class KiwiBurgerMenu extends HTMLElement {
+class KiwiDrawer extends HTMLElement {
 	static get observedAttributes() {
 		return ["open", "direction", "type", "title", "subtitle", "usebackdrop", "nocloseicon"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiDrawer._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiDrawer._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiDrawer._template.content.cloneNode(true))
 		this.shadowRoot.querySelector("#close-icon").addEventListener("click", () => this.toggleAttribute("open"))
 		this.shadowRoot.querySelector("#backdrop-blur").addEventListener("click", () => this.toggleAttribute("open"))
 		this.shadowRoot.querySelector("#menu-panel").addEventListener("transitionend", () => {
@@ -68,4 +70,4 @@ class KiwiBurgerMenu extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-drawer", KiwiBurgerMenu)
+export { KiwiDrawer }

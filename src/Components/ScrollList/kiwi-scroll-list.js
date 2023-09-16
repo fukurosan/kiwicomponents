@@ -1,19 +1,20 @@
 import template from "./kiwi-scroll-list.html"
 import styles from "./kiwi-scroll-list.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Scroll List
  * Renders a horizontal list that does scrolls with two arrow buttons when overflowing.
  * @element kiwi-scroll-list
  */
-
-class ScrollListElement extends HTMLElement {
+class KiwiScrollListElement extends HTMLElement {
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiScrollListElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiScrollListElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiScrollListElement._template.content.cloneNode(true))
 		this._container = this.shadowRoot.querySelector("#container")
 		this._linkContainer = this.shadowRoot.querySelector("#link-container")
 		this._leftScroll = this.shadowRoot.querySelector("#left-scroll")
@@ -54,4 +55,5 @@ class ScrollListElement extends HTMLElement {
 		}
 	}
 }
-window.customElements.define("kiwi-scroll-list", ScrollListElement)
+
+export { KiwiScrollListElement }

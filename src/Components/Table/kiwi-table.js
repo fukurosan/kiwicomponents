@@ -1,9 +1,6 @@
 import template from "./kiwi-table.html"
 import styles from "./kiwi-table.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Table
  * A table wrapper element that allows developers to add interactivity to their tables
@@ -28,15 +25,20 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @fires selection - Fires when a selection is made.
  *
  */
-
-class TableElement extends HTMLElement {
+class KiwiTableElement extends HTMLElement {
 	static get observedAttributes() {
 		return ["fixed", "showtoggles", "selection"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiTableElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiTableElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiTableElement._template.content.cloneNode(true))
+		this._styles = styles
 		/** @type {Map<HTMLElement, HTMLElement[]>} Mapping a row to its child rows */
 		this._childMap = new Map()
 		/** @type {Map<HTMLElement, HTMLElement>} Mapping a row to its parent row */
@@ -414,7 +416,7 @@ class TableElement extends HTMLElement {
 		if (!this.querySelector("style")) {
 			const lightdomcss = document.createElement("style")
 			lightdomcss.classList.add("_kiwi-table-injection")
-			lightdomcss.innerHTML = styles
+			lightdomcss.innerHTML = this._styles
 			this.appendChild(lightdomcss)
 		}
 		//Take us back into the flow after completing all operations
@@ -422,4 +424,5 @@ class TableElement extends HTMLElement {
 		this._working = false
 	}
 }
-window.customElements.define("kiwi-table", TableElement)
+
+export { KiwiTableElement }

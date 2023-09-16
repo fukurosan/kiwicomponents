@@ -4,9 +4,6 @@ import { TargetObserver } from "../../Utility/TargetObserver"
 import template from "./kiwi-tooltip.html"
 import styles from "./kiwi-tooltip.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Tooltip
  * A kiwi tooltip. This component creates a tooltip that appears when hovering a given target.
@@ -30,14 +27,20 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @slot - Default slot handles what should be shown in the tooltip
  * @slot target - The target slot can be used to set a child as a target, without having to provide a css selector.
  */
-class TooltipElement extends HTMLElement {
+class KiwiTooltipElement extends HTMLElement {
 	static get observedAttributes() {
 		return ["position", "target", "delay", "noanimation"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiTooltipElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiTooltipElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiTooltipElement._template.content.cloneNode(true))
+
 		this._mainElement = this.shadowRoot.querySelector("#main")
 		this._targetSlotElement = this.shadowRoot.querySelector("slot[name='target']")
 		this._targetObserver = new TargetObserver(this, this._targetSlotElement, {
@@ -204,4 +207,4 @@ class TooltipElement extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-tooltip", TooltipElement)
+export { KiwiTooltipElement }

@@ -1,9 +1,6 @@
 import template from "./kiwi-window.html"
 import styles from "./kiwi-window.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi dialog window
  * A window that can be opened within the browser viewport. Can work either as a dialog or a modal.
@@ -42,8 +39,7 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @fires close - Sent when the window is closed.
  *
  */
-
-class WindowElement extends HTMLElement {
+class KiwiWindowElement extends HTMLElement {
 	static get observedAttributes() {
 		return [
 			"footer",
@@ -63,7 +59,12 @@ class WindowElement extends HTMLElement {
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiWindowElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiWindowElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiWindowElement._template.content.cloneNode(true))
 		this._backdropElement = this.shadowRoot.querySelector("#backdrop-blur")
 		this._windowElement = this.shadowRoot.querySelector("#window")
 		this._headerElement = this.shadowRoot.querySelector("#header")
@@ -512,4 +513,4 @@ class WindowElement extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-window", WindowElement)
+export { KiwiWindowElement }

@@ -2,9 +2,6 @@ import { computePositionAdjustment } from "../../../Utility/Positioner"
 import template from "./kiwi-menu-item.html"
 import styles from "./kiwi-menu-item.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Menu Item
  * A menu item designed specifically for kiwi-menus.
@@ -19,15 +16,19 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @slot - Sub menu items. If provided the sub menu will be shown when this item is hovered.
  * A sub menu typically consists of more nested kiwi-menu-items.
  */
-
-class MenuItemElement extends HTMLElement {
+class KiwiMenuItemElement extends HTMLElement {
 	static get observedAttributes() {
 		return ["icon", "text", "detail", "disabled", "noanimation"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiMenuItemElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiMenuItemElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiMenuItemElement._template.content.cloneNode(true))
 		this._mainContainerElement = this.shadowRoot.querySelector("#main")
 		this._iconElement = this.shadowRoot.querySelector("#icon")
 		this._textElement = this.shadowRoot.querySelector("#text")
@@ -126,4 +127,4 @@ class MenuItemElement extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-menu-item", MenuItemElement)
+export { KiwiMenuItemElement }

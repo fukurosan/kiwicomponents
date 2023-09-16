@@ -1,9 +1,6 @@
 import template from "./kiwi-treelist-item.html"
 import styles from "./kiwi-treelist-item.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Tree List Item
  * Renders a tree list. If a list item is placed inside of another list item then this creates a second, nested level.
@@ -17,15 +14,19 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  *
  * @slot - Default slot is used to nest list items hierarchically
  */
-
-class TreeListItem extends HTMLElement {
+class KiwiTreeListItem extends HTMLElement {
 	static get observedAttributes() {
 		return ["open", "text", "icon", "interactive", "selected"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiTreeListItem._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiTreeListItem._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiTreeListItem._template.content.cloneNode(true))
 		this._mainContainer = this.shadowRoot.querySelector("#main")
 		this._rowContainer = this.shadowRoot.querySelector("#content")
 		this._expandArrow = this.shadowRoot.querySelector("#expand-arrow")
@@ -136,4 +137,4 @@ class TreeListItem extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-treelist-item", TreeListItem)
+export { KiwiTreeListItem }

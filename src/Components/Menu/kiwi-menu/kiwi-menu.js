@@ -4,9 +4,6 @@ import { TargetObserver } from "../../../Utility/TargetObserver"
 import template from "./kiwi-menu.html"
 import styles from "./kiwi-menu.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Menu
  * A menu component that can be used to create dropdown menus, context menus or similar components.
@@ -23,15 +20,19 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @slot - Menu body.
  * @slot target - Menu will be displayed for component in this slot. Most usable for context meny.
  */
-
-class MenuElement extends HTMLElement {
+class KiwiMenuElement extends HTMLElement {
 	static get observedAttributes() {
 		return ["top", "left", "mode", "target", "justify", "noanimation"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiMenuElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiMenuElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiMenuElement._template.content.cloneNode(true))
 		this._mainElement = this.shadowRoot.querySelector("#main")
 		this._targetSlotElement = this.shadowRoot.querySelector("slot[name='target']")
 		this._targetObserver = new TargetObserver(this, this._targetSlotElement, {
@@ -178,4 +179,4 @@ class MenuElement extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-menu", MenuElement)
+export { KiwiMenuElement }

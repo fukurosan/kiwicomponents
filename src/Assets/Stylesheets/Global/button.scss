@@ -18,7 +18,7 @@
 	transition: all var(--kiwi-button-animation-duration, 500ms), transform 0ms, border 0ms;
 	border-radius: $border-radius-small;
 	box-shadow: none;
-	color: var(--text-color);
+	color: var(--text-color) !important;
 	background: var(--background-color);
 
 	&:active {

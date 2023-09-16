@@ -1,9 +1,6 @@
 import template from "./kiwi-accordion.html"
 import styles from "./kiwi-accordion.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Accordion
  * A configurable accordion element.
@@ -21,7 +18,12 @@ class KiwiAccordion extends HTMLElement {
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiAccordion._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiAccordion._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiAccordion._template.content.cloneNode(true))
 		this._panelElement = this.shadowRoot.querySelector("#panel")
 		this._textElement = this.shadowRoot.querySelector("#text")
 		this._updateTitle(null)
@@ -81,4 +83,4 @@ class KiwiAccordion extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-accordion", KiwiAccordion)
+export { KiwiAccordion }

@@ -38,7 +38,7 @@ class CustomPuppet {
 
   async loadComponentPage(componentName, customCode) {
     const bundle = fs.readFileSync(Config.bundlePath, "utf8")
-    const content = `${customCode ? customCode : ""}<script>${bundle}</script><${componentName}></${componentName}>`
+    const content = `${customCode ? customCode : ""}<script>${bundle} kiwicomponents.init()</script><${componentName}></${componentName}>`
     await this.page.setContent(content)
     await this.page.waitForSelector(componentName)
   }

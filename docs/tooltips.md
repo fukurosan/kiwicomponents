@@ -2,6 +2,19 @@
 
 Kiwi Components tooltips can be created by either enabling a global custom HTML attribute or by utilizing the \<kiwi-tooltip> element.
 
+To use the tooltip as a web component you will need to import it:
+```javascript
+import { Components } from "kiwicomponents"
+Components.Tooltip()
+
+//Or initialize all components:
+
+import { init } from "kiwicomponents"
+init()
+```
+
+This step is not necessary for its global state.
+
 ## Simple Example:
 
 ```html

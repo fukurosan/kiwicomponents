@@ -27,7 +27,7 @@ const BANNER = `/** @preserve @license @cc_on
  */\n`
 
 export default {
-	input: "./src/index.bundle.js",
+	input: "./src/index.js",
 	output: [
 		{
 			file: `${DIST_FOLDER}/bundle.js`,
@@ -61,7 +61,7 @@ export default {
 							.toString()
 							.replace(
 								"<head>",
-								`<head><script src="./bundle.js"></script><link rel="stylesheet" href="./bundle.css">`
+								'<head><script src="./bundle.js"></script><link rel="stylesheet" href="./bundle.css"><script>kiwicomponents.init()</script>'
 							)
 				},
 				{

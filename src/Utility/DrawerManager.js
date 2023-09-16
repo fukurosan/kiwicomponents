@@ -1,9 +1,12 @@
+import { Components } from "../Components/index"
+
 /**
  * @description Opens a drawer
  * @param {import("./interfaces").OpenDrawerOptions} options
  * @returns {import("../Components/Drawer/interface").DrawerElement} - The drawer element
  */
 export const openDrawer = options => {
+	Components.Drawer()
 	//Create the drawer
 	const kiwiDrawer = document.createElement("kiwi-drawer")
 	options.closeIcon === false && kiwiDrawer.setAttribute("nocloseicon", options.closeIcon)

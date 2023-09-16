@@ -1,9 +1,6 @@
 import template from "./kiwi-tabs.html"
 import styles from "./kiwi-tabs.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Tab Panel
  * A tab panel that generates a tabbed layout
@@ -20,7 +17,12 @@ class KiwiTabs extends HTMLElement {
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiTabs._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiTabs._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiTabs._template.content.cloneNode(true))
 		this._mainContainer = this.shadowRoot.querySelector("#container")
 		this._buttonContainer = this.shadowRoot.querySelector("#tab-button-container")
 		this._slot = this.shadowRoot.querySelector("slot[name]")
@@ -52,4 +54,4 @@ class KiwiTabs extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-tabs", KiwiTabs)
+export { KiwiTabs }

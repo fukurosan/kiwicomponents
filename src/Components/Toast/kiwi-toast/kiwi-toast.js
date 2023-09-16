@@ -1,10 +1,6 @@
 import template from "./kiwi-toast.html"
 import styles from "./kiwi-toast.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-const DEFAULT_TIMEOUT_LENGTH_MS = 30000
-
 /**
  * Kiwi Toast
  * Kiwi toast notifications. Can be used to display both toasts as well as snackbars.
@@ -23,14 +19,19 @@ const DEFAULT_TIMEOUT_LENGTH_MS = 30000
  * @function close - Animates the toast and then removes it.
  *
  */
-class ToastElement extends HTMLElement {
+class KiwiToastElement extends HTMLElement {
 	static get observedAttributes() {
 		return ["icon", "title", "subtitle", "timeout", "type", "noanimation", "closemode"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiToastElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiToastElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiToastElement._template.content.cloneNode(true))
 		this._mainContainerElement = this.shadowRoot.querySelector("#main")
 		this._mainContainerElement.addEventListener("click", () => this.getAttribute("closemode") === "click" && this.close())
 		this._closeIconElement = this.shadowRoot.querySelector("#close-icon")
@@ -38,6 +39,7 @@ class ToastElement extends HTMLElement {
 		this._iconElement = this.shadowRoot.querySelector("#icon")
 		this._titleElement = this.shadowRoot.querySelector("#title")
 		this._subtitleElement = this.shadowRoot.querySelector("#subtitle")
+		const DEFAULT_TIMEOUT_LENGTH_MS = 30000
 		this._timeoutMs = DEFAULT_TIMEOUT_LENGTH_MS
 		this._timeout = null
 	}
@@ -136,4 +138,4 @@ class ToastElement extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-toast", ToastElement)
+export { KiwiToastElement }

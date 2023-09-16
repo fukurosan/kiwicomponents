@@ -1,8 +1,11 @@
+import { Components } from "../Components/index"
+
 /**
  * Enables global tooltips
  * @returns {any}
  */
 export const enableGlobalTooltips = () => {
+	Components.Tooltip()
 	const observer = new MutationObserver(mutations => {
 		const addedTargetElements = mutations.reduce((acc, mutation) => {
 			mutation.addedNodes.forEach(addedNode => {

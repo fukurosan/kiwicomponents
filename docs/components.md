@@ -2,7 +2,7 @@
 
 Kiwi Components come with a number of web components that most applications need and that are generally time consuming to create.
 
-## \<kiwi-button>
+## \<kiwi-button> - Components.Button
 
 \<kiwi-button> is a modern button element that can be styled and configured in a variety of different ways. The motivation for this component is that it comes with built in functionality to display both icons and text, different color combinations as well as neat animations.
 
@@ -46,7 +46,7 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-spinner>
+## \<kiwi-spinner> Components.Spinner
 
 \<kiwi-spinner> is a loading indicator. The motivation for this component is that most modern applications require one, yet they can be cumbersome to develop.
 
@@ -84,7 +84,7 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-tabs>
+## \<kiwi-tabs> Components.Tabs
 
 \<kiwi-tabs> is a tabbed panel. This component allows you to create tabs and display content depending on what tab is active. The motivation for this component is that many most applications use these types of layouts, and creating them requires a lot of boilerplate and state management.
 
@@ -153,7 +153,7 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-treelist-item>
+## \<kiwi-treelist-item> Components.Tree
 
 \<kiwi-treelist-item> is a way of creating en expandable tree with optionally selectable items in it.
 
@@ -228,7 +228,7 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-navbar>
+## \<kiwi-navbar> Components.Navbar
 
 \<kiwi-navbar> is a modern navbar with responsiveness built in.
 
@@ -282,7 +282,7 @@ The following CSS variables can be configured:
 
 ---
 
-## \<kiwi-burger>
+## \<kiwi-burger> Components.Burger
 
 \<kiwi-drawer> is a side drawer panel with a built-in toggle. This type of togglable side drawer can be found in most responsive applications today, and require a lot of work to set up.
 
@@ -318,7 +318,7 @@ The following CSS variables can be configured:
 
 ---
 
-## \<kiwi-accordion>
+## \<kiwi-accordion> Components.Accordion
 
 \<kiwi-accordion> is an accordion component where when clicking on it a content panel expands below it. This type of component can be found in a great deal of applications, and requires quite a lot of boilerplate.
 
@@ -382,7 +382,7 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-scroll-list>
+## \<kiwi-scroll-list> Components.ScrollList
 
 \<kiwi-scroll-list> is a horizontal list that renders arrow buttons to scroll when overflowing. Perfect for lists of links, chips or similar.
 
@@ -430,7 +430,7 @@ The following CSS variables can be configured:
 
 ---
 
-## \<kiwi-alert>
+## \<kiwi-alert> Components.Alert()
 
 \<kiwi-alert> is a component that visually communicates a strong message. It can optionally be dismissable. The alert element is part of the regular flow of elements in the DOM tree, making it distinct from similar elements like toast notifications.
 

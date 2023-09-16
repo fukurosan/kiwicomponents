@@ -1,9 +1,12 @@
+import { Components } from "../Components/index"
+
 /**
  * Shows a toast notification
  * @param {import("./interfaces").showToastOptions} options
  * @returns {HTMLElement} The toast element
  */
 export const showToast = options => {
+	Components.Toast()
 	//Create the toast
 	const toast = document.createElement("kiwi-toast")
 	options.title && toast.setAttribute("title", options.title)

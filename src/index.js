@@ -1,3 +1,5 @@
+import { Components, init } from "./Components/index"
+
 //Utilities
 import { showToast } from "./Utility/Notifications"
 import { enableGlobalTooltips } from "./Utility/Tooltip"
@@ -7,4 +9,4 @@ import { getThreadPlanner } from "./ThreadPlanner/api"
 import { getStateManager } from "./StateManager/api"
 
 //Export
-export { showToast, enableGlobalTooltips, openWindow, confirm, showSpinner, alert, prompt, getThreadPlanner, getStateManager, openDrawer }
+export { init, Components, showToast, enableGlobalTooltips, openWindow, confirm, showSpinner, alert, prompt, getThreadPlanner, getStateManager, openDrawer }

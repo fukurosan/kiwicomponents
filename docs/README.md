@@ -25,9 +25,15 @@ $ npm install kiwicomponents
 You can then use the library like so:
 
 ```javascript
-import "kiwicomponents" // -> Initializes the library
-import { alert } from "kiwicomponents" // -> Imports the function(s) from the library
-import "kiwicomponents/dist/css/bundle.css" // -> Imports CSS file(s)
+import { init, Components, alert } "kiwicomponents"
+import "kiwicomponents/dist/css/bundle.css" // -> Imports all CSS file(s)
+import "kiwicomponents/dist/css/forms.css" // -> Imports specific css file only
+// init function initializes all web components
+init()
+// Specific components can also be initialized one by one which allows for tree shaking
+Components.Tree()
+// Utility functions can also be easily imported and used
+alert()
 ```
 
 If you are working with some form of SSR framework you may get errors like "document is not defined" when executing functions from the library. For these cases you need to ensure that the functions imported are only executed in the client.
