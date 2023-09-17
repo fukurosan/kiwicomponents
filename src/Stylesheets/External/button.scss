@@ -1,5 +1,5 @@
 @import "../variables.scss";
-@import "../Components/typography.scss";
+@import "../Internal/typography.scss";
 
 :is(button, a[role="button"]) {
 	--background-color: #{$primary-color-600};

@@ -63,8 +63,8 @@ export default defineConfig({
 			name: "build-kiwi-stylesheets",
 			buildEnd() {
 				fs.mkdirSync(`${DIST_FOLDER}/css`, { recursive: true })
-				fs.readdirSync("./src/Assets/Stylesheets/Global/").map(fileName => {
-					const css = sass.compile(`./src/Assets/Stylesheets/Global/${fileName}`, {
+				fs.readdirSync("./src/Stylesheets/External/").map(fileName => {
+					const css = sass.compile(`./src/Stylesheets/External/${fileName}`, {
 						style: "compressed",
 						sourceMap: false
 					})
