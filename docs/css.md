@@ -268,6 +268,66 @@ These styles will make standard \<meter> elements look better.
 	<meter min="0" max="100" optimum="100" low="30" high="50" value="75"></meter>
 </kiwi-scoped-demo>
 
+## Details
+
+These styles will make standard \<details> and \<summary> elements look better.
+
+Some things are unfortunately not possible with CSS only while also staying semantically accurate, such as open/close animations. for the best possible UX experience use the kiwi-accordion component instead.
+
+```html
+<details>
+	<summary>
+		<p>Lorem, ipsum dolor.</p>
+	</summary>
+	<p>
+		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+<details>
+	<summary>
+		<p>Lorem, ipsum dolor.</p>
+	</summary>
+	<p>
+		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+<details>
+	<summary>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</p>
+	</summary>
+	<p>
+		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+```
+
+<kiwi-scoped-demo>
+<details>
+	<summary>
+		<p>Lorem, ipsum dolor.</p>
+	</summary>
+	<p>
+		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+<details>
+	<summary>
+		<p>Lorem, ipsum dolor.</p>
+	</summary>
+	<p>
+		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+<details>
+	<summary>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</p>
+	</summary>
+	<p>
+		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+</kiwi-scoped-demo>
+
 ## Image
 
 These styles will improve your image elements
