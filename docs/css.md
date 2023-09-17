@@ -8,15 +8,18 @@ The following files can be imported:
 | -------------- | ------------------------------------------------------------------------ |
 | bundle.css     | Full bundle with all stylesheets included                                |
 | button.css     | Button styles                                                            |
-| tokens.css     | Makes the design system tokens available as CSS variables                |
+| detail.css     | Details & summary element styles                                         |
+| forms.css      | Form styling                                                             |
+| image.css      | Image styling                                                            |
 | layout.css     | Contains different layout modules to help structure elements and content |
 | loading.css    | CSS utility for putting elements in a loading state                      |
-| forms.css      | Form styling                                                             |
+| meter.css      | Meter element styling                                                    |
 | navigation.css | Styles for navigation related elements                                   |
-| progress.css   | Styles \<progress> elements                                              |
+| progress.css   | Progress element elements                                                |
 | scrollbar.css  | Scroll bar styling                                                       |
 | table.css      | Table styling                                                            |
 | text.css       | Text styling                                                             |
+| tokens.css     | Makes the design system tokens available as CSS variables                |
 
 ```javascript
 import "kiwicomponents/dist/css/filename"
@@ -26,13 +29,13 @@ Some of these imports are described in other sections of this documenation.
 
 ## Button
 
-By enabling button styles your buttons will automatically look like \<kiwi-button> elements. Your buttons can be configured similarly, but using css classes instead of element attributes.
+By enabling button styles your buttons will automatically look better. Your buttons can be configured using css classes.
 
--   type="primary" becomes class="type-primary"
--   fill="light" becomes class="fill-light"
--   useanimation="" becomes class="useanimation"
+-   Set the type using these classes: .type-primary .type-secondary .type-neutral .type-success .type-warning .type-info .type-error
+-   You can set the color combinations using these classes: .fill-solid .fill-light .fill-none
+-   To get a cooler hover animation use .useanimation
 
-You can also apply the attribute role="button" to links to make them look like buttons too.
+You can apply the attribute role="button" to \<a> links to make them look like buttons too.
 
 Example:
 
@@ -280,7 +283,8 @@ Some things are unfortunately not possible with CSS only while also staying sema
 		<p>Lorem, ipsum dolor.</p>
 	</summary>
 	<p>
-		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</p>
 </details>
 <details>
@@ -288,7 +292,8 @@ Some things are unfortunately not possible with CSS only while also staying sema
 		<p>Lorem, ipsum dolor.</p>
 	</summary>
 	<p>
-		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</p>
 </details>
 <details>
@@ -296,7 +301,8 @@ Some things are unfortunately not possible with CSS only while also staying sema
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</p>
 	</summary>
 	<p>
-		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</p>
 </details>
 ```

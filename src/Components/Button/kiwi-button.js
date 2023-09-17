@@ -14,7 +14,7 @@ import styles from "./kiwi-button.scss"
  * @attr {"primary"|"secondary"|"neutral"|"info"|"success"|"error"|"warning"} type - Determines the look and feel of the button. Defaults to "primary".
  * @attr {"small"|"medium"|"large"} size - Determines the size of the button. Defaults to "medium".
  * @attr {"column"|"row"} direction - Determines the direction of the icon and button text (row or column). Default is row.
- * @attr {"dark"|"light"|"link"|"none"} fill - Determines The contrast balance in the button and the hover/active/focus look and feel.
+ * @attr {"solid"|"light"||"none"} fill - Determines The contrast balance in the button and the hover/active/focus look and feel.
  *
  * @slot - Button child elements
  *

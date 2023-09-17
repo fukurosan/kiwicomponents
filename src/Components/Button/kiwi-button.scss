@@ -21,7 +21,7 @@ button {
 	width: 100%;
 	border: none;
 	outline: none;
-	transition: all var(--kiwi-button-animation-duration, 500ms), transform 0ms, border 0ms;
+	transition: background-color var(--kiwi-button-animation-duration, 200ms), color var(--kiwi-button-animation-duration, 200ms);
 	border-radius: $border-radius-small;
 	box-shadow: none;
 	color: var(--text-color);
@@ -95,18 +95,11 @@ button {
 	--text-color: #{$primary-color-700};
 	--text-color-hover: #{$primary-color-900};
 }
-:host([type="primary"][fill="link"]) button {
-	--background-color: transparent;
-	--background-color-hover: transparent;
-	--background-color-focus: #{$primary-color-200};
-	--text-color: #{$primary-color-600};
-	--text-color-hover: #{$primary-color-800};
-}
 :host([type="primary"][fill="none"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$primary-color-200};
 	--background-color-focus: #{$primary-color-200};
-	--text-color: #{$primary-color-600};	
+	--text-color: #{$primary-color-600};
 	--text-color-hover: #{$primary-color-700};
 }
 
@@ -122,18 +115,11 @@ button {
 	--text-color: #{$secondary-color-700};
 	--text-color-hover: #{$secondary-color-900};
 }
-:host([type="secondary"][fill="link"]) button {
-	--background-color: transparent;
-	--background-color-hover: transparent;
-	--background-color-focus: #{$secondary-color-200};
-	--text-color: #{$secondary-color-600};
-	--text-color-hover: #{$secondary-color-800};
-}
 :host([type="secondary"][fill="none"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$secondary-color-200};
 	--background-color-focus: #{$secondary-color-200};
-	--text-color: #{$secondary-color-600};	
+	--text-color: #{$secondary-color-600};
 	--text-color-hover: #{$secondary-color-700};
 }
 
@@ -149,18 +135,11 @@ button {
 	--text-color: #{$neutral-color-700};
 	--text-color-hover: #{$neutral-color-900};
 }
-:host([type="neutral"][fill="link"]) button {
-	--background-color: transparent;
-	--background-color-hover: transparent;
-	--background-color-focus: #{$neutral-color-200};
-	--text-color: #{$neutral-color-600};
-	--text-color-hover: #{$neutral-color-800};
-}
 :host([type="neutral"][fill="none"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$neutral-color-200};
 	--background-color-focus: #{$neutral-color-200};
-	--text-color: #{$neutral-color-600};	
+	--text-color: #{$neutral-color-600};
 	--text-color-hover: #{$neutral-color-700};
 }
 
@@ -176,18 +155,11 @@ button {
 	--text-color: #{$info-color-700};
 	--text-color-hover: #{$info-color-900};
 }
-:host([type="info"][fill="link"]) button {
-	--background-color: transparent;
-	--background-color-hover: transparent;
-	--background-color-focus: #{$info-color-200};
-	--text-color: #{$info-color-600};
-	--text-color-hover: #{$info-color-800};
-}
 :host([type="info"][fill="none"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$info-color-200};
 	--background-color-focus: #{$info-color-200};
-	--text-color: #{$info-color-600};	
+	--text-color: #{$info-color-600};
 	--text-color-hover: #{$info-color-700};
 }
 
@@ -203,18 +175,11 @@ button {
 	--text-color: #{$success-color-700};
 	--text-color-hover: #{$success-color-900};
 }
-:host([type="success"][fill="link"]) button {
-	--background-color: transparent;
-	--background-color-hover: transparent;
-	--background-color-focus: #{$success-color-200};
-	--text-color: #{$success-color-600};
-	--text-color-hover: #{$success-color-800};
-}
 :host([type="success"][fill="none"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$success-color-200};
 	--background-color-focus: #{$success-color-200};
-	--text-color: #{$success-color-600};	
+	--text-color: #{$success-color-600};
 	--text-color-hover: #{$success-color-700};
 }
 
@@ -230,18 +195,11 @@ button {
 	--text-color: #{$warning-color-700};
 	--text-color-hover: #{$warning-color-900};
 }
-:host([type="warning"][fill="link"]) button {
-	--background-color: transparent;
-	--background-color-hover: transparent;
-	--background-color-focus: #{$warning-color-200};
-	--text-color: #{$warning-color-600};
-	--text-color-hover: #{$warning-color-800};
-}
 :host([type="warning"][fill="none"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$warning-color-200};
 	--background-color-focus: #{$warning-color-200};
-	--text-color: #{$warning-color-600};	
+	--text-color: #{$warning-color-600};
 	--text-color-hover: #{$warning-color-700};
 }
 
@@ -257,17 +215,10 @@ button {
 	--text-color: #{$error-color-700};
 	--text-color-hover: #{$error-color-900};
 }
-:host([type="error"][fill="link"]) button {
-	--background-color: transparent;
-	--background-color-hover: transparent;
-	--background-color-focus: #{$error-color-200};
-	--text-color: #{$error-color-600};
-	--text-color-hover: #{$error-color-800};
-}
 :host([type="error"][fill="none"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$error-color-200};
 	--background-color-focus: #{$error-color-200};
-	--text-color: #{$error-color-600};	
+	--text-color: #{$error-color-600};
 	--text-color-hover: #{$error-color-700};
 }
