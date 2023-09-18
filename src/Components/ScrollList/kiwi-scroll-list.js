@@ -27,13 +27,13 @@ class KiwiScrollListElement extends HTMLElement {
 		})
 		let isDown = false
 		let lastX = 0
-		parent.addEventListener("mousedown", e => {
+		this.addEventListener("mousedown", e => {
 			isDown = true
 			lastX = e.screenX
 		})
-		parent.addEventListener("mouseup", () => (isDown = false))
-		parent.addEventListener("mouseleave", () => (isDown = false))
-		parent.addEventListener("mousemove", e => {
+		this.addEventListener("mouseup", () => (isDown = false))
+		this.addEventListener("mouseleave", () => (isDown = false))
+		this.addEventListener("mousemove", e => {
 			if (isDown) {
 				e.preventDefault()
 				const delta = e.screenX - lastX
