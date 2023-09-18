@@ -16,6 +16,7 @@ input[type="datetime-local"],
 input[type="email"],
 input[type="month"],
 input[type="number"],
+input[type="color"],
 input[type="search"],
 input[type="tel"],
 input[type="text"],
@@ -50,6 +51,7 @@ input[type="datetime-local"],
 input[type="email"],
 input[type="month"],
 input[type="number"],
+input[type="color"],
 input[type="search"],
 input[type="tel"],
 input[type="text"],
@@ -70,9 +72,51 @@ input[type="radio"] {
 	}
 }
 
+[type="file"] {
+	&[disabled] {
+		cursor: not-allowed;
+		&::file-selector-button {
+			pointer-events: none;
+			background-color: $neutral-color-400;
+		}
+	}
+}
+
+[type="file"]::file-selector-button {
+	font-size: 0.75rem;
+	font-weight: 700;
+	font-family: $font-family-body;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: $neutral-color-900;
+	line-height: 1.2em;
+	font-style: normal;
+	text-transform: uppercase;
+	margin-inline-end: 1rem;
+	padding: 1em 1.5em;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	transition: background-color var(--kiwi-button-animation-duration, 200ms), color var(--kiwi-button-animation-duration, 200ms);
+	border-radius: $border-radius-small;
+	box-shadow: none;
+	color: $with-color-above-400 !important;
+	background: $neutral-color-600;
+	&:active {
+		transform: translateY(2px);
+	}
+	&:active,
+	&:hover {
+		background: $neutral-color-500;
+	}
+	&:focus {
+		background: $neutral-color-500;
+	}
+}
+
 /* Disabled styles */
 
-input:not([type="range"]):disabled,
+input:not([type="range"]):not([type="file"]):disabled,
 textarea:disabled,
 select:disabled {
 	cursor: not-allowed;
@@ -109,7 +153,7 @@ select[multiple] {
 	width: 100%;
 	option,
 	optgroup {
-		padding: 0.5rem 1rem;
+		padding: 0.5rem 1em;
 	}
 	option:checked {
 		//The text color in Chromium will be white on focus, and this cannot be changed

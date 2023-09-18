@@ -101,7 +101,9 @@ $border-radius-medium: var(--kiwi-border-radius-medium, $radius-medium);
 $border-radius-large: var(--kiwi-border-radius-large, $radius-large);
 
 //Shadows
+$shadow-small: var(--kiwi-shadow-small, $small-shadow);
 $shadow-medium: var(--kiwi-shadow-medium, $medium-shadow);
+$shadow-large: var(--kiwi-shadow-large, $large-shadow);
 
 //Scrollbars Standard
 $scrollbar-width: var(--kiwi-scrollbar-width, thin);

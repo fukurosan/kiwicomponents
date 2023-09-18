@@ -14,7 +14,9 @@
 	--kiwi-border-radius-large: #{$radius-large};
 
 	//Shadows
-	--kiwi-section-shadow: #{$medium-shadow};
+	--kiwi-shadow-small: #{$small-shadow};
+	--kiwi-shadow-medium: #{$medium-shadow};
+	--kiwi-shadow-large: #{$large-shadow};
 
 	//Colors
 	--kiwi-black: #{$dark-base};

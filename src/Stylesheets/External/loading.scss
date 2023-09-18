@@ -2,7 +2,7 @@
 
 [aria-busy="true"] {
 	cursor: progress;
-	&::before {
+	&::after {
 		z-index: 1;
 		display: inline-block;
 		width: 0.75em;
@@ -19,8 +19,8 @@
 	}
 
 	&:not(:empty) {
-		&::before {
-			margin-right: 0.5em;
+		&::after {
+			margin-left: 0.5em;
 		}
 	}
 
@@ -28,8 +28,8 @@
 		text-align: center;
 	}
 
-	&[aria-disabled="true"] {
-		&::before {
+	&:not(button)[aria-disabled="true"] {
+		&::after {
 			position: absolute;
 			inset: 0;
 			margin: auto;
@@ -40,7 +40,7 @@
 [aria-disabled="true"] {
 	position: relative;
 	pointer-events: none;
-	&::after {
+	&::before {
 		position: absolute;
 		inset: 0;
 		background-color: $white;
