@@ -211,3 +211,9 @@ a[role="button"] {
 	--text-color: #{$error-color-600};
 	--text-color-hover: #{$error-color-700};
 }
+
+:is(button, a[role="button"]).type-glass {
+	--background-color: rgba(255, 255, 255, 0.15);
+	--background-color-hover: rgba(255, 255, 255, 0.25);
+	--background-color-focus: rgba(255, 255, 255, 0.30);
+}

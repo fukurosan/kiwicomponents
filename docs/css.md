@@ -31,7 +31,7 @@ Some of these imports are described in other sections of this documenation.
 
 By enabling button styles your buttons will automatically look better. Your buttons can be configured using css classes.
 
--   Set the type using these classes: .type-primary .type-secondary .type-neutral .type-success .type-warning .type-info .type-error
+-   Set the type using these classes: .type-primary .type-secondary .type-neutral .type-success .type-warning .type-info .type-error .type-glass
 -   You can set the color combinations using these classes: .fill-solid .fill-light .fill-none
 -   To get a cooler hover animation use .useanimation
 
