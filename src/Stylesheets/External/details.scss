@@ -4,14 +4,23 @@
 details {
 	width: 100%;
 	margin: 0;
-	border: var(--kiwi-accordion-border, 1px solid $neutral-color-300);
-	border-radius: 0.5rem;
+	border-bottom: var(--kiwi-accordion-border, 1px solid $neutral-color-300);
+	border-radius: $border-radius-medium;
 	overflow: hidden;
 	background-color: var(--kiwi-accordion-panel-background-color, $white);
 }
 
+details.bordered {
+	border: var(--kiwi-accordion-border, 1px solid $neutral-color-300);
+	&[open] summary {
+		border-bottom: var(--kiwi-accordion-border, 1px solid $neutral-color-300);
+	}
+	&:not(:first-of-type) {
+		border-top: none;
+	}
+}
+
 details:not(:first-of-type) {
-	border-top: none;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
@@ -29,10 +38,6 @@ details > summary {
 details > *:not(summary) {
 	width: auto;
 	padding: 1rem 1.5rem;
-}
-
-details[open] summary {
-	border-bottom: var(--kiwi-accordion-border, 1px solid $neutral-color-300);
 }
 
 summary {

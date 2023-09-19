@@ -58,9 +58,14 @@ input[type="text"],
 input[type="time"],
 input[type="url"],
 input[type="week"],
+input[type="week"],
 select {
 	box-sizing: border-box;
 	height: 2.875rem;
+}
+
+textarea {
+	box-sizing: border-box;
 }
 
 input[type="checkbox"],
@@ -71,6 +76,8 @@ input[type="radio"] {
 		outline: 0.1875rem solid $primary-color-100;
 	}
 }
+
+/* File styles */
 
 [type="file"] {
 	&[disabled] {
@@ -404,4 +411,15 @@ form fieldset[class="label"] {
 		padding: 0;
 		margin: 0;
 	}
+}
+
+/* input icons */
+input[style*=--kiwi-input-icon] {
+	background-image: var(--kiwi-input-icon);
+	background-image: var(--kiwi-input-icon);
+	background-repeat: no-repeat;
+	background-size: 1rem;
+	background-position-y: center;
+	background-position-x: 1rem;
+	padding-left: 3rem;
 }

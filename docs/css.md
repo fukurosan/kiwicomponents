@@ -8,7 +8,7 @@ The following files can be imported:
 | -------------- | ------------------------------------------------------------------------ |
 | bundle.css     | Full bundle with all stylesheets included                                |
 | button.css     | Button styles                                                            |
-| detail.css     | Details & summary element styles                                         |
+| details.css    | Details & summary element styles                                         |
 | forms.css      | Form styling                                                             |
 | image.css      | Image styling                                                            |
 | layout.css     | Contains different layout modules to help structure elements and content |
@@ -277,6 +277,8 @@ These styles will make standard \<details> and \<summary> elements look better.
 
 Some things are unfortunately not possible with CSS only while also staying semantically accurate, such as open/close animations. for the best possible UX experience use the kiwi-accordion component instead.
 
+You can use the .bordered class to give the details element full borders.
+
 ```html
 <details>
 	<summary>
@@ -299,6 +301,25 @@ Some things are unfortunately not possible with CSS only while also staying sema
 <details>
 	<summary>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</p>
+	</summary>
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+
+<details class="bordered">
+	<summary>
+		<p>Lorem, ipsum dolor.</p>
+	</summary>
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+<details class="bordered">
+	<summary>
+		<p>Lorem, ipsum dolor.</p>
 	</summary>
 	<p>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
@@ -332,6 +353,28 @@ Some things are unfortunately not possible with CSS only while also staying sema
 		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</p>
 </details>
+
+<br><br>
+<div>
+<details class="bordered">
+	<summary>
+		<p>Lorem, ipsum dolor.</p>
+	</summary>
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+<details class="bordered">
+	<summary>
+		<p>Lorem, ipsum dolor.</p>
+	</summary>
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</p>
+</details>
+</div>
 </kiwi-scoped-demo>
 
 ## Image

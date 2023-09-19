@@ -113,4 +113,13 @@ Shadows can be set using the following variables:
 
 | Variable Name      |
 | ------------------ |
+| kiwi-shadow-small  |
 | kiwi-shadow-medium |
+| kiwi-shadow-large  |
+
+## Text
+
+| Variable Name              |
+| -------------------------- |
+| --kiwi-font-family-heading |
+| --kiwi-font-family-body    |
