@@ -1,20 +1,99 @@
 @import "../Internal/typography.scss";
 
-.container {
+body {
+	background-color: var(--kiwi-section-background, $neutral-color-50);
+}
+
+// Sections live directly inside either body, main or header
+// Sections control the width of the page content and the centering of it.
+// Sections can be made more narrow using the .narrow class, which is useful for content like login forms.
+// Sections till by default remove all margins and gaps on mobile, you can stop this behaviour by setting the class .mobile-margins
+
+// Articles are content islands inside of the sections.
+// Articles have responsive inline padding in them, and by default adds a lot of padding. This behaviour can be changed by setting the class .fill
+// Articles can have additional sections in them, which will be given a different background color and some standard styles.
+
+// The only allowed hierarchy for these <section> and <article> styles is (body | header | main | footer) -> section -> article -> section
+// All other occurences will be unstyled and ignored. This is on purpose.
+
+body > section,
+main > section,
+header > section,
+footer > section {
 	margin-inline: auto;
-	max-width: 100%;
-}
-
-@media (min-width: 768px) {
-	.container {
-		max-width: calc(100% - 48px);
+	padding-inline: max(1.5rem, calc((100% - 56rem) / 2)); //Equivalent to 56rem (~900px) max width, but allows us to set a full page width background
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	&:not(:last-of-type) {
+		margin-bottom: 2rem;
+	}
+	&.narrow {
+		padding-inline: max(1.5rem, calc((100% - 37rem) / 2)); //Equivalent to 37rem (~600px) max width, but allows us to set a full page width background
+		> article {
+			padding: 2.5rem 3.5rem;
+			&.fill {
+				padding: 2rem 1.5rem;
+			}
+		}
+	}
+	> article {
+		box-shadow: var(--kiwi-article-box-shadow, none);
+		border: var(--kiwi-article-border, none);
+		box-sizing: content-box;
+		background: var(--kiwi-article-background, #ffffff);
+		border-radius: $border-radius-large;
+		//padding: 3rem clamp(3rem, 8rem, calc(100% - 48rem));
+		padding: 3rem max(1.5rem, calc(calc(100% - 40rem) / 2)); //40rem (~640px) of available space for content, the rest is filled with responsive padding
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		&.fill {
+			padding: 3rem 3rem;
+		}
+		> section {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			background: var(--kiwi-section-background, $neutral-color-50);
+			padding: 1.5rem;
+			border-radius: $border-radius-large;
+		}
 	}
 }
 
-@media (min-width: 1248px) {
-	.container {
-		max-width: 1200px;
+@media (max-width: 768px) {
+	body > section,
+	main > section,
+	header > section,
+	footer > section {
+		&:not(.mobile-margins) {
+			width: 100%;
+			max-width: 100%;
+			gap: 0rem;
+			padding-inline: 0;
+			> article {
+				box-shadow: none;
+				border: none;
+				border-radius: 0;
+				padding: 3rem max(1.5rem, calc(calc(100% - 40rem) / 2)); //40rem (~640px) of available space for content
+			}
+		}
+		&.narrow {
+			max-width: 100%;
+			> article {
+				padding: 2rem max(1.5rem, calc(calc(100% - 40rem) / 2)); //40rem (~640px) of available space for content
+			}
+		}
+		> article,
+		> article.fill {
+			padding: 2rem max(1.5rem, calc(calc(100% - 40rem) / 2)); //40rem (~640px) of available space for content
+		}
 	}
+}
+
+.container {
+	margin-inline: 2rem;
 }
 
 .grid {
@@ -46,4 +125,27 @@
 	.mobile-only {
 		display: none !important;
 	}
+}
+
+.center-content,
+.center-content-flex,
+.center-content-absolute,
+.center-content-fixed {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin: auto;
+}
+.center-content-flex {
+	display: flex;
+}
+.center-content-absolute,
+.center-content-fixed {
+	inset: 0;
+}
+.center-content-absolute {
+	position: absolute;
+}
+.center-content-fixed {
+	position: fixed;
 }

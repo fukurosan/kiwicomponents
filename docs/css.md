@@ -85,9 +85,68 @@ Example:
 
 You can use a number of different elements to create responsive, easy to understand layouts.
 
+### Base Sections and Articles
+
+When you place a \<section> element as a direct child to either a body, header, main or footer element the section will automatically configure a max width for yout content and center it in the viewport. The centering is done through padding, meaning that if you configure a background for the section it will take up the full width.
+
+Inside of your root \<section> elements you can place \<article> elements, which will transform inte responsive content cards.
+
+Sections by default has margins between elements on desktop, while blending everything together on mobile. You can configure the sections to keep the margins on mobile by setting the class "mobile-margins" on your sections.
+
+If you want to use sections that are more narrow you can configure them with the classs "narrow"
+
+Article elements by default have a maximum content width that allows for more inline air. You can configure them to fill more available space by applying the class "fill".
+
+By default the layout class will change the background of the body element, and the same color will be applied to any sections put inside your articles. You can configure the look and feel like so:
+
+| Variables                 | Description                                               |
+| ------------------------- | --------------------------------------------------------- |
+| --kiwi-section-background | Applied to sections inside articles and the document body |
+| --kiwi-article-background | Applied to articles                                       |
+| --kiwi-article-box-shadow | Applied to articles                                       |
+| --kiwi-article-border     | Applied to articles                                       |
+
+```html
+<main>
+	<section>
+		<article>
+			<h2>This is an article</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+		<article>
+			<h2>This is an article with a section</h2>
+			<section>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+			</section>
+		</article>
+		<article class="fill">
+			<h2>This article fills more space</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+	</section>
+	<section class="narrow mobile-margins">
+		<article>
+			<h2>This article is part of a narrow section</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+		<article>
+			<h2>And it has mobile margins</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+	</section>
+</main>
+```
+
+<a href="./layout.html" target="_blank">Link</a>
+
 ### Containers
 
-You can use the .container class to create a responsive base container on your page to put content in. The container will always leave a little bit of margin on its sides, and never grow beyond a certain point.
+You can use the .container class to add a little bit of margin on the container's sides.
 
 ```html
 <div class="container" style="background-color:aliceblue;padding:1rem;">Hello World</div>
@@ -212,6 +271,15 @@ Example:
     </div>
 </div>
 </kiwi-scoped-demo>
+
+### Centering
+
+You can use a number of utility classes to center things in the viewport. Use these classes on a wrapper container for whatever you want to have centered
+
+- .center-content will center things in the most basic way using automatic margins and text alignment
+- .center-content-flex will use flexbox to center its content
+- .center-content-absolute will use absolute positioning to center its content
+- .center-content-fixed will use fixed positioning to center its content
 
 ## Loading and Disabled
 
@@ -355,6 +423,7 @@ You can use the .bordered class to give the details element full borders.
 </details>
 
 <br><br>
+
 <div>
 <details class="bordered">
 	<summary>
