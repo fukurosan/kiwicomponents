@@ -146,10 +146,17 @@ Result:
 
 The following attributes can be configured:
 
-| attribute        | type            | description                                                            |
-| ---------------- | --------------- | ---------------------------------------------------------------------- |
-| active-tab-index | number          | index of the selected tab                                              |
-| direction        | "row"\|"column" | If set to row the tab menu will top to bottom, otherwise left to right |
+| attribute        | type            | description                                                                                |
+| ---------------- | --------------- | ------------------------------------------------------------------------------------------ |
+| active-tab-index | number          | index of the selected tab                                                                  |
+| direction        | "row"\|"column" | If set to row the tab menu will top to bottom, otherwise left to right                     |
+| noborder         | any             | If set to any value there will be no border separating the tabs and the content below them |
+
+The following events are fired:
+
+| name   | description                                                                                                                                                                                                                        |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| change | Change event is fired whenever a tab is clicked. The details of the event contains a tabElement reference and an index property of what tab was pressed. Note that this event is not fired when the attribute is manually updated. |
 
 ---
 

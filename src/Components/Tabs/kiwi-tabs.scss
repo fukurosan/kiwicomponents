@@ -6,11 +6,24 @@
 }
 
 #tab-button-container {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 0.5rem;
 	margin-bottom: 0.75rem;
+	border-bottom: 0.125rem solid $neutral-color-300;
+}
+
+#slider {
+	position: absolute;
+	background: $primary-color-600;
+	transition: 200ms;
+	border-radius: 0.25rem;
+}
+
+:host([noborder]) #tab-button-container {
+	border: none !important;
 }
 
 :host(:not([direction="column"])) #container {
@@ -21,27 +34,27 @@
 	flex-direction: row;
 	#tab-button-container {
 		flex-direction: column;
-		border-bottom: 0;
 		margin: 0;
 		margin-right: 0.75rem;
+		border-bottom: none;
+		border-right: 0.125rem solid $neutral-color-300;
 	}
 	::slotted(kiwi-tab) {
-		border: 0;
 		padding: 0.75rem;
-		border-right: 2px solid transparent;
-	}
-	::slotted(kiwi-tab:hover:not([disabled])) {
-		border-right: 2px solid $neutral-color-400;
-	}
-	::slotted(kiwi-tab[active-tab]:not([disabled])) {
-		border-right: 2px solid $primary-color-600;
 	}
 }
 
 ::slotted(kiwi-tab) {
-	padding: 0.625rem 0.5rem;
+	//Equivalent to subtitle-1 but with body font
+	font-family: $font-family-body !important;
+	-webkit-font-smoothing: antialiased !important;
+	-moz-osx-font-smoothing: grayscale !important;
+	color: $neutral-color-900 !important;
+	line-height: 1.2em !important;
+	font-size: 1rem !important;
+	font-weight: 700 !important;
+	padding: 1rem 0.5rem;
 	white-space: nowrap;
-	border-right: 2px solid transparent;
 	opacity: 0.7;
 	cursor: pointer;
 }
@@ -55,6 +68,5 @@
 }
 ::slotted(kiwi-tab[active-tab]:not([disabled])) {
 	opacity: 1;
-	border-bottom: 2px solid $primary-color-600;
 	color: $primary-color-600 !important;
 }
