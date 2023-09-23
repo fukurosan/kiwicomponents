@@ -2,8 +2,7 @@
 	"env": {
 		"browser": true,
 		"es2020": true,
-		"node": false,
-		"jest": true
+		"node": false
 	},
 	"extends": ["eslint:recommended", "prettier"],
 	"parserOptions": {
