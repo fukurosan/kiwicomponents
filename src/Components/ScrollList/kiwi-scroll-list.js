@@ -63,15 +63,24 @@ class KiwiScrollListElement extends HTMLElement {
 		if (this._linkContainer.clientWidth === this._linkContainer.scrollWidth) {
 			this._leftScroll.style.display = "none"
 			this._rightScroll.style.display = "none"
+			this._linkContainer.removeProperty("mask")
+			this._linkContainer.removeProperty("-webkit-mask")
 			return
 		}
+		let showLeft = true
+		let showRight = true
 		this._rightScroll.style.removeProperty("display")
 		this._leftScroll.style.removeProperty("display")
 		if (this._linkContainer.scrollLeft === 0) {
 			this._leftScroll.style.display = "none"
+			showLeft = false
 		} else if (Math.ceil(this._linkContainer.scrollLeft) + this._linkContainer.clientWidth >= this._linkContainer.scrollWidth) {
 			this._rightScroll.style.display = "none"
+			showRight = false
 		}
+		const gradient = `linear-gradient(${!showLeft ? "270" : "90"}deg, transparent, white 20%, white ${showLeft && showRight ? "80" : "100"}%, transparent)`
+		this._linkContainer.style["mask"] = gradient
+		this._linkContainer.style["-webkit-mask"] = gradient
 	}
 
 	_updateScroll(delta, smooth = true) {
