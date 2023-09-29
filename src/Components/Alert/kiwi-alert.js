@@ -7,6 +7,7 @@ import styles from "./kiwi-alert.scss"
  * @element kiwi-alert
  *
  * @attr {any} useclosebutton - If set a close button will be rendered on the alert.
+ * @attr {"primary"|"secondary"|"neutral"|"info"|"success"|"error"|"warning"} type - Determines the look and feel.
  *
  * @slot - alert content
  *

@@ -17,6 +17,7 @@
 	border-left: var(--kiwi-alert-border, 0.5rem solid transparent);
 	border-color: var(--border-color);
 	background: var(--background-color);
+	align-items: center;
 	::slotted(*) {
 		color: var(--body-color) !important;
 	}
@@ -24,6 +25,7 @@
 		color: var(--header-color) !important;
 	}
 	#close-icon {
+		align-self: flex-start;
 		stroke: var(--stroke-color);
 		&:focus,
 		&:active,

@@ -17,7 +17,7 @@ import styles from "./kiwi-table.scss"
  * @function getSelectedRows - Returns all currently selected IDs
  * @function clearSelection - Clears any current selection
  * @function selectAllRows - Selects all rows in the table
- * @function makeSelection - Alters the current selection without removing it
+ * @function toggleSelection - Alters the current selection without removing it
  * @function setSelection - Sets the current selection, overwriting any previous
  * @function filter - Executes a filter on the table
  * @function clearFilter - Clears any existing filter
@@ -124,22 +124,23 @@ class KiwiTableElement extends HTMLElement {
 		const oldSelection = this.getSelectedRows()
 		this.querySelectorAll("._kiwi-table-selected").forEach(tr => {
 			tr.classList.remove("_kiwi-table-selected")
+			tr.querySelector("._kiwi-table-cell input[type='checkbox']").checked = false
 		})
 		dispatchEvent && this._dispatchSelectionEvent(oldSelection)
 	}
 
 	selectAllRows(dispatchEvent = true) {
 		const oldSelection = this.getSelectedRows()
-		this.querySelectorAll("tr").forEach(tr => {
-			if (this._isTRSelectable(tr)) {
-				tr.classList.add("_kiwi-table-selected")
-			}
+		this.querySelectorAll("tbody tr").forEach(tr => {
+			tr.classList.add("_kiwi-table-selected")
+			tr.querySelector("._kiwi-table-cell input[type='checkbox']").checked = true
 		})
 		dispatchEvent && this._dispatchSelectionEvent(oldSelection)
 	}
 
-	makeSelection(tr, dispatchEvent = true) {
+	toggleSelection(id, dispatchEvent = true) {
 		const oldSelection = this.getSelectedRows()
+		const tr = this.querySelector(`tr[kiwi-row-id='${id}']`)
 		this._makeSelection(tr)
 		dispatchEvent && this._dispatchSelectionEvent(oldSelection)
 	}
@@ -147,9 +148,11 @@ class KiwiTableElement extends HTMLElement {
 	setSelection(idArray, dispatchEvent = true) {
 		const oldSelection = this.getSelectedRows()
 		this.clearSelection(false)
-		this.querySelectorAll("tr").forEach(tr => {
-			if (this._isTRSelectable(tr) && idArray.includes(tr.getAttribute("id"))) {
-				tr.classList.add("_kiwi-table-selected")
+		this.querySelectorAll("tbody tr").forEach(tr => {
+			if (idArray.includes(tr.getAttribute("kiwi-row-id"))) {
+				this._makeSelection(tr, false)
+			} else {
+				this._makeSelection(tr, true)
 			}
 		})
 		dispatchEvent && this._dispatchSelectionEvent(oldSelection)
@@ -226,12 +229,13 @@ class KiwiTableElement extends HTMLElement {
 		this.dispatchEvent(new CustomEvent("selection", { detail }))
 	}
 
-	_makeSelection(tr) {
-		let shouldRemove
-		if (tr.classList.contains("_kiwi-table-selected")) {
-			shouldRemove = true
-		} else {
-			shouldRemove = false
+	_makeSelection(tr, shouldRemove) {
+		if (typeof shouldRemove !== "boolean") {
+			if (tr.classList.contains("_kiwi-table-selected")) {
+				shouldRemove = true
+			} else {
+				shouldRemove = false
+			}
 		}
 		this._updateSelectionOfRow(tr, shouldRemove)
 		if (this.getAttribute("selection") === "tree") {
@@ -243,10 +247,10 @@ class KiwiTableElement extends HTMLElement {
 	_updateSelectionOfRow(tr, shouldRemove) {
 		if (shouldRemove) {
 			tr.classList.remove("_kiwi-table-selected")
-			tr.querySelector("._kiwi-table-injection input[type='checkbox']").checked = false
+			tr.querySelector("._kiwi-table-cell input[type='checkbox']").checked = false
 		} else {
 			tr.classList.add("_kiwi-table-selected")
-			tr.querySelector("._kiwi-table-injection input[type='checkbox']").checked = true
+			tr.querySelector("._kiwi-table-cell input[type='checkbox']").checked = true
 		}
 	}
 
@@ -314,7 +318,7 @@ class KiwiTableElement extends HTMLElement {
 			}
 			cellDiv.appendChild(arrow)
 			const icon = tr.getAttribute("kiwi-row-icon")
-			if (icon) {
+			if (typeof icon === "string") {
 				const img = document.createElement("img")
 				img.classList.add("_kiwi-table-icon")
 				if (icon !== "") {
@@ -338,8 +342,8 @@ class KiwiTableElement extends HTMLElement {
 			const cellDiv = this._getDivWithClass("_kiwi-table-cell")
 			const checkbox = document.createElement("input")
 			checkbox.setAttribute("type", "checkbox")
-			checkbox.addEventListener("click", e => {
-				this.makeSelection(tr, true, e)
+			checkbox.addEventListener("click", () => {
+				this.toggleSelection(tr.getAttribute("kiwi-row-id"), true)
 			})
 			cellDiv.appendChild(checkbox)
 			td.appendChild(cellDiv)
@@ -417,6 +421,7 @@ class KiwiTableElement extends HTMLElement {
 			const lightdomcss = document.createElement("style")
 			lightdomcss.classList.add("_kiwi-table-injection")
 			lightdomcss.innerHTML = this._styles
+			this.appendChild(document.createComment("__KIWI INJECTED STYLES__"))
 			this.appendChild(lightdomcss)
 		}
 		//Take us back into the flow after completing all operations

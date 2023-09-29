@@ -15,6 +15,7 @@ class KiwiScrollListElement extends HTMLElement {
 			KiwiScrollListElement._template = templateElement
 		}
 		this.attachShadow({ mode: "open" }).appendChild(KiwiScrollListElement._template.content.cloneNode(true))
+		this._evaluateArrowVisibility = this._evaluateArrowVisibility.bind(this)
 		this._container = this.shadowRoot.querySelector("#container")
 		this._linkContainer = this.shadowRoot.querySelector("#link-container")
 		this._leftScroll = this.shadowRoot.querySelector("#left-scroll")
@@ -51,6 +52,11 @@ class KiwiScrollListElement extends HTMLElement {
 			//The scrollWidth of the content would just equal the clientWidth.
 			this._evaluateArrowVisibility()
 		})
+		window.addEventListener("resize", this._evaluateArrowVisibility)
+	}
+
+	disconnectedCallback() {
+		window.removeEventListener("resize", this._evaluateArrowVisibility)
 	}
 
 	_attachScrollListener(left, arrow) {

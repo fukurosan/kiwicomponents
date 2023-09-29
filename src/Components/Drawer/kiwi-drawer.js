@@ -31,8 +31,8 @@ class KiwiDrawer extends HTMLElement {
 		this.attachShadow({ mode: "open" }).appendChild(KiwiDrawer._template.content.cloneNode(true))
 		this.shadowRoot.querySelector("#close-icon").addEventListener("click", () => this.toggleAttribute("open"))
 		this.shadowRoot.querySelector("#backdrop-blur").addEventListener("click", () => this.toggleAttribute("open"))
-		this.shadowRoot.querySelector("#menu-panel").addEventListener("transitionend", () => {
-			this.dispatchEvent(new CustomEvent("open", { detail: this.hasAttribute("open") }))
+		this.shadowRoot.querySelector("#menu-panel").addEventListener("transitionend", e => {
+			;["left", "right"].includes(e.propertyName) && this.dispatchEvent(new CustomEvent("open", { detail: this.hasAttribute("open") }))
 		})
 		this._titleElement = this.shadowRoot.querySelector("#title")
 		this._subtitleElement = this.shadowRoot.querySelector("#subtitle")

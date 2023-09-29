@@ -36,7 +36,7 @@ class KiwiSpinner extends HTMLElement {
 
 	_render() {
 		if (this.hasAttribute("percent")) {
-			this._spinningCircleElement.style.strokeDashoffset = this.getAttribute("percent")
+			this._spinningCircleElement.style.strokeDashoffset = 100 - Number(this.getAttribute("percent"))
 			this._spinningCircleElement.style.animation = "none"
 			this._svgElement.style.animation = "none"
 		} else {
