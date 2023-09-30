@@ -48,7 +48,6 @@ class KiwiToastElement extends HTMLElement {
 		if (!this.hasAttribute("noanimation")) {
 			this._animate(false)
 		}
-		this._setTimeout()
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
@@ -95,11 +94,9 @@ class KiwiToastElement extends HTMLElement {
 	}
 
 	_updateTimeout(time) {
-		this._timeoutMs = time
-		if (this._timeout) {
-			clearTimeout(this._timeout)
-			this._setTimeout()
-		}
+		this._timeoutMs = time ? time : this.DEFAULT_TIMEOUT_LENGTH_MS
+		this._timeout && clearTimeout(this._timeout)
+		this._setTimeout()
 	}
 
 	_setTimeout() {
