@@ -21,7 +21,7 @@ export const openWindow = options => {
 	options.scale && kiwiWindow.setAttribute("scale", options.scale)
 	options.title && kiwiWindow.setAttribute("title", options.title)
 	options.icon && kiwiWindow.setAttribute("icon", options.icon)
-	options.footer && kiwiWindow.setAttribute("footer", "true")
+	options.footer && kiwiWindow.setAttribute("usefooter", "true")
 	options.noanimation && kiwiWindow.setAttribute("noanimation", options.noanimation)
 	if (options.body) {
 		if (typeof options.body === "string") {

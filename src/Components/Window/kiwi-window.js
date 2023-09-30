@@ -6,7 +6,7 @@ import styles from "./kiwi-window.scss"
  * A window that can be opened within the browser viewport. Can work either as a dialog or a modal.
  * @element kiwi-window
  *
- * @attr {boolean} footer - If set to any value the footer will be rendered.
+ * @attr {boolean} usefooter - If set to any value the footer will be rendered.
  * @attr {boolean} useminimizable - If set to any value the minimize button will be added to the header.
  * @attr {boolean} usemaximizable - If set to any value the maximize button will be added to the header and double clicking the header will maximize the window.
  * @attr {boolean} useclosebutton - If set to any value the close button will be added to the header.
@@ -42,7 +42,7 @@ import styles from "./kiwi-window.scss"
 class KiwiWindowElement extends HTMLElement {
 	static get observedAttributes() {
 		return [
-			"footer",
+			"usefooter",
 			"useminimizable",
 			"usemaximizable",
 			"useclosebutton",

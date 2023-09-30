@@ -62,7 +62,7 @@
 }
 
 #footer,
-:host(:not([footer])) #body {
+:host(:not([usefooter])) #body {
 	border-bottom-left-radius: $border-radius-medium;
 	border-bottom-right-radius: $border-radius-medium;
 }
@@ -246,7 +246,7 @@ slot {
 	display: none;
 }
 
-:host(:not([footer])) #footer {
+:host(:not([usefooter])) #footer {
 	display: none;
 }
 
@@ -359,7 +359,7 @@ slot {
 	max-height: unset !important;
 }
 /*
-:host([usecentered="scroll"]:not([footer])) #body {
+:host([usecentered="scroll"]:not([usefooter])) #body {
 	margin-bottom: 3rem !important;
 }
 :host([usecentered="scroll"]) #footer {
@@ -380,6 +380,6 @@ slot {
 	}
 }
 
-:host([usecentered="scroll"]:not([footer])) #body {
+:host([usecentered="scroll"]:not([usefooter])) #body {
 	margin-bottom: 4rem;
 }
