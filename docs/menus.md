@@ -6,6 +6,7 @@ Kiwi Components menus can be used to create either context menus or dropdown men
 -   \<kiwi-menu-item> (optional)
 
 To use the menu you will need to import it:
+
 ```javascript
 import { Components } from "kiwicomponents"
 Components.Menu()
@@ -169,14 +170,14 @@ The following attributes are supported:
 
 ### Kiwi Menu
 
-| option      | type                          | description                                                                                                  |
-| ----------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| top         | number                        | Offsets the top position of the menu relative to the target by provided amount of pixels                     |
-| left        | number                        | Offsets the left position of the menu relative to the target by provided amount of pixels                    |
-| mode        | "dropdown" \| "contextmenu"   | Dropdowns are triggered by left clicking, context menus are triggered by right clicking                      |
-| target      | string                        | Target css selector. The menu will attempt to find the closest(!) element in the DOM that matches the query. |
-| justify     | "left" \| "center" \| "right" | Determines the horizontal alignment of borders with the target element. Only applicable to dropdowns.        |
-| noanimation | any                           | If set to any value the element will not be animated.                                                        |
+| option      | type                         | description                                                                                                  |
+| ----------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| top         | number                       | Offsets the top position of the menu relative to the target by provided amount of pixels                     |
+| left        | number                       | Offsets the left position of the menu relative to the target by provided amount of pixels                    |
+| mode        | "dropdown" \| "contextmenu"  | Dropdowns are triggered by left clicking, context menus are triggered by right clicking                      |
+| target      | string                       | Target css selector. The menu will attempt to find the closest(!) element in the DOM that matches the query. |
+| justify     | "start" \| "center" \| "end" | Determines the horizontal alignment of borders with the target element. Only applicable to dropdowns.        |
+| noanimation | any                          | If set to any value the element will not be animated.                                                        |
 
 ### Kiwi Menu Item
 
