@@ -125,6 +125,10 @@ class KiwiTreeListItem extends HTMLElement {
 			this._mainContainer.style.opacity = 1
 			this._isVisible = true
 			this._mainContainer.addEventListener("transitionend", listener)
+		} else if (!this._mainContainer.style.height) {
+			this._mainContainer.style.height = "auto"
+			this._mainContainer.style.opacity = 1
+			this._isVisible = true
 		} else {
 			this._mainContainer.style.height = `${this._mainContainer.scrollHeight}px`
 			setTimeout(() => {
