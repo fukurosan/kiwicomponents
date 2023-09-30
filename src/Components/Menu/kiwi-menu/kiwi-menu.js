@@ -14,7 +14,7 @@ import styles from "./kiwi-menu.scss"
  * @attr {number} left - Adjusts the left position of the menu relative to the target
  * @attr {"dropdown"|"contextmenu"} mode - Is this a dropdown menu for a contextmenu.
  * @attr {string} target - Target css selector of element.
- * @attr {"left"|"center"|"right"} justify - If set the target's and menu's right borders will align, otherwise their left. Not applicable for "contextmenu" mode.
+ * @attr {"start"|"center"|"end"} justify - If set the target's and menu's right borders will align, otherwise their left. Not applicable for "contextmenu" mode.
  * @attr {any} noanimation - If set the element will not be animated.
  *
  * @slot - Menu body.
@@ -171,6 +171,10 @@ class KiwiMenuElement extends HTMLElement {
 			}
 			adjustment = computePositionAdjustment(mainElementBCR, targetBCR, "bottom", justify, event)
 		}
+		//Adjust for offsets
+		this.hasAttribute("top") && (adjustment.y = adjustment.y + parseInt(this.getAttribute("top")))
+		this.hasAttribute("left") && (adjustment.x = adjustment.x + parseInt(this.getAttribute("left")))
+
 		//Apply new coordinates and dispose of the clone
 		this._mainElement.style.left = `${adjustment.x}px`
 		this._mainElement.style.top = `${adjustment.y}px`
