@@ -86,3 +86,7 @@ button:hover {
 	transition: max-height var(--kiwi-accordion-animation-time, 200ms);
 	width: 100%;
 }
+
+::slotted(*) {
+	padding: 1rem 1.5rem;
+}
