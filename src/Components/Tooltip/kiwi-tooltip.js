@@ -6,7 +6,12 @@ import styles from "./kiwi-tooltip.scss"
 
 /**
  * Kiwi Tooltip
- * A kiwi tooltip. This component creates a tooltip that appears when hovering a given target.
+ * This component creates a tooltip that appears when hovering a given target.
+ * The tooltip will attempt to initialize itself by finding a taget using
+ * 1. A provided target attribute,
+ * 2. Element provided in the target slot,
+ * 3. Parent element.
+ * 
  * @element kiwi-tooltip
  *
  * @attr {"top"|"right"|"bottom"|"left"|"mouse"|"follow"} position - Determines how the tooltip should be positioned relative to the target element.
@@ -15,11 +20,7 @@ import styles from "./kiwi-tooltip.scss"
  * @attr {any} noanimation - If provided the tooltip will not animate on insert/remove.
  *
  * @prop {HTMLElement} targetElement - Target for the tooltip element
- *
- * @function updateTarget - Attempts to initialize the tooltip by finding a taget using
- * 1. a provided target attribute,
- * 2. element provided in the target slot,
- * 3. parent element.
+ * 
  * @function setTargetElementByQuery - Takes a css query as an argument and attempts to set the closest element matching it as the target.
  * Optionally an html element can be provided as a second argument.
  * If provided the tooltip will instead attempt to find a matching target closest to the provided html element.
