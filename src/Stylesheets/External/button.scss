@@ -43,6 +43,7 @@ a[role="button"] {
 }
 
 :is(button, a[role="button"]) *,
+button,
 kiwi-button *,
 a[role="button"] {
 	@extend %button;

@@ -8,6 +8,7 @@ import styles from "./WindowManager.scss"
  */
 export const openWindow = options => {
 	Components.Window()
+	Components.Button()
 	//Create the window
 	const kiwiWindow = document.createElement("kiwi-window")
 	options.minimizable && kiwiWindow.setAttribute("useminimizable", options.minimizable)
