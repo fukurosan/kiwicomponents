@@ -2,7 +2,7 @@
 @import "../../Stylesheets/Internal/typography.scss";
 
 #container {
-	border: var(--kiwi-accordion-border, 1px solid lightgray);
+	border: var(--kiwi-accordion-border, 1px solid #{$neutral-color-300});
 	border-bottom: none;
 	overflow: hidden;
 }
@@ -22,7 +22,7 @@
 }
 
 :host([open]) #container {
-	border-bottom: var(--kiwi-accordion-border, 1px solid lightgray);
+	border-bottom: var(--kiwi-accordion-border, 1px solid #{$neutral-color-300});
 }
 
 button {
@@ -32,7 +32,7 @@ button {
 	padding: 1rem 1.5rem;
 	width: 100%;
 	border: none;
-	border-bottom: var(--kiwi-accordion-border, 1px solid lightgray);
+	border-bottom: var(--kiwi-accordion-border, 1px solid #{$neutral-color-300});
 	text-align: left;
 	outline: none;
 	transition: max-height var(--kiwi-accordion-animation-time, 300ms);

@@ -1,9 +1,5 @@
 @import "../Internal/typography.scss";
 
-body {
-	background-color: var(--kiwi-section-background, $neutral-color-50);
-}
-
 // Sections live directly inside either body, main or header
 // Sections control the width of the page content and the centering of it.
 // Sections can be made more narrow using the .narrow class, which is useful for content like login forms.

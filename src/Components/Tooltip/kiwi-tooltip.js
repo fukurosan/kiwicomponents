@@ -11,7 +11,7 @@ import styles from "./kiwi-tooltip.scss"
  * 1. A provided target attribute,
  * 2. Element provided in the target slot,
  * 3. Parent element.
- * 
+ *
  * @element kiwi-tooltip
  *
  * @attr {"top"|"right"|"bottom"|"left"|"mouse"|"follow"} position - Determines how the tooltip should be positioned relative to the target element.
@@ -20,7 +20,7 @@ import styles from "./kiwi-tooltip.scss"
  * @attr {any} noanimation - If provided the tooltip will not animate on insert/remove.
  *
  * @prop {HTMLElement} targetElement - Target for the tooltip element
- * 
+ *
  * @function setTargetElementByQuery - Takes a css query as an argument and attempts to set the closest element matching it as the target.
  * Optionally an html element can be provided as a second argument.
  * If provided the tooltip will instead attempt to find a matching target closest to the provided html element.

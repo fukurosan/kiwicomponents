@@ -33,50 +33,6 @@ export interface OpenWindowOptions {
 	footer?: string | HTMLElement | ((...args: any[]) => HTMLElement)
 }
 
-export interface OpenDrawerOptions {
-	/** If set to true a close icon will be added in the top corner closest to the viewport */
-	closeIcon?: boolean
-	/** If set to true the backdrop will be visible */
-	backdrop?: boolean
-	/** Header text. */
-	title?: string
-	/** subtitle text. */
-	subtitle?: string
-	/** Determines if the drawer opens from the left or right of the screen. */
-	direction?: "right" | "left"
-	/** The main content of the drawer */
-	body?: string | HTMLElement | ((...args: any[]) => HTMLElement)
-	/** A type can be configured to change the colors of the drawer header. */
-	type?: "primary" | "secondary" | "neutral" | "info" | "success" | "error" | "warning"
-}
-
-export interface showToastOptions {
-	/** Optional icon for the toast. */
-	icon?: string
-	/** Optional title for the toast. */
-	title?: string
-	/** Optional subtitle for the toast. */
-	subtitle?: string
-	/** Optional rich, custom content for the toast. Usually used instead of title/body */
-	html?: string | HTMLElement | (() => HTMLElement)
-	/** How many milliseconds before the toast should remove itself. */
-	timeout?: number
-	/** A type can be configured to change the colors of the toast. */
-	type?: "primary" | "secondary" | "neutral" | "info" | "success" | "error" | "warning"
-	/** If true the toast will not animate.*/
-	noanimation?: boolean
-	/** Configures how a user can interact to close the toast. Icon = X button, click = click anywhere, none = not closable. */
-	closeMode?: "icon" | "click" | "none"
-	/** Should the toast be placed towards the top of the screen? */
-	top?: boolean
-	/** Should the toast be placed towards the right of the screen? */
-	right?: boolean
-	/** Should the toast be placed towards the bottom of the screen? */
-	bottom?: boolean
-	/** Should the toast be placed towards the left of the screen? */
-	left?: boolean
-}
-
 export interface confirmOptions {
 	/** Message body to be confirmed */
 	message?: string | HTMLElement | (() => string | HTMLElement)
@@ -131,11 +87,4 @@ export interface promptOptions {
 	cancelLabel: string
 	/** Label for the confirm button */
 	confirmLabel: string
-}
-
-export interface StyleInjectionOptions {
-	/** Should scrollbars be injected? */
-	scrollbar?: boolean
-	/** Should typography be injected? */
-	typography?: boolean
 }

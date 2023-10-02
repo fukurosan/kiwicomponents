@@ -13,7 +13,7 @@ package-lock.json
 yarn.lock
 
 # project files
-__tests__
+test
 development
 docs
 src

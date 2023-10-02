@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest"
-import getHeadlessBrowserInstance from "../../../__tests__/helpers/HeadlessBrowser"
+import getHeadlessBrowserInstance from "../../../test/helpers/HeadlessBrowser"
 
 describe("kiwi-button", () => {
 	const ELEMENT_TAG = "kiwi-button"

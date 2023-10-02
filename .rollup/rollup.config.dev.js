@@ -27,6 +27,9 @@ const BANNER = `/** @preserve @license @cc_on
  */\n`
 
 export default {
+	watch: {
+		include: ["**src**"]
+	},
 	input: "./src/index.js",
 	output: [
 		{

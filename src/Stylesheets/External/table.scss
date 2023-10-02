@@ -9,7 +9,7 @@ table {
 th {
 	text-align: left;
 	font-weight: 700;
-	border-bottom: 2px solid $neutral-color-300;
+	border-bottom: 1px solid $neutral-color-900;
 }
 
 th,
@@ -55,6 +55,11 @@ table.nowrap :is(th, td) {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+table.scrollable {
+	display: block;
+	overflow-x: auto;
 }
 
 @media screen and (max-width: 768px) {

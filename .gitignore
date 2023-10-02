@@ -1,6 +1,6 @@
 node_modules
 dist
-__tests__/bundle
+test/bundle
 .vscode
 development
 .DS_Store
