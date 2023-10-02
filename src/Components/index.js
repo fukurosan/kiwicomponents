@@ -1,5 +1,6 @@
 import { KiwiAccordion } from "./Accordion/kiwi-accordion"
 import { KiwiAlert } from "./Alert/kiwi-alert"
+import { KiwiBadgeElement } from "./Badge/kiwi-badge"
 import { KiwiBurgerMenu } from "./BurgerMenu/kiwi-burger"
 import { KiwiButton } from "./Button/kiwi-button"
 import { KiwiDrawer } from "./Drawer/kiwi-drawer"
@@ -26,6 +27,7 @@ function define(name, element) {
 
 export const Components = {
 	Accordion: () => define("kiwi-accordion", KiwiAccordion),
+	Badge: () => define("kiwi-badge", KiwiBadgeElement),
 	Alert: () => define("kiwi-alert", KiwiAlert),
 	Burger: () => define("kiwi-burger", KiwiBurgerMenu),
 	Button: () => define("kiwi-button", KiwiButton),
@@ -45,6 +47,7 @@ export const Components = {
 export const init = () => {
 	define("kiwi-accordion", KiwiAccordion)
 	define("kiwi-alert", KiwiAlert)
+	define("kiwi-badge", KiwiBadgeElement)
 	define("kiwi-burger", KiwiBurgerMenu)
 	define("kiwi-button", KiwiButton)
 	define("kiwi-drawer", KiwiDrawer)

@@ -1,0 +1,67 @@
+@import "../../Stylesheets/variables.scss";
+@import "../../Stylesheets/Internal/typography.scss";
+@import "../../Stylesheets/Tokens/borderradius.scss";
+
+#container {
+    @extend %subtitle-1;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: var(--kiwi-offset-top, 0);
+    right: var(--kiwi-offset-right, 0);
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    min-width: 1.25em;
+    min-height: 1.25em;
+    height: 1.25em;
+    border-radius: 4em;
+    padding: 0.5em;
+    background-color: $primary-color-600;
+    color: $with-color-above-400;
+}
+
+:host([shape="square"]) #content {
+    border-radius: $radius-small;
+}
+
+:host([mode="inline"]) {
+    #container {
+        left: auto;
+        bottom: auto;
+        display: inline-block;
+        position: static;
+    }
+    #content {
+        position: initial;
+    }
+}
+
+:host([type="secondary"]) #content {
+    background-color: $secondary-color-600;
+}
+
+:host([type="neutral"]) #content {
+    background-color: $neutral-color-600;
+}
+
+:host([type="info"]) #content {
+    background-color: $info-color-600;
+}
+
+:host([type="success"]) #content {
+    background-color: $success-color-600;
+}
+
+:host([type="warning"]) #content {
+    background-color: $warning-color-600;
+}
+
+:host([type="error"]) #content {
+    background-color: $error-color-600;
+}
