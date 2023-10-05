@@ -2,7 +2,7 @@
 @import "../variables.scss";
 
 * {
-	@extend %body-2;
+	@extend %base-text-no-color;
 	&::selection {
 		background-color: $primary-color-100;
 	}
@@ -46,16 +46,16 @@ h6,
 	@extend %subtitle-2;
 }
 
-.body-1 {
-	@extend %body-1;
+.body-l {
+	@extend %body-l;
 }
 
-.body-2 {
-	@extend %body-2;
+.body-m {
+	@extend %body-m;
 }
 
-.body-3 {
-	@extend %body-3;
+.body-s {
+	@extend %body-s;
 }
 
 .button,
@@ -75,6 +75,14 @@ figcaption {
 .link,
 a {
 	@extend %link;
+}
+
+.faded-text {
+	color: $with-color-below-500-faded;
+}
+
+.faded-text-light {
+	color: $with-color-above-400-faded;
 }
 
 /* Spoiler utility classes */
@@ -101,6 +109,11 @@ hgroup > * {
 }
 
 /* Citations */
+blockquote,
+cite {
+	@extend %body-text;
+}
+
 blockquote {
 	display: block;
 	margin: 1.5em 0;

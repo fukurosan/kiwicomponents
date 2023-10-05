@@ -2,7 +2,7 @@
 @import "../../../Stylesheets/Internal/typography.scss";
 
 #main {
-	@extend %body-2;
+	@extend %body-m;
 	--margin: var(--kiwi-menu-margin, 0.375rem);
 	background: $white;
 	color: $neutral-color-900;
@@ -60,7 +60,7 @@
 }
 
 #detail {
-	@extend %body-3;
+	@extend %body-s;
 	color: inherit;
 	justify-content: flex-end;
 }

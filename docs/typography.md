@@ -22,9 +22,9 @@ The typography uses the a similar system to Material, but adds a few additional 
 -   .h6 (Heading 6)
 -   .subtitle-1 (For primary subtitles)
 -   .subtitle-2 (For smaller secondary subtitles)
--   .body-1 (For large text)
--   .body-2 (For most text)
--   .body-3 (For small text)
+-   .body-l (For large text)
+-   .body-m (For most text)
+-   .body-s (For small text)
 -   .button (For button labels)
 -   .link (For link labels)
 -   .caption (For captions)
@@ -42,9 +42,9 @@ Example:
 	<h6>Heading 6</h6>
 	<div class="subtitle-1">Subtitle 1</div>
 	<div class="subtitle-2">Subtitle 2</div>
-	<div class="body-1">Body 1</div>
-	<div class="body-2">Body 2</div>
-	<div class="body-3">Body 3</div>
+	<div class="body-l">Body 1</div>
+	<div class="body-m">Body 2</div>
+	<div class="body-s">Body 3</div>
 	<div class="button">Button</div>
 	<div class="caption">Caption</div>
 	<div class="overline">Overline</div>
@@ -62,9 +62,9 @@ Example:
     <h6>Heading 6</h6>
     <div class="subtitle-1">Subtitle 1</div>
     <div class="subtitle-2">Subtitle 2</div>
-    <div class="body-1">Body 1</div>
-    <div class="body-2">Body 2</div>
-    <div class="body-3">Body 3</div>
+    <div class="body-l">Body 1</div>
+    <div class="body-m">Body 2</div>
+    <div class="body-s">Body 3</div>
     <div class="button">Button</div>
     <div class="caption">Caption</div>
     <div class="overline">Overline</div>

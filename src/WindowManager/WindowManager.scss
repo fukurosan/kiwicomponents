@@ -23,7 +23,7 @@
 }
 
 .kiwi-windowmanager-generic-message {
-    @extend %body-2;
+    @extend %body-m;
     color: $with-color-below-500-faded;
 }
 
@@ -59,8 +59,8 @@
 }
 
 .kiwi-windowmanager-alert-content-icon {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 5rem;
+    height: 5rem;
     margin-bottom: 0.5rem;
     svg {
         border-radius: 50%;

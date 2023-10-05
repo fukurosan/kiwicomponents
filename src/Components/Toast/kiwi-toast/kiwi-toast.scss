@@ -104,7 +104,7 @@
 }
 
 #subtitle {
-	@extend %body-2;
+	@extend %body-m;
 	color: $with-color-below-500-faded;
 	display: none;
 	min-height: 1rem;

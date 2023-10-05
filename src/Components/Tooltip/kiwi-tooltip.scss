@@ -2,7 +2,7 @@
 @import "../../Stylesheets/Internal/typography.scss";
 
 #main {
-	@extend %body-2;
+	@extend %body-m;
 	z-index: 9999999;
 	display: none;
 	position: fixed;
