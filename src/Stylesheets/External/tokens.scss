@@ -103,4 +103,12 @@
 	--kiwi-error-color-700: #{$error-700};
 	--kiwi-error-color-800: #{$error-800};
 	--kiwi-error-color-900: #{$error-900};
+
+	--kiwi-primary-color-gradient: #{$gradient-color-primary};
+	--kiwi-secondary-color-gradient: #{$gradient-color-secondary};
+	--kiwi-neutral-color-gradient: #{$gradient-color-neutral};
+	--kiwi-info-color-gradient: #{$gradient-color-info};
+	--kiwi-success-color-gradient: #{$gradient-color-success};
+	--kiwi-warning-color-gradient: #{$gradient-color-warning};
+	--kiwi-error-color-gradient: #{$gradient-color-error};
 }

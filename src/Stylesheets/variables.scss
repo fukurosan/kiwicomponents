@@ -1,4 +1,4 @@
-//This file contains all variables used within components. 
+//This file contains all variables used within components.
 //It exports the design tokens as fallback values to css variables, making them configurable in the consuming application
 @import "./Tokens/colors.scss";
 @import "./Tokens/text.scss";
@@ -94,6 +94,14 @@ $with-color-above-400: var(--kiwi-with-dark-color, $with-above-400);
 $with-color-above-400-faded: var(--kiwi-with-dark-color-faded, $with-above-400-faded);
 $with-color-below-500: var(--kiwi-with-light-color, $with-below-500);
 $with-color-below-500-faded: var(--kiwi-with-light-color-faded, $with-below-500-faded);
+
+$primary-color-gradient: var(--kiwi-primary-color-gradient, $gradient-color-primary);
+$secondary-color-gradient: var(--kiwi-secondary-color-gradient, $gradient-color-secondary);
+$neutral-color-gradient: var(--kiwi-neutral-color-gradient, $gradient-color-neutral);
+$info-color-gradient: var(--kiwi-info-color-gradient, $gradient-color-info);
+$success-color-gradient: var(--kiwi-success-color-gradient, $gradient-color-success);
+$warning-color-gradient: var(--kiwi-warning-color-gradient, $gradient-color-warning);
+$error-color-gradient: var(--kiwi-error-color-gradient, $gradient-color-error);
 
 //Roundness
 $border-radius-small: var(--kiwi-border-radius-small, $radius-small);
