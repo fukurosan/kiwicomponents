@@ -45,7 +45,7 @@
 	min-height: var(--kiwi-alert-icon-size, 1.5rem);
 	height: var(--kiwi-alert-icon-size, 1.5rem);
 	cursor: pointer;
-	transition: opacity var(--kiwi-alert-animation-time, 200ms);
+	transition: opacity 200ms;
 	stroke-width: 0.25rem;
 	stroke-linecap: round;
 }

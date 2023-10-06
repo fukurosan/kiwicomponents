@@ -15,7 +15,7 @@
 	width: 100%;
 	border: none;
 	outline: none;
-	transition: background-color var(--kiwi-button-animation-duration, 200ms), color var(--kiwi-button-animation-duration, 200ms);
+	transition: background-color 200ms, color 200ms;
 	border-radius: $border-radius-small;
 	box-shadow: none;
 	color: var(--text-color) !important;
@@ -58,7 +58,7 @@ a[role="button"] {
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
-		transition: opacity var(--kiwi-button-animation-duration, 500ms), transform var(--kiwi-button-animation-duration, 500ms);
+		transition: opacity 500ms, transform 500ms;
 		background-color: rgba(255, 255, 255, 0.15);
 		z-index: -1;
 		transform: translateX(-130%) skew(-30deg);

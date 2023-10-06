@@ -7,7 +7,7 @@
 	display: none;
 	position: fixed;
 	inset: 0;
-	transition: opacity var(--kiwi-drawer-animation-duration, 300ms);
+	transition: opacity 300ms;
 	z-index: 98;
 }
 
@@ -35,7 +35,7 @@
 	max-width: 100vw;
 	z-index: 99;
 	background: var(--kiwi-drawer-background, $white);
-	transition: inset var(--kiwi-drawer-animation-duration, 300ms);
+	transition: inset 300ms;
 	box-shadow: none;
 
 	#close-icon {
@@ -47,7 +47,7 @@
 		top: 1.5rem;
 		cursor: pointer;
 		svg {
-			transition: all var(--kiwi-drawer-button-animation-duration, 200ms);
+			transition: all 200ms;
 			stroke: $neutral-color-900;
 			fill: $neutral-color-900;
 			opacity: 0.6;

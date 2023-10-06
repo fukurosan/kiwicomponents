@@ -42,7 +42,6 @@ export default {
 			"--kiwi-alert-border-radius",
 			"--kiwi-alert-border",
 			"--kiwi-alert-icon-size",
-			"--kiwi-alert-animation-time"
 		].reduce((acc, attr) => {
 			acc[attr] = {
 				control: "text",

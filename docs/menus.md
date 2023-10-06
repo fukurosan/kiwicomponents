@@ -190,13 +190,3 @@ The following attributes are supported:
 | noanimation | string | If set to any value the element will not be animated.                                    |
 
 ---
-
-## Styling
-
-The Kiwi Components menus can be styled using CSS variables.
-
-The following variables can be set:
-
-| Variable                       | Description                    |
-| ------------------------------ | ------------------------------ |
-| --kiwi-menu-animation-duration | Animation duration of the menu |

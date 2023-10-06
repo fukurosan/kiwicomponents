@@ -321,7 +321,6 @@ The following CSS variables can be configured:
 | --kiwi-burger-drawer-button-size        | Size for the toggle button        |
 | --kiwi-burger-drawer-button-padding     | Padding for the toggle button     |
 | --kiwi-burger-drawer-color              | Line color for the toggle button  |
-| --kiwi-burger-drawer-animation-duration | Animation duration for the drawer |
 
 ---
 

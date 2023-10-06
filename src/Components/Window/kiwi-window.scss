@@ -29,9 +29,9 @@
 	flex-direction: column;
 	box-shadow: $shadow-medium;
 	border-radius: $border-radius-medium;
-	animation-duration: var(--kiwi-window-animation-duration, 200ms);
+	animation-duration: 200ms;
 	animation-timing-function: ease-in-out;
-	transition: all var(--kiwi-window-animation-duration, 200ms);
+	transition: all 200ms;
 
 	&.noanimation {
 		transition: none !important;
@@ -111,7 +111,7 @@
 		&:is(#minimize-icon, #maximize-icon, #close-icon) {
 			cursor: pointer;
 			svg {
-				transition: all var(--kiwi-window-animation-duration, 200ms);
+				transition: all 200ms;
 				stroke: $neutral-color-500;
 				fill: $neutral-color-500;
 				width: 100%;

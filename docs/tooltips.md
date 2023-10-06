@@ -130,4 +130,3 @@ The following variables can be set:
 | --------------------------------- | -------------------------------------------- |
 | --kiwi-tooltip-padding            | Padding of the tooltip                       |
 | --kiwi-tooltip-max-width          | Maximum width of the tooltip before it wraps |
-| --kiwi-tooltip-animation-duration | Animation duration                           |

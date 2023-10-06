@@ -12,8 +12,7 @@
 	box-shadow: $shadow-medium;
 	border-radius: $border-radius-medium;
 	user-select: none;
-	transition: transform var(--kiwi-menu-animation-duration, 200ms) ease-in-out, opacity var(--kiwi-menu-animation-duration, 200ms) ease-in-out,
-		clip-path var(--kiwi-menu-animation-duration, 200ms) ease-in-out;
+	transition: transform 200ms ease-in-out, opacity 200ms ease-in-out, clip-path 200ms ease-in-out;
 	opacity: 0;
 	transform-origin: top center;
 	transform: translateY(-5px) rotateX(-60deg);

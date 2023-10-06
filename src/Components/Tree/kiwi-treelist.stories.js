@@ -43,7 +43,6 @@ export default {
 			"--kiwi-treelist-font-size",
 			"--kiwi-treelist-font-weight",
 			"--kiwi-treelist-line-color",
-			"--kiwi-treelist-animation-duration",
 			"--kiwi-treelist-hover-background",
 			"--kiwi-treelist-hover-color",
 			"--kiwi-treelist-focus-background",

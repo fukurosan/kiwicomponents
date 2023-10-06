@@ -122,7 +122,6 @@ The following variables can be set:
 
 | Variable                         | Description                                                                           |
 | -------------------------------- | ------------------------------------------------------------------------------------- |
-| --kiwi-window-animation-duration | Sets the animation duration for when the window is opened or closed                   |
 | --kiwi-window-separator-color    | Sets the color for the separator lines between the body section and the header/footer |
 | --kiwi-window-body-background    | Sets the background for the window body                                               |
 | --kiwi-window-footer-background  | Sets the background for the window footer                                             |

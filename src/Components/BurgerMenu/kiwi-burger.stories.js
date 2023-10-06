@@ -25,17 +25,14 @@ export default {
 		"@slot - default": {
 			description: "Holds the content of the element"
 		},
-		...["--kiwi-burger-menu-button-size", "--kiwi-burger-menu-button-padding", "--kiwi-burger-menu-color", "--kiwi-burger-menu-animation-duration"].reduce(
-			(acc, attr) => {
-				acc[attr] = {
-					control: "text",
-					description: "",
-					table: { type: { summary: "" }, defaultValue: { summary: "" } }
-				}
-				return acc
-			},
-			{}
-		)
+		...["--kiwi-burger-menu-button-size", "--kiwi-burger-menu-button-padding", "--kiwi-burger-menu-color"].reduce((acc, attr) => {
+			acc[attr] = {
+				control: "text",
+				description: "",
+				table: { type: { summary: "" }, defaultValue: { summary: "" } }
+			}
+			return acc
+		}, {})
 	}
 }
 
