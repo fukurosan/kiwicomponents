@@ -23,8 +23,6 @@ export interface OpenWindowOptions {
 	title?: string
 	/** Header icon. */
 	icon?: string
-	/** If set to any value no animations will take place. */
-	noanimation?: boolean
 	/** The main content of the window */
 	body?: string | HTMLElement | ((...args: any[]) => HTMLElement)
 	/** A custom header for the window */

@@ -11,14 +11,13 @@ import styles from "./kiwi-menu-item.scss"
  * @attr {string} text - text value for the item.
  * @attr {string} detail - Detail value for the item.
  * @attr {any} disabled - If set the row will be disabled.
- * @attr {any} noanimation - If set the element will not be animated.
  *
  * @slot - Sub menu items. If provided the sub menu will be shown when this item is hovered.
  * A sub menu typically consists of more nested kiwi-menu-items.
  */
 class KiwiMenuItemElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["icon", "text", "detail", "disabled", "noanimation"]
+		return ["icon", "text", "detail", "disabled"]
 	}
 
 	constructor() {
@@ -48,8 +47,6 @@ class KiwiMenuItemElement extends HTMLElement {
 			this._updateText(newValue)
 		} else if (name === "detail") {
 			this._updateDetail(newValue)
-		} else if (name === "noanimation") {
-			this._updateNoAnimation(newValue)
 		}
 	}
 
@@ -69,14 +66,6 @@ class KiwiMenuItemElement extends HTMLElement {
 	_updateDetail(newValue) {
 		this._detailElement.innerHTML = ""
 		newValue && this._detailElement.appendChild(document.createTextNode(newValue))
-	}
-
-	_updateNoAnimation(newValue) {
-		if (newValue !== null) {
-			this._submenuContainerElement.style.transition = "none"
-		} else {
-			this._submenuContainerElement.style.removeProperty("transition")
-		}
 	}
 
 	_handleDisabledClick(e) {

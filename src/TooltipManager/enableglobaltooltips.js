@@ -35,7 +35,6 @@ export const enableGlobalTooltips = () => {
 				target.hasAttribute("kiwi-tooltip-position") && tooltip.setAttribute("position", target.getAttribute("kiwi-tooltip-position"))
 				target.hasAttribute("kiwi-tooltip-delay") && tooltip.setAttribute("delay", target.getAttribute("kiwi-tooltip-delay"))
 				target.hasAttribute("kiwi-tooltip-padding") && tooltip.setAttribute("padding", target.getAttribute("kiwi-tooltip-padding"))
-				target.hasAttribute("kiwi-tooltip-noanimation") && tooltip.setAttribute("noanimation", target.getAttribute("kiwi-tooltip-noanimation"))
 				tooltip.targetElement = target
 				container.appendChild(tooltip)
 			})

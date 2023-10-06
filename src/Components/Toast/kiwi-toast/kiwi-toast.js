@@ -11,7 +11,6 @@ import styles from "./kiwi-toast.scss"
  * @attr {string} subtitle - Toast subtitle (optional).
  * @attr {number} timeout - How long before toast toast should remove itself.
  * @attr {"primary"|"secondary"|"neutral"|"info"|"success"|"error"|"warning"} type - Defines what color the toast should be based on.
- * @attr {any} noanimation - If set the toast will not animate
  * @attr {"icon"|"click"|"none"} closemode - Configures how a user can interact to close the toast. Icon = X button, click = click anywhere, none = not closable
  *
  * @slot - Optional rich toast content.
@@ -21,7 +20,7 @@ import styles from "./kiwi-toast.scss"
  */
 class KiwiToastElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["icon", "title", "subtitle", "timeout", "type", "noanimation", "closemode"]
+		return ["icon", "title", "subtitle", "timeout", "type", "closemode"]
 	}
 
 	constructor() {
@@ -45,9 +44,7 @@ class KiwiToastElement extends HTMLElement {
 	}
 
 	connectedCallback() {
-		if (!this.hasAttribute("noanimation")) {
-			this._animate(false)
-		}
+		this._animate(false)
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
@@ -125,9 +122,7 @@ class KiwiToastElement extends HTMLElement {
 	}
 
 	async close() {
-		if (!this.hasAttribute("noanimation")) {
-			await this._animate(true)
-		}
+		await this._animate(true)
 		if (this._timeout) {
 			clearTimeout(this._timeout)
 		}

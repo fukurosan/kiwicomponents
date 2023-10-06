@@ -32,10 +32,6 @@
 	animation-duration: 200ms;
 	animation-timing-function: ease-in-out;
 	transition: all 200ms;
-
-	&.noanimation {
-		transition: none !important;
-	}
 }
 
 @keyframes main-animation {
@@ -323,12 +319,6 @@ slot {
 			height: 1.5rem;
 			width: 1.5rem;
 		}
-	}
-}
-
-:host([noanimation]) {
-	* {
-		transition-duration: 0ms !important;
 	}
 }
 

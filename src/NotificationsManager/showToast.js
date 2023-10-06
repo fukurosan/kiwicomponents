@@ -14,7 +14,6 @@ export const showToast = options => {
 	options.subtitle && toast.setAttribute("subtitle", options.subtitle)
 	options.timeout && toast.setAttribute("timeout", options.timeout)
 	options.type && toast.setAttribute("type", options.type)
-	options.noanimation && toast.setAttribute("noanimation", options.noanimation)
 	options.closeMode && toast.setAttribute("closemode", options.closeMode)
 	if (options.html) {
 		if (typeof options.html === "string") {

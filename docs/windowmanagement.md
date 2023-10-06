@@ -87,7 +87,6 @@ The following options are supported:
 | scale       | "none" \| "compact" \| "small "\| "medium" \| "large" | Determines the general dimensions of the window's sections.          |
 | title       | string                                                | Header text.                                                         |
 | icon        | string                                                | Header icon.                                                         |
-| noanimation | boolean                                               | If set to any value no animations will take place.                   |
 | body        | string \| HTMLElement \| () => HTMLElement            | The main content of the window                                       |
 | header      | string \| HTMLElement \| () => HTMLElement            | A custom header for the window                                       |
 | footer      | string \| HTMLElement \| () => HTMLElement            | The footer content for the window                                    |

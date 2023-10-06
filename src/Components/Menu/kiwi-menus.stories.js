@@ -38,11 +38,6 @@ export default {
 			description: "Target css selector of element",
 			table: { type: { summary: "" }, defaultValue: { summary: null } }
 		},
-		noanimation: {
-			control: { type: "boolean" },
-			description: "If set the toast will not animate",
-			table: { type: { summary: "" }, defaultValue: { summary: null } }
-		},
 		text: {
 			control: "text",
 			description: "text value for the item",
@@ -75,7 +70,7 @@ export const Playground = {
 }
 
 const createComponent = props => {
-	const { top, left, mode, justify, target, text, icon, detail, disabled, noanimation } = props
+	const { top, left, mode, justify, target, text, icon, detail, disabled } = props
 
 	const container = document.createElement("div")
 	container.setAttribute(
@@ -91,7 +86,6 @@ const createComponent = props => {
 	mode && element.setAttribute("mode", mode)
 	justify && element.setAttribute("justify", justify)
 	target && element.setAttribute("target", target)
-	noanimation && element.setAttribute("noanimation", noanimation)
 
 	let lastContainer = element
 	for (let i = 0; i < 3; i++) {
@@ -100,7 +94,6 @@ const createComponent = props => {
 		icon && element.setAttribute("icon", icon)
 		detail && element.setAttribute("detail", detail)
 		disabled && element.setAttribute("disabled", disabled)
-		noanimation && element.setAttribute("noanimation", noanimation)
 		lastContainer.appendChild(document.createTextNode("\n"))
 		lastContainer.appendChild(element)
 		lastContainer.appendChild(document.createTextNode("\n"))

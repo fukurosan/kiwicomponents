@@ -17,7 +17,6 @@ import styles from "./kiwi-tooltip.scss"
  * @attr {"top"|"right"|"bottom"|"left"|"mouse"|"follow"} position - Determines how the tooltip should be positioned relative to the target element.
  * @attr {string} target - Target css selector of element.
  * @attr {number} delay - Delay in ms before the tooltip should be displayed.
- * @attr {any} noanimation - If provided the tooltip will not animate on insert/remove.
  *
  * @prop {HTMLElement} targetElement - Target for the tooltip element
  *
@@ -30,7 +29,7 @@ import styles from "./kiwi-tooltip.scss"
  */
 class KiwiTooltipElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["position", "target", "delay", "noanimation"]
+		return ["position", "target", "delay"]
 	}
 
 	constructor() {
@@ -80,22 +79,12 @@ class KiwiTooltipElement extends HTMLElement {
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (name === "target") {
 			this._updateTargetQuery(newValue)
-		} else if (name === "noanimation") {
-			this._updateNoAnimation(newValue)
 		}
 	}
 
 	_updateTargetQuery(newValue) {
 		this._targetObserver.query = newValue
 		this._targetObserver.updateTarget()
-	}
-
-	_updateNoAnimation(newValue) {
-		if (newValue !== null) {
-			this._mainElement.style.transition = "none"
-		} else {
-			this._mainElement.style.removeProperty("transition")
-		}
 	}
 
 	setTargetElementByQuery(query) {

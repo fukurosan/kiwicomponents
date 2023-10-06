@@ -88,11 +88,6 @@ export default {
 			description: "If set to any value the window will automatically adjust its size to its content and the viewport",
 			table: { type: { summary: "" }, defaultValue: { summary: "Not set" } }
 		},
-		noanimation: {
-			control: "boolean",
-			description: "If set to any value no animations will take place",
-			table: { type: { summary: "" }, defaultValue: { summary: "Not set" } }
-		},
 		"@function close": { description: "Will close the window" },
 		"@function minimize": { description: "Will hide the window" },
 		"@function isMinimized": { description: "Returns true of the window is minimized" },
@@ -146,8 +141,7 @@ const createComponent = props => {
 		usedraggable,
 		useresizable,
 		usecentered,
-		useautosize,
-		noanimation
+		useautosize
 	} = props
 	const container = document.createElement("div")
 	container.setAttribute("style", "display:flex;gap:0.5rem;flex-wrap:wrap;")
@@ -172,7 +166,6 @@ const createComponent = props => {
 		useresizable && element.setAttribute("useresizable", useresizable)
 		usecentered && element.setAttribute("usecentered", usecentered)
 		useautosize && element.setAttribute("useautosize", useautosize)
-		noanimation && element.setAttribute("noanimation", noanimation)
 
 		element.addEventListener("close", props["@event - onClose"])
 		container.appendChild(element)

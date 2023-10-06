@@ -11,8 +11,6 @@ export interface showToastOptions {
 	timeout?: number
 	/** A type can be configured to change the colors of the toast. */
 	type?: "primary" | "secondary" | "neutral" | "info" | "success" | "error" | "warning"
-	/** If true the toast will not animate.*/
-	noanimation?: boolean
 	/** Configures how a user can interact to close the toast. Icon = X button, click = click anywhere, none = not closable. */
 	closeMode?: "icon" | "click" | "none"
 	/** Should the toast be placed towards the top of the screen? */

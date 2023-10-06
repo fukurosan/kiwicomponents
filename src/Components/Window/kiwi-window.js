@@ -18,7 +18,6 @@ import styles from "./kiwi-window.scss"
  * @attr {"none"|"compact"|"small"|"medium"|"large"} scale - Determines the general dimensions of the window's sections.
  * @attr {string} title - Header text.
  * @attr {string} icon - Header icon.
- * @attr {boolean} noanimation - If set to any value no animations will take place.
  *
  * @function close - Will close the window
  * @function minimize - Will hide the window
@@ -52,8 +51,7 @@ class KiwiWindowElement extends HTMLElement {
 			"modality",
 			"scale",
 			"title",
-			"icon",
-			"noanimation"
+			"icon"
 		]
 	}
 
@@ -163,8 +161,6 @@ class KiwiWindowElement extends HTMLElement {
 			this._updateHeaderText(newValue)
 		} else if (name === "icon") {
 			this._updateIcon(newValue)
-		} else if (name === "noanimation") {
-			this._updateNoAnimation(newValue)
 		}
 	}
 
@@ -182,14 +178,6 @@ class KiwiWindowElement extends HTMLElement {
 			this._headerIconElement.setAttribute("src", newValue)
 		} else {
 			this._headerIconElement.removeAttribute("src")
-		}
-	}
-
-	_updateNoAnimation(newValue) {
-		if (newValue !== null) {
-			this._windowElement.classList.add("noanimation")
-		} else {
-			this._windowElement.classList.remove("noanimation")
 		}
 	}
 

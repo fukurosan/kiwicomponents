@@ -15,14 +15,13 @@ import styles from "./kiwi-menu.scss"
  * @attr {"dropdown"|"contextmenu"} mode - Is this a dropdown menu for a contextmenu.
  * @attr {string} target - Target css selector of element.
  * @attr {"start"|"center"|"end"} justify - If set the target's and menu's right borders will align, otherwise their left. Not applicable for "contextmenu" mode.
- * @attr {any} noanimation - If set the element will not be animated.
  *
  * @slot - Menu body.
  * @slot target - Menu will be displayed for component in this slot. Most usable for context meny.
  */
 class KiwiMenuElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["top", "left", "mode", "target", "justify", "noanimation"]
+		return ["top", "left", "mode", "target", "justify"]
 	}
 
 	constructor() {
@@ -63,8 +62,6 @@ class KiwiMenuElement extends HTMLElement {
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (name === "target") {
 			this._updateTargetQuery(newValue)
-		} else if (name === "noanimation") {
-			this._updateNoAnimation(newValue)
 		} else if (name === "mode") {
 			this._updateMode(newValue)
 		}
@@ -73,14 +70,6 @@ class KiwiMenuElement extends HTMLElement {
 	_updateTargetQuery(newValue) {
 		this._targetObserver.query = newValue
 		this._targetObserver.updateTarget()
-	}
-
-	_updateNoAnimation(newValue) {
-		if (newValue !== null) {
-			this._mainElement.style.transition = "none"
-		} else {
-			this._mainElement.style.removeProperty("transition")
-		}
 	}
 
 	_updateMode(newValue) {

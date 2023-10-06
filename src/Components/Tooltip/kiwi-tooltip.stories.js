@@ -36,11 +36,6 @@ export default {
 			description: "Delay in ms before the tooltip should be displayed",
 			table: { type: { summary: "" }, defaultValue: { summary: null } }
 		},
-		noanimation: {
-			control: { type: "boolean" },
-			description: "If provided the tooltip will not animate on insert/remove",
-			table: { type: { summary: "" }, defaultValue: { summary: false } }
-		},
 		"@prop targetElement": {
 			description: "Target for the tooltip element, supports both getting and setting",
 			table: { type: { summary: "HTMLElement" } }
@@ -75,7 +70,7 @@ export const Playground = {
 }
 
 const createComponent = props => {
-	const { content, position, delay, noanimation } = props
+	const { content, position, delay } = props
 
 	const container = document.createElement("div")
 	container.setAttribute("id", "container")
@@ -109,7 +104,6 @@ const createComponent = props => {
 		tooltip.innerHTML = content ? content : "This is inside of a tooltip"
 		position && tooltip.setAttribute("position", position)
 		delay && tooltip.setAttribute("delay", delay)
-		noanimation && tooltip.setAttribute("noanimation", noanimation)
 		return tooltip
 	}
 

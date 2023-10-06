@@ -3,6 +3,7 @@
 Kiwi Components tooltips can be created by either enabling a global custom HTML attribute or by utilizing the \<kiwi-tooltip> element.
 
 To use the tooltip as a web component you will need to import it:
+
 ```javascript
 import { Components } from "kiwicomponents"
 Components.Tooltip()
@@ -107,16 +108,14 @@ The following attributes are supported:
 | kiwi-tooltip             | string | Text inside of the tooltip                  |
 | kiwi-tooltip-position    | string | Equivalent to "position" of kiwi-tooltip    |
 | kiwi-tooltip-delay       | number | Equivalent to "delay" of kiwi-tooltip       |
-| kiwi-tooltip-noanimation | any    | Equivalent to "noanimation" of kiwi-tooltip |
 
 ### Kiwi Tooltip Attributes
 
-| attribute   | type                                                          | description                                                                                                     |
-| ----------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| position    | "top" \| "right" \| "bottom" \| "left" \| "mouse" \| "follow" | Determines how the tooltip should be positioned relative to the target element.                                 |
-| target      | string                                                        | Target css selector. The tooltip will attempt to find the closest(!) element in the DOM that matches the query. |
-| delay       | number                                                        | Delay in ms before the tooltip should be displayed.                                                             |
-| noanimation | string                                                        | If set to any value the element will not be animated.                                                           |
+| attribute | type                                                          | description                                                                                                     |
+| --------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| position  | "top" \| "right" \| "bottom" \| "left" \| "mouse" \| "follow" | Determines how the tooltip should be positioned relative to the target element.                                 |
+| target    | string                                                        | Target css selector. The tooltip will attempt to find the closest(!) element in the DOM that matches the query. |
+| delay     | number                                                        | Delay in ms before the tooltip should be displayed.                                                             |
 
 ---
 
@@ -126,7 +125,7 @@ Tooltips can be styled using CSS variables.
 
 The following variables can be set:
 
-| Variable                          | Description                                  |
-| --------------------------------- | -------------------------------------------- |
-| --kiwi-tooltip-padding            | Padding of the tooltip                       |
-| --kiwi-tooltip-max-width          | Maximum width of the tooltip before it wraps |
+| Variable                 | Description                                  |
+| ------------------------ | -------------------------------------------- |
+| --kiwi-tooltip-padding   | Padding of the tooltip                       |
+| --kiwi-tooltip-max-width | Maximum width of the tooltip before it wraps |

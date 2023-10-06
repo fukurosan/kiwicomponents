@@ -26,11 +26,6 @@ export default {
 			description: "Delay in ms before the tooltip should be displayed",
 			table: { type: { summary: "" }, defaultValue: { summary: null } }
 		},
-		"kiwi-tooltip-noanimation": {
-			control: { type: "boolean" },
-			description: "If provided the tooltip will not animate on insert/remove",
-			table: { type: { summary: "" }, defaultValue: { summary: false } }
-		}
 	}
 }
 

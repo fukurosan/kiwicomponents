@@ -49,11 +49,6 @@ export default {
 			description: "Target css selector of element",
 			table: { type: { summary: "" }, defaultValue: { summary: null } }
 		},
-		noanimation: {
-			control: { type: "boolean" },
-			description: "If set the toast will not animate",
-			table: { type: { summary: "" }, defaultValue: { summary: null } }
-		},
 		"@slot - default": {
 			description: "Menu body"
 		},
@@ -72,7 +67,7 @@ export const Playground = {
 }
 
 const createComponent = props => {
-	const { content, top, left, mode, justify, target, noanimation } = props
+	const { content, top, left, mode, justify, target } = props
 
 	const container = document.createElement("div")
 	container.setAttribute(
@@ -89,7 +84,6 @@ const createComponent = props => {
 	mode && element.setAttribute("mode", mode)
 	justify && element.setAttribute("justify", justify)
 	target && element.setAttribute("target", target)
-	noanimation && element.setAttribute("noanimation", noanimation)
 
 	container.appendChild(element)
 

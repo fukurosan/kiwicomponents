@@ -49,11 +49,6 @@ export default {
 			description: "Configures how a user can interact to close the toast. Icon = X button, click = click anywhere, none = not closable",
 			table: { type: { summary: "" }, defaultValue: { summary: null } }
 		},
-		noanimation: {
-			control: { type: "boolean" },
-			description: "If set the toast will not animate",
-			table: { type: { summary: "" }, defaultValue: { summary: null } }
-		},
 		"@slot - default": {
 			description: "Optional rich toast content"
 		},
@@ -80,7 +75,7 @@ export const Playground = {
 }
 
 const createComponent = props => {
-	const { content, title, subtitle, icon, timeout, type, closemode, noanimation } = props
+	const { content, title, subtitle, icon, timeout, type, closemode } = props
 
 	const element = document.createElement("kiwi-toast")
 	content && (element.innerHTML = content)
@@ -90,7 +85,6 @@ const createComponent = props => {
 	timeout && element.setAttribute("top", top)
 	type && element.setAttribute("type", type)
 	closemode && element.setAttribute("closemode", closemode)
-	noanimation && element.setAttribute("noanimation", noanimation)
 
 	Object.keys(props).forEach(key => {
 		if (!key.startsWith("--") || !props[key]) {
