@@ -10,6 +10,7 @@ import { KiwiNavbar } from "./Navbar/kiwi-navbar/kiwi-navbar"
 import { KiwiNavbarItem } from "./Navbar/kiwi-navbar-item/kiwi-navbar-item"
 import { KiwiScrollListElement } from "./ScrollList/kiwi-scroll-list"
 import { KiwiSpinner } from "./Spinner/kiwi-spinner"
+import { KiwiSplitElement } from "./Split/kiwi-split"
 import { KiwiTableElement } from "./Table/kiwi-table"
 import { KiwiTabs } from "./Tabs/kiwi-tabs"
 import { KiwiToastElement } from "./Toast/kiwi-toast/kiwi-toast"
@@ -36,6 +37,7 @@ export const Components = {
 	Navbar: () => (define("kiwi-navbar", KiwiNavbar), define("kiwi-navbar-item", KiwiNavbarItem)),
 	ScrollList: () => define("kiwi-scroll-list", KiwiScrollListElement),
 	Spinner: () => define("kiwi-spinner", KiwiSpinner),
+	Split: () => define("kiwi-split", KiwiSplitElement),
 	Table: () => define("kiwi-table", KiwiTableElement),
 	Tabs: () => define("kiwi-tabs", KiwiTabs),
 	Toast: () => (define("kiwi-toast", KiwiToastElement), define("kiwi-toast-container", KiwiToastContainer)),
@@ -57,6 +59,7 @@ export const init = () => {
 	define("kiwi-navbar-item", KiwiNavbarItem)
 	define("kiwi-scroll-list", KiwiScrollListElement)
 	define("kiwi-spinner", KiwiSpinner)
+	define("kiwi-split", KiwiSplitElement)
 	define("kiwi-table", KiwiTableElement)
 	define("kiwi-tabs", KiwiTabs)
 	define("kiwi-toast", KiwiToastElement)

@@ -84,6 +84,67 @@ The following attributes can be configured:
 
 ---
 
+## \<kiwi-split> Components.Split
+
+\<kiwi-split> creates a panel that is split into two parts, with a draggable resizer element in the middle
+
+### Example:
+
+```html
+<kiwi-split style="height:300px;width:100%;">
+	<div slot="0">
+		<kiwi-split direction="row">
+			<div slot="0" style="background-color:coral;"></div>
+			<div slot="1" style="background-color:cornflowerblue;"></div>
+		</kiwi-split>
+	</div>
+	<div slot="1">
+		<kiwi-split direction="row">
+			<div slot="0" style="background-color:coral;"></div>
+			<div slot="1" style="background-color:cornflowerblue;"></div>
+		</kiwi-split>
+	</div>
+</kiwi-split>
+```
+
+Result:
+
+<kiwi-split style="height:300px;">
+	<div slot="0">
+		<kiwi-split direction="row">
+			<div slot="0" style="background-color:coral;"></div>
+			<div slot="1" style="background-color:cornflowerblue;"></div>
+		</kiwi-split>
+	</div>
+	<div slot="1">
+		<kiwi-split direction="row">
+			<div slot="0" style="background-color:coral;"></div>
+			<div slot="1" style="background-color:cornflowerblue;"></div>
+		</kiwi-split>
+	</div>
+</kiwi-split>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type             | description                                                                        |
+| --------- | ---------------- | ---------------------------------------------------------------------------------- |
+| direction | "row" \| "column | Determines of the layout is from left to right ("row") or top to bottom ("column") |
+| split     | string           | Manually sets the size for the index 0 child in the split                          |
+
+### Styling
+
+The following CSS variables can be configured:
+
+| Variable                          | Description                        |
+| --------------------------------- | ---------------------------------- |
+| --kiwi-split-bar-background-color | Color of the resizer bar           |
+| --kiwi-split-handle-color-hover   | Color of the resizer pill          |
+| --kiwi-split-handle-color         | Color of the resizer pill on hover |
+
+---
+
 ## \<kiwi-tabs> Components.Tabs
 
 \<kiwi-tabs> is a tabbed panel. This component allows you to create tabs and display content depending on what tab is active. The motivation for this component is that many most applications use these types of layouts, and creating them requires a lot of boilerplate and state management.
@@ -316,11 +377,11 @@ The following attributes can be configured:
 
 The following CSS variables can be configured:
 
-| Variable                                | Description                       |
-| --------------------------------------- | --------------------------------- |
-| --kiwi-burger-drawer-button-size        | Size for the toggle button        |
-| --kiwi-burger-drawer-button-padding     | Padding for the toggle button     |
-| --kiwi-burger-drawer-color              | Line color for the toggle button  |
+| Variable                            | Description                      |
+| ----------------------------------- | -------------------------------- |
+| --kiwi-burger-drawer-button-size    | Size for the toggle button       |
+| --kiwi-burger-drawer-button-padding | Padding for the toggle button    |
+| --kiwi-burger-drawer-color          | Line color for the toggle button |
 
 ---
 
