@@ -386,6 +386,10 @@ select[multiple] {
 
 form label {
 	@extend %subtitle-2;
+	display: flex;
+	flex-direction: row;
+	gap: calc(var(--kiwi-flex-gap, 1rem) * 0.5);
+	align-items: center;
 }
 
 form label > * {

@@ -33,7 +33,7 @@ export const Playground = {
 const createComponent = props => {
 	const code = `
 	<style>
-		form, form * {
+		form, form *:not(label, input) {
 			display:flex;
 			flex-direction: column;
 			gap: 1rem;
@@ -78,8 +78,8 @@ const createComponent = props => {
 	<h3>Labels</h3>
 	<label>Default Label</label>
 	<label>
-		Label with content (entire label is clickable)
 		<input type="checkbox">
+		Label with content (entire label is clickable)
 	</label>
 
 	<h3>Checkboxes</h3>
