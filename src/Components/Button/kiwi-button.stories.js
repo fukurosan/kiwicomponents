@@ -24,7 +24,7 @@ export default {
 		},
 		fill: {
 			control: { type: "select" },
-			options: ["solid", "light", "none"],
+			options: ["solid", "light", "outline", "none"],
 			description: "Determines The contrast balance in the button and the hover/active/focus look and feel.",
 			table: { type: { summary: "" }, defaultValue: { summary: "solid" } }
 		},
