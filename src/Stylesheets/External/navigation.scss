@@ -95,6 +95,7 @@ aside nav ul {
 		&[style*="--kiwi-li-icon"]::before {
 			content: "";
 			display: inline-block;
+			min-width: 1.25rem;
 			width: 1.25rem;
 			height: 1.25rem;
 			background-image: var(--kiwi-li-icon);
