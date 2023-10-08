@@ -452,7 +452,9 @@ These styles will improve your image elements
 
 ## Navigation
 
-To create an evenly spaced horizontal navigation menu simply use \<nav class="navbar"> elements with \<ul>/\<li> elements inside of them. You can put \<li> elements with \<hr> elements in them to create separators between sections
+### Navbar
+
+To create an evenly spaced horizontal navigation menu simply use \<nav class="navbar"> elements with \<ul>/\<li> elements inside of them. You can put \<li> elements with \<hr> elements in them to create separators between sections.
 
 ```html
 <style>
@@ -490,6 +492,28 @@ To create an evenly spaced horizontal navigation menu simply use \<nav class="na
 	</ul>
 </nav>
 </kiwi-scoped-demo>
+
+### Bottom Navbar
+
+You can also make a mobil navbar using .bottom-navbar.
+
+```html
+<style>
+	nav {
+		background: aliceblue;
+	}
+</style>
+<nav class="bottom-navbar">
+	<ul>
+		<li><div>Item 1</div></li>
+		<li><div>Item 2</div></li>
+		<li><div>Item 3</div></li>
+		<li><div>Item 4</div></li>
+	</ul>
+</nav>
+```
+
+### Vertical Navigation Menu
 
 Alternatively you can create a vertical menu by putting the \<nav> element inside of an \<aside> element to create a vertical navigation menu. It is recommended to put a second element inside of the list items, since this will create a nice overflow effect.
 
@@ -547,6 +571,8 @@ If you add the class .dark to the \<ul> element it will get a darker background
 </aside>
 </kiwi-scoped-demo>
 
+### Breadcrumbs
+
 By setting the attribute aria-label="breadcrumb" on your \<nav> element you can create a breadcrumb element.
 
 ```html
@@ -579,19 +605,16 @@ By setting the attribute aria-label="breadcrumb" on your \<nav> element you can 
 </nav>
 </kiwi-scoped-demo>
 
-You can add icons to list items by setting the --kiwi-li-icon attribute to a valid url() value. This _must_ be set inline.
+### Icons
+
+You can add icons to list items by setting the --kiwi-li-icon attribute to a valid url() value. This _must_ be set inline. If you are using this inside of one of the aforementioned types of navigation menus the layout and sizing will automatically adapt.
 
 ```html
 <ul class="dark">
 	<li
 		style="--kiwi-li-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='gray' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
 	>
-		Item 2
-	</li>
-	<li
-		style="--kiwi-li-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='gray' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
-	>
-		Item 2
+		Item
 	</li>
 </ul>
 ```

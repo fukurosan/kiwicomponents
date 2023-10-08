@@ -157,3 +157,39 @@ li[style*="--kiwi-li-icon"]::before {
 	background-size: var(--kiwi-li-icon-size);
 	background-position-y: center;
 }
+
+/* Mobile Navbar */
+nav.bottom-navbar {
+	--kiwi-navbar-base-spacing: 0.5em;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: var(--kiwi-navbar-height, 5rem);
+	box-shadow: $small-shadow;
+	justify-content: stretch;
+	overflow: hidden;
+	ul {
+		width: 100%;
+		height: 100%;
+		li {
+			--kiwi-li-icon-size: 1.5em;
+			flex: 1;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			justify-content: center;
+			gap: 0.5em;
+			white-space: nowrap;
+			overflow: hidden;
+			&[style*="--kiwi-li-icon"]::before {
+				align-self: center;
+			}
+			> * {
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+}
