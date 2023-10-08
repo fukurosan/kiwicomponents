@@ -78,6 +78,10 @@ After doing so all your standard form elements should now look better.
 			<input type="radio" disabled checked />
 			<input type="checkbox" role="switch" disabled checked />
 		</div>
+		<label>
+			<input type="checkbox" />
+			With a text
+		</label>					
 		<label>Range Slider</label>
 		<div class="flex-right">
 			<input type="range" />
@@ -164,6 +168,10 @@ After doing so all your standard form elements should now look better.
 			<input type="radio" disabled checked />
 			<input type="checkbox" role="switch" disabled checked />
 		</div>
+		<label>
+			<input type="checkbox" />
+			With a text
+		</label>
 		<label>Range Slider</label>
 		<div class="flex-right">
 			<input type="range" />

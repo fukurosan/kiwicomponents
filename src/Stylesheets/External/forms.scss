@@ -390,6 +390,7 @@ form label {
 	flex-direction: row;
 	gap: calc(var(--kiwi-flex-gap, 1rem) * 0.5);
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 form label > * {

@@ -81,6 +81,11 @@ const createComponent = props => {
 		<input type="checkbox">
 		Label with content (entire label is clickable)
 	</label>
+	<label>
+		With text field
+		<input>
+	</label>
+
 
 	<h3>Checkboxes</h3>
 	<input type="checkbox" />
