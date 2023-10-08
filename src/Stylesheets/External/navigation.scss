@@ -1,46 +1,73 @@
 @import "../variables.scss";
+@import "../Tokens/shadows.scss";
 @import "../Internal/typography.scss";
 
-$spacing: var(--kiwi-navigation-spacing, 0.5rem);
-
 nav,
-nav > ul {
+nav ul {
 	display: flex;
 	flex-direction: row;
 }
 
-nav {
+nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Navbar */
+
+nav.navbar {
+	--kiwi-navbar-base-spacing: 0.5em;
+	width: 100%;
+	box-sizing: border-box;
+	box-shadow: $small-shadow;
+	height: var(--kiwi-navbar-height, 5rem);
 	justify-content: space-between;
+	padding-inline: calc(var(--kiwi-navbar-base-spacing) * 5);
+	gap: calc(var(--kiwi-navbar-base-spacing) * 5);
+	overflow: hidden;
 
 	ul {
-		padding: 0;
-		margin: 0;
-		list-style: none;
-	}
-
-	li {
-		display: inline-block;
-		padding: calc(#{$spacing} * 2) #{$spacing};
-	}
-
-	&[aria-label="breadcrumb"] {
-		align-items: center;
-		justify-content: start;
-
-		& ul li {
-			&:not(:first-child) {
-				margin-left: #{$spacing};
+		> *:not(:last-child) {
+			margin-right: calc(var(--kiwi-navbar-base-spacing) * 5);
+		}
+		li {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			padding-block: calc(var(--kiwi-navbar-base-spacing) * 3);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			hr {
+				height: 3em;
+				border: 1px solid $neutral-color-300;
 			}
+		}
+	}
+}
 
-			&:not(:last-child)::after {
-				position: absolute;
-				width: calc(#{$spacing} * 2);
-				margin-left: calc(#{$spacing} / 2);
-				content: "/";
-				font-weight: 600;
-				color: $neutral-color-400;
-				text-align: center;
-			}
+@media screen and (max-width: 768px) {
+	nav.navbar {
+		--kiwi-navbar-base-spacing: 0.25rem;
+	}
+}
+
+/* Breadcumbs */
+
+nav[aria-label="breadcrumb"] {
+	--kiwi-breadcrumb-spacing: 0.875rem;
+	align-items: center;
+	justify-content: start;
+	ul {
+		gap: var(--kiwi-breadcrumb-spacing);
+	}
+	ul li {
+		&:not(:last-child)::after {
+			margin-left: var(--kiwi-breadcrumb-spacing);
+			content: "/";
+			font-weight: 700;
+			color: $neutral-color-400;
 		}
 	}
 }
@@ -86,22 +113,14 @@ aside nav ul {
 			right: var(--li-nav-padding-h);
 			color: $neutral-color-400;
 		}
+		&[style*="--kiwi-li-icon"]::before {
+			--kiwi-li-icon-size: 1.25em;
+		}
 		> * {
 			padding-right: var(--li-nav-padding-h); //To make space for the chevron
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-		}
-		&[style*="--kiwi-li-icon"]::before {
-			content: "";
-			display: inline-block;
-			min-width: 1.25rem;
-			width: 1.25rem;
-			height: 1.25rem;
-			background-image: var(--kiwi-li-icon);
-			background-repeat: no-repeat;
-			background-size: 1.25rem;
-			background-position-y: center;
 		}
 	}
 }
@@ -120,4 +139,21 @@ aside nav ul {
 			background-size: 1rem;
 		}
 	}
+}
+
+/* Icon */
+li {
+	--kiwi-li-icon-size: 1em;
+}
+
+li[style*="--kiwi-li-icon"]::before {
+	content: "";
+	display: inline-block;
+	min-width: var(--kiwi-li-icon-size);
+	width: var(--kiwi-li-icon-size);
+	height: var(--kiwi-li-icon-size);
+	background-image: var(--kiwi-li-icon);
+	background-repeat: no-repeat;
+	background-size: var(--kiwi-li-icon-size);
+	background-position-y: center;
 }

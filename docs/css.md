@@ -276,10 +276,10 @@ Example:
 
 You can use a number of utility classes to center things in the viewport. Use these classes on a wrapper container for whatever you want to have centered
 
-- .center-content will center things in the most basic way using automatic margins and text alignment
-- .center-content-flex will use flexbox to center its content
-- .center-content-absolute will use absolute positioning to center its content
-- .center-content-fixed will use fixed positioning to center its content
+-   .center-content will center things in the most basic way using automatic margins and text alignment
+-   .center-content-flex will use flexbox to center its content
+-   .center-content-absolute will use absolute positioning to center its content
+-   .center-content-fixed will use fixed positioning to center its content
 
 ## Loading and Disabled
 
@@ -452,9 +452,7 @@ These styles will improve your image elements
 
 ## Navigation
 
-For all navigation styling you can use --kiwi-navigation-spacing to configure the spacing and padding. All measurements will adjust to this one value
-
-To create an evenly spaced horizontal navigation menu simply use \<nav> elements with \<ul> elements inside of them
+To create an evenly spaced horizontal navigation menu simply use \<nav class="navbar"> elements with \<ul>/\<li> elements inside of them. You can put \<li> elements with \<hr> elements in them to create separators between sections
 
 ```html
 <style>
@@ -462,13 +460,14 @@ To create an evenly spaced horizontal navigation menu simply use \<nav> elements
 		background: aliceblue;
 	}
 </style>
-<nav>
+<nav class="navbar">
 	<ul>
 		<li>Left Item</li>
 	</ul>
 	<ul>
 		<li>Right Item 1</li>
 		<li>Right Item 2</li>
+		<li><hr /></li>
 		<li>Right Item 3</li>
 	</ul>
 </nav>
@@ -476,23 +475,25 @@ To create an evenly spaced horizontal navigation menu simply use \<nav> elements
 
 <kiwi-scoped-demo>
 <style>
-    nav {
-        background: aliceblue;
-    }
+	nav {
+		background: aliceblue;
+	}
 </style>
-<nav>
+<nav class="navbar">
 	<ul>
-		<li>Left Item</li>
+		<li>Brand</li>
 	</ul>
 	<ul>
-		<li>Right Item 1</li>
-		<li>Right Item 2</li>
-		<li>Right Item 3</li>
+		<li>Item 1</li>
+		<li><hr /></li>
+		<li>Item 2</li>
 	</ul>
 </nav>
 </kiwi-scoped-demo>
 
-Alternatively you can create a vertical menu by putting the \<nav> element inside of an \<aside> element to create a vertical navigation menu.
+Alternatively you can create a vertical menu by putting the \<nav> element inside of an \<aside> element to create a vertical navigation menu. It is recommended to put a second element inside of the list items, since this will create a nice overflow effect.
+
+If you add the class .dark to the \<ul> element it will get a darker background
 
 ```html
 <style>
@@ -504,9 +505,17 @@ Alternatively you can create a vertical menu by putting the \<nav> element insid
 <aside>
 	<nav>
 		<ul>
-			<li>Item 1</li>
-			<li>Item 2</li>
-			<li>Item 3</li>
+			<li><div>Item 1</div></li>
+			<li><div>Item 2</div></li>
+			<li><div>Item 3 loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text</div></li>
+		</ul>
+	</nav>
+</aside>
+<br /><br />
+<aside>
+	<nav>
+		<ul class="dark">
+			<li><div>Item 1</div></li>
 		</ul>
 	</nav>
 </aside>
@@ -520,13 +529,21 @@ Alternatively you can create a vertical menu by putting the \<nav> element insid
 	}
 </style>
 <aside>
-  <nav>
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-  </nav>
+	<nav>
+		<ul>
+			<li><div>Item 1</div></li>
+			<li><div>Item 2</div></li>
+			<li><div>Item 3 loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text</div></li>
+		</ul>
+	</nav>
+</aside>
+<br /><br />
+<aside>
+	<nav>
+		<ul class="dark">
+			<li><div>Item 1</div></li>
+		</ul>
+	</nav>
 </aside>
 </kiwi-scoped-demo>
 
@@ -560,4 +577,31 @@ By setting the attribute aria-label="breadcrumb" on your \<nav> element you can 
 		<li><span>Item 3</span></li>
 	</ul>
 </nav>
+</kiwi-scoped-demo>
+
+You can add icons to list items by setting the --kiwi-li-icon attribute to a valid url() value. This _must_ be set inline.
+
+```html
+<ul class="dark">
+	<li
+		style="--kiwi-li-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='gray' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
+	>
+		Item 2
+	</li>
+	<li
+		style="--kiwi-li-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='gray' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
+	>
+		Item 2
+	</li>
+</ul>
+```
+
+<kiwi-scoped-demo>
+<ul class="dark">
+	<li
+		style="--kiwi-li-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='gray' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
+	>
+		Item
+	</li>
+</ul>
 </kiwi-scoped-demo>

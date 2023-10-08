@@ -10,16 +10,7 @@ export default {
 	render: args => {
 		return createComponent(args)
 	},
-	argTypes: {
-		...["--kiwi-navigation-spacing"].reduce((acc, attr) => {
-			acc[attr] = {
-				control: "text",
-				description: "",
-				table: { type: { summary: "" }, defaultValue: { summary: "" } }
-			}
-			return acc
-		}, {})
-	}
+	argTypes: {}
 }
 
 export const Playground = {
@@ -39,14 +30,15 @@ const createComponent = props => {
 		}
 	</style>
 
-	<h3>Horizontal Navigation</h3>
-	<nav>
+	<h3>Navbar Navigation</h3>
+	<nav class="navbar">
 		<ul>
 			<li>Left Item</li>
 		</ul>
 		<ul>
 			<li>Right Item 1</li>
 			<li>Right Item 2</li>
+			<li><hr /></li>
 			<li>Right Item 3</li>
 		</ul>
 	</nav>
@@ -91,6 +83,15 @@ const createComponent = props => {
 			<li><span>Item 3</span></li>
 		</ul>
 	</nav>
+
+	<h3>Icon</h3>
+	<ul class="dark">
+		<li
+			style="--kiwi-li-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='gray' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
+		>
+			Item
+		</li>
+	</ul>
 
 	</div>`
 
