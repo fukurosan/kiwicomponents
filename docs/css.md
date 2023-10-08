@@ -492,12 +492,13 @@ To create an evenly spaced horizontal navigation menu simply use \<nav> elements
 </nav>
 </kiwi-scoped-demo>
 
-Alternatively you can create a vertical menu by putting the \<nav> element inside of an \<aside> element.
+Alternatively you can create a vertical menu by putting the \<nav> element inside of an \<aside> element to create a vertical navigation menu.
 
 ```html
 <style>
 	aside {
 		background: aliceblue;
+		padding: 1rem;
 	}
 </style>
 <aside>
@@ -515,6 +516,7 @@ Alternatively you can create a vertical menu by putting the \<nav> element insid
 <style>
 	aside {
 		background: aliceblue;
+		padding: 1rem;
 	}
 </style>
 <aside>

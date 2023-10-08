@@ -70,7 +70,7 @@
 }
 
 %h3 {
-	@include h3
+	@include h3;
 }
 
 @mixin h4 {
@@ -129,9 +129,9 @@
 
 @mixin body-l {
 	@include body-text;
-	font-size: 1.25rem;
+	font-size: 1.125rem;
 	@media screen and (max-width: 768px) {
-		font-size: 1.125rem;
+		font-size: 1rem;
 	}
 }
 
@@ -180,7 +180,7 @@
 @mixin button {
 	@include body-text;
 	font-size: 0.75rem;
-	font-weight: 700;	
+	font-weight: 700;
 	text-transform: uppercase;
 }
 
