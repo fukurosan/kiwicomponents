@@ -44,30 +44,30 @@ const createComponent = props => {
 	<div>
 		<details>
 		<summary>
-			<p>Lorem, ipsum dolor.</p>
+			<div>Lorem, ipsum dolor.</div>
 		</summary>
-		<p>
+		<div>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 			sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-		</p>
+		</div>
 		</details>
 		<details>
 			<summary>
-				<p>Lorem, ipsum dolor.</p>
+				<div>Lorem, ipsum dolor.</div>
 			</summary>
-			<p>
+			<div>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 				sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-			</p>
+			</div>
 		</details>
 		<details>
 			<summary>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</p>
+				<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</div>
 			</summary>
-			<p>
+			<div>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 				sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-			</p>
+			</div>
 		</details>
 	</div>
 	
@@ -75,21 +75,35 @@ const createComponent = props => {
 	<div>
 		<details class="bordered">
 			<summary>
-				<p>Lorem, ipsum dolor.</p>
+				<div>Lorem, ipsum dolor.</div>
 			</summary>
-			<p>
+			<div>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 				sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-			</p>
+			</div>
 		</details>
 		<details class="bordered">
 			<summary>
-				<p>Lorem, ipsum dolor.</p>
+				<div>Lorem, ipsum dolor.</div>
 			</summary>
-			<p>
+			<div>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 				sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-			</p>
+			</div>
+		</details>
+	</div>
+
+	<h3>.dropdown</h3>
+	<div style="height:200px">
+		<details class="dropdown">
+			<summary>
+				<div>Lorem, ipsum dolor.</div>
+			</summary>
+			<ul>
+				<li>Item 1</li>
+				<li>Item 2</li>
+				<li>Item 3</li>
+			</ul>
 		</details>
 	</div>
 	</div>`

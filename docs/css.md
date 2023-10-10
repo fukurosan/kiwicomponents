@@ -343,83 +343,81 @@ These styles will make standard \<meter> elements look better.
 
 These styles will make standard \<details> and \<summary> elements look better.
 
-Some things are unfortunately not possible with CSS only while also staying semantically accurate, such as open/close animations. for the best possible UX experience use the kiwi-accordion component instead.
-
 You can use the .bordered class to give the details element full borders.
 
 ```html
 <details>
 	<summary>
-		<p>Lorem, ipsum dolor.</p>
+		<div>Lorem, ipsum dolor.</div>
 	</summary>
-	<p>
+	<div>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 <details>
 	<summary>
-		<p>Lorem, ipsum dolor.</p>
+		<div>Lorem, ipsum dolor.</div>
 	</summary>
-	<p>
+	<div>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 <details>
 	<summary>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</p>
+		<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</div>
 	</summary>
-	<p>
+	<div>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 
 <details class="bordered">
 	<summary>
-		<p>Lorem, ipsum dolor.</p>
+		<div>Lorem, ipsum dolor.</div>
 	</summary>
-	<p>
+	<div>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 <details class="bordered">
 	<summary>
-		<p>Lorem, ipsum dolor.</p>
+		<div>Lorem, ipsum dolor.</div>
 	</summary>
-	<p>
+	<div>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 ```
 
 <kiwi-scoped-demo>
 <details>
 	<summary>
-		<p>Lorem, ipsum dolor.</p>
+		<div>Lorem, ipsum dolor.</div>
 	</summary>
-	<p>
+	<div>
 		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 <details>
 	<summary>
-		<p>Lorem, ipsum dolor.</p>
+		<div>Lorem, ipsum dolor.</div>
 	</summary>
-	<p>
+	<div>
 		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 <details>
 	<summary>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</p>
+		<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</div>
 	</summary>
-	<p>
+	<div>
 		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 
 <br><br>
@@ -427,23 +425,53 @@ You can use the .bordered class to give the details element full borders.
 <div>
 <details class="bordered">
 	<summary>
-		<p>Lorem, ipsum dolor.</p>
+		<div>Lorem, ipsum dolor.</div>
 	</summary>
-	<p>
+	<div>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 <details class="bordered">
 	<summary>
-		<p>Lorem, ipsum dolor.</p>
+		<div>Lorem, ipsum dolor.</div>
 	</summary>
-	<p>
+	<div>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
-	</p>
+	</div>
 </details>
 </div>
+</kiwi-scoped-demo>
+
+### Dropdowns
+
+By adding the class .dropdown to your \<details> element you can make it look like a styled \<select> element with no JavaScript required.
+
+```html
+<details class="dropdown">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<ul>
+		<li>Item 1</li>
+		<li>Item 2</li>
+		<li>Item 3</li>
+	</ul>
+</details>
+```
+
+<kiwi-scoped-demo>
+<details class="dropdown">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<ul>
+		<li>Item 1</li>
+		<li>Item 2</li>
+		<li>Item 3</li>
+	</ul>
+</details>
 </kiwi-scoped-demo>
 
 ## Image

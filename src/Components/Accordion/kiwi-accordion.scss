@@ -35,7 +35,7 @@ button {
 	border-bottom: var(--kiwi-accordion-border, 1px solid #{$neutral-color-300});
 	text-align: left;
 	outline: none;
-	transition: max-height 300ms;
+	transition: max-height 300ms, background-color 200ms, color 200ms;
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
