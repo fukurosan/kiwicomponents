@@ -41,7 +41,7 @@ const createComponent = props => {
 	<div style="display:flex;flex-direction:column;gap:2rem;">
 
 	<h3>Sections and Articles</h3>
-	<main style="background:lightgray;">
+	<main>
 		<section>
 			<article>
 				<h2>This is an article</h2>

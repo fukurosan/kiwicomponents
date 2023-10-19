@@ -3,6 +3,7 @@ import { KiwiAlert } from "./Alert/kiwi-alert"
 import { KiwiBadgeElement } from "./Badge/kiwi-badge"
 import { KiwiBurgerMenu } from "./BurgerMenu/kiwi-burger"
 import { KiwiButton } from "./Button/kiwi-button"
+import { KiwiCard } from "./Card/kiwi-card"
 import { KiwiDrawer } from "./Drawer/kiwi-drawer"
 import { KiwiMenuElement } from "./Menu/kiwi-menu/kiwi-menu"
 import { KiwiMenuItemElement } from "./Menu/kiwi-menu-item/kiwi-menu-item"
@@ -32,6 +33,7 @@ export const Components = {
 	Alert: () => define("kiwi-alert", KiwiAlert),
 	Burger: () => define("kiwi-burger", KiwiBurgerMenu),
 	Button: () => define("kiwi-button", KiwiButton),
+	Card: () => define("kiwi-card", KiwiCard),
 	Drawer: () => define("kiwi-drawer", KiwiDrawer),
 	Menu: () => (define("kiwi-menu", KiwiMenuElement), define("kiwi-menu-item", KiwiMenuItemElement)),
 	Navbar: () => (define("kiwi-navbar", KiwiNavbar), define("kiwi-navbar-item", KiwiNavbarItem)),
@@ -52,6 +54,7 @@ export const init = () => {
 	define("kiwi-badge", KiwiBadgeElement)
 	define("kiwi-burger", KiwiBurgerMenu)
 	define("kiwi-button", KiwiButton)
+	define("kiwi-card", KiwiCard)
 	define("kiwi-drawer", KiwiDrawer)
 	define("kiwi-menu", KiwiMenuElement)
 	define("kiwi-menu-item", KiwiMenuItemElement)

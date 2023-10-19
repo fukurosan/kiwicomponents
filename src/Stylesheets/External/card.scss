@@ -10,7 +10,7 @@
 	gap: var(--internal-kiwi-card-padding);
 	border-radius: $radius-medium;
 	background-color: $white;
-    box-shadow: $small-shadow;
+	box-shadow: $small-shadow;
 
 	> *:not(:is(header, footer)) {
 		text-align: center;

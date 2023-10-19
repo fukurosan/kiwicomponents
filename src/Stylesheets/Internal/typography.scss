@@ -17,7 +17,7 @@
 @mixin heading-text {
 	@include base-text-no-color;
 	margin: 0;
-	color: $neutral-color-900;
+	color: $neutral-color-800;
 	font-family: $font-family-heading;
 	font-weight: 700;
 }
@@ -28,7 +28,7 @@
 
 @mixin body-text {
 	@include base-text-no-color();
-	color: $neutral-color-800;
+	color: $neutral-color-700;
 	font-family: $font-family-body;
 	font-weight: 400;
 }
@@ -112,6 +112,9 @@
 @mixin subtitle-1 {
 	@include heading-text;
 	font-size: 1rem;
+	@media screen and (max-width: 768px) {
+		font-size: 0.875rem;
+	}
 }
 
 %subtitle-1 {
@@ -121,6 +124,9 @@
 @mixin subtitle-2 {
 	@include heading-text;
 	font-size: 0.875rem;
+	@media screen and (max-width: 768px) {
+		font-size: 0.75rem;
+	}
 }
 
 %subtitle-2 {
@@ -143,7 +149,7 @@
 	@include body-text;
 	font-size: 1rem;
 	@media screen and (max-width: 768px) {
-		font-size: 1rem;
+		font-size: 0.875rem;
 	}
 }
 
@@ -155,7 +161,7 @@
 	@include body-text;
 	font-size: 0.875rem;
 	@media screen and (max-width: 768px) {
-		font-size: 0.875rem;
+		font-size: 0.75rem;
 	}
 }
 

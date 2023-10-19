@@ -221,6 +221,35 @@ The following events are fired:
 
 ---
 
+## \<kiwi-card> Components.Card
+
+\<kiwi-card> is a basic card component.
+
+You can either provide the component with a title and a text atrribute or slot in your own custom content. You can also provide either an icon URL, or initials that should be rendered in place of the icon.
+
+### Example:
+
+```html
+<kiwi-card title="Title" text="Text Content" icon="KC" direction="horizontal"></kiwi-card>
+```
+
+Result:
+
+<kiwi-card title="Title" text="Text Content" icon="KC" direction="horizontal"></kiwi-card>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type                     | description                                                |
+| --------- | ------------------------ | ---------------------------------------------------------- |
+| title     | string                   | Header for the card                                        |
+| direction | "horizontal"\|"vertical" | Determines if the card is rendered as a row or as a column |
+| text      | string                   | Text iside the card, will never expand past 2 rows.        |
+| icon      | string                   | An Icon URL or initials to be rendered inside of a circle  |
+
+---
+
 ## \<kiwi-treelist-item> Components.Tree
 
 \<kiwi-treelist-item> is a way of creating en expandable tree with optionally selectable items in it.
