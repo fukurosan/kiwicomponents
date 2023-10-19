@@ -1,4 +1,7 @@
 @import "../Internal/typography.scss";
+@import "../Internal/typography.scss";
+@import "../Tokens/shadows.scss";
+
 
 // Sections live directly inside either body, main or header
 // Sections control the width of the page content and the centering of it.
@@ -34,7 +37,7 @@ footer > section {
 		}
 	}
 	> article {
-		box-shadow: var(--kiwi-article-box-shadow, none);
+		box-shadow: var(--kiwi-article-box-shadow, $small-shadow);
 		border: var(--kiwi-article-border, none);
 		box-sizing: content-box;
 		background: var(--kiwi-article-background, #ffffff);
