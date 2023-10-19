@@ -8,6 +8,7 @@ The following files can be imported:
 | -------------- | ------------------------------------------------------------------------ |
 | bundle.css     | Full bundle with all stylesheets included                                |
 | button.css     | Button styles                                                            |
+| card.css       | Styles for basic cards                                                   |
 | details.css    | Details & summary element styles                                         |
 | forms.css      | Form styling                                                             |
 | image.css      | Image styling                                                            |
@@ -17,6 +18,7 @@ The following files can be imported:
 | navigation.css | Styles for navigation related elements                                   |
 | progress.css   | Progress element elements                                                |
 | scrollbar.css  | Scroll bar styling                                                       |
+| shape.css      | Shape styling                                                            |
 | table.css      | Table styling                                                            |
 | text.css       | Text styling                                                             |
 | tokens.css     | Makes the design system tokens available as CSS variables                |
@@ -53,9 +55,9 @@ Example:
 </div>
 </kiwi-scoped-demo>
 
-## Colors
+## Colors & tokens
 
-You can get access to the internal color system of kiwi components and use the colors in your own code. For more information about the color system, check out the theming page.
+You can get access to the internal color & token system of kiwi components and use these parameters in your own code. For more information about the color system, check out the theming page.
 
 Example:
 
@@ -79,6 +81,30 @@ Example:
 	}
 </style>
 <div class="colorful-div">Hello World!</div>
+</kiwi-scoped-demo>
+
+## Cards
+
+Importing the card stylesheets allows you to use the .card class to create cards. The card class will make the container the class is set on into a flex column (vertical) layout with padding and spacing preconfigured. \<header> and \<footer> elements inside of the element will ignore padding and take up their full available space which allows you to, for example, place side-to-side images.
+
+Example:
+
+```html
+<div class="card" style="width:200px;">
+	<header style="height:150px;background:gray;"></header>
+	<div>This is some content in the card</div>
+	<div>This is an additional sentence</div>
+	<footer>This is the footer</footer>
+</div>
+```
+
+<kiwi-scoped-demo>
+<div class="card" style="width:200px;">
+	<header style="height:150px;background:gray;"></header>
+	<div>This is some content in the card</div>
+	<div>This is an additional sentence</div>
+	<footer>This is the footer</footer>
+</div>
 </kiwi-scoped-demo>
 
 ## Layout
@@ -477,6 +503,40 @@ By adding the class .dropdown to your \<details> element you can make it look li
 ## Image
 
 These styles will improve your image elements
+
+## Shapes
+
+You can configure elements to take certain shapes using shape utility classes. The utility classes will apply clip paths to the elements to cut out shapes. All clip paths use percentages to determine how to clip the element, so the size of your element will determine how the result looks
+
+The following shapes can be applied:
+
+-   .shape-round
+-   .shape-triangle
+-   .shape-x
+-   .shape-message
+-   .shape-star
+-   .shape-chevron-right
+-   .shape-chevron-left
+-   .shape-rabbet
+-   .shape-bevel
+-   .shape-octagon
+-   .shape-hexagon
+-   .shape-pentagon
+-   .shape-rhombus
+-   .shape-parallelogram
+-   .shape-trapezoid
+-   .shape-nonagon
+
+Example:
+
+```html
+<div class="shape-round" style="width:100px;height:100px;background:gray;"></div>
+```
+
+<kiwi-scoped-demo>
+	<div class="shape-round" style="width:100px;height:100px;background:gray;"></div>
+</kiwi-scoped-demo>
+
 
 ## Navigation
 

@@ -52,6 +52,7 @@ button,
 kiwi-button *,
 a[role="button"] {
 	@extend %button;
+	color: var(--text-color) !important;
 }
 
 :is(button, a[role="button"]).useanimation {

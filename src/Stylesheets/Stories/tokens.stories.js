@@ -32,8 +32,8 @@ const createComponent = props => {
 			scales.forEach(scale => {
 				acc = `${acc}
         <div style="height:3.5rem;flex:auto;background-color:var(--kiwi-${base}-color-${scale});color:${
-	parseInt(scale) > 400 ? "var(--kiwi-with-dark-color)" : "var(--kiwi-with-light-color)"
-};">${scale}</div>`
+					parseInt(scale) > 400 ? "var(--kiwi-with-dark-color)" : "var(--kiwi-with-light-color)"
+				};">${scale}</div>`
 			})
 			acc = `${acc}
       <div style="height:3.5rem;flex:auto;background:var(--kiwi-${base}-color-gradient);color:var(--kiwi-with-dark-color);">Gradient</div>
@@ -60,7 +60,14 @@ const createComponent = props => {
 	}
 
 	const getShadows = () => {
-		const shadows = ["--kiwi-shadow-small", "--kiwi-shadow-medium", "--kiwi-shadow-large"]
+		const shadows = [
+			"--kiwi-shadow-small",
+			"--kiwi-shadow-medium",
+			"--kiwi-shadow-large",
+			"--kiwi-shadow-extra-large",
+			"--kiwi-shadow-subtle-bottom",
+			"--kiwi-shadow-subtle-top"
+		]
 		const result = shadows.reduce((acc, shadow) => {
 			return `${acc}
       <div style="height:100px;width:50%;margin:auto;box-shadow:var(${shadow});">${shadow}</div>
