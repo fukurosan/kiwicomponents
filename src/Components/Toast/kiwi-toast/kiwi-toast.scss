@@ -96,6 +96,11 @@
 	}
 }
 
+:host([subtitle]:not([title])) #close-icon,
+:host([title]:not([subtitle])) #close-icon {
+	align-self: center;
+}
+
 :host([closemode]:not([closemode="icon"])) #close-icon {
 	display: none;
 }

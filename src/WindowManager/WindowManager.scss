@@ -66,25 +66,22 @@
         border-radius: 50%;
         stroke-width: 0;
         stroke: none;
+        fill: white;
         path {
             transform: scale(0.9);
             transform-origin: center;
         }
         &.success {
-            fill: $success-color-700;
-            background-color: $success-color-200;    
+            background-color: $success-color-500;    
         }
         &.error {
-            fill: $error-color-700;
-            background-color: $error-color-200;    
+            background-color: $error-color-500;    
         }
         &.question {
-            fill: $info-color-700;
-            background-color: $info-color-200;    
+            background-color: $info-color-500;    
         }
         &.warning {
-            fill: $warning-color-700;
-            background-color: $warning-color-200;    
+            background-color: $warning-color-500;    
         }
     }
 }

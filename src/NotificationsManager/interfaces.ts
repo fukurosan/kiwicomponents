@@ -1,5 +1,5 @@
 export interface showToastOptions {
-	/** Optional icon for the toast. */
+	/** Optional icon for the toast. Can be either a URL or "success", "warning", "error", "info" */
 	icon?: string
 	/** Optional title for the toast. */
 	title?: string

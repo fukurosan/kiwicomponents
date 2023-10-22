@@ -36,7 +36,7 @@ The following options are supported:
 
 | option        | type                                                                                 | description                                                                                                                                  |
 | ------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| icon          | string                                                                               | Optional icon URL for the toast.                                                                                                             |
+| icon          | string                                                                               | Optional icon for the toast. Can be either a URL or "success", "warning", "error", "info" for predefined icons.                              |
 | title         | string                                                                               | Optional title for the toast.                                                                                                                |
 | subtitle      | string                                                                               | Optional subtitle for the toast.                                                                                                             |
 | html          | string \| HTMLElement \| () => HTMLElement                                           | Optional rich, custom content for the toast. Usually used instead of title/subtitle                                                          |
@@ -76,7 +76,7 @@ The Kiwi Components toasts can be styled using CSS variables.
 
 The following variables can be set:
 
-| Variable                        | Description                      |
-| ------------------------------- | -------------------------------- |
-| --kiwi-toast-width              | Width of the toasts              |
-| --kiwi-toast-background         | Background color of the toast    |
+| Variable                | Description                   |
+| ----------------------- | ----------------------------- |
+| --kiwi-toast-width      | Width of the toasts           |
+| --kiwi-toast-background | Background color of the toast |
