@@ -110,6 +110,10 @@ ul:not(.root) li::before {
 	transition: color 300ms;
 }
 
+#main:not(.has-children) #text {
+	font-weight: normal;
+}
+
 #expand-arrow {
 	height: 0.75em;
 	min-height: 0.75em;
@@ -124,6 +128,10 @@ ul:not(.root) li::before {
 	box-sizing: content-box;
 	padding: 0.5em;
 	margin: -0.5em;
+}
+
+#main:not(.has-children) #expand-arrow {
+	display: none;
 }
 
 :host([open]) #expand-arrow {

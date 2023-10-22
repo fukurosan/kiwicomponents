@@ -33,7 +33,7 @@ class KiwiTreeListItem extends HTMLElement {
 		this._handleExpandToggle = this._handleExpandToggle.bind(this)
 		this._isVisible = false
 		this._rowContainer.addEventListener("click", this._handleExpandToggle)
-		this.shadowRoot.querySelector("slot").addEventListener("slotchange", this._evaluateArrow.bind(this))
+		this.shadowRoot.querySelector("slot").addEventListener("slotchange", this._evaluateHasChildren.bind(this))
 	}
 
 	connectedCallback() {
@@ -50,7 +50,7 @@ class KiwiTreeListItem extends HTMLElement {
 			this._isVisible = true
 			this._mainContainer.style.paddingLeft = "0px"
 		}
-		this._evaluateArrow()
+		this._evaluateHasChildren()
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
@@ -102,11 +102,11 @@ class KiwiTreeListItem extends HTMLElement {
 		}, [])
 	}
 
-	_evaluateArrow() {
-		if (!this.getHierarchyChildren().length) {
-			this._expandArrow.style.display = "none"
+	_evaluateHasChildren() {
+		if (this.getHierarchyChildren().length) {
+			this._mainContainer.classList.add("has-children")
 		} else {
-			this._expandArrow.style.display = null
+			this._mainContainer.classList.remove("has-children")
 		}
 	}
 
