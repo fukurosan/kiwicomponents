@@ -34,10 +34,7 @@ const createComponent = props => {
 	const code = `
 	<style>
 		.card {
-			width: 300px;
-		}
-		.horizontal {
-			height: 200px;
+			width: 400px;
 		}
 	</style>
 	<div style="display:flex;flex-direction:column;gap:0.5rem;">

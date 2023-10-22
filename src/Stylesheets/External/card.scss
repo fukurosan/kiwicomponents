@@ -4,10 +4,10 @@
 @import "../Tokens/shadows.scss";
 
 .card {
-	--internal-kiwi-card-padding: var(--kiwi-card-padding, 1rem);
+	--internal-kiwi-card-padding: var(--kiwi-card-padding, 2rem);
 	display: flex;
 	flex-direction: column;
-	gap: var(--internal-kiwi-card-padding);
+	gap: calc(var(--internal-kiwi-card-padding) / 2);
 	border-radius: $radius-medium;
 	background-color: $white;
 	box-shadow: $small-shadow;
