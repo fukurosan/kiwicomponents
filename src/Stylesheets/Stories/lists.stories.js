@@ -5,7 +5,7 @@ import { createIsolatedStyles } from "../../../.storybook/utility"
  * Lists styles
  */
 export default {
-	title: "CSS/Steps",
+	title: "CSS/Lists",
 	tags: ["autodocs"],
 	render: args => {
 		return createComponent(args)

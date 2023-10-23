@@ -1,9 +1,6 @@
 import template from "./kiwi-card.html"
 import styles from "./kiwi-card.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Card
  * A basic card elements that makes creating cards easy.

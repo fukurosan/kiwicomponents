@@ -221,6 +221,50 @@ The following events are fired:
 
 ---
 
+## \<kiwi-multi-toggle> Components.MultiToggle
+
+\<kiwi-multi-toggle> is a stateful multi option toggle component.
+
+The element accepts a stringified array of options, each one with a key and value property. The key property can be used to update the state and will be returned in events when the selection changes by the user.
+
+Check out the following example:
+
+### Example:
+
+```html
+<kiwi-multi-toggle id="my-toggle" states='[{"key":"1","value":"Text One"},{"key":"2","value":"Text Two"},{"key":"3","value":"Text Three"}]' selected="1">
+</kiwi-multi-toggle>
+
+<script>
+	const myToggle = document.querySelector("#my-toggle")
+	myToggle.getState() // -> {states: {key: string, value: string}[], selected: string}
+	myToggle.setStates([{ key: "someKey", value: "Some new Value" }])
+	myToggle.addEventListener("change", e => console.log(e.detail.newSelection))
+	myToggle.setSelected("someKey") // -> { newSelection: "someKey" }
+</script>
+```
+
+Result:
+
+<kiwi-multi-toggle states='[{"key":"1","value":"Text One"},{"key":"2","value":"Text Two"},{"key":"3","value":"Text Three"}]' selected="1"> </kiwi-multi-toggle>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type                           | description                                                                |
+| --------- | ------------------------------ | -------------------------------------------------------------------------- |
+| states    | {key: string, value: string}[] | Labels displayed in the toggle, described through a serialized JSON object |
+| selected  | string                         | Selected option key                                                        |
+
+The following events are fired:
+
+| name   | description                                                                                                                                                      |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| change | The change event is fired whenever the selection changes. The event's detail property contains a newSelection property that holds the key for the new selection. |
+
+---
+
 ## \<kiwi-card> Components.Card
 
 \<kiwi-card> is a basic card component.

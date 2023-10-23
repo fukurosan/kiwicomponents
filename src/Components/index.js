@@ -7,6 +7,7 @@ import { KiwiCard } from "./Card/kiwi-card"
 import { KiwiDrawer } from "./Drawer/kiwi-drawer"
 import { KiwiMenuElement } from "./Menu/kiwi-menu/kiwi-menu"
 import { KiwiMenuItemElement } from "./Menu/kiwi-menu-item/kiwi-menu-item"
+import { KiwiMultiToggle } from "./MultiToggle/kiwi-multi-toggle"
 import { KiwiNavbar } from "./Navbar/kiwi-navbar/kiwi-navbar"
 import { KiwiNavbarItem } from "./Navbar/kiwi-navbar-item/kiwi-navbar-item"
 import { KiwiScrollListElement } from "./ScrollList/kiwi-scroll-list"
@@ -36,6 +37,7 @@ export const Components = {
 	Card: () => define("kiwi-card", KiwiCard),
 	Drawer: () => define("kiwi-drawer", KiwiDrawer),
 	Menu: () => (define("kiwi-menu", KiwiMenuElement), define("kiwi-menu-item", KiwiMenuItemElement)),
+	MultiToggle: () => define("kiwi-multi-toggle", KiwiMultiToggle),
 	Navbar: () => (define("kiwi-navbar", KiwiNavbar), define("kiwi-navbar-item", KiwiNavbarItem)),
 	ScrollList: () => define("kiwi-scroll-list", KiwiScrollListElement),
 	Spinner: () => define("kiwi-spinner", KiwiSpinner),
@@ -58,6 +60,7 @@ export const init = () => {
 	define("kiwi-drawer", KiwiDrawer)
 	define("kiwi-menu", KiwiMenuElement)
 	define("kiwi-menu-item", KiwiMenuItemElement)
+	define("kiwi-multi-toggle", KiwiMultiToggle)
 	define("kiwi-navbar", KiwiNavbar)
 	define("kiwi-navbar-item", KiwiNavbarItem)
 	define("kiwi-scroll-list", KiwiScrollListElement)
