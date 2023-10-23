@@ -537,6 +537,129 @@ Example:
 	<div class="shape-round" style="width:100px;height:100px;background:gray;"></div>
 </kiwi-scoped-demo>
 
+## Dividers
+
+You can create dividers of content by using the .divider class as well as the .horizontal class.
+
+Check out the below example:
+
+```html
+<div style="display:flex;flex-direction:column;gap:2rem;">
+	<div class="divider">A Divider</div>
+	<div class="divider horizontal" style="height:10rem;">Horizontal</div>
+</div>
+```
+
+<kiwi-scoped-demo>
+<div style="display:flex;flex-direction:column;gap:2rem;">
+	<div class="divider">A Divider</div>
+	<div class="divider horizontal" style="height:10rem;">Horizontal</div>
+</div>
+</kiwi-scoped-demo>
+
+## Lists
+
+### Steps
+
+You can create lists of steps using either ordered or unordered lists. You can style each step in your list thematically as well as provide your own content. Each list can be either vertical or horizontal. You can configure your lists to look like steps by adding the .step class, as well as toggle them vertical or horizontal by using .horizontal. To provide your own content to the list dot, use the attribute "kiwi-content". To theme the list dot use one of the following classes:
+
+-   is-secondary
+-   is-neutral
+-   is-success
+-   is-info
+-   is-warning
+-   is-error
+-   is-error
+
+Check out the below example:
+
+```html
+<div style="display:flex;flex-direction:column;">
+	<ul class="steps">
+		<li>List Item 1</li>
+		<li>List Item 2</li>
+	</ul>
+	<ul class="steps horizontal">
+		<li>List Item 1</li>
+		<li>List Item 2</li>
+	</ul>
+	<ol class="steps">
+		<li>List Item 1</li>
+		<li class="is-secondary">List Item Secondary</li>
+		<li class="is-neutral">List Item Neutral</li>
+		<li class="is-success">List Item Success</li>
+		<li class="is-info">List Item Info</li>
+		<li class="is-warning">List Item Warning</li>
+		<li class="is-error">List Item Error</li>
+		<li class="is-error" kiwi-content="@">List Item Custom</li>
+	</ol>
+	<ol class="steps horizontal">
+		<li>List Item 1</li>
+		<li>List Item 2</li>
+	</ol>
+</div>
+```
+
+<kiwi-scoped-demo>
+<div style="display:flex;flex-direction:column;">
+	<ul class="steps">
+		<li>List Item 1</li>
+		<li>List Item 2</li>
+	</ul>
+    <ul class="steps horizontal">
+    	<li>List Item 1</li>
+    	<li>List Item 2</li>
+    </ul>
+    <ol class="steps">
+    	<li>List Item 1</li>
+    	<li>List Item 2</li>
+    	<li>List Item 3</li>
+    	<li class="is-secondary">List Item Secondary</li>
+    	<li class="is-neutral">List Item Neutral</li>
+    	<li class="is-success">List Item Success</li>
+    	<li class="is-info">List Item Info</li>
+    	<li class="is-warning">List Item Warning</li>
+    	<li class="is-error">List Item Error</li>
+    	<li class="is-error" kiwi-content="@">List Item Custom</li>
+    </ol>
+    <ol class="steps horizontal">
+    	<li>List Item 1</li>
+    	<li>List Item 2</li>
+    </ol>
+</div>
+</kiwi-scoped-demo>
+
+### Menu
+
+You can easily create menus using unordered lists by applying the "menu" class. Toggle the menu as horizontal or vertical using .horizontal.
+
+Check out the below example:
+
+```html
+<ul class="menu">
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+</ul>
+<ul class="menu horizontal">
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+</ul>
+```
+
+<kiwi-scoped-demo>
+<ul class="menu">
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+</ul>
+<ul class="menu horizontal">
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+</ul>
+</kiwi-scoped-demo>
 
 ## Navigation
 

@@ -42,7 +42,7 @@
 	pointer-events: none;
 	&::before {
 		position: absolute;
-		inset: 0;
+		inset: -2px;
 		background-color: $white;
 		opacity: 0.5;
 		content: "";
