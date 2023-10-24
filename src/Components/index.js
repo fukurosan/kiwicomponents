@@ -10,6 +10,7 @@ import { KiwiMenuItemElement } from "./Menu/kiwi-menu-item/kiwi-menu-item"
 import { KiwiMultiToggle } from "./MultiToggle/kiwi-multi-toggle"
 import { KiwiNavbar } from "./Navbar/kiwi-navbar/kiwi-navbar"
 import { KiwiNavbarItem } from "./Navbar/kiwi-navbar-item/kiwi-navbar-item"
+import { KiwiRating } from "./Rating/kiwi-rating"
 import { KiwiScrollListElement } from "./ScrollList/kiwi-scroll-list"
 import { KiwiSpinner } from "./Spinner/kiwi-spinner"
 import { KiwiSplitElement } from "./Split/kiwi-split"
@@ -39,6 +40,7 @@ export const Components = {
 	Menu: () => (define("kiwi-menu", KiwiMenuElement), define("kiwi-menu-item", KiwiMenuItemElement)),
 	MultiToggle: () => define("kiwi-multi-toggle", KiwiMultiToggle),
 	Navbar: () => (define("kiwi-navbar", KiwiNavbar), define("kiwi-navbar-item", KiwiNavbarItem)),
+	Rating: () => define("kiwi-rating", KiwiRating),
 	ScrollList: () => define("kiwi-scroll-list", KiwiScrollListElement),
 	Spinner: () => define("kiwi-spinner", KiwiSpinner),
 	Split: () => define("kiwi-split", KiwiSplitElement),
@@ -63,6 +65,7 @@ export const init = () => {
 	define("kiwi-multi-toggle", KiwiMultiToggle)
 	define("kiwi-navbar", KiwiNavbar)
 	define("kiwi-navbar-item", KiwiNavbarItem)
+	define("kiwi-rating", KiwiRating)
 	define("kiwi-scroll-list", KiwiScrollListElement)
 	define("kiwi-spinner", KiwiSpinner)
 	define("kiwi-split", KiwiSplitElement)

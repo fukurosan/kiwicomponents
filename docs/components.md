@@ -265,6 +265,42 @@ The following events are fired:
 
 ---
 
+## \<kiwi-rating> Components.Rating
+
+\<kiwi-rating> is a 5-star rating component that can be plugged into any form element.
+
+By default the name property provided to the form will be "rating", but this can be changed using the "name" attribute. Use the "disabled" attribute to disable the element and the "value" attribute to programatically set the value. You can listen to value changes using a simple change event listener.
+
+Check out the following example:
+
+### Example:
+
+```html
+<kiwi-rating></kiwi-rating>
+```
+
+Result:
+
+<kiwi-rating></kiwi-rating>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type                           | description                                                                      |
+| --------- | ------------------------------ | -------------------------------------------------------------------------------- |
+| name      | {key: string, value: string}[] | Configures the name attribute for the internal radio buttons                     |
+| disabled  | string                         | If set to any value the rating component will be disabled                        |
+| value     | 1\|2\|3\|4\|5                  | Sets the selected amount of stars. Setting any other value removes the selection |
+
+The following events are fired:
+
+| name   | description                                                     |
+| ------ | --------------------------------------------------------------- |
+| change | The change event comes directly from the internal radio buttons |
+
+---
+
 ## \<kiwi-card> Components.Card
 
 \<kiwi-card> is a basic card component.
