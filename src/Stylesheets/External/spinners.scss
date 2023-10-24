@@ -1,0 +1,224 @@
+@import "../variables.scss";
+
+.spinner-base {
+	--size: 2rem;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 50%;
+	border: calc(var(--size) / 4) solid $neutral-color-300;
+	border-right-color: $primary-color-600;
+	animation: spinner-base 1s infinite linear;
+}
+
+@keyframes spinner-base {
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+.spinner-rythm {
+	--size: 2rem;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 50%;
+	border: calc(var(--size) / 4) solid $primary-color-600;
+	animation: spinner-rythm-animation-1 0.8s infinite linear alternate, spinner-rythm-animation-2 1.6s infinite linear;
+}
+
+@keyframes spinner-rythm-animation-1 {
+	0% {
+		clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+	}
+
+	12.5% {
+		clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+	}
+
+	25% {
+		clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
+	}
+
+	50% {
+		clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+	}
+
+	62.5% {
+		clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+	}
+
+	75% {
+		clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
+	}
+
+	100% {
+		clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
+	}
+}
+
+@keyframes spinner-rythm-animation-2 {
+	0% {
+		transform: scaleY(1) rotate(0deg);
+	}
+
+	49.99% {
+		transform: scaleY(1) rotate(135deg);
+	}
+
+	50% {
+		transform: scaleY(-1) rotate(0deg);
+	}
+
+	100% {
+		transform: scaleY(-1) rotate(-135deg);
+	}
+}
+
+.spinner-spinning {
+	position: relative;
+	width: max-content;
+	height: 100%;
+	min-width: 1rem;
+	min-height: 1rem;
+	max-width: 5rem;
+	max-height: 5rem;
+}
+
+.spinner-spinning::before,
+.spinner-spinning::after {
+	--radius: 250;
+	content: "";
+	position: absolute;
+	width: 40%;
+	height: 40%;
+	animation: spinner-spinning-animation 2s infinite linear;
+	background: $primary-color-600;
+	border-radius: 50%;
+	inset: 0;
+	margin: auto;
+}
+
+.spinner-spinning::before {
+	--radius: -250;
+	background: $neutral-color-300;
+}
+
+@keyframes spinner-spinning-animation {
+	0% {
+		transform: scale(0.7) rotate(0deg) translateY(calc(var(--radius) * 0.5%));
+	}
+
+	50% {
+		transform: scale(0.5) rotate(1440deg) translateY(0);
+	}
+
+	100% {
+		transform: scale(0.7) rotate(2920deg) translateY(calc(var(--radius) * 0.5%));
+	}
+}
+
+.spinner-rotate {
+	--size: 2rem;
+	position: relative;
+	height: var(--size);
+	width: var(--size);
+	animation: spinner-rotate-animation 3s infinite linear;
+}
+
+.spinner-rotate::before {
+	content: "";
+	display: block;
+	height: var(--size);
+	width: calc(var(--size) / 5);
+	animation: spinner-rotate-animation 0.5s infinite;
+	background: $primary-color-600;
+	position: absolute;
+	left: 50%;
+	margin-left: calc(var(--size) / -10);
+}
+
+@keyframes spinner-rotate-animation {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.spinner-dots {
+	--size: 2rem;
+	width: var(--size);
+	height: calc(var(--size) / 1.5);
+	background: radial-gradient(circle closest-side, $primary-color-600 90%, #0000) 0% 50%,
+		radial-gradient(circle closest-side, $primary-color-600 90%, #0000) 50% 50%,
+		radial-gradient(circle closest-side, $primary-color-600 90%, #0000) 100% 50%;
+	background-size: calc(100% / 3) 13.4px;
+	background-repeat: no-repeat;
+	animation: spinner-dots-animation 1s infinite linear;
+}
+
+@keyframes spinner-dots-animation {
+	20% {
+		background-position: 0% 0%, 50% 50%, 100% 50%;
+	}
+
+	40% {
+		background-position: 0% 100%, 50% 0%, 100% 50%;
+	}
+
+	60% {
+		background-position: 0% 50%, 50% 100%, 100% 0%;
+	}
+
+	80% {
+		background-position: 0% 50%, 50% 50%, 100% 100%;
+	}
+}
+
+.spinner-shape {
+	width: max-content;
+	height: 100%;
+	min-width: 1rem;
+	min-height: 1rem;
+	max-width: 5rem;
+	max-height: 5rem;
+	border-radius: 50%;
+	background-color: $primary-color-600;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	animation: spinner-shape-animation 2s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+
+@keyframes spinner-shape-animation {
+	33% {
+		border-radius: 0;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	}
+
+	66% {
+		border-radius: 0;
+		clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
+	}
+}
+
+.spinner-flip {
+	width: max-content;
+	height: 100%;
+	min-width: 1rem;
+	min-height: 1rem;
+	max-width: 5rem;
+	max-height: 5rem;
+	border-radius: 0.25rem;
+	animation: spinner-flip-animation 1.5s infinite;
+	background-color: $primary-color-600;
+}
+
+@keyframes spinner-flip-animation {
+	0% {
+		transform: perspective(3.5rem) rotate(45deg) rotateX(0deg) rotateY(0deg);
+	}
+
+	50% {
+		transform: perspective(3.5rem) rotate(45deg) rotateX(-180deg) rotateY(0deg);
+	}
+
+	100% {
+		transform: perspective(3.5rem) rotate(45deg) rotateX(-180deg) rotateY(-180deg);
+	}
+}
