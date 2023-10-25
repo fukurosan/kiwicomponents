@@ -42,7 +42,7 @@ const createComponent = props => {
 	<div style="display:flex;flex-direction:column;gap:2rem;">
 	<h3>Default</h3>
 	<div>
-		<details>
+		<details class="accordion">
 		<summary>
 			<div>Lorem, ipsum dolor.</div>
 		</summary>
@@ -51,7 +51,7 @@ const createComponent = props => {
 			sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 		</div>
 		</details>
-		<details>
+		<details class="accordion">
 			<summary>
 				<div>Lorem, ipsum dolor.</div>
 			</summary>
@@ -60,7 +60,7 @@ const createComponent = props => {
 				sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 			</div>
 		</details>
-		<details>
+		<details class="accordion">
 			<summary>
 				<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</div>
 			</summary>
@@ -73,7 +73,7 @@ const createComponent = props => {
 	
 	<h3>.Bordered</h3>
 	<div>
-		<details class="bordered">
+		<details class="accordion bordered">
 			<summary>
 				<div>Lorem, ipsum dolor.</div>
 			</summary>
@@ -82,7 +82,7 @@ const createComponent = props => {
 				sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 			</div>
 		</details>
-		<details class="bordered">
+		<details class="accordion bordered">
 			<summary>
 				<div>Lorem, ipsum dolor.</div>
 			</summary>

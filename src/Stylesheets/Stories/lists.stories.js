@@ -51,23 +51,71 @@ const createComponent = props => {
 		</ol>
 
 		<ol class="steps horizontal">
-			<li>List Item 1</li>
-			<li>List Item 2</li>
-			<li>List Item 3</li>
+			<li><div>List Item 1</div></li>
+			<li><div>List Item 2</div></li>
+			<li><div>List Item 3</div></li>
 		</ol>
 
 		<h3>Menu</h3>
-		<ul class="menu">
-			<li>List Item 1</li>
-			<li>List Item 2</li>
-			<li>List Item 3</li>
-		</ul>
-		<ul class="menu horizontal">
-			<li>List Item 1</li>
-			<li>List Item 2</li>
-			<li>List Item 3</li>
+
+		<ul class="menu" style="padding:0.5rem;border:1px solid lightgray;">
+			<li><div>List Item 1</div></li>
+			<li>
+				<ul>
+					<li><div>Sub Item 1</div></li>
+					<li><div>Sub Item 1</div></li>
+				</ul>
+			</li>
+			<li><div>List Item 2</div></li>
 		</ul>
 
+		<ul class="menu" style="padding:0.5rem;border:1px solid lightgray;">
+			<li><div>List Item 1</div></li>
+			<li><div>List Item 2</div></li>
+			<li>
+				<details>
+					<summary>Sub menu</summary>
+					<ul>
+						<li><div>Sub Item 1</div></li>
+						<li>
+							<details>
+								<summary>Sub menu</summary>
+								<ul>
+									<li><div>Sub Item 1</div></li>
+									<li><div>Sub Item 2</div></li>
+								</ul>
+							</details>
+						</li>	
+						<li><div>Sub Item 2</div></li>
+					</ul>
+				</details>
+			</li>
+			<li><div>List Item 3</div></li>
+		</ul>
+		<ul class="menu horizontal">
+			<li><div>List Item 1</div></li>
+			<li><div>List Item 2</div></li>
+			<li>
+				<details>
+					<summary>Sub menu</summary>
+					<ul>
+						<li><div>Sub Item 1</div></li>
+						<li>
+							<details>
+								<summary>Sub menu</summary>
+								<ul>
+									<li><div>Sub Item 1</div></li>
+									<li><div>Sub Item 2</div></li>
+								</ul>
+							</details>
+						</li>	
+						<li><div>Sub Item 2</div></li>
+					</ul>
+				</details>
+			</li>
+			<li><div>List Item 3</div></li>
+		</ul>
+		<div style="height:10rem;"></div>
 	</div>`
 
 	return createIsolatedStyles(code, style, props)

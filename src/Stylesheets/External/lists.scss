@@ -1,18 +1,9 @@
 @import "../variables.scss";
 
-// General
-ol.steps,
-ul.steps,
-ul.menu,
-.menu > li,
-.steps > li {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
 ul.steps,
 ol.steps {
+	margin: 0;
+	padding: 0;
 	counter-reset: ordered-item;
 	display: inline-grid;
 	grid-auto-rows: 1fr;
@@ -41,6 +32,7 @@ ol.steps {
 			border-radius: 50%;
 			background-color: $primary-color-600;
 			color: $with-color-above-400;
+			font-weight: 700;
 		}
 		&:not(:first-child)::after {
 			// Line between circles
@@ -157,33 +149,29 @@ ol.steps {
 
 // Menus
 ul.menu {
-	all: unset;
-	li,
-	li::before,
-	li::after {
-		all: unset;
-	}
+	list-style: none;
+	margin: 0;
+	padding: 0;
 	display: inline-grid;
 	grid-auto-flow: row;
 	grid-auto-rows: max-content;
-	cursor: pointer;
-	border: 1px solid $neutral-color-300;
-	box-sizing: border-box;
+	grid-auto-columns: 100%;
 	width: 100%;
 	border-radius: $border-radius-medium;
 	background-color: $white;
-	padding: 0.5rem;
 
-	li {
+	li > *:not(details, ul),
+	li > details > summary {
+		cursor: pointer;
 		user-select: none;
 		display: flex;
 		align-items: center;
 		box-sizing: border-box;
-		height: 2.5em;
+		min-height: 2.5em;
 		padding: 0.375em 1em;
 		border-radius: $border-radius-medium;
-		list-style: none;
 		transition: background-color 200ms;
+		white-space: nowrap;
 		&:hover {
 			background-color: $neutral-color-100;
 		}
@@ -192,12 +180,75 @@ ul.menu {
 		}
 	}
 
+	li > details {
+		summary::-webkit-details-marker {
+			display: none;
+		}
+		width: 100%;
+		> summary {
+			position: relative;
+			padding-right: 2.5em;
+			&::before {
+				position: absolute;
+				content: "";
+				right: 1em;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				width: 0.75em;
+				height: 0.75em;
+				background-size: contain;
+				background-image: url("data:image/svg+xml;utf-8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 492 492'><path d='M142.238,492.432c-9.79,0-19.588-3.736-27.05-11.209c-14.945-14.934-14.945-39.162,0-54.098l180.9-180.909   l-180.9-180.91c-14.945-14.935-14.945-39.163,0-54.098c14.926-14.944,39.172-14.944,54.098,0l207.96,207.958   c14.943,14.935,14.943,39.164,0,54.1l-207.96,207.957C161.824,488.697,152.026,492.432,142.238,492.432z' style='fill: %23000000;'/></svg>");
+				transition: transform 200ms;
+			}
+		}
+		&[open] > summary::before {
+			transform: rotate(90deg);
+		}
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		position: relative;
+		padding-left: 1em;
+		margin-left: 1em;
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 0.75em;
+			inset-inline-start: 0px;
+			top: 0.75em;
+			width: 1px;
+			background-color: $neutral-color-300;
+		}
+	}
+
 	&.horizontal {
 		grid-auto-flow: column;
-		grid-auto-columns: auto;
+		grid-auto-columns: max-content;
+		gap: 1em;
 		li {
 			text-align: center;
 			justify-content: center;
+		}
+		> li > details {
+			position: relative;
+			> ul {
+				position: absolute;
+				margin: 0;
+				margin-top: 0.5em;
+				background-color: white;
+				border: 1px solid $neutral-color-300;
+				box-sizing: border-box;
+				border-radius: $border-radius-medium;
+				padding: 0.5rem;
+
+				&::before {
+					content: unset;
+				}
+			}
 		}
 	}
 }

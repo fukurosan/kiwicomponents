@@ -367,12 +367,12 @@ These styles will make standard \<meter> elements look better.
 
 ## Details
 
-These styles will make standard \<details> and \<summary> elements look better.
+These styles will make standard \<details> and \<summary> elements look better by adding a .accordion class to them.
 
-You can use the .bordered class to give the details element full borders.
+You can also use the .bordered class to give the details element full borders.
 
 ```html
-<details>
+<details class="accordion">
 	<summary>
 		<div>Lorem, ipsum dolor.</div>
 	</summary>
@@ -381,7 +381,7 @@ You can use the .bordered class to give the details element full borders.
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</div>
 </details>
-<details>
+<details class="accordion">
 	<summary>
 		<div>Lorem, ipsum dolor.</div>
 	</summary>
@@ -390,7 +390,7 @@ You can use the .bordered class to give the details element full borders.
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</div>
 </details>
-<details>
+<details class="accordion">
 	<summary>
 		<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</div>
 	</summary>
@@ -400,7 +400,7 @@ You can use the .bordered class to give the details element full borders.
 	</div>
 </details>
 
-<details class="bordered">
+<details class="accordion bordered">
 	<summary>
 		<div>Lorem, ipsum dolor.</div>
 	</summary>
@@ -409,7 +409,7 @@ You can use the .bordered class to give the details element full borders.
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</div>
 </details>
-<details class="bordered">
+<details class="accordion bordered">
 	<summary>
 		<div>Lorem, ipsum dolor.</div>
 	</summary>
@@ -421,7 +421,7 @@ You can use the .bordered class to give the details element full borders.
 ```
 
 <kiwi-scoped-demo>
-<details>
+<details class="accordion">
 	<summary>
 		<div>Lorem, ipsum dolor.</div>
 	</summary>
@@ -429,7 +429,7 @@ You can use the .bordered class to give the details element full borders.
 		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</div>
 </details>
-<details>
+<details class="accordion">
 	<summary>
 		<div>Lorem, ipsum dolor.</div>
 	</summary>
@@ -437,7 +437,7 @@ You can use the .bordered class to give the details element full borders.
 		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</div>
 </details>
-<details>
+<details class="accordion">
 	<summary>
 		<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</div>
 	</summary>
@@ -449,7 +449,7 @@ You can use the .bordered class to give the details element full borders.
 <br><br>
 
 <div>
-<details class="bordered">
+<details class="accordion bordered">
 	<summary>
 		<div>Lorem, ipsum dolor.</div>
 	</summary>
@@ -458,7 +458,7 @@ You can use the .bordered class to give the details element full borders.
 		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
 	</div>
 </details>
-<details class="bordered">
+<details class="accordion bordered">
 	<summary>
 		<div>Lorem, ipsum dolor.</div>
 	</summary>
@@ -631,33 +631,69 @@ Check out the below example:
 
 ### Menu
 
-You can easily create menus using unordered lists by applying the "menu" class. Toggle the menu as horizontal or vertical using .horizontal.
+You can easily create menus using unordered lists by applying the "menu" class. Toggle the menu as horizontal or vertical using .horizontal. By adding \<details> elements into the menu you can create expandable sub-menus.
 
 Check out the below example:
 
 ```html
-<ul class="menu">
-	<li>List Item 1</li>
-	<li>List Item 2</li>
-	<li>List Item 3</li>
+<ul class="menu" style="padding:0.5rem;border:1px solid lightgray;">
+	<li><div>List Item 1</div></li>
+	<li><div>List Item 2</div></li>
+	<li>
+		<details>
+			<summary>Sub menu</summary>
+			<ul>
+				<li><div>Sub Item 1</div></li>
+				<li><div>Sub Item 2</div></li>
+			</ul>
+		</details>
+	</li>
+	<li><div>List Item 3</div></li>
 </ul>
-<ul class="menu horizontal">
-	<li>List Item 1</li>
-	<li>List Item 2</li>
-	<li>List Item 3</li>
+<ul class="menu horizontal" style="padding:0.5rem;border:1px solid lightgray;">
+	<li><div>List Item 1</div></li>
+	<li><div>List Item 2</div></li>
+	<li>
+		<details>
+			<summary>Sub menu</summary>
+			<ul>
+				<li><div>Sub Item 1</div></li>
+				<li><div>Sub Item 2</div></li>
+			</ul>
+		</details>
+	</li>
+	<li><div>List Item 3</div></li>
 </ul>
 ```
 
 <kiwi-scoped-demo>
-<ul class="menu">
-	<li>List Item 1</li>
-	<li>List Item 2</li>
-	<li>List Item 3</li>
+<ul class="menu" style="padding:0.5rem;border:1px solid lightgray;margin-bottom:1rem;">
+	<li><div>List Item 1</div></li>
+	<li><div>List Item 2</div></li>
+	<li>
+		<details>
+			<summary>Sub menu</summary>
+			<ul>
+				<li><div>Sub Item 1</div></li>
+				<li><div>Sub Item 2</div></li>
+			</ul>
+		</details>
+	</li>
+	<li><div>List Item 3</div></li>
 </ul>
-<ul class="menu horizontal">
-	<li>List Item 1</li>
-	<li>List Item 2</li>
-	<li>List Item 3</li>
+<ul class="menu horizontal" style="padding:0.5rem;border:1px solid lightgray;">
+	<li><div>List Item 1</div></li>
+	<li><div>List Item 2</div></li>
+	<li>
+		<details>
+			<summary>Sub menu</summary>
+			<ul>
+				<li><div>Sub Item 1</div></li>
+				<li><div>Sub Item 2</div></li>
+			</ul>
+		</details>
+	</li>
+	<li><div>List Item 3</div></li>
 </ul>
 </kiwi-scoped-demo>
 
