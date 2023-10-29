@@ -1,0 +1,64 @@
+@import "../../Stylesheets/variables.scss";
+@import "../../Stylesheets/Internal/scrollbar.scss";
+
+:host {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+#main {
+	--resizer-bar-size: 0.5rem;
+	--container-one-size: 1fr;
+	display: grid;
+	grid-template-rows: var(--container-one-size) var(--resizer-bar-size) 1fr;
+}
+
+#resizer {
+	cursor: ns-resize;
+	height: var(--resizer-bar-size);
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--kiwi-split-bar-background-color, $neutral-color-500);
+	&:hover #handle {
+		background-color: var(--kiwi-split-handle-color-hover, $neutral-color-200);
+	}
+}
+
+#handle {
+	height: 50%;
+	width: 5rem;
+	border-radius: 1rem;
+	background-color: var(--kiwi-split-handle-color, $neutral-color-400);
+	transition: background-color 200ms;
+}
+
+#container-0,
+#container-1 {
+	overflow: auto;
+}
+
+::slotted(*) {
+	height: 100%;
+	width: 100%;
+}
+
+:host([direction="row"]) {
+	#main {
+		grid-template-rows: 1fr;
+		grid-template-columns: var(--container-one-size) var(--resizer-bar-size) 1fr;
+	}
+
+	#resizer {
+		width: var(--resizer-bar-size);
+		height: 100%;
+		cursor: ew-resize;
+	}
+
+	#handle {
+		width: 50%;
+		height: 5rem;
+	}
+}

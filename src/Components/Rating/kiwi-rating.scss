@@ -1,0 +1,48 @@
+@import "../../Stylesheets/variables.scss";
+
+._kiwi-rating-container {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+}
+
+kiwi-rating[disabled] ._kiwi-rating-container {
+	opacity: 0.7;
+	pointer-events: none;
+}
+
+._kiwi-rating-input {
+	position: fixed;
+	opacity: 0;
+	pointer-events: none;
+}
+
+._kiwi-rating-label {
+	cursor: pointer;
+	font-size: 0;
+	color: $neutral-color-300;
+	transition: color 300ms;
+}
+
+._kiwi-rating-label:before {
+	content: "★";
+	display: inline-block;
+	font-size: 2.5rem;
+}
+
+._kiwi-rating-input:checked ~ ._kiwi-rating-label {
+	color: $warning-color-400;
+}
+
+._kiwi-rating-label:hover,
+._kiwi-rating-label:hover ~ ._kiwi-rating-label {
+	color: $warning-color-400;
+}
+
+._kiwi-rating-input:checked + ._kiwi-rating-label:hover,
+._kiwi-rating-input:checked + ._kiwi-rating-label:hover ~ ._kiwi-rating-label,
+._kiwi-rating-input:checked ~ ._kiwi-rating-label:hover,
+._kiwi-rating-input:checked ~ ._kiwi-rating-label:hover ~ ._kiwi-rating-label,
+._kiwi-rating-label:hover ~ ._kiwi-rating-input:checked ~ ._kiwi-rating-label {
+	color: $warning-color-400;
+}

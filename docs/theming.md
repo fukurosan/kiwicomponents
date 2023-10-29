@@ -11,7 +11,7 @@ Some components like toasts and buttons can be configured with a type that chang
 If you want to have access to all color variables inside of your project you can import them:
 
 ```javascript
-import "kiwicomponents/dist/colors.css"
+import "kiwicomponents/dist/variableexport.css"
 //OR
 import "kiwicomponents/dist/bundle.css"
 ```
@@ -101,15 +101,25 @@ The following CSS color variables can be set:
 
 Border radius can be set using the following variables:
 
-| Variable Name                  |
-| ------------------------------ |
-| --kiwi-component-border-radius |
-| --kiwi-section-border-radius   |
+| Variable Name               |
+| --------------------------- |
+| --kiwi-border-radius-small  |
+| --kiwi-border-radius-medium |
+| --kiwi-border-radius-large  |
 
 ## Shadows
 
 Shadows can be set using the following variables:
 
-| Variable Name         |
-| --------------------- |
-| --kiwi-section-shadow |
+| Variable Name      |
+| ------------------ |
+| kiwi-shadow-small  |
+| kiwi-shadow-medium |
+| kiwi-shadow-large  |
+
+## Text
+
+| Variable Name              |
+| -------------------------- |
+| --kiwi-font-family-heading |
+| --kiwi-font-family-body    |

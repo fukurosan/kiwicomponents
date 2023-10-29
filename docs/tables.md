@@ -2,6 +2,18 @@
 
 Kiwi Components enables you to create tables with a variety of built-in functionality right out of the box. It does this by enhancing your tables through the kiwi-table web component. This means that irregardless of how you choose to style your table you can still use kiwi components to make them interactive. Of course, you can also use the kiwi components CSS bundle to create beautiful tables out of the box.
 
+To use the Table web component you will need to import it:
+
+```javascript
+import { Components } from "kiwicomponents"
+Components.Table()
+
+//Or initialize all components:
+
+import { init } from "kiwicomponents"
+init()
+```
+
 ## \<kiwi-table>
 
 ### Simple Example:
@@ -109,7 +121,7 @@ The kiwi-table element has a number of functions that can be executed to interac
 | getSelectedIDs()                                                      | Returns all currently selected IDs                                                                                                                                                                                                                                                         |
 | clearSelection()                                                      | Clears any current selection                                                                                                                                                                                                                                                               |
 | selectAllRows()                                                       | Selects all rows in the table                                                                                                                                                                                                                                                              |
-| makeSelection(id: string, shouldDispatchEvent: boolean)               | Alters the current selection without removing it by toggling an ID                                                                                                                                                                                                                         |
+| toggleSelection(id: string, shouldDispatchEvent: boolean)             | Alters the current selection without removing it by toggling an ID                                                                                                                                                                                                                         |
 | setSelection(idArray: string[], shouldDispatchEvent: boolean)         | Sets a new selection, overwriting any previous                                                                                                                                                                                                                                             |
 | filter(fnOrString: ((any) => boolean) \| string, columnIndex: number) | If a function is provided it will be fed with the data object of each row, returning true means that the row should be filtered, false means that it should not. If a string is provided (and optionally a column index) the table cells' actual text values will be searched for a match. |
 | clearFilter()                                                         | Clears any existing filters                                                                                                                                                                                                                                                                |

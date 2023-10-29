@@ -1,9 +1,6 @@
 import template from "./kiwi-toast-container.html"
 import styles from "./kiwi-toast-container.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Toast Container
  * Used as a container for toasts to position them correctly in the viewport. The container will adjust css-parameters that are consumed by the toasts and change animation behaviour based on position.
@@ -15,14 +12,20 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @attr {any} left - Should the toast be positioned along the left axis?
  *
  */
-class ToastContainer extends HTMLElement {
+class KiwiToastContainer extends HTMLElement {
 	static get observedAttributes() {
 		return ["top", "right", "bottom", "left"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiToastContainer._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiToastContainer._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiToastContainer._template.content.cloneNode(true))
+
 		this._mainContainerElement = this.shadowRoot.querySelector("#main")
 		this._render()
 	}
@@ -85,4 +88,4 @@ class ToastContainer extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-toast-container", ToastContainer)
+export { KiwiToastContainer }

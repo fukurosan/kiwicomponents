@@ -1,0 +1,60 @@
+@import "../variables.scss";
+
+/**
+* There are some noticable differences between how Chromium and other browsers handle "appearance:none;" on <meter> 
+* https://bugs.chromium.org/p/chromium/issues/detail?id=632510
+* https://bugs.chromium.org/p/chromium/issues/detail?id=1284251
+*/
+
+meter {
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	height: 1rem;
+	border: 0;
+	border-radius: $border-radius-medium;
+	/* Firefox Specific */
+	background: $neutral-color-300;
+}
+
+meter::-webkit-meter-bar {
+    border: none;
+	background: $neutral-color-300;
+    height: 1rem;
+	border-radius: $border-radius-medium;
+}
+
+meter::-webkit-meter-optimum-value {
+    background: $success-color-500;
+	border-radius: $border-radius-medium;
+    height: 1rem;
+}
+
+meter::-webkit-meter-suboptimum-value {
+    background: $warning-color-500;
+	border-radius: $border-radius-medium;
+    height: 1rem;
+}
+
+meter::-webkit-meter-even-less-good-value {
+    background: $error-color-500;
+	border-radius: $border-radius-medium;
+    height: 1rem;
+}
+
+meter::-moz-meter-bar {
+    background: none;
+}
+
+:-moz-meter-optimum::-moz-meter-bar {
+    background: $success-color-500;
+}
+
+:-moz-meter-sub-optimum::-moz-meter-bar {
+    background: $warning-color-500;
+}
+
+:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background: $error-color-500;
+}
+

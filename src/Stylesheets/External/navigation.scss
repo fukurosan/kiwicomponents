@@ -1,0 +1,195 @@
+@import "../variables.scss";
+@import "../Tokens/shadows.scss";
+@import "../Internal/typography.scss";
+
+nav,
+nav ul {
+	display: flex;
+	flex-direction: row;
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Navbar */
+
+nav.navbar {
+	--kiwi-navbar-base-spacing: 0.5em;
+	width: 100%;
+	box-sizing: border-box;
+	box-shadow: $small-shadow;
+	height: var(--kiwi-navbar-height, 5rem);
+	justify-content: space-between;
+	padding-inline: calc(var(--kiwi-navbar-base-spacing) * 5);
+	gap: calc(var(--kiwi-navbar-base-spacing) * 5);
+	overflow: hidden;
+
+	ul {
+		> *:not(:last-child) {
+			margin-right: calc(var(--kiwi-navbar-base-spacing) * 5);
+		}
+		li {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			padding-block: calc(var(--kiwi-navbar-base-spacing) * 3);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			hr {
+				height: 3em;
+				border: 1px solid $neutral-color-300;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	nav.navbar {
+		--kiwi-navbar-base-spacing: 0.25rem;
+	}
+}
+
+/* Breadcumbs */
+
+nav[aria-label="breadcrumb"] {
+	--kiwi-breadcrumb-spacing: 0.875rem;
+	align-items: center;
+	justify-content: start;
+	ul {
+		gap: var(--kiwi-breadcrumb-spacing);
+	}
+	ul li {
+		&:not(:last-child)::after {
+			margin-left: var(--kiwi-breadcrumb-spacing);
+			content: "/";
+			font-weight: 700;
+			color: $neutral-color-400;
+		}
+	}
+}
+
+/* Vertical menu */
+
+aside nav ul {
+	width: 100%;
+	flex-direction: column;
+	border-radius: $border-radius-large;
+	background-color: white;
+	&.dark {
+		background-color: $neutral-color-100;
+	}
+	li {
+		--li-nav-padding-h: 1.5rem;
+		--li-nav-padding-v: 1.5rem;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		font-size: 1.125rem;
+		cursor: pointer;
+		position: relative;
+		gap: calc(var(--li-nav-padding-h) / 2);
+		padding: var(--li-nav-padding-v) var(--li-nav-padding-h);
+		white-space: nowrap;
+		&:not(:last-of-type) {
+			border-bottom: 1px solid;
+			border-image: linear-gradient(
+				90deg,
+				transparent 0 var(--li-nav-padding-h),
+				#{$neutral-color-100} var(--li-nav-padding-h) calc(100% - var(--li-nav-padding-h)),
+				transparent calc(100% - var(--li-nav-padding-h)) 100%
+			);
+			border-image-slice: 1;
+		}
+		&::after {
+			content: "⟩"; //Adds a chevron
+			transform: scale(2, 1);
+			font-size: 1rem;
+			font-weight: 700;
+			position: absolute;
+			right: var(--li-nav-padding-h);
+			color: $neutral-color-400;
+		}
+		&[style*="--kiwi-li-icon"]::before {
+			--kiwi-li-icon-size: 1.25em;
+		}
+		> * {
+			padding-right: var(--li-nav-padding-h); //To make space for the chevron
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	aside nav ul li {
+		--li-nav-padding-h: 1.25rem;
+		--li-nav-padding-v: 1rem;
+		font-size: 1rem;
+		&::after {
+			font-size: 0.75rem;
+		}
+		&[style*="--kiwi-li-icon"]::before {
+			width: 1rem;
+			height: 1rem;
+			background-size: 1rem;
+		}
+	}
+}
+
+/* Icon */
+li {
+	--kiwi-li-icon-size: 1em;
+}
+
+li[style*="--kiwi-li-icon"]::before {
+	content: "";
+	display: inline-block;
+	min-width: var(--kiwi-li-icon-size);
+	width: var(--kiwi-li-icon-size);
+	height: var(--kiwi-li-icon-size);
+	background-image: var(--kiwi-li-icon);
+	background-repeat: no-repeat;
+	background-size: var(--kiwi-li-icon-size);
+	background-position-y: center;
+}
+
+/* Mobile Navbar */
+nav.bottom-navbar {
+	--kiwi-navbar-base-spacing: 0.5em;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: var(--kiwi-navbar-height, 5rem);
+	box-shadow: $small-shadow;
+	justify-content: stretch;
+	overflow: hidden;
+	ul {
+		width: 100%;
+		height: 100%;
+		li {
+			--kiwi-li-icon-size: 1.5em;
+			flex: 1;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			justify-content: center;
+			gap: 0.5em;
+			white-space: nowrap;
+			overflow: hidden;
+			&[style*="--kiwi-li-icon"]::before {
+				align-self: center;
+			}
+			> * {
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+}

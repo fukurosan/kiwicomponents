@@ -9,7 +9,7 @@ export class ThreadPlanner {
 		this.numberOfRunningThreads = 0
 		/** @type {number} Maximum allowed number of threads */
 		this.maxThreads = Math.max(navigator.hardwareConcurrency - 1, 1)
-		/** @type {WeakMap<(...any) => any, { pendingTasks: number, terminationTimeout: number, dependencyString: string, freeThreads: any[]>} - A map between functions and information about how many tasks are currently pending, a timeout object used to keep track of worker idle time for auto-termination, worker dependencies, as well as free worker threads. */
+		/** @type {WeakMap<(...any) => any, { pendingTasks: number, terminationTimeout: number, dependencyString: string, freeThreads: any[]>}} - A map between functions and information about how many tasks are currently pending, a timeout object used to keep track of worker idle time for auto-termination, worker dependencies, as well as free worker threads. */
 		this.metaData = new WeakMap()
 		/** @type {number} Maximum idle time before workers are terminated (in ms) */
 		this.MAXIMUM_IDLE_TIME_MS = 60000 //1 minute
@@ -171,11 +171,11 @@ export class ThreadPlanner {
 	 * @param {number} number - number of threads to warmup. Max threads if not defined.
 	 */
 	warmup(fn, number) {
-		this.getMetaData(fn)
-		const threads = this.metaData.get(fn).freeThreads
+		const metaData = this.getMetaData(fn)
+		const threads = metaData.freeThreads
 		const loops = number ? number : Math.max(0, this.maxThreads - threads.length)
 		for (let i = 0; i < loops; i++) {
-			threads.push(this.createInlineWorker(fn, this.metaData.dependencyString))
+			threads.push(this.createInlineWorker(fn, metaData.dependencyString))
 		}
 	}
 

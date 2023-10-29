@@ -64,6 +64,6 @@
     "forceConsistentCasingInFileNames": true,  /* Disallow inconsistently-cased references to the same file. */
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.test.js", "__tests__"]
+  "include": ["src/**/*", ".storybook/utility.js"],
+  "exclude": ["node_modules", "**/*.test.js", "test"]
 }

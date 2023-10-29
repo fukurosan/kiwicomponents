@@ -1,5 +1,10 @@
-@import "../../Assets/Stylesheets/variables.scss";
-@import "../../Assets/Stylesheets/Components/typography.scss";
+@import "../../Stylesheets/variables.scss";
+@import "../../Stylesheets/Internal/typography.scss";
+
+* {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
 
 #container {
 	margin: 0;
@@ -18,18 +23,8 @@
 	height: 100%;
 	min-height: 100%;
 	position: absolute;
-	background-color: var(--kiwi-scroll-list-background-color, white);
 	cursor: pointer;
-}
-
-.scroll-arrow::before {
-	background: linear-gradient(to left, var(--kiwi-scroll-list-background-color, white) 0%, transparent 100%);
-	height: 100%;
-	width: 2rem;
-	content: "";
-	pointer-events: none;
-	position: absolute;
-	left: -2rem;
+	z-index: 1;
 }
 
 .scroll-arrow svg {
@@ -50,6 +45,7 @@
 #link-container {
 	flex: auto;
 	display: flex;
+	overflow-x: scroll;
 	scroll-snap-type: x mandatory;
 	scroll-behavior: smooth;
 	overflow: hidden;

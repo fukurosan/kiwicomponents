@@ -1,5 +1,5 @@
 dist
 development
 node_modules
-__tests__
+test
 *.test.js

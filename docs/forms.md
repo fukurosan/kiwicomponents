@@ -78,10 +78,31 @@ After doing so all your standard form elements should now look better.
 			<input type="radio" disabled checked />
 			<input type="checkbox" role="switch" disabled checked />
 		</div>
+		<label>
+			<input type="checkbox" />
+			With a text
+		</label>					
 		<label>Range Slider</label>
 		<div class="flex-right">
 			<input type="range" />
 			<input type="range" disabled />
+		</div>
+		<label>Color</label>
+		<div>
+			<input type="color" />
+		</div>
+		<label>File Uploads</label>
+		<div>
+			<input type="file" />
+		</div>
+		<label>Date and Time</label>
+		<div class="flex-right">
+			<input type="Date" />
+			<input type="Time" />
+		</div>
+		<label>Text Area</label>
+		<div>
+			<textarea></textarea>
 		</div>
 	</div>
 </form>
@@ -147,10 +168,31 @@ After doing so all your standard form elements should now look better.
 			<input type="radio" disabled checked />
 			<input type="checkbox" role="switch" disabled checked />
 		</div>
+		<label>
+			<input type="checkbox" />
+			With a text
+		</label>
 		<label>Range Slider</label>
 		<div class="flex-right">
 			<input type="range" />
 			<input type="range" disabled />
+		</div>
+		<label>Color</label>
+		<div>
+			<input type="color">
+		</div>
+		<label>File Uploads</label>
+		<div>
+			<input type="file">
+		</div>
+		<label>Date and Time</label>
+		<div class="flex-right">
+			<input type="Date">
+			<input type="Time">
+		</div>
+		<label>Text Area</label>
+		<div>
+			<textarea></textarea>
 		</div>
 	</div>
 </form>
@@ -273,5 +315,27 @@ To create a visible group simply use the elements as always. To create a label f
 			<input placeholder="Weight" />
 		</div>
 	</fieldset>
+</form>
+</kiwi-scoped-demo>
+
+---
+
+## Input element icons
+
+You can add Icons to your input fields easily by simply setting the --kiwi-input-icon attribute on element to a valid css url(). This will automatically format the input field to display the icon on the left side.
+
+```html
+<form>
+	<input
+		style="--kiwi-input-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='black' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
+	/>
+</form>
+```
+
+<kiwi-scoped-demo>
+<form>
+	<input
+		style="--kiwi-input-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='black' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
+	/>
 </form>
 </kiwi-scoped-demo>

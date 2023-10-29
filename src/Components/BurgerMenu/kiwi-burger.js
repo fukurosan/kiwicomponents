@@ -1,9 +1,6 @@
 import template from "./kiwi-burger.html"
 import styles from "./kiwi-burger.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Burger Menu
  * A burger menu element that when clicked opens up a drawer area.
@@ -19,7 +16,12 @@ class KiwiBurgerMenu extends HTMLElement {
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiBurgerMenu._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiBurgerMenu._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiBurgerMenu._template.content.cloneNode(true))
 		this._drawer = this.shadowRoot.querySelector("kiwi-drawer")
 		this.shadowRoot.querySelector("#toggle").addEventListener("click", () => this.toggleAttribute("open"))
 	}
@@ -29,4 +31,4 @@ class KiwiBurgerMenu extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-burger", KiwiBurgerMenu)
+export { KiwiBurgerMenu }

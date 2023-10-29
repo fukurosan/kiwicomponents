@@ -1,9 +1,6 @@
 import template from "./kiwi-navbar.html"
 import styles from "./kiwi-navbar.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Navbar
  * A Kiwi style navbar.
@@ -16,7 +13,6 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @slot dynamic(0,1,2,3) - Responsive slots.
  *
  */
-
 class KiwiNavbar extends HTMLElement {
 	static get observedAttributes() {
 		return ["responsive-breakpoint", "mode"]
@@ -24,7 +20,12 @@ class KiwiNavbar extends HTMLElement {
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiNavbar._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiNavbar._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiNavbar._template.content.cloneNode(true))
 		this._container = this.shadowRoot.querySelector("#container")
 		this._responsiveSlot = this.shadowRoot.querySelector("#responsive-slot")
 		this._blockElement = this.shadowRoot.querySelector("#block-container")
@@ -78,4 +79,4 @@ class KiwiNavbar extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-navbar", KiwiNavbar)
+export { KiwiNavbar }

@@ -36,14 +36,13 @@ The following options are supported:
 
 | option        | type                                                                                 | description                                                                                                                                  |
 | ------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| icon          | string                                                                               | Optional icon URL for the toast.                                                                                                             |
+| icon          | string                                                                               | Optional icon for the toast. Can be either a URL or "success", "warning", "error", "info" for predefined icons.                              |
 | title         | string                                                                               | Optional title for the toast.                                                                                                                |
 | subtitle      | string                                                                               | Optional subtitle for the toast.                                                                                                             |
 | html          | string \| HTMLElement \| () => HTMLElement                                           | Optional rich, custom content for the toast. Usually used instead of title/subtitle                                                          |
 | closeMode     | "icon" \| "click" \| "none"                                                          | Configures how a user can interact to close the toast. Icon = X button, click = click anywhere in the toast, none = not closable by the user |
 | timeout       | number                                                                               | How many milliseconds before the toast should remove itself.                                                                                 |
 | type          | "primary" \| "secondary" \| "neutral" \| "info" \| "success" \| "error" \| "warning" | A type can be configured to change the colors of the toast.                                                                                  |
-| noanimation   | boolean                                                                              | If true the toast will not animate.                                                                                                          |
 | top           | boolean                                                                              | Should the toast be placed towards the top of the screen?                                                                                    |
 | right         | boolean                                                                              | Should the toast be placed towards the right of the screen?                                                                                  |
 | bottom        | boolean                                                                              | Should the toast be placed towards the bottom of the screen?                                                                                 |
@@ -77,7 +76,7 @@ The Kiwi Components toasts can be styled using CSS variables.
 
 The following variables can be set:
 
-| Variable                        | Description                      |
-| ------------------------------- | -------------------------------- |
-| --kiwi-toast-width              | Width of the toasts              |
-| --kiwi-toast-background         | Background color of the toast    |
+| Variable                | Description                   |
+| ----------------------- | ----------------------------- |
+| --kiwi-toast-width      | Width of the toasts           |
+| --kiwi-toast-background | Background color of the toast |

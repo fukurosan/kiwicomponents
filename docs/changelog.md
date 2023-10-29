@@ -1,5 +1,41 @@
 # Change Log
 
+### 0.5.0
+- Updated library to allow for tree shaking of components
+- Implemented Storybook in the project
+- Switched bundler from Rollup to Vite
+- Switched test runner from Jest to Vitest
+- Updated internal project structure
+- Added Card component
+- Added Split Panel component
+- Added Multi Toggle component
+- Added Rating component
+- Added predefined icons to toasts
+- Revamped how dialogs work, look and feel
+- Improved scroll list component
+- Added outline fill type to buttons
+- Added details and summary styles
+- Added details element dropdown class
+- Added fig caption styles
+- Added Add Opt-group styles
+- Added meter styles
+- Added list styles
+- Added color and file input styles
+- Added glass type to CSS button styles
+- Added ability to set icons on input fields
+- Added responsivity CSS utility
+- Added new layout CSS utility
+- Added shapes CSS utility
+- Added divider CSS utility
+- Added Spinners CSS Utility
+- Added background patterns CSS Utility
+- Improved forms CSS
+- Improved navigation CSS
+- Updated typography
+- Updated utility dialog APIs
+- Added ability to update showSpinner message
+- Fixed numerous bugs and issues
+
 ### 0.4.2
 - Added responsiveness class for table elements
 

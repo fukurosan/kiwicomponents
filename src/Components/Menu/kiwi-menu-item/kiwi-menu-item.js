@@ -2,9 +2,6 @@ import { computePositionAdjustment } from "../../../Utility/Positioner"
 import template from "./kiwi-menu-item.html"
 import styles from "./kiwi-menu-item.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Menu Item
  * A menu item designed specifically for kiwi-menus.
@@ -14,20 +11,23 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @attr {string} text - text value for the item.
  * @attr {string} detail - Detail value for the item.
  * @attr {any} disabled - If set the row will be disabled.
- * @attr {any} noanimation - If set the element will not be animated.
  *
  * @slot - Sub menu items. If provided the sub menu will be shown when this item is hovered.
  * A sub menu typically consists of more nested kiwi-menu-items.
  */
-
-class MenuItemElement extends HTMLElement {
+class KiwiMenuItemElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["icon", "text", "detail", "disabled", "noanimation"]
+		return ["icon", "text", "detail", "disabled"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiMenuItemElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiMenuItemElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiMenuItemElement._template.content.cloneNode(true))
 		this._mainContainerElement = this.shadowRoot.querySelector("#main")
 		this._iconElement = this.shadowRoot.querySelector("#icon")
 		this._textElement = this.shadowRoot.querySelector("#text")
@@ -47,8 +47,6 @@ class MenuItemElement extends HTMLElement {
 			this._updateText(newValue)
 		} else if (name === "detail") {
 			this._updateDetail(newValue)
-		} else if (name === "noanimation") {
-			this._updateNoAnimation(newValue)
 		}
 	}
 
@@ -68,14 +66,6 @@ class MenuItemElement extends HTMLElement {
 	_updateDetail(newValue) {
 		this._detailElement.innerHTML = ""
 		newValue && this._detailElement.appendChild(document.createTextNode(newValue))
-	}
-
-	_updateNoAnimation(newValue) {
-		if (newValue !== null) {
-			this._submenuContainerElement.style.transition = "none"
-		} else {
-			this._submenuContainerElement.style.removeProperty("transition")
-		}
 	}
 
 	_handleDisabledClick(e) {
@@ -126,4 +116,4 @@ class MenuItemElement extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-menu-item", MenuItemElement)
+export { KiwiMenuItemElement }

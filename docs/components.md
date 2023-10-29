@@ -2,7 +2,7 @@
 
 Kiwi Components come with a number of web components that most applications need and that are generally time consuming to create.
 
-## \<kiwi-button>
+## \<kiwi-button> - Components.Button
 
 \<kiwi-button> is a modern button element that can be styled and configured in a variety of different ways. The motivation for this component is that it comes with built in functionality to display both icons and text, different color combinations as well as neat animations.
 
@@ -46,7 +46,7 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-spinner>
+## \<kiwi-spinner> Components.Spinner
 
 \<kiwi-spinner> is a loading indicator. The motivation for this component is that most modern applications require one, yet they can be cumbersome to develop.
 
@@ -84,7 +84,68 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-tabs>
+## \<kiwi-split> Components.Split
+
+\<kiwi-split> creates a panel that is split into two parts, with a draggable resizer element in the middle
+
+### Example:
+
+```html
+<kiwi-split style="height:300px;width:100%;">
+	<div slot="0">
+		<kiwi-split direction="row">
+			<div slot="0" style="background-color:coral;"></div>
+			<div slot="1" style="background-color:cornflowerblue;"></div>
+		</kiwi-split>
+	</div>
+	<div slot="1">
+		<kiwi-split direction="row">
+			<div slot="0" style="background-color:coral;"></div>
+			<div slot="1" style="background-color:cornflowerblue;"></div>
+		</kiwi-split>
+	</div>
+</kiwi-split>
+```
+
+Result:
+
+<kiwi-split style="height:300px;">
+	<div slot="0">
+		<kiwi-split direction="row">
+			<div slot="0" style="background-color:coral;"></div>
+			<div slot="1" style="background-color:cornflowerblue;"></div>
+		</kiwi-split>
+	</div>
+	<div slot="1">
+		<kiwi-split direction="row">
+			<div slot="0" style="background-color:coral;"></div>
+			<div slot="1" style="background-color:cornflowerblue;"></div>
+		</kiwi-split>
+	</div>
+</kiwi-split>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type             | description                                                                        |
+| --------- | ---------------- | ---------------------------------------------------------------------------------- |
+| direction | "row" \| "column | Determines of the layout is from left to right ("row") or top to bottom ("column") |
+| split     | string           | Manually sets the size for the index 0 child in the split                          |
+
+### Styling
+
+The following CSS variables can be configured:
+
+| Variable                          | Description                        |
+| --------------------------------- | ---------------------------------- |
+| --kiwi-split-bar-background-color | Color of the resizer bar           |
+| --kiwi-split-handle-color-hover   | Color of the resizer pill          |
+| --kiwi-split-handle-color         | Color of the resizer pill on hover |
+
+---
+
+## \<kiwi-tabs> Components.Tabs
 
 \<kiwi-tabs> is a tabbed panel. This component allows you to create tabs and display content depending on what tab is active. The motivation for this component is that many most applications use these types of layouts, and creating them requires a lot of boilerplate and state management.
 
@@ -146,14 +207,130 @@ Result:
 
 The following attributes can be configured:
 
-| attribute        | type            | description                                                            |
-| ---------------- | --------------- | ---------------------------------------------------------------------- |
-| active-tab-index | number          | index of the selected tab                                              |
-| direction        | "row"\|"column" | If set to row the tab menu will top to bottom, otherwise left to right |
+| attribute        | type            | description                                                                                |
+| ---------------- | --------------- | ------------------------------------------------------------------------------------------ |
+| active-tab-index | number          | index of the selected tab                                                                  |
+| direction        | "row"\|"column" | If set to row the tab menu will top to bottom, otherwise left to right                     |
+| noborder         | any             | If set to any value there will be no border separating the tabs and the content below them |
+
+The following events are fired:
+
+| name   | description                                                                                                                                                                                                                        |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| change | Change event is fired whenever a tab is clicked. The details of the event contains a tabElement reference and an index property of what tab was pressed. Note that this event is not fired when the attribute is manually updated. |
 
 ---
 
-## \<kiwi-treelist-item>
+## \<kiwi-multi-toggle> Components.MultiToggle
+
+\<kiwi-multi-toggle> is a stateful multi option toggle component.
+
+The element accepts a stringified array of options, each one with a key and value property. The key property can be used to update the state and will be returned in events when the selection changes by the user.
+
+Check out the following example:
+
+### Example:
+
+```html
+<kiwi-multi-toggle id="my-toggle" states='[{"key":"1","value":"Text One"},{"key":"2","value":"Text Two"},{"key":"3","value":"Text Three"}]' selected="1">
+</kiwi-multi-toggle>
+
+<script>
+	const myToggle = document.querySelector("#my-toggle")
+	myToggle.getState() // -> {states: {key: string, value: string}[], selected: string}
+	myToggle.setStates([{ key: "someKey", value: "Some new Value" }])
+	myToggle.addEventListener("change", e => console.log(e.detail.newSelection))
+	myToggle.setSelected("someKey") // -> { newSelection: "someKey" }
+</script>
+```
+
+Result:
+
+<kiwi-multi-toggle states='[{"key":"1","value":"Text One"},{"key":"2","value":"Text Two"},{"key":"3","value":"Text Three"}]' selected="1"> </kiwi-multi-toggle>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type                           | description                                                                |
+| --------- | ------------------------------ | -------------------------------------------------------------------------- |
+| states    | {key: string, value: string}[] | Labels displayed in the toggle, described through a serialized JSON object |
+| selected  | string                         | Selected option key                                                        |
+
+The following events are fired:
+
+| name   | description                                                                                                                                                      |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| change | The change event is fired whenever the selection changes. The event's detail property contains a newSelection property that holds the key for the new selection. |
+
+---
+
+## \<kiwi-rating> Components.Rating
+
+\<kiwi-rating> is a 5-star rating component that can be plugged into any form element.
+
+By default the name property provided to the form will be "rating", but this can be changed using the "name" attribute. Use the "disabled" attribute to disable the element and the "value" attribute to programatically set the value. You can listen to value changes using a simple change event listener.
+
+Check out the following example:
+
+### Example:
+
+```html
+<kiwi-rating></kiwi-rating>
+```
+
+Result:
+
+<kiwi-rating></kiwi-rating>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type                           | description                                                                      |
+| --------- | ------------------------------ | -------------------------------------------------------------------------------- |
+| name      | {key: string, value: string}[] | Configures the name attribute for the internal radio buttons                     |
+| disabled  | string                         | If set to any value the rating component will be disabled                        |
+| value     | 1\|2\|3\|4\|5                  | Sets the selected amount of stars. Setting any other value removes the selection |
+
+The following events are fired:
+
+| name   | description                                                     |
+| ------ | --------------------------------------------------------------- |
+| change | The change event comes directly from the internal radio buttons |
+
+---
+
+## \<kiwi-card> Components.Card
+
+\<kiwi-card> is a basic card component.
+
+You can either provide the component with a title and a text atrribute or slot in your own custom content. You can also provide either an icon URL, or initials that should be rendered in place of the icon.
+
+### Example:
+
+```html
+<kiwi-card title="Title" text="Text Content" icon="KC" direction="horizontal"></kiwi-card>
+```
+
+Result:
+
+<kiwi-card title="Title" text="Text Content" icon="KC" direction="horizontal"></kiwi-card>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type                     | description                                                |
+| --------- | ------------------------ | ---------------------------------------------------------- |
+| title     | string                   | Header for the card                                        |
+| direction | "horizontal"\|"vertical" | Determines if the card is rendered as a row or as a column |
+| text      | string                   | Text iside the card, will never expand past 2 rows.        |
+| icon      | string                   | An Icon URL or initials to be rendered inside of a circle  |
+
+---
+
+## \<kiwi-treelist-item> Components.Tree
 
 \<kiwi-treelist-item> is a way of creating en expandable tree with optionally selectable items in it.
 
@@ -228,7 +405,7 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-navbar>
+## \<kiwi-navbar> Components.Navbar
 
 \<kiwi-navbar> is a modern navbar with responsiveness built in.
 
@@ -282,9 +459,9 @@ The following CSS variables can be configured:
 
 ---
 
-## \<kiwi-burger>
+## \<kiwi-burger> Components.Burger
 
-\<kiwi-drawer> is a side drawer panel with a built-in toggle. This type of togglable side drawer can be found in most responsive applications today, and require a lot of work to set up.
+\<kiwi-burger> is a side drawer panel with a built-in toggle. This type of togglable side drawer can be found in most responsive applications today, and require a lot of work to set up.
 
 You can programatically open and close the drawer by setting the "open" attribute. The attribute also allows you to monitor the component as it will always reflect the current state.
 
@@ -309,16 +486,15 @@ The following attributes can be configured:
 
 The following CSS variables can be configured:
 
-| Variable                                | Description                       |
-| --------------------------------------- | --------------------------------- |
-| --kiwi-burger-drawer-button-size        | Size for the toggle button        |
-| --kiwi-burger-drawer-button-padding     | Padding for the toggle button     |
-| --kiwi-burger-drawer-color              | Line color for the toggle button  |
-| --kiwi-burger-drawer-animation-duration | Animation duration for the drawer |
+| Variable                            | Description                      |
+| ----------------------------------- | -------------------------------- |
+| --kiwi-burger-drawer-button-size    | Size for the toggle button       |
+| --kiwi-burger-drawer-button-padding | Padding for the toggle button    |
+| --kiwi-burger-drawer-color          | Line color for the toggle button |
 
 ---
 
-## \<kiwi-accordion>
+## \<kiwi-accordion> Components.Accordion
 
 \<kiwi-accordion> is an accordion component where when clicking on it a content panel expands below it. This type of component can be found in a great deal of applications, and requires quite a lot of boilerplate.
 
@@ -382,7 +558,48 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-scroll-list>
+## \<kiwi-pill> Components.Pill
+
+\<kiwi-pill> A pill element that can automatically position itself in the top right corner of its closest relative parent.
+
+### Example:
+
+```html
+<div style="position:relative;background-color:coral;width:250px;height:250px;display:flex;align-items:center;justify-content:center;">
+	A box
+	<kiwi-pill>Pill</kiwi-pill>
+</div>
+```
+
+Result:
+
+<div style="position:relative;background-color:coral;width:250px;height:250px;display:flex;align-items:center;justify-content:center;">
+	A box
+	<kiwi-pill>Pill</kiwi-pill>
+</div>
+
+### Attributes
+
+The following attributes can be configured:
+
+| attribute | type                                                                                 | description                                                             |
+| --------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| shape     | "round" \| "square"                                                                  | Should the pill be round or square?                                    |
+| mode      | "floating" \| "inline"                                                               | Should the pill float in the top right corner or be positioned inline? |
+| type      | "primary" \| "secondary" \| "neutral" \| "info" \| "success" \| "warning" \| "error" | To change the background color of the pill element as required         |
+
+### Styling
+
+The following CSS variables can be configured:
+
+| Variable            | Description                    |
+| ------------------- | ------------------------------ |
+| --kiwi-offset-top   | Offset distance from the top   |
+| --kiwi-offset-right | Offset distance from the right |
+
+---
+
+## \<kiwi-scroll-list> Components.ScrollList
 
 \<kiwi-scroll-list> is a horizontal list that renders arrow buttons to scroll when overflowing. Perfect for lists of links, chips or similar.
 
@@ -430,7 +647,7 @@ The following CSS variables can be configured:
 
 ---
 
-## \<kiwi-alert>
+## \<kiwi-alert> Components.Alert()
 
 \<kiwi-alert> is a component that visually communicates a strong message. It can optionally be dismissable. The alert element is part of the regular flow of elements in the DOM tree, making it distinct from similar elements like toast notifications.
 

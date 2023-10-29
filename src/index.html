@@ -17,11 +17,6 @@
       margin: 0;
     }
 
-    body {
-      background-color: #f9f9f9;
-      color: #323232;
-    }
-
     .box {
       max-width: 500px;
       margin: auto;
@@ -31,15 +26,18 @@
     .box:not(.nomarginrule) * {
       margin-bottom: 10px;
     }
-  </style>
-  <script>
-    kiwicomponents.enableGlobalTooltips()
-  </script>
-  <style>
+
     kiwi-navbar-item {
       color: #f7f7f7;
     }
   </style>
+  <link rel="stylesheet" href="./Stylesheets/External/bundle.scss">
+  <script type="module">
+    import * as kiwicomponentsImport from "./index.js"
+    window.kiwicomponents = kiwicomponentsImport
+    kiwicomponents.init()
+    kiwicomponents.enableGlobalTooltips()
+  </script>
 </head>
 
 <body>
@@ -60,12 +58,15 @@
     <h6>Heading 6</h6>
     <div class="subtitle-1">Subtitle 1</div>
     <div class="subtitle-2">Subtitle 2</div>
-    <div class="body-1">Body 1</div>
-    <div class="body-2">Body 2</div>
-    <div class="body-3">Body 3</div>
+    <div class="body-l">Body 1</div>
+    <div class="body-m">Body 2</div>
+    <div class="body-s">Body 3</div>
     <div class="button">Button</div>
     <div class="caption">Caption</div>
     <div class="overline">Overline</div>
+    <div><a>Link</a></div>
+    <figcaption>Figcaption</figcaption>
+    <pre>Pre</pre>
     <br /><br />
     Header Group:
     <hgroup>
@@ -99,6 +100,167 @@
     </div>
   </div>
 
+  <h2>Regular (fluid) Section</h2>
+  <section>
+    <article>
+      <h2>This is an article</h2>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+      consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis
+      iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+      perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+      sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+      quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit excepturi
+      ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+      <kiwi-button>Click me</kiwi-button>
+    </article>
+    <article class="fill">
+      <h2>This is a filled article</h2>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+      consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis
+      iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+      perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+      sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+      quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit excepturi
+      ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+      <kiwi-button>Click me</kiwi-button>
+    </article>
+    <article>
+      <h2>This is an article with a section</h2>
+      <section>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+        consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis
+        perspiciatis
+        iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+        perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+        sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+        quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit
+        excepturi
+        ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+        <kiwi-button>Click me</kiwi-button>
+      </section>
+    </article>
+  </section>
+  <h2>Gapped Section</h2>
+  <section class="mobile-margins">
+    <article>
+      <h2>This is an article</h2>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+      consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis
+      iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+      perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+      sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+      quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit excepturi
+      ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+      <kiwi-button>Click me</kiwi-button>
+    </article>
+    <article class="fill">
+      <h2>This is an article with fill</h2>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+      consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis
+      iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+      perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+      sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+      quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit excepturi
+      ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+      <kiwi-button>Click me</kiwi-button>
+    </article>
+    <article>
+      <h2>This is an article with a section</h2>
+      <section>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+        consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis
+        perspiciatis
+        iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+        perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+        sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+        quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit
+        excepturi
+        ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+        <kiwi-button>Click me</kiwi-button>
+      </section>
+    </article>
+  </section>
+  <h2>Narrow Section</h2>
+  <section class="narrow">
+    <article>
+      <h2>This is an article</h2>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+      consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis
+      iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+      perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+      sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+      quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit excepturi
+      ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+      <kiwi-button>Click me</kiwi-button>
+    </article>
+    <article class="fill">
+      <h2>This is a filled article</h2>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+      consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis
+      iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+      perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+      sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+      quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit excepturi
+      ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+      <kiwi-button>Click me</kiwi-button>
+    </article>
+    <article>
+      <h2>This is an article with a section</h2>
+      <section>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+        consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis
+        perspiciatis
+        iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+        perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+        sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+        quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit
+        excepturi
+        ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+        <kiwi-button>Click me</kiwi-button>
+      </section>
+    </article>
+  </section>
+  <h2>Narrow Section with mobile margins layout</h2>
+  <section class="narrow mobile-margins">
+    <article>
+      <h2>This is an article</h2>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+      consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis
+      iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+      perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+      sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+      quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit excepturi
+      ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+      <kiwi-button>Click me</kiwi-button>
+    </article>
+    <article class="fill">
+      <h2>This is an article with fill</h2>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+      consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis
+      iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+      perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+      sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+      quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit excepturi
+      ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+      <kiwi-button>Click me</kiwi-button>
+    </article>
+    <article>
+      <h2>This is an article with a section</h2>
+      <section>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos
+        consequatur, voluptate quasi corporis alias, suscipit incidunt? Maxime, ducimus unde placeat officiis
+        perspiciatis
+        iure laudantium necessitatibus beatae omnis nisi aperiam, voluptatem, cumque quaerat error. Iste, magnam nemo
+        perspiciatis possimus autem provident qui a, optio dolorem, animi earum veniam. Sunt eum, officiis nemo, harum
+        sapiente a neque vitae accusantium perferendis vel consequuntur porro nulla inventore quo esse tempora saepe
+        quibusdam id dolorum voluptatibus iure, in totam repellendus. Ex nulla, repellendus deleniti a eos fugit
+        excepturi
+        ratione incidunt tenetur quisquam illum quidem autem eaque sed maxime inventore.
+        <kiwi-button>Click me</kiwi-button>
+      </section>
+    </article>
+  </section>
+
   <div style="width:200px;height:200px;overflow:auto;" class="box">
     <h3>Scrollbars</h3>
     <div style="width:400px;height:400px;"></div>
@@ -109,36 +271,33 @@
     <kiwi-button>Default</kiwi-button>
     <kiwi-button type="primary">Primary</kiwi-button>
     <kiwi-button type="primary" fill="light">Primary</kiwi-button>
-    <kiwi-button type="primary" fill="link">Primary</kiwi-button>
     <kiwi-button type="primary" fill="none">Primary</kiwi-button>
     <kiwi-button type="secondary">Secondary</kiwi-button>
     <kiwi-button type="secondary" fill="light">Secondary</kiwi-button>
-    <kiwi-button type="secondary" fill="link">Secondary</kiwi-button>
     <kiwi-button type="secondary" fill="none">Secondary</kiwi-button>
     <kiwi-button type="neutral">Neutral</kiwi-button>
     <kiwi-button type="neutral" fill="light">Neutral</kiwi-button>
-    <kiwi-button type="neutral" fill="link">Neutral</kiwi-button>
     <kiwi-button type="neutral" fill="none">Neutral</kiwi-button>
     <kiwi-button type="info">Info</kiwi-button>
     <kiwi-button type="info" fill="light">Info</kiwi-button>
-    <kiwi-button type="info" fill="link">Info</kiwi-button>
     <kiwi-button type="info" fill="none">Info</kiwi-button>
     <kiwi-button type="success">Success</kiwi-button>
     <kiwi-button type="success" fill="light">Success</kiwi-button>
-    <kiwi-button type="success" fill="link">Success</kiwi-button>
     <kiwi-button type="success" fill="none">Success</kiwi-button>
     <kiwi-button type="warning">Warning</kiwi-button>
     <kiwi-button type="warning" fill="light">Warning</kiwi-button>
-    <kiwi-button type="warning" fill="link">Warning</kiwi-button>
     <kiwi-button type="warning" fill="none">Warning</kiwi-button>
     <kiwi-button type="error">Error</kiwi-button>
     <kiwi-button type="error" fill="light">Error</kiwi-button>
-    <kiwi-button type="error" fill="link">Error</kiwi-button>
     <kiwi-button type="error" fill="none">Error</kiwi-button>
-    <kiwi-button icon="./Icons/icon-rightarrow.svg">With Icon</kiwi-button>
-    <kiwi-button icon-placement="after" icon="./Icons/icon-rightarrow.svg">With Reverse Icon</kiwi-button>
-    <kiwi-button direction="column" icon="./Icons/icon-rightarrow.svg">With Column</kiwi-button>
-    <a role="button" class="type-primary fill-link" href="#">A button link</a>
+    <kiwi-button icon="./Assets/Icon/icon-rightarrow.svg">With Icon</kiwi-button>
+    <kiwi-button icon-placement="after" icon="./Assets/Icons/icon-rightarrow.svg">With Reverse Icon</kiwi-button>
+    <kiwi-button direction="column" icon="./Assets/Icons/icon-rightarrow.svg">With Column</kiwi-button>
+    <a role="button" class="type-primary fill-none useanimation" href="#">A button link</a>
+
+    <div style="background-color:coral;height:200px;display:flex;align-items:center;justify-content:center;">
+      <button class="type-glass" style="width:fit-content;">Glass Button</button>
+    </div>
   </div>
 
   <div class="box">
@@ -183,10 +342,20 @@
   </div>
 
   <div class="box">
+    <h3>Meter</h3>
+    <meter value="30" min="0" max="100" title="GB"></meter>
+    <meter value="10" min="0" max="100" low="20" optimum="50" high="80"></meter>
+    <meter value="40" min="0" max="100" low="20" optimum="50" high="80"></meter>
+    <meter value="50" min="0" max="100" low="20" optimum="50" high="80"></meter>
+    <meter value="60" min="0" max="100" low="20" optimum="50" high="80"></meter>
+    <meter value="90" min="0" max="100" low="50" optimum="20" high="80"></meter>
+  </div>
+
+  <div class="box">
     <h3>Toasts</h3>
     <script>
       function showToast() {
-        kiwicomponents.showToast({ title: "Hello World", icon: "./Icons/icon-check.svg", left: true, bottom: true, subtitle: "Hello World", type: "info", timeout: 500000 })
+        kiwicomponents.showToast({ title: "Hello World", icon: "./Assets/Icons/icon-check.svg", left: true, bottom: true, subtitle: "Hello World", type: "info", timeout: 500000 })
       }
       function showSnackbar() {
         kiwicomponents.showToast({ title: "Hello World", top: true, right: true, bottom: true, left: true, type: "warning", timeout: 5000, clearExisting: true })
@@ -243,10 +412,6 @@
         <div style="width:100px;height:100px;background:coral;margin:0 !important;padding:1em;">Rich Content</div>
       </kiwi-tooltip>
     </h4>
-    <h4 style="width:fit-content;">
-      No animation
-      <kiwi-tooltip noanimation="">No Animation</kiwi-tooltip>
-    </h4>
     <h4 style="width:fit-content;" id="tooltip-target-1">Target</h4>
     <kiwi-tooltip target="#tooltip-target-1">Target</kiwi-tooltip>
     <kiwi-tooltip>
@@ -279,10 +444,10 @@
     <h4>
       With sub menu
       <kiwi-menu mode="contextmenu">
-        <kiwi-menu-item icon="./Icons/icon-check.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
+        <kiwi-menu-item icon="./Assets/Icons/icon-check.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
         <kiwi-menu-item icon="" text="Option 2"></kiwi-menu-item>
         <kiwi-menu-item icon="" text="Option 3">
-          <kiwi-menu-item icon="./Icons/icon-check.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
+          <kiwi-menu-item icon="./Assets/Icons/icon-check.svg" text="Option 1" detail="Detail"></kiwi-menu-item>
           <kiwi-menu-item icon="" text="Option 2" disabled=""></kiwi-menu-item>
           <hr style="margin:0.25rem 1rem;color:black;opacity:0.3;">
           <kiwi-menu-item text="Option 3">
@@ -297,7 +462,7 @@
     <script>
       function openWindow(scale) {
         const options = {
-          icon: "./Icons/icon-rightarrow-dark.svg",
+          icon: "./Assets/Icons/icon-rightarrow-dark.svg",
           title: "This is a window!",
           scale: scale,
           draggable: true,
@@ -323,34 +488,31 @@
   </div>
 
   <div class="box">
-    <h3>Burger Menus</h3>
-    <kiwi-drawer direction="left">
-      Left Menu
-    </kiwi-drawer>
-    <kiwi-drawer>
-      Right Menu
-    </kiwi-drawer>
+    <h3>Burger Menu</h3>
+    <kiwi-burger>
+      Menu Content
+    </kiwi-burger>
   </div>
 
   <div class="box">
     <h3>Utility</h3>
     <script>
       async function confirmWithUser() {
-        const choice = await kiwicomponents.confirm("This action is irreversible. Proceed?")
+        const choice = await kiwicomponents.confirm({ title: "Please Confirm", message: "This action is irreversible. Proceed?" })
         console.log(choice)
       }
       function showSpinner() {
-        const closeSpinner = kiwicomponents.showSpinner("Jumping up and down...")
+        const spinner = kiwicomponents.showSpinner({ message: "Jumping up and down..." })
         setTimeout(() => {
-          closeSpinner()
+          spinner.close()
         }, 3000);
       }
       async function alertUser() {
-        await kiwicomponents.alert("Hello User", "This is an alert message, and it is very important.", "OK!", "warning")
+        await kiwicomponents.alert({ title: "Hello User", message: "This is an alert message, and it is very important.", buttonText: "OK!", type: "warning" })
         console.log("Alert was closed.")
       }
       async function promptUser() {
-        const input = await kiwicomponents.prompt("Please fill in something here, thanks.", { required: "true" })
+        const input = await kiwicomponents.prompt({ message: "Please fill in something here, thanks.", formOrInputAttributes: { required: "true" } })
         console.log(input)
       }
       async function promptUserForm() {
@@ -362,7 +524,7 @@
         </form>
         `
         const form = new DOMParser().parseFromString(formString, 'text/html').body.children[0]
-        const input = await kiwicomponents.prompt("Important form", form)
+        const input = await kiwicomponents.prompt({ message: "Important form", formOrInputAttributes: form })
         console.log(input)
       }
     </script>
@@ -445,7 +607,7 @@
               <th>Three</th>
             </thead>
             <tbody>
-              <tr kiwi-row-id="1" kiwi-row-icon="./Icons/icon-rightarrow-dark.svg" kiwi-row-title="A">
+              <tr kiwi-row-id="1" kiwi-row-icon="./Assets/Icons/icon-rightarrow-dark.svg" kiwi-row-title="A">
                 <td>Hello World 1</td>
                 <td>Hello World 2</td>
                 <td>Hello World 3</td>
@@ -616,6 +778,15 @@
           <input type="range">
           <input type="range" disabled>
         </div>
+        <label>Upload</label>
+        <input type="file">
+        <input type="file" disabled>
+        <input type="color">
+        <input type="color" disabled>
+        <input type="date">
+        <input type="time">
+        <input
+          style="--kiwi-input-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='black' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)">
       </div>
     </form>
   </div>
@@ -661,7 +832,7 @@
 
   <div class="box">
     <h3>Accordions</h3>
-    <kiwi-accordion title="Accordion 1" icon="./Icons/icon-rightarrow-dark.svg">
+    <kiwi-accordion title="Accordion 1" icon="./Assets/Icons/icon-rightarrow-dark.svg">
       <div style="padding:1rem;box-sizing:border-box;">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie ultricies magna, quis gravida dolor
         lacinia vitae. Vestibulum vitae mi ac urna molestie consequat. Sed purus elit, interdum non justo eu, eleifend
@@ -770,8 +941,13 @@
     <kiwi-button id="thread-meta-button" onclick="startMonitoringThreadPlanner()">Monitor</kiwi-button>
     <div id="threads-meta"></div>
     <div id="threads-executing"></div>
-    <script defer>
-      const threadPlanner = kiwicomponents.getThreadPlanner()
+    <script>
+      let threadPlanner
+      window.addEventListener("DOMContentLoaded", () => {
+        threadPlanner = kiwicomponents.getThreadPlanner()
+        threadPlanner.enableGlobalThreadPlanner()
+      })
+
       const startMonitoringThreadPlanner = () => {
         setInterval(() => {
           document.getElementById("threads-meta").innerHTML = `
@@ -829,8 +1005,6 @@
         threadPlanner.warmupThreads(someHeavyFunction, 0)
       }
 
-      threadPlanner.enableGlobalThreadPlanner()
-
       const asPrototype = () => {
         const div = document.createElement("div")
         div.innerHTML = `Thread Queued 🟠`
@@ -849,7 +1023,10 @@
 
   <div class="box">
     <script>
-      const stateManager = kiwicomponents.getStateManager()
+      let stateManager
+      window.addEventListener("DOMContentLoaded", () => {
+        stateManager = kiwicomponents.getStateManager()
+      })
       function smTest1() {
         stateManager.setState("fruits", ["apple", "orange", "banana"])
         stateManager.setState("vegetables", ["cucumber", "tomato", "paprika"])

@@ -4,9 +4,6 @@ import { TargetObserver } from "../../../Utility/TargetObserver"
 import template from "./kiwi-menu.html"
 import styles from "./kiwi-menu.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Menu
  * A menu component that can be used to create dropdown menus, context menus or similar components.
@@ -17,21 +14,24 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @attr {number} left - Adjusts the left position of the menu relative to the target
  * @attr {"dropdown"|"contextmenu"} mode - Is this a dropdown menu for a contextmenu.
  * @attr {string} target - Target css selector of element.
- * @attr {"left"|"center"|"right"} justify - If set the target's and menu's right borders will align, otherwise their left. Not applicable for "contextmenu" mode.
- * @attr {any} noanimation - If set the element will not be animated.
+ * @attr {"start"|"center"|"end"} justify - If set the target's and menu's right borders will align, otherwise their left. Not applicable for "contextmenu" mode.
  *
  * @slot - Menu body.
  * @slot target - Menu will be displayed for component in this slot. Most usable for context meny.
  */
-
-class MenuElement extends HTMLElement {
+class KiwiMenuElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["top", "left", "mode", "target", "justify", "noanimation"]
+		return ["top", "left", "mode", "target", "justify"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiMenuElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiMenuElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiMenuElement._template.content.cloneNode(true))
 		this._mainElement = this.shadowRoot.querySelector("#main")
 		this._targetSlotElement = this.shadowRoot.querySelector("slot[name='target']")
 		this._targetObserver = new TargetObserver(this, this._targetSlotElement, {
@@ -62,8 +62,6 @@ class MenuElement extends HTMLElement {
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (name === "target") {
 			this._updateTargetQuery(newValue)
-		} else if (name === "noanimation") {
-			this._updateNoAnimation(newValue)
 		} else if (name === "mode") {
 			this._updateMode(newValue)
 		}
@@ -72,14 +70,6 @@ class MenuElement extends HTMLElement {
 	_updateTargetQuery(newValue) {
 		this._targetObserver.query = newValue
 		this._targetObserver.updateTarget()
-	}
-
-	_updateNoAnimation(newValue) {
-		if (newValue !== null) {
-			this._mainElement.style.transition = "none"
-		} else {
-			this._mainElement.style.removeProperty("transition")
-		}
 	}
 
 	_updateMode(newValue) {
@@ -170,6 +160,10 @@ class MenuElement extends HTMLElement {
 			}
 			adjustment = computePositionAdjustment(mainElementBCR, targetBCR, "bottom", justify, event)
 		}
+		//Adjust for offsets
+		this.hasAttribute("top") && (adjustment.y = adjustment.y + parseInt(this.getAttribute("top")))
+		this.hasAttribute("left") && (adjustment.x = adjustment.x + parseInt(this.getAttribute("left")))
+
 		//Apply new coordinates and dispose of the clone
 		this._mainElement.style.left = `${adjustment.x}px`
 		this._mainElement.style.top = `${adjustment.y}px`
@@ -178,4 +172,4 @@ class MenuElement extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-menu", MenuElement)
+export { KiwiMenuElement }

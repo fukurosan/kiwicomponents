@@ -1,0 +1,215 @@
+@import "../variables.scss";
+
+@mixin base-text-no-color {
+	font-family: $font-family-body;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	line-height: 1.2em;
+	font-style: normal;
+	font-stretch: normal;
+	text-transform: none;
+}
+
+%base-text-no-color {
+	@include base-text-no-color;
+}
+
+@mixin heading-text {
+	@include base-text-no-color;
+	margin: 0;
+	color: $neutral-color-700;
+	font-family: $font-family-heading;
+	font-weight: 700;
+}
+
+%heading-text {
+	@include heading-text;
+}
+
+@mixin body-text {
+	@include base-text-no-color();
+	color: $neutral-color-700;
+	font-family: $font-family-body;
+	font-weight: 400;
+}
+
+%body-text {
+	@include heading-text;
+}
+
+@mixin h1 {
+	@include heading-text;
+	font-size: 4rem;
+	@media screen and (max-width: 768px) {
+		font-size: 3.5rem;
+	}
+}
+
+%h1 {
+	@include h1;
+}
+
+@mixin h2 {
+	@include heading-text;
+	font-size: 2.5rem;
+	@media screen and (max-width: 768px) {
+		font-size: 2.1875rem;
+	}
+}
+
+%h2 {
+	@include h2;
+}
+
+@mixin h3 {
+	@include heading-text;
+	font-size: 2rem;
+	@media screen and (max-width: 768px) {
+		font-size: 1.75rem;
+	}
+}
+
+%h3 {
+	@include h3;
+}
+
+@mixin h4 {
+	@include heading-text;
+	font-size: 1.5rem;
+	@media screen and (max-width: 768px) {
+		font-size: 1.3125rem;
+	}
+}
+
+%h4 {
+	@include h4;
+}
+
+@mixin h5 {
+	@include heading-text;
+	font-size: 1.375rem;
+	@media screen and (max-width: 768px) {
+		font-size: 1.1875rem;
+	}
+}
+
+%h5 {
+	@include h5;
+}
+
+@mixin h6 {
+	@include heading-text;
+	font-size: 1.25rem;
+	@media screen and (max-width: 768px) {
+		font-size: 1.125rem;
+	}
+}
+
+%h6 {
+	@include h6;
+}
+
+@mixin subtitle-1 {
+	@include heading-text;
+	font-size: 1rem;
+	@media screen and (max-width: 768px) {
+		font-size: 0.875rem;
+	}
+}
+
+%subtitle-1 {
+	@include subtitle-1;
+}
+
+@mixin subtitle-2 {
+	@include heading-text;
+	font-size: 0.875rem;
+	@media screen and (max-width: 768px) {
+		font-size: 0.75rem;
+	}
+}
+
+%subtitle-2 {
+	@include subtitle-2;
+}
+
+@mixin body-l {
+	@include body-text;
+	font-size: 1.125rem;
+	@media screen and (max-width: 768px) {
+		font-size: 1rem;
+	}
+}
+
+%body-l {
+	@include body-l;
+}
+
+@mixin body-m {
+	@include body-text;
+	font-size: 1rem;
+	@media screen and (max-width: 768px) {
+		font-size: 0.875rem;
+	}
+}
+
+%body-m {
+	@include body-m;
+}
+
+@mixin body-s {
+	@include body-text;
+	font-size: 0.875rem;
+	@media screen and (max-width: 768px) {
+		font-size: 0.75rem;
+	}
+}
+
+%body-s {
+	@include body-s;
+}
+
+@mixin link {
+	@include body-text;
+	font-weight: 700;
+	text-decoration: underline;
+	&:hover {
+		text-decoration: none;
+		cursor: pointer;
+	}
+}
+
+%link {
+	@include link;
+}
+
+@mixin button {
+	@include body-text;
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+%button {
+	@include button;
+}
+
+@mixin caption {
+	@include body-text;
+	font-size: 0.75rem;
+}
+
+%caption {
+	@include caption;
+}
+
+@mixin overline {
+	@include body-text;
+	font-size: 0.625rem;
+	font-weight: 200;
+	text-transform: uppercase;
+}
+
+%overline {
+	@include overline;
+}

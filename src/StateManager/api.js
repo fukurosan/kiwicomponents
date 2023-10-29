@@ -3,7 +3,7 @@ import { StateManager as SM } from "./statemanager"
 /**
  * The state manager API
  */
-class StateManager {
+export class StateManager {
 	constructor() {
 		this.stateManager = new SM()
 	}

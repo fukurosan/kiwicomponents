@@ -1,6 +1,6 @@
 {
   "name": "kiwicomponents",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "An SDK for web browsers.",
   "main": "./dist/js/bundle.js",
   "unpkg": "./dist/js/bundle.js",
@@ -9,11 +9,14 @@
   "types": "./dist/types/index.bundle.d.ts",
   "scripts": {
     "lint:fix": "prettier \"src/**/*.js\" --write && eslint \"src/**/*.js\" --fix",
-    "test": "jest --no-cache --verbose",
-    "build": "npm run lint:fix && rimraf dist && npm run build:rollup && npm run test && npm run build:types",
-    "build:rollup": "npx rollup -c",
+    "test": "npm run build:vite && npx vitest run",
+    "build": "npm run lint:fix && rimraf dist && npm run build:vite && npm run test && npm run build:types && npm run build:storybook",
+    "build:vite": "vite build",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir ./dist/types/",
-    "start": "npx rollup -c rollup.config.dev.js --watch"
+    "build:storybook": "storybook build -o ./dist/storybook",
+    "start": "storybook dev -p 6006",
+    "start:storybook": "storybook dev -p 6006",
+    "start:vanilla": "npx vite serve"
   },
   "author": "Henrik Olofsson",
   "license": "MIT",
@@ -31,31 +34,18 @@
     "web-sdk"
   ],
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^17.1.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^11.1.1",
+    "@storybook/addon-essentials": "^7.4.4",
+    "@storybook/html-vite": "^7.4.4",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-jest": "^24.4.0",
-    "husky": "^4.3.8",
-    "jest": "^26.6.3",
     "jest-image-snapshot": "^4.3.0",
-    "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
-    "puppeteer": "^11.0.0",
+    "puppeteer": "^21.3.5",
     "rimraf": "^3.0.1",
-    "rollup": "^2.38.4",
-    "rollup-plugin-bundle-size": "^1.0.3",
-    "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-scss": "^3.0.0",
-    "rollup-plugin-serve": "^1.1.0",
-    "rollup-plugin-string": "^3.0.0",
-    "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.54.9",
-    "typescript": "^4.5.5"
+    "storybook": "^7.4.4",
+    "typescript": "^4.5.5",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.5"
   }
 }

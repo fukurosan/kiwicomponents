@@ -1,9 +1,6 @@
 import template from "./kiwi-treelist-item.html"
 import styles from "./kiwi-treelist-item.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Tree List Item
  * Renders a tree list. If a list item is placed inside of another list item then this creates a second, nested level.
@@ -17,22 +14,26 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  *
  * @slot - Default slot is used to nest list items hierarchically
  */
-
-class TreeListItem extends HTMLElement {
+class KiwiTreeListItem extends HTMLElement {
 	static get observedAttributes() {
 		return ["open", "text", "icon", "interactive", "selected"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiTreeListItem._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiTreeListItem._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiTreeListItem._template.content.cloneNode(true))
 		this._mainContainer = this.shadowRoot.querySelector("#main")
 		this._rowContainer = this.shadowRoot.querySelector("#content")
 		this._expandArrow = this.shadowRoot.querySelector("#expand-arrow")
 		this._handleExpandToggle = this._handleExpandToggle.bind(this)
 		this._isVisible = false
 		this._rowContainer.addEventListener("click", this._handleExpandToggle)
-		this.shadowRoot.querySelector("slot").addEventListener("slotchange", this._evaluateArrow.bind(this))
+		this.shadowRoot.querySelector("slot").addEventListener("slotchange", this._evaluateHasChildren.bind(this))
 	}
 
 	connectedCallback() {
@@ -49,7 +50,7 @@ class TreeListItem extends HTMLElement {
 			this._isVisible = true
 			this._mainContainer.style.paddingLeft = "0px"
 		}
-		this._evaluateArrow()
+		this._evaluateHasChildren()
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
@@ -101,11 +102,11 @@ class TreeListItem extends HTMLElement {
 		}, [])
 	}
 
-	_evaluateArrow() {
-		if (!this.getHierarchyChildren().length) {
-			this._expandArrow.style.display = "none"
+	_evaluateHasChildren() {
+		if (this.getHierarchyChildren().length) {
+			this._mainContainer.classList.add("has-children")
 		} else {
-			this._expandArrow.style.display = null
+			this._mainContainer.classList.remove("has-children")
 		}
 	}
 
@@ -124,6 +125,10 @@ class TreeListItem extends HTMLElement {
 			this._mainContainer.style.opacity = 1
 			this._isVisible = true
 			this._mainContainer.addEventListener("transitionend", listener)
+		} else if (!this._mainContainer.style.height) {
+			this._mainContainer.style.height = "auto"
+			this._mainContainer.style.opacity = 1
+			this._isVisible = true
 		} else {
 			this._mainContainer.style.height = `${this._mainContainer.scrollHeight}px`
 			setTimeout(() => {
@@ -136,4 +141,4 @@ class TreeListItem extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-treelist-item", TreeListItem)
+export { KiwiTreeListItem }

@@ -4,25 +4,22 @@ import { TargetObserver } from "../../Utility/TargetObserver"
 import template from "./kiwi-tooltip.html"
 import styles from "./kiwi-tooltip.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Tooltip
- * A kiwi tooltip. This component creates a tooltip that appears when hovering a given target.
+ * This component creates a tooltip that appears when hovering a given target.
+ * The tooltip will attempt to initialize itself by finding a taget using
+ * 1. A provided target attribute,
+ * 2. Element provided in the target slot,
+ * 3. Parent element.
+ *
  * @element kiwi-tooltip
  *
  * @attr {"top"|"right"|"bottom"|"left"|"mouse"|"follow"} position - Determines how the tooltip should be positioned relative to the target element.
  * @attr {string} target - Target css selector of element.
  * @attr {number} delay - Delay in ms before the tooltip should be displayed.
- * @attr {any} noanimation - If provided the tooltip will not animate on insert/remove.
  *
  * @prop {HTMLElement} targetElement - Target for the tooltip element
  *
- * @function updateTarget - Attempts to initialize the tooltip by finding a taget using
- * 1. a provided target attribute,
- * 2. element provided in the target slot,
- * 3. parent element.
  * @function setTargetElementByQuery - Takes a css query as an argument and attempts to set the closest element matching it as the target.
  * Optionally an html element can be provided as a second argument.
  * If provided the tooltip will instead attempt to find a matching target closest to the provided html element.
@@ -30,14 +27,20 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @slot - Default slot handles what should be shown in the tooltip
  * @slot target - The target slot can be used to set a child as a target, without having to provide a css selector.
  */
-class TooltipElement extends HTMLElement {
+class KiwiTooltipElement extends HTMLElement {
 	static get observedAttributes() {
-		return ["position", "target", "delay", "noanimation"]
+		return ["position", "target", "delay"]
 	}
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiTooltipElement._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiTooltipElement._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiTooltipElement._template.content.cloneNode(true))
+
 		this._mainElement = this.shadowRoot.querySelector("#main")
 		this._targetSlotElement = this.shadowRoot.querySelector("slot[name='target']")
 		this._targetObserver = new TargetObserver(this, this._targetSlotElement, {
@@ -76,22 +79,12 @@ class TooltipElement extends HTMLElement {
 	attributeChangedCallback(name, oldValue, newValue) {
 		if (name === "target") {
 			this._updateTargetQuery(newValue)
-		} else if (name === "noanimation") {
-			this._updateNoAnimation(newValue)
 		}
 	}
 
 	_updateTargetQuery(newValue) {
 		this._targetObserver.query = newValue
 		this._targetObserver.updateTarget()
-	}
-
-	_updateNoAnimation(newValue) {
-		if (newValue !== null) {
-			this._mainElement.style.transition = "none"
-		} else {
-			this._mainElement.style.removeProperty("transition")
-		}
 	}
 
 	setTargetElementByQuery(query) {
@@ -204,4 +197,4 @@ class TooltipElement extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-tooltip", TooltipElement)
+export { KiwiTooltipElement }

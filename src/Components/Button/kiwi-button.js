@@ -1,9 +1,6 @@
 import template from "./kiwi-button.html"
 import styles from "./kiwi-button.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Button
  * Renders a kiwi button.
@@ -17,7 +14,7 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @attr {"primary"|"secondary"|"neutral"|"info"|"success"|"error"|"warning"} type - Determines the look and feel of the button. Defaults to "primary".
  * @attr {"small"|"medium"|"large"} size - Determines the size of the button. Defaults to "medium".
  * @attr {"column"|"row"} direction - Determines the direction of the icon and button text (row or column). Default is row.
- * @attr {"dark"|"light"|"link"|"none"} fill - Determines The contrast balance in the button and the hover/active/focus look and feel.
+ * @attr {"solid"|"light"|"outline"|"none"} fill - Determines The contrast balance in the button and the hover/active/focus look and feel.
  *
  * @slot - Button child elements
  *
@@ -31,7 +28,12 @@ class KiwiButton extends HTMLElement {
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiButton._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiButton._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiButton._template.content.cloneNode(true))
 		this._mainContainer = this.shadowRoot.querySelector("#container")
 		this._iconElement = this.shadowRoot.querySelector("#icon")
 		this._slotElement = this.shadowRoot.querySelector("slot")
@@ -103,4 +105,4 @@ class KiwiButton extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-button", KiwiButton)
+export { KiwiButton }

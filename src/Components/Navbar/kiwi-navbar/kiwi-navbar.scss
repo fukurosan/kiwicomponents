@@ -1,4 +1,4 @@
-@import "../../../Assets/Stylesheets/variables.scss";
+@import "../../../Stylesheets/variables.scss";
 
 #block-container {
 	box-sizing: border-box;
@@ -17,6 +17,7 @@
 	height: 100%;
 	position: relative;
 	display: flex;
+	align-items: center;
 	overflow: hidden;
 	background: var(--kiwi-navbar-background, black);
 	border-bottom: var(--kiwi-navbar-border, none);

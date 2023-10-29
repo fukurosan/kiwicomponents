@@ -1,4 +1,4 @@
-export interface WindowElement extends HTMLElement {
+export interface IWindowElement extends HTMLElement {
 	/** Closes the window */
 	close: () => any
 	/** Will hide the window */

@@ -4,19 +4,26 @@ This library comes with a number of css utilities, as well as CSS styles for mos
 
 The following files can be imported:
 
-| filename       | Description                                                              |
-| -------------- | ------------------------------------------------------------------------ |
-| bundle.css     | Full bundle with all stylesheets included                                |
-| button.css     | Button styles                                                            |
-| colors.css     | Makes the color system available as CSS variables                        |
-| layout.css     | Contains different layout modules to help structure elements and content |
-| loading.css    | CSS utility for putting elements in a loading state                      |
-| forms.css      | Form styling                                                             |
-| navigation.css | Styles for navigation related elements                                   |
-| progress.css   | Styles \<progress> elements                                              |
-| scrollbar.css  | Scroll bar styling                                                       |
-| table.css      | Table styling                                                            |
-| text.css       | Text styling                                                             |
+| filename        | Description                                                              |
+| --------------- | ------------------------------------------------------------------------ |
+| bundle.css      | Full bundle with all stylesheets included                                |
+| backgrounds.css | Various background patterns                                              |
+| button.css      | Button styles                                                            |
+| card.css        | Styles for basic cards                                                   |
+| details.css     | Details & summary element styles                                         |
+| divider.css     | Divier element styling                                                   |
+| forms.css       | Form styling                                                             |
+| image.css       | Image styling                                                            |
+| layout.css      | Contains different layout modules to help structure elements and content |
+| loading.css     | CSS utility for putting elements in a loading state                      |
+| meter.css       | Meter element styling                                                    |
+| navigation.css  | Styles for navigation related elements                                   |
+| progress.css    | Progress element elements                                                |
+| scrollbar.css   | Scroll bar styling                                                       |
+| shape.css       | Shape styling                                                            |
+| table.css       | Table styling                                                            |
+| text.css        | Text styling                                                             |
+| tokens.css      | Makes the design system tokens available as CSS variables                |
 
 ```javascript
 import "kiwicomponents/dist/css/filename"
@@ -26,13 +33,13 @@ Some of these imports are described in other sections of this documenation.
 
 ## Button
 
-By enabling button styles your buttons will automatically look like \<kiwi-button> elements. Your buttons can be configured similarly, but using css classes instead of element attributes.
+By enabling button styles your buttons will automatically look better. Your buttons can be configured using css classes.
 
--   type="primary" becomes class="type-primary"
--   fill="light" becomes class="fill-light"
--   useanimation="" becomes class="useanimation"
+-   Set the type using these classes: .type-primary .type-secondary .type-neutral .type-success .type-warning .type-info .type-error .type-glass
+-   You can set the color combinations using these classes: .fill-solid .fill-light .fill-none
+-   To get a cooler hover animation use .useanimation
 
-You can also apply the attribute role="button" to links to make them look like buttons too.
+You can apply the attribute role="button" to \<a> links to make them look like buttons too.
 
 Example:
 
@@ -50,9 +57,9 @@ Example:
 </div>
 </kiwi-scoped-demo>
 
-## Colors
+## Colors & tokens
 
-You can get access to the internal color system of kiwi components and use the colors in your own code. For more information about the color system, check out the theming page.
+You can get access to the internal color & token system of kiwi components and use these parameters in your own code. For more information about the color system, check out the theming page.
 
 Example:
 
@@ -78,13 +85,96 @@ Example:
 <div class="colorful-div">Hello World!</div>
 </kiwi-scoped-demo>
 
+## Cards
+
+Importing the card stylesheets allows you to use the .card class to create cards. The card class will make the container the class is set on into a flex column (vertical) layout with padding and spacing preconfigured. \<header> and \<footer> elements inside of the element will ignore padding and take up their full available space which allows you to, for example, place side-to-side images.
+
+Example:
+
+```html
+<div class="card" style="width:200px;">
+	<header style="height:150px;background:gray;"></header>
+	<div>This is some content in the card</div>
+	<div>This is an additional sentence</div>
+	<footer>This is the footer</footer>
+</div>
+```
+
+<kiwi-scoped-demo>
+<div class="card" style="width:200px;">
+	<header style="height:150px;background:gray;"></header>
+	<div>This is some content in the card</div>
+	<div>This is an additional sentence</div>
+	<footer>This is the footer</footer>
+</div>
+</kiwi-scoped-demo>
+
 ## Layout
 
 You can use a number of different elements to create responsive, easy to understand layouts.
 
+### Base Sections and Articles
+
+When you place a \<section> element as a direct child to either a body, header, main or footer element the section will automatically configure a max width for yout content and center it in the viewport. The centering is done through padding, meaning that if you configure a background for the section it will take up the full width.
+
+Inside of your root \<section> elements you can place \<article> elements, which will transform inte responsive content cards.
+
+Sections by default has margins between elements on desktop, while blending everything together on mobile. You can configure the sections to keep the margins on mobile by setting the class "mobile-margins" on your sections.
+
+If you want to use sections that are more narrow you can configure them with the classs "narrow"
+
+Article elements by default have a maximum content width that allows for more inline air. You can configure them to fill more available space by applying the class "fill".
+
+By default the layout class will change the background of the body element, and the same color will be applied to any sections put inside your articles. You can configure the look and feel like so:
+
+| Variables                 | Description                                               |
+| ------------------------- | --------------------------------------------------------- |
+| --kiwi-section-background | Applied to sections inside articles and the document body |
+| --kiwi-article-background | Applied to articles                                       |
+| --kiwi-article-box-shadow | Applied to articles                                       |
+| --kiwi-article-border     | Applied to articles                                       |
+
+```html
+<main>
+	<section>
+		<article>
+			<h2>This is an article</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+		<article>
+			<h2>This is an article with a section</h2>
+			<section>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+			</section>
+		</article>
+		<article class="fill">
+			<h2>This article fills more space</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+	</section>
+	<section class="narrow mobile-margins">
+		<article>
+			<h2>This article is part of a narrow section</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+		<article>
+			<h2>And it has mobile margins</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+	</section>
+</main>
+```
+
+<a href="./layout.html" target="_blank">Link</a>
+
 ### Containers
 
-You can use the .container class to create a responsive base container on your page to put content in. The container will always leave a little bit of margin on its sides, and never grow beyond a certain point.
+You can use the .container class to add a little bit of margin on the container's sides.
 
 ```html
 <div class="container" style="background-color:aliceblue;padding:1rem;">Hello World</div>
@@ -92,6 +182,18 @@ You can use the .container class to create a responsive base container on your p
 
 <kiwi-scoped-demo>
 <div class="container" style="background-color:aliceblue;padding:1rem;">Hello World</div>
+</kiwi-scoped-demo>
+
+### Desktop and Mobile
+
+```html
+<div class="desktop-only">Hello Desktop</div>
+<div class="mobile-only">Hello Mobile</div>
+```
+
+<kiwi-scoped-demo>
+<div class="desktop-only">Hello Desktop</div>
+<div class="mobile-only">Hello Mobile</div>
 </kiwi-scoped-demo>
 
 ### Grids
@@ -198,6 +300,15 @@ Example:
 </div>
 </kiwi-scoped-demo>
 
+### Centering
+
+You can use a number of utility classes to center things in the viewport. Use these classes on a wrapper container for whatever you want to have centered
+
+-   .center-content will center things in the most basic way using automatic margins and text alignment
+-   .center-content-flex will use flexbox to center its content
+-   .center-content-absolute will use absolute positioning to center its content
+-   .center-content-fixed will use fixed positioning to center its content
+
 ## Loading and Disabled
 
 You can make elements show that they are loading using the aria-busy="true" attribute, as well as disable any element visually and interactively using aria-disabled="true".
@@ -238,11 +349,363 @@ These styles will make standard \<progress> elements look better.
 <progress indeterminate></progress>
 </kiwi-scoped-demo>
 
+## Meter
+
+These styles will make standard \<meter> elements look better.
+
+```html
+<meter min="0" max="100" optimum="100" low="30" high="50" value="25"></meter>
+<meter min="0" max="100" optimum="100" low="30" high="50" value="50"></meter>
+<meter min="0" max="100" optimum="100" low="30" high="50" value="75"></meter>
+```
+
+<kiwi-scoped-demo>
+	<meter min="0" max="100" optimum="100" low="30" high="50" value="25"></meter>
+	<br><br>
+	<meter min="0" max="100" optimum="100" low="30" high="50" value="50"></meter>
+	<br><br>
+	<meter min="0" max="100" optimum="100" low="30" high="50" value="75"></meter>
+</kiwi-scoped-demo>
+
+## Details
+
+These styles will make standard \<details> and \<summary> elements look better by adding a .accordion class to them.
+
+You can also use the .bordered class to give the details element full borders.
+
+```html
+<details class="accordion">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<div>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+<details class="accordion">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<div>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+<details class="accordion">
+	<summary>
+		<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</div>
+	</summary>
+	<div>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+
+<details class="accordion bordered">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<div>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+<details class="accordion bordered">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<div>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+```
+
+<kiwi-scoped-demo>
+<details class="accordion">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<div>
+		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+<details class="accordion">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<div>
+		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+<details class="accordion">
+	<summary>
+		<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis.</div>
+	</summary>
+	<div>
+		    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+
+<br><br>
+
+<div>
+<details class="accordion bordered">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<div>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+<details class="accordion bordered">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<div>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga perspiciatis harum natus omnis, unde temporibus et saepe placeat nobis animi, cumque, sed
+		sunt ratione voluptate debitis atque aspernatur veniam dolorum.
+	</div>
+</details>
+</div>
+</kiwi-scoped-demo>
+
+### Dropdowns
+
+By adding the class .dropdown to your \<details> element you can make it look like a styled \<select> element with no JavaScript required.
+
+```html
+<details class="dropdown">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<ul>
+		<li>Item 1</li>
+		<li>Item 2</li>
+		<li>Item 3</li>
+	</ul>
+</details>
+```
+
+<kiwi-scoped-demo>
+<details class="dropdown">
+	<summary>
+		<div>Lorem, ipsum dolor.</div>
+	</summary>
+	<ul>
+		<li>Item 1</li>
+		<li>Item 2</li>
+		<li>Item 3</li>
+	</ul>
+</details>
+</kiwi-scoped-demo>
+
+## Image
+
+These styles will improve your image elements
+
+## Shapes
+
+You can configure elements to take certain shapes using shape utility classes. The utility classes will apply clip paths to the elements to cut out shapes. All clip paths use percentages to determine how to clip the element, so the size of your element will determine how the result looks
+
+The following shapes can be applied:
+
+-   .shape-round
+-   .shape-triangle
+-   .shape-rounded-square
+-   .shape-rounded-hexagon
+-   .shape-x
+-   .shape-message
+-   .shape-star
+-   .shape-chevron-right
+-   .shape-chevron-left
+-   .shape-rabbet
+-   .shape-bevel
+-   .shape-octagon
+-   .shape-hexagon
+-   .shape-pentagon
+-   .shape-rhombus
+-   .shape-parallelogram
+-   .shape-trapezoid
+-   .shape-nonagon
+
+Example:
+
+```html
+<div class="shape-round" style="width:100px;height:100px;background:gray;"></div>
+```
+
+<kiwi-scoped-demo>
+	<div class="shape-round" style="width:100px;height:100px;background:gray;"></div>
+</kiwi-scoped-demo>
+
+## Dividers
+
+You can create dividers of content by using the .divider class as well as the .horizontal class.
+
+Check out the below example:
+
+```html
+<div style="display:flex;flex-direction:column;gap:2rem;">
+	<div class="divider">A Divider</div>
+	<div class="divider horizontal" style="height:10rem;">Horizontal</div>
+</div>
+```
+
+<kiwi-scoped-demo>
+<div style="display:flex;flex-direction:column;gap:2rem;">
+	<div class="divider">A Divider</div>
+	<div class="divider horizontal" style="height:10rem;">Horizontal</div>
+</div>
+</kiwi-scoped-demo>
+
+## Lists
+
+### Steps
+
+You can create lists of steps using either ordered or unordered lists. You can style each step in your list thematically as well as provide your own content. Each list can be either vertical or horizontal. You can configure your lists to look like steps by adding the .step class, as well as toggle them vertical or horizontal by using .horizontal. To provide your own content to the list dot, use the attribute "kiwi-content". To theme the list dot use one of the following classes:
+
+-   is-secondary
+-   is-neutral
+-   is-success
+-   is-info
+-   is-warning
+-   is-error
+-   is-error
+
+Check out the below example:
+
+```html
+<div style="display:flex;flex-direction:column;">
+	<ul class="steps">
+		<li>List Item 1</li>
+		<li>List Item 2</li>
+	</ul>
+	<ul class="steps horizontal">
+		<li>List Item 1</li>
+		<li>List Item 2</li>
+	</ul>
+	<ol class="steps">
+		<li>List Item 1</li>
+		<li class="is-secondary">List Item Secondary</li>
+		<li class="is-neutral">List Item Neutral</li>
+		<li class="is-success">List Item Success</li>
+		<li class="is-info">List Item Info</li>
+		<li class="is-warning">List Item Warning</li>
+		<li class="is-error">List Item Error</li>
+		<li class="is-error" kiwi-content="@">List Item Custom</li>
+	</ol>
+	<ol class="steps horizontal">
+		<li>List Item 1</li>
+		<li>List Item 2</li>
+	</ol>
+</div>
+```
+
+<kiwi-scoped-demo>
+<div style="display:flex;flex-direction:column;">
+	<ul class="steps">
+		<li>List Item 1</li>
+		<li>List Item 2</li>
+	</ul>
+    <ul class="steps horizontal">
+    	<li>List Item 1</li>
+    	<li>List Item 2</li>
+    </ul>
+    <ol class="steps">
+    	<li>List Item 1</li>
+    	<li>List Item 2</li>
+    	<li>List Item 3</li>
+    	<li class="is-secondary">List Item Secondary</li>
+    	<li class="is-neutral">List Item Neutral</li>
+    	<li class="is-success">List Item Success</li>
+    	<li class="is-info">List Item Info</li>
+    	<li class="is-warning">List Item Warning</li>
+    	<li class="is-error">List Item Error</li>
+    	<li class="is-error" kiwi-content="@">List Item Custom</li>
+    </ol>
+    <ol class="steps horizontal">
+    	<li>List Item 1</li>
+    	<li>List Item 2</li>
+    </ol>
+</div>
+</kiwi-scoped-demo>
+
+### Menu
+
+You can easily create menus using unordered lists by applying the "menu" class. Toggle the menu as horizontal or vertical using .horizontal. By adding \<details> elements into the menu you can create expandable sub-menus.
+
+Check out the below example:
+
+```html
+<ul class="menu" style="padding:0.5rem;border:1px solid lightgray;">
+	<li><div>List Item 1</div></li>
+	<li><div>List Item 2</div></li>
+	<li>
+		<details>
+			<summary>Sub menu</summary>
+			<ul>
+				<li><div>Sub Item 1</div></li>
+				<li><div>Sub Item 2</div></li>
+			</ul>
+		</details>
+	</li>
+	<li><div>List Item 3</div></li>
+</ul>
+<ul class="menu horizontal" style="padding:0.5rem;border:1px solid lightgray;">
+	<li><div>List Item 1</div></li>
+	<li><div>List Item 2</div></li>
+	<li>
+		<details>
+			<summary>Sub menu</summary>
+			<ul>
+				<li><div>Sub Item 1</div></li>
+				<li><div>Sub Item 2</div></li>
+			</ul>
+		</details>
+	</li>
+	<li><div>List Item 3</div></li>
+</ul>
+```
+
+<kiwi-scoped-demo>
+<ul class="menu" style="padding:0.5rem;border:1px solid lightgray;margin-bottom:1rem;">
+	<li><div>List Item 1</div></li>
+	<li><div>List Item 2</div></li>
+	<li>
+		<details>
+			<summary>Sub menu</summary>
+			<ul>
+				<li><div>Sub Item 1</div></li>
+				<li><div>Sub Item 2</div></li>
+			</ul>
+		</details>
+	</li>
+	<li><div>List Item 3</div></li>
+</ul>
+<ul class="menu horizontal" style="padding:0.5rem;border:1px solid lightgray;">
+	<li><div>List Item 1</div></li>
+	<li><div>List Item 2</div></li>
+	<li>
+		<details>
+			<summary>Sub menu</summary>
+			<ul>
+				<li><div>Sub Item 1</div></li>
+				<li><div>Sub Item 2</div></li>
+			</ul>
+		</details>
+	</li>
+	<li><div>List Item 3</div></li>
+</ul>
+</kiwi-scoped-demo>
+
 ## Navigation
 
-For all navigation styling you can use --kiwi-navigation-spacing to configure the spacing and padding. All measurements will adjust to this one value
+### Navbar
 
-To create an evenly spaced horizontal navigation menu simply use \<nav> elements with \<ul> elements inside of them
+To create an evenly spaced horizontal navigation menu simply use \<nav class="navbar"> elements with \<ul>/\<li> elements inside of them. You can put \<li> elements with \<hr> elements in them to create separators between sections.
 
 ```html
 <style>
@@ -250,13 +713,14 @@ To create an evenly spaced horizontal navigation menu simply use \<nav> elements
 		background: aliceblue;
 	}
 </style>
-<nav>
+<nav class="navbar">
 	<ul>
 		<li>Left Item</li>
 	</ul>
 	<ul>
 		<li>Right Item 1</li>
 		<li>Right Item 2</li>
+		<li><hr /></li>
 		<li>Right Item 3</li>
 	</ul>
 </nav>
@@ -264,36 +728,69 @@ To create an evenly spaced horizontal navigation menu simply use \<nav> elements
 
 <kiwi-scoped-demo>
 <style>
-    nav {
-        background: aliceblue;
-    }
+	nav {
+		background: aliceblue;
+	}
 </style>
-<nav>
+<nav class="navbar">
 	<ul>
-		<li>Left Item</li>
+		<li>Brand</li>
 	</ul>
 	<ul>
-		<li>Right Item 1</li>
-		<li>Right Item 2</li>
-		<li>Right Item 3</li>
+		<li>Item 1</li>
+		<li><hr /></li>
+		<li>Item 2</li>
 	</ul>
 </nav>
 </kiwi-scoped-demo>
 
-Alternatively you can create a vertical menu by putting the \<nav> element inside of an \<aside> element.
+### Bottom Navbar
+
+You can also make a mobil navbar using .bottom-navbar.
+
+```html
+<style>
+	nav {
+		background: aliceblue;
+	}
+</style>
+<nav class="bottom-navbar">
+	<ul>
+		<li><div>Item 1</div></li>
+		<li><div>Item 2</div></li>
+		<li><div>Item 3</div></li>
+		<li><div>Item 4</div></li>
+	</ul>
+</nav>
+```
+
+### Vertical Navigation Menu
+
+Alternatively you can create a vertical menu by putting the \<nav> element inside of an \<aside> element to create a vertical navigation menu. It is recommended to put a second element inside of the list items, since this will create a nice overflow effect.
+
+If you add the class .dark to the \<ul> element it will get a darker background
 
 ```html
 <style>
 	aside {
 		background: aliceblue;
+		padding: 1rem;
 	}
 </style>
 <aside>
 	<nav>
 		<ul>
-			<li>Item 1</li>
-			<li>Item 2</li>
-			<li>Item 3</li>
+			<li><div>Item 1</div></li>
+			<li><div>Item 2</div></li>
+			<li><div>Item 3 loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text</div></li>
+		</ul>
+	</nav>
+</aside>
+<br /><br />
+<aside>
+	<nav>
+		<ul class="dark">
+			<li><div>Item 1</div></li>
 		</ul>
 	</nav>
 </aside>
@@ -303,18 +800,29 @@ Alternatively you can create a vertical menu by putting the \<nav> element insid
 <style>
 	aside {
 		background: aliceblue;
+		padding: 1rem;
 	}
 </style>
 <aside>
-  <nav>
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-  </nav>
+	<nav>
+		<ul>
+			<li><div>Item 1</div></li>
+			<li><div>Item 2</div></li>
+			<li><div>Item 3 loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text</div></li>
+		</ul>
+	</nav>
+</aside>
+<br /><br />
+<aside>
+	<nav>
+		<ul class="dark">
+			<li><div>Item 1</div></li>
+		</ul>
+	</nav>
 </aside>
 </kiwi-scoped-demo>
+
+### Breadcrumbs
 
 By setting the attribute aria-label="breadcrumb" on your \<nav> element you can create a breadcrumb element.
 
@@ -346,4 +854,28 @@ By setting the attribute aria-label="breadcrumb" on your \<nav> element you can 
 		<li><span>Item 3</span></li>
 	</ul>
 </nav>
+</kiwi-scoped-demo>
+
+### Icons
+
+You can add icons to list items by setting the --kiwi-li-icon attribute to a valid url() value. This _must_ be set inline. If you are using this inside of one of the aforementioned types of navigation menus the layout and sizing will automatically adapt.
+
+```html
+<ul class="dark">
+	<li
+		style="--kiwi-li-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='gray' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
+	>
+		Item
+	</li>
+</ul>
+```
+
+<kiwi-scoped-demo>
+<ul class="dark">
+	<li
+		style="--kiwi-li-icon: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='gray' fill-rule='evenodd' d='M6.5 0a6.5 6.5 0 0 1 5.25 10.334l3.957 3.959a1 1 0 0 1-1.414 1.414l-3.96-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z'/></svg>&quot;)"
+	>
+		Item
+	</li>
+</ul>
 </kiwi-scoped-demo>

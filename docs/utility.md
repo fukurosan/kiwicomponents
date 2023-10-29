@@ -4,7 +4,7 @@ Kiwi Components comes with a few nice to have utility functions.
 
 ## confirm()
 
-The confirm() function is a modern take on window.confirm(). It takes a message as input and returns a promise that will resolve to true if the user presses the confirm button, and false if the user presses the cancel button.
+The confirm() function is a modern take on window.confirm(). It returns a promise that will resolve to true if the user presses the confirm button, and false if the user presses the cancel button.
 
 ### Example
 
@@ -12,7 +12,7 @@ The confirm() function is a modern take on window.confirm(). It takes a message 
 import { confirm } from "kiwicomponents"
 
 const confirmWithUser = async () => {
-	const choice = await confirm("This action is irreversible. Proceed?")
+	const choice = await confirm({ title: "Please Confirm", message: "This action is irreversible. Proceed?" })
 	console.log(choice)
 }
 ```
@@ -23,7 +23,7 @@ const confirmWithUser = async () => {
 
 ## showSpinner()
 
-The showSpinner() function opens up a modal spinner with a loading message, and returns a function that can be used to close it again.
+The showSpinner() function opens up a modal spinner with a loading message that can be closed by using a returned function.
 
 ### Example
 
@@ -31,9 +31,9 @@ The showSpinner() function opens up a modal spinner with a loading message, and 
 import { showSpinner } from "kiwicomponents"
 
 const pretendToLoad = async () => {
-	const closeSpinner = showSpinner("Jumping up and down...")
+	const spinner = showSpinner({ message: "Jumping up and down..." })
 	setTimeout(() => {
-		closeSpinner()
+		spinner.close()
 	}, 3000)
 }
 ```
@@ -44,7 +44,7 @@ const pretendToLoad = async () => {
 
 ## alert()
 
-The alert() function opens up a modal with an important message for the user that must be actively dismissed.
+The alert() function opens up a modal with a message for the user that must be actively dismissed.
 
 ### Example
 
@@ -52,7 +52,7 @@ The alert() function opens up a modal with an important message for the user tha
 import { alert } from "kiwicomponents"
 
 const openAlert = async () => {
-	alert("Important Alert", "This is an important message for the user", "Dismiss", "warning", null)
+	alert({ title: "Important Alert", message: "This is an important message for the user", buttonText: "Dismiss", type: "warning" })
 }
 ```
 
@@ -73,7 +73,7 @@ import { prompt } from "kiwicomponents"
 
 async function promptUser() {
 	//All values in the second argument object will be applied to the input field as attributes
-	const input = await kiwicomponents.prompt("Please fill in something here, thanks.", { value: "Some initial value" })
+	const input = await kiwicomponents.prompt({ message: "Please fill in something here, thanks.", formOrInputAttributes: { value: "Some initial value" } })
 	console.log(input) // -> "Whatever the user typed in or null"
 }
 ```
@@ -95,7 +95,7 @@ async function promptUserWithForm() {
         `
 	//Or you can provide an actual HTML form element
 	const form = new DOMParser().parseFromString(formString, "text/html").body.children[0]
-	const input = await kiwicomponents.prompt("Fill in the details below", form)
+	const input = await kiwicomponents.prompt({ message: "Fill in the details below", formOrInputAttributes: form })
 	//In this case the result will be a json object, where each key is the name attribute of the input field.
 	console.log(input) // -> { firstName: "User inputed value", lastName: ["Value 1", "Value 2"] }
 }

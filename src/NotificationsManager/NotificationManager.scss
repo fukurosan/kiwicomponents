@@ -1,0 +1,25 @@
+@import "../Stylesheets/variables.scss";
+
+.kiwi-notification-manager-icon {
+	width: 1.25rem;
+	height: 1.25rem;
+	svg {
+		display: block;
+		border-radius: 50%;
+		stroke-width: 0;
+		stroke: none;
+        fill: white;
+		&.success {
+			background-color: $success-color-500;
+		}
+		&.error {
+			background-color: $error-color-500;
+		}
+		&.info {
+			background-color: $info-color-500;
+		}
+		&.warning {
+			background-color: $warning-color-500;
+		}
+	}
+}

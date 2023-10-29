@@ -1,5 +1,5 @@
-@import "../../Assets/Stylesheets/variables.scss";
-@import "../../Assets/Stylesheets/Components/typography.scss";
+@import "../../Stylesheets/variables.scss";
+@import "../../Stylesheets/Internal/typography.scss";
 
 * {
 	box-sizing: border-box;
@@ -19,7 +19,7 @@ ul {
 	margin: 0;
 	padding-left: 2em;
 	overflow-y: auto;
-	transition: all var(--kiwi-treelist-animation-duration, 300ms);
+	transition: all 300ms;
 }
 
 li {
@@ -53,25 +53,19 @@ ul:not(.root) li::before {
 	padding: 0.75em;
 	border-radius: 0.5em;
 	position: relative;
-	transition: background-color var(--kiwi-treelist-animation-duration, 300ms);
+	transition: background-color 300ms;
 }
 
-#content:hover {
+#content:hover,
+:host([selected]) #content {
 	background: var(--kiwi-treelist-hover-background, $neutral-color-100);
 	#text {
 		color: var(--kiwi-treelist-hover-color, $with-color-below-500);
 	}
 }
 
-:host([selected]) #content {
-	background: var(--kiwi-treelist-selected-background, $primary-color-50);
-	#text {
-		color: var(--kiwi-treelist-selected-color, $with-color-below-500);
-	}
-}
-
 :host([selected]) #content:focus {
-	background: var(--kiwi-treelist-focus-background, $primary-color-100);
+	background: var(--kiwi-treelist-focus-background, $neutral-color-200);
 	#text {
 		color: var(--kiwi-treelist-focus-color, $with-color-below-500);
 	}
@@ -113,7 +107,11 @@ ul:not(.root) li::before {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	margin-right: 0.5em;
-	transition: color var(--kiwi-treelist-animation-duration, 300ms);
+	transition: color 300ms;
+}
+
+#main:not(.has-children) #text {
+	font-weight: normal;
 }
 
 #expand-arrow {
@@ -126,10 +124,14 @@ ul:not(.root) li::before {
 		--kiwi-treelist-expand-arrow-icon-url,
 		url("data:image/svg+xml;utf-8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 492 492'><path d='M142.238,492.432c-9.79,0-19.588-3.736-27.05-11.209c-14.945-14.934-14.945-39.162,0-54.098l180.9-180.909   l-180.9-180.91c-14.945-14.935-14.945-39.163,0-54.098c14.926-14.944,39.172-14.944,54.098,0l207.96,207.958   c14.943,14.935,14.943,39.164,0,54.1l-207.96,207.957C161.824,488.697,152.026,492.432,142.238,492.432z' style='fill: %23000000;'/></svg>")
 	);
-	transition: transform var(--kiwi-treelist-animation-duration, 300ms);
+	transition: transform 300ms;
 	box-sizing: content-box;
 	padding: 0.5em;
 	margin: -0.5em;
+}
+
+#main:not(.has-children) #expand-arrow {
+	display: none;
 }
 
 :host([open]) #expand-arrow {

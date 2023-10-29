@@ -1,9 +1,6 @@
 import template from "./kiwi-navbar-item.html"
 import styles from "./kiwi-navbar-item.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Navbar Item
  * A flex layout item that can be used in tandem with the navbar.
@@ -21,7 +18,12 @@ class KiwiNavbarItem extends HTMLElement {
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiNavbarItem._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiNavbarItem._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiNavbarItem._template.content.cloneNode(true))
 		this._containerElement = this.shadowRoot.querySelector("#container")
 		this._justifyEnum = Object.freeze({
 			LEFT: "flex-start",
@@ -44,4 +46,4 @@ class KiwiNavbarItem extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-navbar-item", KiwiNavbarItem)
+export { KiwiNavbarItem }

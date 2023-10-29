@@ -1,9 +1,6 @@
 import template from "./kiwi-spinner.html"
 import styles from "./kiwi-spinner.scss"
 
-const templateElement = document.createElement("template")
-templateElement.innerHTML = `<style>${styles}</style>${template}`
-
 /**
  * Kiwi Spinner
  * A configurable spinner element to illustrate a loading state.
@@ -21,7 +18,12 @@ class KiwiSpinner extends HTMLElement {
 
 	constructor() {
 		super()
-		this.attachShadow({ mode: "open" }).appendChild(templateElement.content.cloneNode(true))
+		if (!KiwiSpinner._template) {
+			const templateElement = document.createElement("template")
+			templateElement.innerHTML = `<style>${styles}</style>${template}`
+			KiwiSpinner._template = templateElement
+		}
+		this.attachShadow({ mode: "open" }).appendChild(KiwiSpinner._template.content.cloneNode(true))
 		this._svgElement = this.shadowRoot.querySelector("svg")
 		this._backgroundCircleElement = this.shadowRoot.querySelector("#background-circle")
 		this._spinningCircleElement = this.shadowRoot.querySelector("#spinning-circle")
@@ -34,7 +36,7 @@ class KiwiSpinner extends HTMLElement {
 
 	_render() {
 		if (this.hasAttribute("percent")) {
-			this._spinningCircleElement.style.strokeDashoffset = this.getAttribute("percent")
+			this._spinningCircleElement.style.strokeDashoffset = 100 - Number(this.getAttribute("percent"))
 			this._spinningCircleElement.style.animation = "none"
 			this._svgElement.style.animation = "none"
 		} else {
@@ -62,4 +64,4 @@ class KiwiSpinner extends HTMLElement {
 	}
 }
 
-window.customElements.define("kiwi-spinner", KiwiSpinner)
+export { KiwiSpinner }

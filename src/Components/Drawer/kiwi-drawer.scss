@@ -1,5 +1,5 @@
-@import "../../Assets/Stylesheets/variables.scss";
-@import "../../Assets/Stylesheets/Components/typography.scss";
+@import "../../Stylesheets/variables.scss";
+@import "../../Stylesheets/Internal/typography.scss";
 
 /* Backdrop */
 
@@ -7,7 +7,7 @@
 	display: none;
 	position: fixed;
 	inset: 0;
-	transition: opacity var(--kiwi-drawer-animation-duration, 300ms);
+	transition: opacity 300ms;
 	z-index: 98;
 }
 
@@ -16,7 +16,7 @@
 }
 
 #backdrop-color {
-	background-color: $primary-color-900;
+	background-color: $white;
 	opacity: 50%;
 }
 
@@ -35,9 +35,8 @@
 	max-width: 100vw;
 	z-index: 99;
 	background: var(--kiwi-drawer-background, $white);
-	transition: inset var(--kiwi-drawer-animation-duration, 300ms);
+	transition: inset 300ms;
 	box-shadow: none;
-
 	#close-icon {
 		width: var(--kiwi-drawer-button-size, 1.5rem);
 		height: var(--kiwi-drawer-button-size, 1.5rem);
@@ -45,9 +44,15 @@
 		z-index: 1;
 		right: 1.5rem;
 		top: 1.5rem;
+		padding: 0.5rem;
+		margin-top: -0.5rem;
+		margin-right: -0.5rem;
+		border-radius: 50%;
+		background-color: transparent;
+		transition: all 200ms;
 		cursor: pointer;
 		svg {
-			transition: all var(--kiwi-drawer-button-animation-duration, 200ms);
+			transition: all 200ms;
 			stroke: $neutral-color-900;
 			fill: $neutral-color-900;
 			opacity: 0.6;
@@ -60,6 +65,9 @@
 		&:hover svg {
 			opacity: 1;
 		}
+		&:hover {
+			background-color: $neutral-color-200;
+		}
 	}
 }
 
@@ -71,7 +79,7 @@
 
 #header {
 	position: relative;
-	background-color: $neutral-color-50;
+	background-color: $neutral-color-100;
 	padding: var(--kiwi-drawer-header-padding, 1.5rem);
 	display: flex;
 	flex-direction: column;
@@ -80,12 +88,16 @@
 		@extend %h5;
 	}
 	#subtitle {
-		@extend %body-2;
+		@extend %body-m;
 		color: $neutral-color-500;
 	}
 }
 
 :host(:not([title], [subtitle])) #header {
+	display: none;
+}
+
+:host(:not([subtitle])) #subtitle {
 	display: none;
 }
 
