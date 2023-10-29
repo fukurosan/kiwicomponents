@@ -61,3 +61,5 @@ If you load the library bundle using a script element then a global variable cal
 > ## Using the library
 
 Check out the different sections of this documentation to read more about how to use specific features.
+
+Storybook is used for development of the library. You can use Storybook to play around with components, but note that its primary purpose in this project is not to be used for documentation. You can access it through UNPKG [here](https://www.unpkg.com/kiwicomponents/dist/storybook/index.html) 
