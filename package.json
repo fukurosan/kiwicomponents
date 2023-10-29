@@ -1,6 +1,6 @@
 {
   "name": "kiwicomponents",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "An SDK for web browsers.",
   "main": "./dist/js/bundle.js",
   "unpkg": "./dist/js/bundle.js",
