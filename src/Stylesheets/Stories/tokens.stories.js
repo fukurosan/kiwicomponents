@@ -32,8 +32,8 @@ const createComponent = props => {
 			scales.forEach(scale => {
 				acc = `${acc}
         <div style="height:3.5rem;flex:auto;background-color:var(--kiwi-${base}-color-${scale});color:${
-					parseInt(scale) > 400 ? "var(--kiwi-with-dark-color)" : "var(--kiwi-with-light-color)"
-				};">${scale}</div>`
+	parseInt(scale) > 400 ? "var(--kiwi-with-dark-color)" : "var(--kiwi-with-light-color)"
+};">${scale}</div>`
 			})
 			acc = `${acc}
       <div style="height:3.5rem;flex:auto;background:var(--kiwi-${base}-color-gradient);color:var(--kiwi-with-dark-color);">Gradient</div>

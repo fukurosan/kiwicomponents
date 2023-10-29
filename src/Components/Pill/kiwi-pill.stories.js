@@ -57,7 +57,10 @@ const createComponent = props => {
 	const { content, shape, mode, type } = props
 
 	const container = document.createElement("div")
-	container.setAttribute("style", "position:relative;background-color:coral;width:250px;height:250px;margin-inline:auto;margin-top:100px;display:flex;align-items:center;justify-content:center;")
+	container.setAttribute(
+		"style",
+		"position:relative;background-color:coral;width:250px;height:250px;margin-inline:auto;margin-top:100px;display:flex;align-items:center;justify-content:center;"
+	)
 	container.innerHTML = "A box"
 
 	const element = document.createElement("kiwi-pill")

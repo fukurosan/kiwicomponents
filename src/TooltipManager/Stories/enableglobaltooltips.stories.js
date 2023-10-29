@@ -25,7 +25,7 @@ export default {
 			control: "number",
 			description: "Delay in ms before the tooltip should be displayed",
 			table: { type: { summary: "" }, defaultValue: { summary: null } }
-		},
+		}
 	}
 }
 

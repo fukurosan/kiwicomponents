@@ -16,7 +16,7 @@ templateElement.innerHTML = `<style>${styles}</style>${template}`
  * @function {} getState - Returns the current state
  * @function {{key: string, value: string}} setStates - sets the state to a new selected item
  * @function {{key: string}} setSelected - sets the state to a new selected item
- * 
+ *
  * @fires change - The change event is fired whenever the selection changes. The event's detail property contains a newSelection property that holds the key for the new selection.
  */
 

@@ -41,7 +41,7 @@ export default {
 			"--kiwi-accordion-border",
 			"--kiwi-accordion-active-button-background-color",
 			"--kiwi-accordion-active-button-color",
-			"--kiwi-accordion-panel-background-color",
+			"--kiwi-accordion-panel-background-color"
 		].reduce((acc, attr) => {
 			acc[attr] = {
 				control: "text",

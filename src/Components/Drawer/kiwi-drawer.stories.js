@@ -60,7 +60,7 @@ export default {
 			"--kiwi-drawer-body-padding",
 			"--kiwi-drawer-background",
 			"--kiwi-window-backdrop-blur",
-			"--kiwi-drawer-button-size",
+			"--kiwi-drawer-button-size"
 		].reduce((acc, attr) => {
 			acc[attr] = {
 				control: "text",

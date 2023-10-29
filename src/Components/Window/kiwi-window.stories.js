@@ -166,7 +166,7 @@ const createComponent = props => {
 		mode && element.setAttribute("mode", mode)
 
 		element.addEventListener("close", props["@event - onClose"])
-		
+
 		document.body.appendChild(element)
 	}
 	createWindow()
