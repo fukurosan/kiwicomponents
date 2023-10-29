@@ -30,10 +30,10 @@ export const showSpinner = (options = {}) => {
 	applyMessage(message)
 	const spinnerModal = openWindow({
 		body: content,
-		scale: "large",
+		variant: "default",
 		modality: "disabled",
-		autosize: true,
-		centered: true
+		mode: "auto",
+		maxWidth: 500
 	})
 	const updateMessage = newMessage => {
 		applyMessage(newMessage)

@@ -9,6 +9,7 @@ import styles from "./WindowManager.scss"
 export const openWindow = options => {
 	Components.Window()
 	Components.Button()
+	Components.Spinner()
 	//Create the window
 	const kiwiWindow = document.createElement("kiwi-window")
 	options.minimizable && kiwiWindow.setAttribute("useminimizable", options.minimizable)
@@ -16,13 +17,17 @@ export const openWindow = options => {
 	options.closeButton && kiwiWindow.setAttribute("useclosebutton", options.closebutton)
 	options.draggable && kiwiWindow.setAttribute("usedraggable", options.draggable)
 	options.resizable && kiwiWindow.setAttribute("useresizable", options.resizable)
-	options.centered && kiwiWindow.setAttribute("usecentered", options.centered)
+	options.mode && kiwiWindow.setAttribute("mode", options.mode)
 	options.autosize && kiwiWindow.setAttribute("useautosize", options.autosize)
 	options.modality && kiwiWindow.setAttribute("modality", options.modality)
-	options.scale && kiwiWindow.setAttribute("scale", options.scale)
+	options.variant && kiwiWindow.setAttribute("variant", options.variant)
 	options.title && kiwiWindow.setAttribute("title", options.title)
 	options.icon && kiwiWindow.setAttribute("icon", options.icon)
 	options.footer && kiwiWindow.setAttribute("usefooter", "true")
+	options.minWidth &&
+		kiwiWindow.style.setProperty("--kiwi-window-min-width", typeof options.minWidth === "string" ? options.minWidth : `${options.minWidth}px`)
+	options.maxWidth &&
+		kiwiWindow.style.setProperty("--kiwi-window-max-width", typeof options.maxWidth === "string" ? options.maxWidth : `${options.maxWidth}px`)
 	if (options.body) {
 		if (typeof options.body === "string") {
 			kiwiWindow.innerHTML = options.body

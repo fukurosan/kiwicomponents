@@ -42,10 +42,16 @@ export default {
 			description: "configures the backdrop of the window",
 			table: { type: { summary: "" }, defaultValue: { summary: "solid" } }
 		},
-		scale: {
+		mode: {
 			control: { type: "select" },
-			options: ["none", "compact", "small", "medium", "large"],
+			options: ["interactive", "auto", "scrollable"],
 			description: "Determines the general dimensions of the window's sections",
+			table: { type: { summary: "" }, defaultValue: { summary: "solid" } }
+		},
+		variant: {
+			control: { type: "select" },
+			options: ["default", "info"],
+			description: "Determines the variant of the dialog",
 			table: { type: { summary: "" }, defaultValue: { summary: "solid" } }
 		},
 		usefooter: {
@@ -76,16 +82,6 @@ export default {
 		useresizable: {
 			control: "boolean",
 			description: "If set to any value the window will be resizable",
-			table: { type: { summary: "" }, defaultValue: { summary: "Not set" } }
-		},
-		usecentered: {
-			control: "boolean",
-			description: "If set to any value the window will be centered in the viewport. If set to scroll the page will scroll instead of the body",
-			table: { type: { summary: "" }, defaultValue: { summary: "Not set" } }
-		},
-		useautosize: {
-			control: "boolean",
-			description: "If set to any value the window will automatically adjust its size to its content and the viewport",
 			table: { type: { summary: "" }, defaultValue: { summary: "Not set" } }
 		},
 		"@function close": { description: "Will close the window" },
@@ -133,7 +129,7 @@ const createComponent = props => {
 		footer,
 		header,
 		modality,
-		scale,
+		variant,
 		usefooter,
 		useminimizable,
 		usemaximizable,
@@ -141,7 +137,8 @@ const createComponent = props => {
 		usedraggable,
 		useresizable,
 		usecentered,
-		useautosize
+		useautosize,
+		mode
 	} = props
 	const container = document.createElement("div")
 	container.setAttribute("style", "display:flex;gap:0.5rem;flex-wrap:wrap;")
@@ -157,7 +154,7 @@ const createComponent = props => {
 		title && element.setAttribute("title", title)
 		icon && element.setAttribute("icon", icon)
 		modality && element.setAttribute("modality", modality)
-		scale && element.setAttribute("scale", scale)
+		variant && element.setAttribute("variant", variant)
 		usefooter && element.setAttribute("usefooter", usefooter)
 		useminimizable && element.setAttribute("useminimizable", useminimizable)
 		usemaximizable && element.setAttribute("usemaximizable", usemaximizable)
@@ -166,9 +163,11 @@ const createComponent = props => {
 		useresizable && element.setAttribute("useresizable", useresizable)
 		usecentered && element.setAttribute("usecentered", usecentered)
 		useautosize && element.setAttribute("useautosize", useautosize)
+		mode && element.setAttribute("mode", mode)
 
 		element.addEventListener("close", props["@event - onClose"])
-		container.appendChild(element)
+		
+		document.body.appendChild(element)
 	}
 	createWindow()
 

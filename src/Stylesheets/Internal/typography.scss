@@ -17,7 +17,7 @@
 @mixin heading-text {
 	@include base-text-no-color;
 	margin: 0;
-	color: $neutral-color-800;
+	color: $neutral-color-700;
 	font-family: $font-family-heading;
 	font-weight: 700;
 }

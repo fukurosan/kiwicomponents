@@ -61,10 +61,10 @@ export const alert = (options = {}) => {
 	content.classList.add("kiwi-windowmanager-generic-content")
 	const alertModal = openWindow({
 		body: content,
-		scale: "large",
+		variant: "default",
 		modality: "disabled",
-		autosize: true,
-		centered: true
+		mode: options.scrollPage ? "scrollable" : "auto",
+		maxWidth: 500
 	})
 	return {
 		dialog: alertModal,

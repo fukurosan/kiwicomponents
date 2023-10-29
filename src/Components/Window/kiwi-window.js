@@ -4,6 +4,13 @@ import styles from "./kiwi-window.scss"
 /**
  * Kiwi dialog window
  * A window that can be opened within the browser viewport. Can work either as a dialog or a modal.
+ *
+ * The dialog is fundamentally designed to be used as an interactive dialog that can be resized, moved around, minimized and so on.
+ * Kind of like what one might expect from a window manager on an OS.
+ * This comes with drawbacks, and sometimes you want a more simple dialog that is always centered, where size is dynamic depending on slotted content and viewport size, and so on.
+ * For this purpose there is a "mode" attribute. Setting this to auto or scrollable will override all interactivity in the dialog and allow it to be used for more general purposes as well.
+ * When using these alternative modes things like minimize, resize, dragging and so on will not work.
+ *
  * @element kiwi-window
  *
  * @attr {boolean} usefooter - If set to any value the footer will be rendered.
@@ -12,10 +19,9 @@ import styles from "./kiwi-window.scss"
  * @attr {boolean} useclosebutton - If set to any value the close button will be added to the header.
  * @attr {boolean} usedraggable - If set to any value the window will be dragable.
  * @attr {boolean} useresizable - If set to any value the window will be resizable.
- * @attr {boolean} usecentered - If set to any value the window will be centered in the viewport. If set to scroll the page will scroll instead of the body.
- * @attr {boolean} useautosize - If set to any value the window will automatically adjust its size to its content and the viewport.
+ * @attr {"interactive"|"auto"|"scrollable"} mode - Configures how the dialog fundamentally behaves. Interactive = like a window on an OS, auto = centered on the screen, scrollable = the page scroll instead of the dialog body.
  * @attr {"none"|"clickable"|"disabled"} modality - configures the backdrop of the window.
- * @attr {"none"|"compact"|"small"|"medium"|"large"} scale - Determines the general dimensions of the window's sections.
+ * @attr {"default"|"info"} variant - Determines the general dimensions of the window's sections.
  * @attr {string} title - Header text.
  * @attr {string} icon - Header icon.
  *
@@ -47,9 +53,9 @@ class KiwiWindowElement extends HTMLElement {
 			"useclosebutton",
 			"usedraggable",
 			"useresizable",
-			"usecentered",
 			"modality",
-			"scale",
+			"variant",
+			"mode",
 			"title",
 			"icon"
 		]
@@ -130,23 +136,26 @@ class KiwiWindowElement extends HTMLElement {
 		this._MINIMUM_HEIGHT = 150
 		this._resizerElements.forEach(element => element.addEventListener("mousedown", this._resize.bind(this), true))
 		this._resizerElements.forEach(element => element.addEventListener("touchstart", this._resize.bind(this), true))
+
+		//Init Scroll Listener
+		this._isScrolled = false
+		this._bodyElement.addEventListener("scroll", () => {
+			if (!this._isScrolled && Math.floor(this._bodyElement.scrollTop) > 2) {
+				this._windowElement.classList.add("scrolled")
+				this._isScrolled = true
+			} else if (this._isScrolled && Math.floor(this._bodyElement.scrollTop) < 3) {
+				this._windowElement.classList.remove("scrolled")
+				this._isScrolled = false
+			}
+		})
 	}
 
 	connectedCallback() {
 		if (!this._hasMounted) {
 			this._hasMounted = true
-			requestAnimationFrame(() => {
-				this.scaleToFit()
-				this.center()
-				this._animate(false)
-				/*
-				const preferredHeaderWithColor = computePreferredForegroundColor(this._headerElement)
-				if (preferredHeaderWithColor === "black") {
-					this._headerButtonsContainerElement.style.filter = "invert()"
-				}
-				this._headerTextElement.style.color = preferredHeaderWithColor
-				*/
-			})
+			this.scaleToFit()
+			this.center()
+			this._animate(false)
 		}
 		window.addEventListener("resize", this._updateMinimizedPositions)
 	}
@@ -260,14 +269,18 @@ class KiwiWindowElement extends HTMLElement {
 	 */
 	scaleToFit() {
 		//Attempt to determine a optimal size for the window
+		//We need to compute and set the width before computing the optimal height, or the values will not be correct.
+		this._windowElement.style.width = null
+		this._windowElement.style.height = null
 		const maxWidth = Math.ceil(document.documentElement.clientWidth * 0.8)
-		const maxHeight = Math.ceil(document.documentElement.clientHeight * 0.8)
-		const boundingClientRect = this._windowElement.getBoundingClientRect()
+		let boundingClientRect = this._windowElement.getBoundingClientRect()
 		const currentWidth = Math.ceil(boundingClientRect.width)
-		const currentHeight = Math.ceil(boundingClientRect.height)
 		const newWindowWidth = Math.min(maxWidth, currentWidth)
-		const newWindowHeight = Math.min(maxHeight, currentHeight)
 		this._windowElement.style.width = `${newWindowWidth}px`
+		const maxHeight = Math.ceil(document.documentElement.clientHeight * 0.8)
+		boundingClientRect = this._windowElement.getBoundingClientRect()
+		const currentHeight = Math.ceil(boundingClientRect.height)
+		const newWindowHeight = Math.min(maxHeight, currentHeight)
 		this._windowElement.style.height = `${newWindowHeight}px`
 	}
 

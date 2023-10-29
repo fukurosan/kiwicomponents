@@ -2,7 +2,7 @@
 @import "../../Stylesheets/Internal/typography.scss";
 @import "../../Stylesheets/Internal/scrollbar.scss";
 
-/* Backdrop */
+/* Backdrop, needs to be split into two elements to achieve both the color overlay and blur effect */
 
 .backdrop {
 	position: fixed;
@@ -19,19 +19,23 @@
 	backdrop-filter: blur(var(--kiwi-window-backdrop-blur, 4px));
 }
 
-/* Main Dialog Container */
+/* Main Container, used to achieve the mode="scrolling" effect */
+#window-container {
+	z-index: 1;
+}
 
+/* Dialog, the actual window element */
 #window {
-	display: none;
 	position: fixed;
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
-	box-shadow: $shadow-medium;
+	box-shadow: $shadow-large;
 	border-radius: $border-radius-medium;
 	animation-duration: 200ms;
 	animation-timing-function: ease-in-out;
 	transition: all 200ms;
+	background-color: white;
 }
 
 @keyframes main-animation {
@@ -49,7 +53,7 @@
 /* 
  * By setting the border radius like this we are allowing for separate background colors for the header, body and footer 
  * without having to set overflow hidden on the #window element.
- * Setting overflow hidden could cause issues in dropdowns, menus, tooltips or other position:fixed elements inside of the window.
+ * Setting overflow hidden could cause issues in dropdowns, menus, tooltips or other position:fixed/absolute elements inside of the window.
  */
 #header,
 :host(:not([title]):not([icon]):not([usedraggable]):not([useminimizable]):not([usemaximizable]):not([useclosebutton])) #body {
@@ -66,15 +70,16 @@
 /* Header Body and Footer container sections */
 
 #header {
-	font-weight: 600 !important;
-	background: $white;
+	@extend %h6;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 0.5em;
 	cursor: move;
 	user-select: none;
-	border-bottom: 1px solid var(--kiwi-window-separator-color, transparent);
+	border-bottom: 1px solid $neutral-color-300;
+	min-height: 1.75em;
+	padding: 0.75rem 1.875rem;
 
 	#header-text {
 		display: none;
@@ -98,7 +103,6 @@
 		min-width: 0.875em;
 		height: 0.875em;
 		width: 0.875em;
-		position: relative;
 
 		&#header-icon[src=""] {
 			visibility: hidden;
@@ -106,6 +110,19 @@
 
 		&:is(#minimize-icon, #maximize-icon, #close-icon) {
 			cursor: pointer;
+			box-sizing: border-box;
+			padding: 0.5em;
+			margin-right: -0.5em;
+			&#maximize-icon {
+				padding: 0.4375em;
+			}
+			border-radius: 50%;
+			min-height: 1.75em;
+			min-width: 1.75em;
+			height: 1.75em;
+			width: 1.75em;
+			background-color: white;
+			transition: all 200ms;
 			svg {
 				transition: all 200ms;
 				stroke: $neutral-color-500;
@@ -114,40 +131,38 @@
 				height: 100%;
 				display: block;
 			}
-			&:hover svg {
-				stroke: $neutral-color-900;
-				fill: $neutral-color-900;
+			&:hover {
+				background-color: $neutral-color-200;
+				svg {
+					stroke: $neutral-color-900;
+					fill: $neutral-color-900;
+				}
 			}
 		}
 	}
 }
 
 #body {
-	height: 100%;
+	height: auto;
+	flex: auto;
 	overflow: auto;
-	background: var(--kiwi-window-body-background, white);
 }
 
 #footer {
-	background: var(--kiwi-window-footer-background, $neutral-color-100);
-	border-top: 1px solid var(--kiwi-window-separator-color, $neutral-color-200);
+	border-top: 1px solid $neutral-color-300;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	white-space: nowrap;
-	overflow: hidden;
 }
 
-#header,
 #body,
 #footer {
-	@extend %h4;
-	padding: 0.625em 1em;
+	padding: 1.25rem 1.875rem;
 }
 
 #header,
 #footer {
-	min-height: 1.375em;
+	transition: border-color 300ms;
 }
 
 slot {
@@ -215,6 +230,7 @@ slot {
 	}
 
 	#header {
+		font-size: 0.875rem;
 		user-select: none;
 		cursor: pointer;
 	}
@@ -227,7 +243,7 @@ slot {
 	border-radius: 0 !important;
 
 	* {
-		border-radius: 0 !important;
+		border-radius: 0;
 	}
 }
 
@@ -271,105 +287,184 @@ slot {
 	display: none;
 }
 
-:host([scale="none"]) {
-	#header,
-	#body,
-	#footer {
-		padding: 0;
-	}
-
-	#header,
-	#footer {
-		min-height: 0;
-	}
-}
-
-:host([scale="compact"]) {
-	#header,
-	#body,
-	#footer {
-		@extend %subtitle-2;
-	}
-}
-
-:host([scale="small"]) {
-	#header,
-	#body,
-	#footer {
-		@extend %h6;
-	}
-}
-
-:host([scale="large"]) {
-	#header,
-	#body,
-	#footer {
-		@extend %h3;
-	}
-
-	#header,
-	#footer {
-		min-height: 2.375rem;
-	}
-
-	#header {
-		.icon {
-			min-height: 1.5rem;
-			min-width: 1.5rem;
-			height: 1.5rem;
-			width: 1.5rem;
-		}
-	}
-}
-
-:host([usecentered]) #window {
-	inset: 0 !important;
-	margin: auto !important;
-	height: fit-content !important;
-	width: fit-content !important;
-	/* Note: a window can be "maximized" without being "resizable". */
-	max-height: calc(100vh - 3rem) !important;
-	max-width: calc(100vw - 3rem) !important;
-}
-
-/* Necessary for Safari */
-:host([usecentered]) #body {
-	height: fit-content !important;
-	width: fit-content !important;
-}
-
 :host(:not([useresizable])) .resizer {
 	display: none;
 }
 
-/* Some experimental fun */
-:host([usecentered="scroll"]) #window {
-	position: absolute !important;
-	margin-top: 3rem !important;
-	max-height: unset !important;
-}
-/*
-:host([usecentered="scroll"]:not([usefooter])) #body {
-	margin-bottom: 3rem !important;
-}
-:host([usecentered="scroll"]) #footer {
-	margin-bottom: 3rem !important;
-}
-*/
-
-:host([usecentered="scroll"]) #window-container {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100%;
-	overflow-y: auto;
-	overflow-x: hidden;
+/* Variants, these basically define different levels of air (padding) and layouts in the dialogs to be used for different purposes */
+:host([variant="info"]) {
+	//This variant is meant for things like displaying big picture information to the user
+	#window:not(.scrolled) {
+		//In this scale the border will by default be invisible, giving the impression of a single unit
+		//If the user scrolls the content the borders will appear
+		#header,
+		#footer {
+			border-color: transparent;
+		}
+	}
+	#header {
+		@extend %h4;
+		justify-content: center;
+		padding-inline: 4rem;
+		padding-bottom: 1.625rem;
+		padding-top: 4rem;
+		#header-buttons {
+			position: absolute;
+			right: 2.5rem;
+			top: 1rem;
+		}
+		.icon {
+			min-width: 1.25em;
+			width: 1.25em;
+			min-height: 1.25em;
+			height: 1.25em;
+		}
+		#header-text,
+		#header-icon {
+			@extend %h3;
+			flex: unset;
+		}
+	}
+	#minimize-icon {
+		display: none !important;
+	}
+	#body {
+		padding-block: 0;
+		padding-inline: 8rem;
+	}
 	#footer {
-		margin-bottom: 4rem;
+		padding-inline: 8rem;
+		padding-top: 1.625rem;
+		padding-bottom: 4.5rem;
+	}
+	&:host(:not([usefooter])) #body {
+		padding-bottom: 4.5rem;
+	}
+	&:host(:not([title]):not([icon]):not([usedraggable]):not([useminimizable]):not([usemaximizable]):not([useclosebutton])) #body {
+		padding-top: 5rem;
+	}
+
+	@media screen and (max-width: 768px) {
+		#header-buttons {
+			right: 1.25rem !important;
+		}
 	}
 }
 
-:host([usecentered="scroll"]:not([usefooter])) #body {
-	margin-bottom: 4rem;
+/* Modes */
+
+//Interactive (Default)
+:host([mode="interactive"]) {
+}
+:host([mode="auto"]),
+:host([mode="scrollable"]) {
+	//These features are specific to the interactive mode
+	.resizer,
+	#minimize-icon,
+	#maximize-icon {
+		display: none !important;
+	}
+	#header {
+		cursor: default !important;
+	}
+}
+
+//Centers and auto sizes the window to fit the viewport.
+:host([mode="auto"]) {
+	#window {
+		inset: 0 !important;
+		margin: auto !important;
+		height: fit-content !important;
+		width: fit-content !important;
+		/* Note: a window can be "maximized" without being "resizable". */
+		max-height: calc(100vh - 3rem) !important;
+		max-width: min(var(--kiwi-window-max-width, 43rem), calc(100vw - 1rem)) !important;
+		min-width: min(var(--kiwi-window-min-width, 0rem), calc(100vw - 1rem)) !important;
+	}
+	/* Necessary for Safari */
+	#body {
+		height: fit-content !important;
+		width: auto !important;
+	}
+}
+//Make the entire page scroll instead of the body of the window
+:host([mode="scrollable"]) {
+	#window-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
+		margin-bottom: 4rem !important;
+	}
+	#window {
+		position: relative !important;
+		top: 0 !important;
+		left: 0 !important;
+		right: 0 !important;
+		margin-inline: auto !important;
+		margin-top: 3rem !important;
+		margin-bottom: 4rem !important;
+		width: fit-content !important;
+		height: auto !important;
+		max-height: unset !important;
+		max-width: min(var(--kiwi-window-max-width, 43rem), calc(100vw - 1rem)) !important;
+		min-width: min(var(--kiwi-window-min-width, 0rem), calc(100vw - 1rem)) !important;
+	}
+	/* Necessary for Safari */
+	#body {
+		height: fit-content !important;
+		width: fit-content !important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	:host([mode="scrollable"]),
+	:host([mode="auto"]) {
+		#header,
+		#body,
+		#footer {
+			box-sizing: border-box;
+			padding-inline: 1.5rem !important;
+			width: 100% !important;
+		}
+	}
+
+	:host([mode="scrollable"]) {
+		#window {
+			width: 100% !important;
+		}
+	}
+
+	:host([mode="auto"]) {
+		#window {
+			width: 100% !important;
+			max-width: unset !important;
+			min-width: unset !important;
+			margin-bottom: 0 !important;
+			bottom: 0 !important;
+		}
+		#window,
+		#body,
+		#footer {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		#footer {
+			padding-bottom: 2.25rem !important;
+		}
+	}
+	@keyframes main-animation {
+		from {
+			transform: translateY(6rem);
+			opacity: 0;
+		}
+
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
 }

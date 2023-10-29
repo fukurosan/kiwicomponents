@@ -52,10 +52,10 @@ export const prompt = (options = {}) => {
 	buttons.appendChild(confirmButton)
 	const window = openWindow({
 		body: content,
-		scale: "large",
+		variant: "default",
 		modality: "disabled",
-		autosize: true,
-		centered: true
+		mode: options.scrollPage ? "scrollable" : "auto",
+		maxWidth: 500
 	})
 	return new Promise(resolve => {
 		cancelButton.addEventListener("click", () => {

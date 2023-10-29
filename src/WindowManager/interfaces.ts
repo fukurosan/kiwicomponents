@@ -11,14 +11,16 @@ export interface OpenWindowOptions {
 	draggable?: boolean
 	/** If set to any value the window will be resizable. */
 	resizable?: boolean
-	/** If set to any value the window will be centered in the viewport. */
-	centered?: boolean
-	/** If set to any value the window's size will be automatically adjusted based on its content and the viewport. */
-	autosize?: boolean
 	/** configures the backdrop of the window. */
 	modality?: "none" | "clickable" | "disabled"
-	/** Determines the general dimensions of the window's sections. */
-	scale?: "none" | "compact" | "small" | "medium" | "large"
+	/** Determines the general dimensions and layout of the window. */
+	variant?: "default" | "info"
+	/** Determines the general dimensions and layout of the window. */
+	mode?: "interactive" | "auto" | "scrollable"
+	/** Sets the minimum width of the dialog */
+	minWidth?: number | string
+	/** Sets the maximum width of the dialog */
+	maxWidth?: number | string
 	/** Header text. */
 	title?: string
 	/** Header icon. */
@@ -40,6 +42,8 @@ export interface confirmOptions {
 	cancelLabel?: string
 	/** Label on the confirm button */
 	confirmLabel?: string
+	/** Should the page scroll instead of the dialog body on overflow? */
+	scrollPage?: boolean
 }
 
 export interface showSpinnerOptions {
@@ -67,6 +71,8 @@ export interface alertOptions {
 	type?: "success" | "question" | "warning" | "error"
 	/** Optional custom icon for the alert */
 	icon?: string
+	/** Should the page scroll instead of the dialog body on overflow? */
+	scrollPage?: boolean
 }
 
 export interface alertDialog {
@@ -85,4 +91,6 @@ export interface promptOptions {
 	cancelLabel: string
 	/** Label for the confirm button */
 	confirmLabel: string
+	/** Should the page scroll instead of the dialog body on overflow? */
+	scrollPage?: boolean
 }
