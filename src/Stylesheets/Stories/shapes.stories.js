@@ -36,6 +36,10 @@ const createComponent = props => {
 	<div class="card shape-round"></div>
 	<h3>.shape-triangle</h3>
 	<div class="card shape-triangle"></div>
+	<h3>.shape-rounded-square</h3>
+	<div class="card shape-rounded-square"></div>
+	<h3>.shape-rounded-hexagon</h3>
+	<div class="card shape-rounded-hexagon"></div>
 	<h3>.shape-x</h3>
 	<div class="card shape-x"></div>
 	<h3>.shape-message</h3>

@@ -4,24 +4,26 @@ This library comes with a number of css utilities, as well as CSS styles for mos
 
 The following files can be imported:
 
-| filename       | Description                                                              |
-| -------------- | ------------------------------------------------------------------------ |
-| bundle.css     | Full bundle with all stylesheets included                                |
-| button.css     | Button styles                                                            |
-| card.css       | Styles for basic cards                                                   |
-| details.css    | Details & summary element styles                                         |
-| forms.css      | Form styling                                                             |
-| image.css      | Image styling                                                            |
-| layout.css     | Contains different layout modules to help structure elements and content |
-| loading.css    | CSS utility for putting elements in a loading state                      |
-| meter.css      | Meter element styling                                                    |
-| navigation.css | Styles for navigation related elements                                   |
-| progress.css   | Progress element elements                                                |
-| scrollbar.css  | Scroll bar styling                                                       |
-| shape.css      | Shape styling                                                            |
-| table.css      | Table styling                                                            |
-| text.css       | Text styling                                                             |
-| tokens.css     | Makes the design system tokens available as CSS variables                |
+| filename        | Description                                                              |
+| --------------- | ------------------------------------------------------------------------ |
+| bundle.css      | Full bundle with all stylesheets included                                |
+| backgrounds.css | Various background patterns                                              |
+| button.css      | Button styles                                                            |
+| card.css        | Styles for basic cards                                                   |
+| details.css     | Details & summary element styles                                         |
+| divider.css     | Divier element styling                                                   |
+| forms.css       | Form styling                                                             |
+| image.css       | Image styling                                                            |
+| layout.css      | Contains different layout modules to help structure elements and content |
+| loading.css     | CSS utility for putting elements in a loading state                      |
+| meter.css       | Meter element styling                                                    |
+| navigation.css  | Styles for navigation related elements                                   |
+| progress.css    | Progress element elements                                                |
+| scrollbar.css   | Scroll bar styling                                                       |
+| shape.css       | Shape styling                                                            |
+| table.css       | Table styling                                                            |
+| text.css        | Text styling                                                             |
+| tokens.css      | Makes the design system tokens available as CSS variables                |
 
 ```javascript
 import "kiwicomponents/dist/css/filename"
@@ -512,6 +514,8 @@ The following shapes can be applied:
 
 -   .shape-round
 -   .shape-triangle
+-   .shape-rounded-square
+-   .shape-rounded-hexagon
 -   .shape-x
 -   .shape-message
 -   .shape-star
