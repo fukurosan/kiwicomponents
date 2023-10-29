@@ -6,8 +6,10 @@
 	height: var(--kiwi-burger-menu-button-size, 3em);
 	cursor: pointer;
 	transition: all 300ms;
-	padding: var(--kiwi-burger-menu-button-padding, 0.5em);
+	padding: var(--kiwi-burger-menu-button-padding, 0.75em);
 	opacity: 0.6;
+	border-radius: 50%;
+	background-color: transparent;
 
 	svg {
 		display: block;
@@ -23,5 +25,6 @@
 
 	&:hover {
 		opacity: 1;
+		background-color: $neutral-color-200;
 	}
 }

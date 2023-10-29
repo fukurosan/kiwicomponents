@@ -37,7 +37,6 @@
 	background: var(--kiwi-drawer-background, $white);
 	transition: inset 300ms;
 	box-shadow: none;
-
 	#close-icon {
 		width: var(--kiwi-drawer-button-size, 1.5rem);
 		height: var(--kiwi-drawer-button-size, 1.5rem);
@@ -45,6 +44,12 @@
 		z-index: 1;
 		right: 1.5rem;
 		top: 1.5rem;
+		padding: 0.5rem;
+		margin-top: -0.5rem;
+		margin-right: -0.5rem;
+		border-radius: 50%;
+		background-color: transparent;
+		transition: all 200ms;
 		cursor: pointer;
 		svg {
 			transition: all 200ms;
@@ -60,6 +65,9 @@
 		&:hover svg {
 			opacity: 1;
 		}
+		&:hover {
+			background-color: $neutral-color-200;
+		}
 	}
 }
 
@@ -71,7 +79,7 @@
 
 #header {
 	position: relative;
-	background-color: $neutral-color-50;
+	background-color: $neutral-color-100;
 	padding: var(--kiwi-drawer-header-padding, 1.5rem);
 	display: flex;
 	flex-direction: column;
@@ -86,6 +94,10 @@
 }
 
 :host(:not([title], [subtitle])) #header {
+	display: none;
+}
+
+:host(:not([subtitle])) #subtitle {
 	display: none;
 }
 
