@@ -558,16 +558,16 @@ The following attributes can be configured:
 
 ---
 
-## \<kiwi-badge> Components.Badge
+## \<kiwi-pill> Components.Pill
 
-\<kiwi-badge> A badge element that can automatically position itself in the top right corner of its closest relative parent.
+\<kiwi-pill> A pill element that can automatically position itself in the top right corner of its closest relative parent.
 
 ### Example:
 
 ```html
 <div style="position:relative;background-color:coral;width:250px;height:250px;display:flex;align-items:center;justify-content:center;">
 	A box
-	<kiwi-badge>Badge</kiwi-badge>
+	<kiwi-pill>Pill</kiwi-pill>
 </div>
 ```
 
@@ -575,7 +575,7 @@ Result:
 
 <div style="position:relative;background-color:coral;width:250px;height:250px;display:flex;align-items:center;justify-content:center;">
 	A box
-	<kiwi-badge>Badge</kiwi-badge>
+	<kiwi-pill>Pill</kiwi-pill>
 </div>
 
 ### Attributes
@@ -584,9 +584,9 @@ The following attributes can be configured:
 
 | attribute | type                                                                                 | description                                                             |
 | --------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| shape     | "round" \| "square"                                                                  | Should the badge be round or square?                                    |
-| mode      | "floating" \| "inline"                                                               | Should the badge float in the top right corner or be positioned inline? |
-| type      | "primary" \| "secondary" \| "neutral" \| "info" \| "success" \| "warning" \| "error" | To change the background color of the badge element as required         |
+| shape     | "round" \| "square"                                                                  | Should the pill be round or square?                                    |
+| mode      | "floating" \| "inline"                                                               | Should the pill float in the top right corner or be positioned inline? |
+| type      | "primary" \| "secondary" \| "neutral" \| "info" \| "success" \| "warning" \| "error" | To change the background color of the pill element as required         |
 
 ### Styling
 

@@ -1,11 +1,11 @@
 import { Components } from "../../index"
-Components.Badge()
+Components.Pill()
 
 /**
- * A badge component
+ * A pill component
  */
 export default {
-	title: "Components/kiwi-badge",
+	title: "Components/kiwi-pill",
 	tags: ["autodocs"],
 	render: args => {
 		return createComponent(args)
@@ -19,19 +19,19 @@ export default {
 		shape: {
 			control: { type: "select" },
 			options: ["round", "square"],
-			description: "Should the badge be round or square?",
+			description: "Should the pill be round or square?",
 			table: { type: { summary: "" }, defaultValue: { summary: "round" } }
 		},
 		mode: {
 			control: { type: "select" },
 			options: ["floating", "inline"],
-			description: "Should the badge float in the top right corner or be positioned inline?",
+			description: "Should the pill float in the top right corner or be positioned inline?",
 			table: { type: { summary: "" }, defaultValue: { summary: "floating" } }
 		},
 		type: {
 			control: { type: "select" },
 			options: ["primary", "secondary", "neutral", "info", "success", "warning", "error"],
-			description: "To change the background color of the badge element as required",
+			description: "To change the background color of the pill element as required",
 			table: { type: { summary: "" }, defaultValue: { summary: "primary" } }
 		},
 		...["--kiwi-offset-top", "--kiwi-offset-right"].reduce((acc, attr) => {
@@ -60,11 +60,11 @@ const createComponent = props => {
 	container.setAttribute("style", "position:relative;background-color:coral;width:250px;height:250px;margin-inline:auto;margin-top:100px;display:flex;align-items:center;justify-content:center;")
 	container.innerHTML = "A box"
 
-	const element = document.createElement("kiwi-badge")
+	const element = document.createElement("kiwi-pill")
 	shape && element.setAttribute("shape", shape)
 	mode && element.setAttribute("mode", mode)
 	type && element.setAttribute("type", type)
-	element.innerHTML = content ? content : "Badge"
+	element.innerHTML = content ? content : "pill"
 	container.appendChild(element)
 
 	Object.keys(props).forEach(key => {
