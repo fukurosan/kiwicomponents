@@ -16,6 +16,7 @@
 }
 
 #backdrop-blur {
+	-webkit-backdrop-filter: blur(var(--kiwi-window-backdrop-blur, 4px));
 	backdrop-filter: blur(var(--kiwi-window-backdrop-blur, 4px));
 }
 
