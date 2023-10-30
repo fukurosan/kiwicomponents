@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.1
+- Added webkit implementation for background blurs
+
 ### 0.5.0
 - Updated library to allow for tree shaking of components
 - Implemented Storybook in the project
