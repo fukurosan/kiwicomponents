@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.4
+- Adjustments to project files
+
 ### 0.5.3
 - Adjustments to text highlighting
 - Adjustments to drawer header
