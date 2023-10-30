@@ -1,5 +1,9 @@
 # Change Log
 
+### 0.5.3
+- Adjustments to text highlighting
+- Adjustments to drawer header
+
 ### 0.5.2
 - Updated backdrop colors for window and drawer
 
