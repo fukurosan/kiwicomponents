@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.2
+- Updated backdrop colors for window and drawer
+
 ### 0.5.1
 - Added webkit implementation for background blurs
 
