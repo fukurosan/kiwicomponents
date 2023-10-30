@@ -80,7 +80,7 @@
 
 #header {
 	position: relative;
-	background-color: $neutral-color-100;
+	border-bottom: 1px solid $neutral-color-300;
 	padding: var(--kiwi-drawer-header-padding, 1.5rem);
 	display: flex;
 	flex-direction: column;
@@ -148,6 +148,7 @@
 /* default */
 :host([type="neutral"]) {
 	#header {
+		background-color: $neutral-color-100;
 		#title {
 		}
 		#subtitle {
