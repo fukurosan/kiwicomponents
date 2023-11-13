@@ -12,12 +12,12 @@
 	flex-wrap: wrap;
 	gap: 0.5rem;
 	margin-bottom: 0.75rem;
-	border-bottom: 0.125rem solid $neutral-color-300;
+	border-bottom: 0.125rem solid $neutral-color-100;
 }
 
 #slider {
 	position: absolute;
-	background: $primary-color-600;
+	background: $primary-color-500;
 	transition: 200ms;
 	border-radius: 0.25rem;
 }
@@ -37,7 +37,7 @@
 		margin: 0;
 		margin-right: 0.75rem;
 		border-bottom: none;
-		border-right: 0.125rem solid $neutral-color-300;
+		border-right: 0.125rem solid $neutral-color-100;
 	}
 	::slotted(kiwi-tab) {
 		padding: 0.75rem;
@@ -49,7 +49,7 @@
 	font-family: $font-family-body !important;
 	-webkit-font-smoothing: antialiased !important;
 	-moz-osx-font-smoothing: grayscale !important;
-	color: $neutral-color-900 !important;
+	color: $foreground-color-dark-faded !important;
 	line-height: 1.2em !important;
 	font-size: 1rem !important;
 	font-weight: 700 !important;
@@ -57,6 +57,7 @@
 	white-space: nowrap;
 	opacity: 0.7;
 	cursor: pointer;
+	transition: all 200ms;
 }
 ::slotted(kiwi-tab[disabled]) {
 	cursor: not-allowed;
@@ -64,9 +65,82 @@
 }
 ::slotted(kiwi-tab:hover:not([disabled])) {
 	opacity: 1;
-	color: $primary-color-600 !important;
+	color: $primary-color-500 !important;
 }
 ::slotted(kiwi-tab[active-tab]:not([disabled])) {
 	opacity: 1;
-	color: $primary-color-600 !important;
+	color: $primary-color-500 !important;
+}
+
+/** Variants */
+
+:host([variant="popup"]) {
+	#slider {
+		display: none;
+	}
+	::slotted(kiwi-tab) {
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			background-color: $primary-color-500;
+			width: 100%;
+			height: 0rem;
+			transition: height 200ms;
+			border-radius: 0.25rem;
+		}
+	}
+	::slotted(kiwi-tab:hover:not([disabled])),
+	::slotted(kiwi-tab[active-tab]:not([disabled])) {
+		opacity: 1;
+		color: $primary-color-500 !important;
+		transform: translateY(-0.25rem);
+		position: relative;
+		&::before {
+			height: 0.25rem;
+		}
+	}	
+}
+
+:host([variant="popup"][direction="column"]) {
+	::slotted(kiwi-tab) {
+		&::before {
+			content: "";
+			position: absolute;
+			left: unset;
+			bottom: unset;
+			right: 0;
+			top: 0;
+			background-color: $primary-color-500;
+			width: 0rem;
+			height: 100%;
+			transition: width 200ms;
+			border-radius: 0.25rem;
+		}
+	}
+	::slotted(kiwi-tab:hover:not([disabled])),
+	::slotted(kiwi-tab[active-tab]:not([disabled])) {
+		transform: translateX(-0.25rem);
+		&::before {
+			width: 0.25rem;
+		}
+	}
+}
+
+:host([variant="button"]) {
+	#slider {
+		display: none;
+	}
+	::slotted(kiwi-tab) {
+		border-radius: $border-radius-small;
+		padding: 0.5rem;
+		transition: color 200ms, background-color 200ms;
+	}
+	::slotted(kiwi-tab:hover:not([disabled])),
+	::slotted(kiwi-tab[active-tab]:not([disabled])) {
+		opacity: 1;
+		color: $primary-color-600 !important;
+		background-color: $primary-color-100 !important;
+	}	
 }

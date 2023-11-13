@@ -90,10 +90,10 @@ $error-color-700: var(--kiwi-error-color-700, $error-700);
 $error-color-800: var(--kiwi-error-color-800, $error-800);
 $error-color-900: var(--kiwi-error-color-900, $error-900);
 
-$with-color-above-400: var(--kiwi-with-dark-color, $with-above-400);
-$with-color-above-400-faded: var(--kiwi-with-dark-color-faded, $with-above-400-faded);
-$with-color-below-500: var(--kiwi-with-light-color, $with-below-500);
-$with-color-below-500-faded: var(--kiwi-with-light-color-faded, $with-below-500-faded);
+$foreground-color-light: var(--kiwi-foreground-color-light, $foreground-light);
+$foreground-color-light-faded: var(--kiwi-foreground-color-light-faded, $foreground-light-faded);
+$foreground-color-dark: var(--kiwi-foreground-color-dark, $foreground-dark);
+$foreground-color-dark-faded: var(--kiwi-foreground-color-dark-faded, $foreground-dark-faded);
 
 $primary-color-gradient: var(--kiwi-primary-color-gradient, $gradient-color-primary);
 $secondary-color-gradient: var(--kiwi-secondary-color-gradient, $gradient-color-secondary);

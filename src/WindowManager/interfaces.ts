@@ -68,7 +68,7 @@ export interface alertOptions {
 	/** Button text for the OK button */
 	buttonText?: string
 	/** Type of alert */
-	type?: "success" | "question" | "warning" | "error"
+	type?: "success" | "info" | "warning" | "error"
 	/** Optional custom icon for the alert */
 	icon?: string
 	/** Should the page scroll instead of the dialog body on overflow? */

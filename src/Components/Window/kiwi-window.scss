@@ -170,6 +170,15 @@ slot {
 	@extend %body-m;
 }
 
+:host(:not([usefooter])) #body {
+	padding-bottom: 1.875rem;
+}
+
+:host(:not([title]):not([icon]):not([usedraggable]):not([useminimizable]):not([usemaximizable]):not([useclosebutton])) #body {
+	padding-top: 1.875rem;
+}
+
+
 /* Resizer elements */
 
 .resizer {

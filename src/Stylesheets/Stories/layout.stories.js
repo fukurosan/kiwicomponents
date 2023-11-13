@@ -38,42 +38,93 @@ export const Playground = {
 
 const createComponent = props => {
 	const code = `
+	<style>body {padding:0 !important;margin:0 !important;} </style>
 	<div style="display:flex;flex-direction:column;gap:2rem;">
 
-	<h3>Sections and Articles</h3>
-	<main>
-		<section>
-			<article>
-				<h2>This is an article</h2>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
-				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-			</article>
-			<article>
-				<h2>This is an article with a section</h2>
-				<section>
+	<h3>.Layout</h3>
+	<div class="layout no-mobile-spacing">
+		<section class="full-width" style="background-color:lightblue;">
+			<h2>Full Width</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+			<div class="layout">
+				<div>
+					<h2>Second Layout item</h2>
 					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
 					alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-				</section>
-			</article>
-			<article class="fill">
-				<h2>This article fills more space</h2>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
-				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-			</article>
+				</div>
+			</div>
 		</section>
-		<section class="narrow mobile-margins">
-			<article>
-				<h2>This article is part of a narrow section</h2>
+		<section class="breakout"  style="background-color:coral;">
+			<h2>Breakout</h2>
+			<section>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
 				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-			</article>
-			<article>
-				<h2>And this one has mobile margins</h2>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
-				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-			</article>
+			</section>
 		</section>
-	</main>
+		<section class="content" style="background-color:lightgreen;">
+			<h2>Content</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</section>
+		<section class="narrow"  style="background-color:orange;">
+			<h2>Narrow</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</section>
+	</div>
+
+	<h3>lists of articles</h3>
+	<div class="article-list" style="background:lightblue;">
+		<div>Default list of articles</div>
+		<article>
+			<h2>This is an article</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+		<article>
+			<h2>This is an article with a another article in it</h2>
+			<article>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+			</article>
+		</article>
+		<article class="narrow">
+			<h2>This article is narrow</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+		<article class="limited-content-width">
+			<h2>This article has limited content width</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+	</div>
+	<div class="article-list no-mobile-spacing" style="background:lightblue;">
+		<div>List of articles with no mobile spacing</div>
+		<article>
+			<h2>This is an article</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+		<article>
+			<h2>This is an article with a another article in it</h2>
+			<article>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+			</article>
+		</article>
+		<article class="narrow">
+			<h2>This article is narrow</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+		<article class="limited-content-width">
+			<h2>This article has limited content width</h2>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+	</div>
 
 	<h3>Containers</h3>
 	<div class="container" style="background-color:aliceblue;padding:1rem;">Hello World</div>

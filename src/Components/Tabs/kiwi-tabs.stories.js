@@ -16,6 +16,12 @@ export default {
 			description: "Index of the currently active tab",
 			table: { type: { summary: "" }, defaultValue: { summary: null } }
 		},
+		variant: {
+			control: { type: "select" },
+			options: ["default", "popup", "button"],
+			description: "General look and feel of the tab menu",
+			table: { type: { summary: "" }, defaultValue: { summary: "default" } }
+		},
 		direction: {
 			control: { type: "select" },
 			options: ["row", "column"],
@@ -55,7 +61,7 @@ const createComponent = props => {
 	container.innerHTML = `
 	<kiwi-tabs ${activeTabIndex ? `active-tab-index='${activeTabIndex}'` : ""} ${props.direction ? `direction='${props.direction}'` : ""} ${
 	props.noborder ? "noborder" : ""
-} >
+} ${props.variant ? `variant='${props.variant}'` : ""}>
 	<kiwi-tab>Hello World</kiwi-tab>
 	<kiwi-tab>Some Carpeting</kiwi-tab>
 	<kiwi-tab disabled>Fun Stuff</kiwi-tab>

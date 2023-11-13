@@ -207,11 +207,12 @@ Result:
 
 The following attributes can be configured:
 
-| attribute        | type            | description                                                                                |
-| ---------------- | --------------- | ------------------------------------------------------------------------------------------ |
-| active-tab-index | number          | index of the selected tab                                                                  |
-| direction        | "row"\|"column" | If set to row the tab menu will top to bottom, otherwise left to right                     |
-| noborder         | any             | If set to any value there will be no border separating the tabs and the content below them |
+| attribute        | type                         | description                                                                                |
+| ---------------- | ---------------------------- | ------------------------------------------------------------------------------------------ |
+| active-tab-index | number                       | Index of the selected tab                                                                  |
+| direction        | "row"\|"column"              | If set to row the tab menu will top to bottom, otherwise left to right                     |
+| noborder         | any                          | If set to any value there will be no border separating the tabs and the content below them |
+| variant          | "default"\|"popup"\|"button" | General look and feel of the tab menu                                                      |
 
 The following events are fired:
 
@@ -582,8 +583,8 @@ Result:
 
 The following attributes can be configured:
 
-| attribute | type                                                                                 | description                                                             |
-| --------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| attribute | type                                                                                 | description                                                            |
+| --------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
 | shape     | "round" \| "square"                                                                  | Should the pill be round or square?                                    |
 | mode      | "floating" \| "inline"                                                               | Should the pill float in the top right corner or be positioned inline? |
 | type      | "primary" \| "secondary" \| "neutral" \| "info" \| "success" \| "warning" \| "error" | To change the background color of the pill element as required         |

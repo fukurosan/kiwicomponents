@@ -32,11 +32,11 @@ const createComponent = props => {
 			scales.forEach(scale => {
 				acc = `${acc}
         <div style="height:3.5rem;flex:auto;background-color:var(--kiwi-${base}-color-${scale});color:${
-	parseInt(scale) > 400 ? "var(--kiwi-with-dark-color)" : "var(--kiwi-with-light-color)"
+	parseInt(scale) > 400 ? "var(--kiwi-foreground-color-light)" : "var(--kiwi-foreground-color-dark)"
 };">${scale}</div>`
 			})
 			acc = `${acc}
-      <div style="height:3.5rem;flex:auto;background:var(--kiwi-${base}-color-gradient);color:var(--kiwi-with-dark-color);">Gradient</div>
+      <div style="height:3.5rem;flex:auto;background:var(--kiwi-${base}-color-gradient);color:var(--kiwi-foreground-color-light);">Gradient</div>
       </div>
       `
 			return acc
@@ -47,14 +47,14 @@ const createComponent = props => {
 
     <h3>Light text</h3>
     <div style="background-color:var(--kiwi-black);padding:2rem;">
-      <div style="color:var(--kiwi-with-dark-color);">With Dark Color</div>
-      <div style="color:var(--kiwi-with-dark-color-faded);">With Dark Color Faded</div>
+      <div style="color:var(--kiwi-foreground-color-light);">With Dark Color</div>
+      <div style="color:var(--kiwi-foreground-color-light-faded);">With Dark Color Faded</div>
     </div>
 
     <h3>Dark text</h3>
     <div style="background-color:var(--kiwi-white);padding:2rem;">
-      <div style="color:var(--kiwi-with-light-color);">With Light Color</div>
-      <div style="color:var(--kiwi-with-light-color-faded);">With Light Color Faded</div>
+      <div style="color:var(--kiwi-foreground-color-dark);">With Light Color</div>
+      <div style="color:var(--kiwi-foreground-color-dark-faded);">With Light Color Faded</div>
     </div>
     </div>`
 	}

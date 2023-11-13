@@ -41,11 +41,27 @@ export default {
 			description: "configures the backdrop of the window",
 			table: { type: { summary: "" }, defaultValue: { summary: "solid" } }
 		},
-		scale: {
+		mode: {
 			control: { type: "select" },
-			options: ["none", "compact", "small", "medium", "large"],
-			description: "Determines the general dimensions of the window's sections",
-			table: { type: { summary: "" }, defaultValue: { summary: "solid" } }
+			options: ["interactive", "auto", "scrollable"],
+			description: "Determines the general dimensions and layout of the window.",
+			table: { type: { summary: "" }, defaultValue: { summary: "interactive" } }
+		},
+		variant: {
+			control: { type: "select" },
+			options: ["default", "info"],
+			description: "Determines the general dimensions and layout of the window.",
+			table: { type: { summary: "" }, defaultValue: { summary: "default" } }
+		},
+		minWidth: {
+			control: "text",
+			description: "Sets the minimum width of the dialog",
+			table: { type: { summary: "" }, defaultValue: { summary: "" } }
+		},
+		maxWidth: {
+			control: "text",
+			description: "Sets the maximum width of the dialog",
+			table: { type: { summary: "" }, defaultValue: { summary: "" } }
 		},
 		minimizable: {
 			control: "boolean",
@@ -70,16 +86,6 @@ export default {
 		resizable: {
 			control: "boolean",
 			description: "If true the window will be resizable",
-			table: { type: { summary: "" }, defaultValue: { summary: "Not set" } }
-		},
-		centered: {
-			control: "boolean",
-			description: "If true the window will be centered in the viewport. If set to scroll the page will scroll instead of the body",
-			table: { type: { summary: "" }, defaultValue: { summary: "Not set" } }
-		},
-		autosize: {
-			control: "boolean",
-			description: "If true the window will automatically adjust its size to its content and the viewport",
 			table: { type: { summary: "" }, defaultValue: { summary: "Not set" } }
 		}
 	}

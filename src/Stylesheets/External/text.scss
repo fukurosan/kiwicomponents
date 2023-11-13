@@ -4,7 +4,7 @@
 * {
 	@extend %base-text-no-color;
 	&::selection {
-		background-color: $primary-color-200;
+		background-color: $primary-color-100;
 	}
 }
 
@@ -78,11 +78,11 @@ a {
 }
 
 .faded-text {
-	color: $with-color-below-500-faded;
+	color: $foreground-color-dark-faded;
 }
 
 .faded-text-light {
-	color: $with-color-above-400-faded;
+	color: $foreground-color-light-faded;
 }
 
 /* Spoiler utility classes */
@@ -102,7 +102,7 @@ hgroup > :last-child {
 	font-size: 1rem;
 	font-weight: unset;
 	line-height: unset;
-	color: $with-color-below-500-faded;
+	color: $foreground-color-dark-faded;
 }
 hgroup > * {
 	margin-bottom: 0;
@@ -116,14 +116,24 @@ cite {
 
 blockquote {
 	display: block;
-	margin: 1.5em 0;
-	padding: 1em;
-	border-left: 0.25rem solid $neutral-color-300;
+	margin: 1.25em 0;
+	padding: 0.5em 1.25em;
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 0.375rem;
+		border-radius: 0.375rem;
+		background-color: $primary-color-500;
+	}
 	cite {
 		display: block;
 		font-style: italic;
 		margin-top: 1em;
-		color: $with-color-below-500-faded;
+		color: $foreground-color-dark-faded;
 	}
 }
 
@@ -138,7 +148,7 @@ mark {
 	display: inline-block;
 	padding: 0.5em 1em;
 	background-color: $primary-color-100;
-	color: $primary-color-600;
+	color: $primary-color-500;
 	font-weight: bold;
 }
 
@@ -149,7 +159,7 @@ abbr {
 }
 
 ins {
-	color: $success-color-700;
+	color: $success-color-600;
 	text-decoration: none;
 }
 

@@ -7,14 +7,14 @@
 }
 
 button {
-	--background-color: #{$primary-color-600};
-	--background-color-hover: #{$primary-color-500};
-	--background-color-focus: #{$primary-color-500};
+	--background-color: #{$primary-color-500};
+	--background-color-hover: #{$primary-color-600};
+	--background-color-focus: #{$primary-color-700};
 	--border-color: var(--background-color);
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
-	--text-color: #{$with-color-above-400};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color: #{$foreground-color-light};
+	--text-color-hover: #{$foreground-color-light};
 	@extend %button;
 	box-sizing: border-box;
 	padding: 1em 1.5em;
@@ -24,7 +24,7 @@ button {
 	width: 100%;
 	border: 2px solid var(--border-color);
 	outline: none;
-	transition: background-color 200ms, color 200ms;
+	transition: background-color 200ms, color 200ms, border-color 200ms;
 	border-radius: $border-radius-small;
 	box-shadow: none;
 	color: var(--text-color);
@@ -89,26 +89,26 @@ button {
 }
 
 :host([type="primary"]) button {
-	--background-color: #{$primary-color-600};
-	--background-color-hover: #{$primary-color-500};
-	--background-color-focus: #{$primary-color-500};
+	--background-color: #{$primary-color-500};
+	--background-color-hover: #{$primary-color-600};
+	--background-color-focus: #{$primary-color-700};
 }
 :host([type="primary"][fill="light"]) button {
-	--background-color: #{$primary-color-200};
-	--background-color-hover: #{$primary-color-300};
-	--background-color-focus: #{$primary-color-300};
-	--text-color: #{$primary-color-700};
-	--text-color-hover: #{$primary-color-900};
+	--background-color: #{$primary-color-100};
+	--background-color-hover: #{$primary-color-200};
+	--background-color-focus: #{$primary-color-200};
+	--text-color: #{$primary-color-600};
+	--text-color-hover: #{$primary-color-700};
 }
 :host([type="primary"][fill="outline"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$primary-color-600};
-	--background-color-focus: #{$primary-color-500};
-	--border-color: #{$primary-color-600};
+	--background-color-focus: #{$primary-color-700};
+	--border-color: #{$primary-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$primary-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :host([type="primary"][fill="none"]) button {
 	--background-color: transparent;
@@ -119,26 +119,26 @@ button {
 }
 
 :host([type="secondary"]) button {
-	--background-color: #{$secondary-color-600};
-	--background-color-hover: #{$secondary-color-500};
-	--background-color-focus: #{$secondary-color-500};
+	--background-color: #{$secondary-color-500};
+	--background-color-hover: #{$secondary-color-600};
+	--background-color-focus: #{$secondary-color-700};
 }
 :host([type="secondary"][fill="light"]) button {
-	--background-color: #{$secondary-color-200};
-	--background-color-hover: #{$secondary-color-300};
-	--background-color-focus: #{$secondary-color-300};
-	--text-color: #{$secondary-color-700};
-	--text-color-hover: #{$secondary-color-900};
+	--background-color: #{$secondary-color-100};
+	--background-color-hover: #{$secondary-color-200};
+	--background-color-focus: #{$secondary-color-200};
+	--text-color: #{$secondary-color-600};
+	--text-color-hover: #{$secondary-color-700};
 }
 :host([type="secondary"][fill="outline"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$secondary-color-600};
-	--background-color-focus: #{$secondary-color-500};
-	--border-color: #{$secondary-color-600};
+	--background-color-focus: #{$secondary-color-700};
+	--border-color: #{$secondary-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$secondary-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :host([type="secondary"][fill="none"]) button {
 	--background-color: transparent;
@@ -149,9 +149,9 @@ button {
 }
 
 :host([type="neutral"]) button {
-	--background-color: #{$neutral-color-600};
-	--background-color-hover: #{$neutral-color-500};
-	--background-color-focus: #{$neutral-color-500};
+	--background-color: #{$neutral-color-500};
+	--background-color-hover: #{$neutral-color-600};
+	--background-color-focus: #{$neutral-color-700};
 }
 :host([type="neutral"][fill="light"]) button {
 	--background-color: #{$neutral-color-200};
@@ -163,12 +163,12 @@ button {
 :host([type="neutral"][fill="outline"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$neutral-color-600};
-	--background-color-focus: #{$neutral-color-500};
-	--border-color: #{$neutral-color-600};
+	--background-color-focus: #{$neutral-color-700};
+	--border-color: #{$neutral-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$neutral-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :host([type="neutral"][fill="none"]) button {
 	--background-color: transparent;
@@ -179,26 +179,26 @@ button {
 }
 
 :host([type="info"]) button {
-	--background-color: #{$info-color-600};
-	--background-color-hover: #{$info-color-500};
-	--background-color-focus: #{$info-color-500};
+	--background-color: #{$info-color-500};
+	--background-color-hover: #{$info-color-600};
+	--background-color-focus: #{$info-color-700};
 }
 :host([type="info"][fill="light"]) button {
-	--background-color: #{$info-color-200};
-	--background-color-hover: #{$info-color-300};
-	--background-color-focus: #{$info-color-300};
-	--text-color: #{$info-color-700};
-	--text-color-hover: #{$info-color-900};
+	--background-color: #{$info-color-100};
+	--background-color-hover: #{$info-color-200};
+	--background-color-focus: #{$info-color-200};
+	--text-color: #{$info-color-600};
+	--text-color-hover: #{$info-color-700};
 }
 :host([type="info"][fill="outline"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$info-color-600};
-	--background-color-focus: #{$info-color-500};
-	--border-color: #{$info-color-600};
+	--background-color-focus: #{$info-color-700};
+	--border-color: #{$info-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$info-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :host([type="info"][fill="none"]) button {
 	--background-color: transparent;
@@ -209,26 +209,26 @@ button {
 }
 
 :host([type="success"]) button {
-	--background-color: #{$success-color-600};
-	--background-color-hover: #{$success-color-500};
-	--background-color-focus: #{$success-color-500};
+	--background-color: #{$success-color-500};
+	--background-color-hover: #{$success-color-600};
+	--background-color-focus: #{$success-color-700};
 }
 :host([type="success"][fill="light"]) button {
-	--background-color: #{$success-color-200};
-	--background-color-hover: #{$success-color-300};
-	--background-color-focus: #{$success-color-300};
-	--text-color: #{$success-color-700};
-	--text-color-hover: #{$success-color-900};
+	--background-color: #{$success-color-100};
+	--background-color-hover: #{$success-color-200};
+	--background-color-focus: #{$success-color-200};
+	--text-color: #{$success-color-600};
+	--text-color-hover: #{$success-color-700};
 }
 :host([type="success"][fill="outline"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$success-color-600};
-	--background-color-focus: #{$success-color-500};
-	--border-color: #{$success-color-600};
+	--background-color-focus: #{$success-color-700};
+	--border-color: #{$success-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$success-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :host([type="success"][fill="none"]) button {
 	--background-color: transparent;
@@ -239,26 +239,26 @@ button {
 }
 
 :host([type="warning"]) button {
-	--background-color: #{$warning-color-600};
-	--background-color-hover: #{$warning-color-500};
-	--background-color-focus: #{$warning-color-500};
+	--background-color: #{$warning-color-500};
+	--background-color-hover: #{$warning-color-600};
+	--background-color-focus: #{$warning-color-700};
 }
 :host([type="warning"][fill="light"]) button {
-	--background-color: #{$warning-color-200};
-	--background-color-hover: #{$warning-color-300};
-	--background-color-focus: #{$warning-color-300};
-	--text-color: #{$warning-color-700};
-	--text-color-hover: #{$warning-color-900};
+	--background-color: #{$warning-color-100};
+	--background-color-hover: #{$warning-color-200};
+	--background-color-focus: #{$warning-color-200};
+	--text-color: #{$warning-color-600};
+	--text-color-hover: #{$warning-color-700};
 }
 :host([type="warning"][fill="outline"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$warning-color-600};
-	--background-color-focus: #{$warning-color-500};
-	--border-color: #{$warning-color-600};
+	--background-color-focus: #{$warning-color-700};
+	--border-color: #{$warning-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$warning-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :host([type="warning"][fill="none"]) button {
 	--background-color: transparent;
@@ -269,26 +269,26 @@ button {
 }
 
 :host([type="error"]) button {
-	--background-color: #{$error-color-600};
-	--background-color-hover: #{$error-color-500};
-	--background-color-focus: #{$error-color-500};
+	--background-color: #{$error-color-500};
+	--background-color-hover: #{$error-color-600};
+	--background-color-focus: #{$error-color-700};
 }
 :host([type="error"][fill="light"]) button {
-	--background-color: #{$error-color-200};
-	--background-color-hover: #{$error-color-300};
-	--background-color-focus: #{$error-color-300};
-	--text-color: #{$error-color-700};
-	--text-color-hover: #{$error-color-900};
+	--background-color: #{$error-color-100};
+	--background-color-hover: #{$error-color-200};
+	--background-color-focus: #{$error-color-200};
+	--text-color: #{$error-color-600};
+	--text-color-hover: #{$error-color-700};
 }
 :host([type="error"][fill="outline"]) button {
 	--background-color: transparent;
 	--background-color-hover: #{$error-color-600};
-	--background-color-focus: #{$error-color-500};
-	--border-color: #{$error-color-600};
+	--background-color-focus: #{$error-color-700};
+	--border-color: #{$error-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$error-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :host([type="error"][fill="none"]) button {
 	--background-color: transparent;
