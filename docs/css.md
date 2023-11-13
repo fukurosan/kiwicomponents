@@ -249,7 +249,7 @@ Example:
 			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
 		</article>
 	</article>
-	<article style="--kiwi-article-list-padding-inline: 1.5rem; --kiwi-article-list-padding-block: 3rem;">
+	<article style="--kiwi-article-min-padding-inline: 1.5rem; --kiwi-article-min-padding-block: 3rem;">
 		<h2>This article has custom padding</h2>
 		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
 		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
@@ -290,7 +290,7 @@ Example:
 			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
 		</article>
 	</article>
-	<article style="--kiwi-article-list-padding-inline: 1.5rem; --kiwi-article-list-padding-block: 3rem;">
+	<article style="--kiwi-article-min-padding-inline: 1.5rem; --kiwi-article-min-padding-block: 3rem;">
 		<h2>This article has custom padding</h2>
 		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
 		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
