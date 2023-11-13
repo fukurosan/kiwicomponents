@@ -1,5 +1,17 @@
 # Change Log
 
+### 0.5.5
+- Implemented new CSS system for creating layouts
+- Implemented new system for article elements
+- Removed old CSS utilities for articles and sections
+- Added new variant option to kiwi-tabs
+- Updated colors
+- Updated CSS variable names
+- Fixed issue with drawer icon showing wrong color on hover
+- Fixed issue where dialog would have incorrect block padding in auto mode if there was no footer/header
+- Fixed issue with transitions for buttons
+- Fixed issue where header styles would be applied to body texts
+
 ### 0.5.4
 - Adjustments to project files
 

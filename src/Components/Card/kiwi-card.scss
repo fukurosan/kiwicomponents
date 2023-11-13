@@ -29,7 +29,7 @@
 			@extend %subtitle-1;
 			border-radius: 50%;
 			background-color: $primary-color-500;
-			color: $with-color-above-400;
+			color: $foreground-color-light;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -60,7 +60,7 @@
 
 		#text {
 			@extend %body-m;
-			color: $with-color-below-500-faded;
+			color: $foreground-color-dark-faded;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			display: -webkit-box;

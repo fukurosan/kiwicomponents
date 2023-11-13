@@ -68,7 +68,7 @@ Example:
 	.colorful-div {
 		padding: 1rem;
 		background-color: var(--kiwi-primary-color-600);
-		color: var(--kiwi-with-dark-color);
+		color: var(--kiwi-foreground-color-light);
 	}
 </style>
 <div class="colorful-div">Hello World!</div>
@@ -109,68 +109,212 @@ Example:
 </div>
 </kiwi-scoped-demo>
 
-## Layout
+## Layouts
 
 You can use a number of different elements to create responsive, easy to understand layouts.
 
-### Base Sections and Articles
+### .Layout
 
-When you place a \<section> element as a direct child to either a body, header, main or footer element the section will automatically configure a max width for yout content and center it in the viewport. The centering is done through padding, meaning that if you configure a background for the section it will take up the full width.
+You can create layouts using the .layout utility class. The .layout class creates a responsive grid with different max-width breakpoints.
 
-Inside of your root \<section> elements you can place \<article> elements, which will transform inte responsive content cards.
+You can control the max-width of sections inside of the layout by setting them to different classes:
+- .full-width (100%)
+- .breakout (75rem, 1200px)
+- .content (56rem, 896px - default)
+- .narrow (37rem, 592px)
 
-Sections by default has margins between elements on desktop, while blending everything together on mobile. You can configure the sections to keep the margins on mobile by setting the class "mobile-margins" on your sections.
+You can customize the breakpoints using CSS variables:
+- --kiwi-layout-narrow-max-width 
+- --kiwi-layout-content-max-width 
+- --kiwi-layout-breakout-max-width
 
-If you want to use sections that are more narrow you can configure them with the classs "narrow"
+By default the layout sections will have an inline margin of 1rem. You can customize this margin by setting the "--kiwi-layout-margin-inline" css variable. You can also configure a gap between sections using the "--kiwi-layout-gap-space" css variable
 
-Article elements by default have a maximum content width that allows for more inline air. You can configure them to fill more available space by applying the class "fill".
+By setting .no-mobile-spacing on the .layout container all inline-padding and gaps will be removed on mobile resolutions, making all sections merge together
 
-By default the layout class will change the background of the body element, and the same color will be applied to any sections put inside your articles. You can configure the look and feel like so:
+You can of course also put one layout as a child to another layout to achieve different effects.
 
-| Variables                 | Description                                               |
-| ------------------------- | --------------------------------------------------------- |
-| --kiwi-section-background | Applied to sections inside articles and the document body |
-| --kiwi-article-background | Applied to articles                                       |
-| --kiwi-article-box-shadow | Applied to articles                                       |
-| --kiwi-article-border     | Applied to articles                                       |
+Example:
 
 ```html
-<main>
-	<section>
-		<article>
-			<h2>This is an article</h2>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
-			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-		</article>
-		<article>
-			<h2>This is an article with a section</h2>
-			<section>
+<div class="layout no-mobile-spacing">
+	<section class="full-width" style="background-color:lightblue;">
+		<h2>Full Width</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		<div class="layout">
+			<div>
+				<h2>Second Layout item</h2>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
 				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-			</section>
-		</article>
-		<article class="fill">
-			<h2>This article fills more space</h2>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
-			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-		</article>
+			</div>
+		</div>
 	</section>
-	<section class="narrow mobile-margins">
-		<article>
-			<h2>This article is part of a narrow section</h2>
+	<section class="breakout"  style="background-color:coral;">
+		<h2>Breakout</h2>
+		<section>
 			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
 			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-		</article>
-		<article>
-			<h2>And it has mobile margins</h2>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
-			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
-		</article>
+		</section>
 	</section>
-</main>
+	<section style="background-color:lightgreen;">
+		<h2>Content</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</section>
+	<section class="narrow"  style="background-color:orange;">
+		<h2>Narrow</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</section>
+</div>
 ```
 
-<a href="./layout.html" target="_blank">Link</a>
+<kiwi-scoped-demo>
+<div class="layout no-mobile-spacing">
+	<section class="full-width" style="background-color:lightblue;">
+		<h2>Full Width</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		<div class="layout">
+			<div>
+				<h2>Second Layout item</h2>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+				alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+			</div>
+		</div>
+	</section>
+	<section class="breakout"  style="background-color:coral;">
+		<h2>Breakout</h2>
+		<section>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</section>
+	</section>
+	<section style="background-color:lightgreen;">
+		<h2>Content</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</section>
+	<section class="narrow"  style="background-color:orange;">
+		<h2>Narrow</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</section>
+</div>
+</kiwi-scoped-demo>
+
+
+### \<article> Elements
+
+Article elements can be used to create high level content containers
+
+Article elements will create a column flex container for all child elements. You can configure how some key aspects of articles behave using CSS variables.
+
+- --kiwi-article-content-max-width (Max width for content, the rest is filled with responsive padding)
+- --kiwi-article-min-padding-inline (Minimum inline padding)
+- --kiwi-article-min-padding-block (Minimum block padding)
+
+If you place an article inside of another article it will get a different background color, creating a contrast to the parent.
+
+#### .article-list
+
+You can create lists of articles by using the .article-list class. This creates a column layout with some sensible defaults that also integrate well with .layout.
+
+You can configure the spacing using these variables:
+
+- --kiwi-article-list-padding-inline
+- --kiwi-article-list-padding-block
+- --kiwi-article-list-gap
+
+If an .article-list is placed inside of a .layout all padding will be set to 0 and instead managed by the layout element.
+
+You can apply the .no-mobile-spacing class to the .article-list element to set all spacing to 0 on mobile. When doing this all child articles will also have shadows, border radius and so on removed, making them merge together into one visual element.
+
+
+Example:
+
+```html
+<div>Default list of articles</div>
+<div class="article-list" style="background:aliceblue;">
+	<article>
+		<h2>This is an article</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+	<article>
+		<h2>This is an article with a another article in it</h2>
+		<article>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+	</article>
+	<article style="--kiwi-article-list-padding-inline: 1.5rem; --kiwi-article-list-padding-block: 3rem;">
+		<h2>This article has custom padding</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+	<article style="--kiwi-article-content-max-width:20rem;">
+		<h2>This article has limited content width</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+</div>
+<div>List of articles with no mobile spacing</div>
+<div class="article-list no-mobile-spacing" style="background:aliceblue;">
+	<article style="background:coral;">
+		<h2>This is an article</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+	<article style="background:lightgreen;">
+		<h2>This is an article</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+</div>
+```
+
+<kiwi-scoped-demo>
+<div>Default list of articles</div>
+<div class="article-list" style="background:aliceblue;">
+	<article>
+		<h2>This is an article</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+	<article>
+		<h2>This is an article with a another article in it</h2>
+		<article>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+			alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+		</article>
+	</article>
+	<article style="--kiwi-article-list-padding-inline: 1.5rem; --kiwi-article-list-padding-block: 3rem;">
+		<h2>This article has custom padding</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+	<article style="--kiwi-article-content-max-width:20rem;">
+		<h2>This article has limited content width</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+</div>
+<div>List of articles with no mobile spacing</div>
+<div class="article-list no-mobile-spacing" style="background:aliceblue;">
+	<article style="background:coral;">
+		<h2>This is an article</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+	<article style="background:lightgreen;">
+		<h2>This is an article</h2>
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam modi odit nisi, quod officiis dignissimos consequatur, voluptate quasi corporis
+		alias, suscipit incidunt? Maxime, ducimus unde placeat officiis perspiciatis.
+	</article>
+</div>
+</kiwi-scoped-demo>
 
 ### Containers
 

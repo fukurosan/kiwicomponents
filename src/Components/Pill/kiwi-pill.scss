@@ -22,8 +22,8 @@
     height: 1.25em;
     border-radius: 4em;
     padding: 0.5em;
-    background-color: $primary-color-600;
-    color: $with-color-above-400;
+    background-color: $primary-color-500;
+    color: $foreground-color-light;
 }
 
 :host([shape="square"]) #content {
@@ -43,25 +43,25 @@
 }
 
 :host([type="secondary"]) #content {
-    background-color: $secondary-color-600;
+    background-color: $secondary-color-500;
 }
 
 :host([type="neutral"]) #content {
-    background-color: $neutral-color-600;
+    background-color: $neutral-color-500;
 }
 
 :host([type="info"]) #content {
-    background-color: $info-color-600;
+    background-color: $info-color-500;
 }
 
 :host([type="success"]) #content {
-    background-color: $success-color-600;
+    background-color: $success-color-500;
 }
 
 :host([type="warning"]) #content {
-    background-color: $warning-color-600;
+    background-color: $warning-color-500;
 }
 
 :host([type="error"]) #content {
-    background-color: $error-color-600;
+    background-color: $error-color-500;
 }

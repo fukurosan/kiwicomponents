@@ -25,10 +25,10 @@
 	--kiwi-black: #{$dark-base};
 	--kiwi-white: #{$light-base};
 
-	--kiwi-with-dark-color: #{$with-above-400};
-	--kiwi-with-dark-color-faded: #{$with-above-400-faded};
-	--kiwi-with-light-color: #{$with-below-500};
-	--kiwi-with-light-color-faded: #{$with-below-500-faded};
+	--kiwi-foreground-color-light: #{$foreground-light};
+	--kiwi-foreground-color-light-faded: #{$foreground-light-faded};
+	--kiwi-foreground-color-dark: #{$foreground-dark};
+	--kiwi-foreground-color-dark-faded: #{$foreground-dark-faded};
 
 	--kiwi-primary-color-50: #{$primary-50};
 	--kiwi-primary-color-100: #{$primary-100};

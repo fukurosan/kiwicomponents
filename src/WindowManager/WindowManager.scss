@@ -23,7 +23,7 @@
 
 .kiwi-windowmanager-generic-message {
     @extend %body-m;
-    color: $with-color-below-500-faded;
+    color: $foreground-color-dark-faded;
 }
 
 .kiwi-windowmanager-generic-content {
@@ -45,15 +45,12 @@
     flex-direction: row;
     gap: 0.5rem;
     width: 100%;
+    margin-top: 0.5rem;
 }
 
 .kiwi-windowmanager-spinner-content {
     gap: 2rem;
     padding: 0.5rem;
-}
-
-.kiwi-windowmanager-alert-buttons {
-    margin-top: 0.5rem;
 }
 
 .kiwi-windowmanager-alert-content-icon {
@@ -64,22 +61,25 @@
         border-radius: 50%;
         stroke-width: 0;
         stroke: none;
-        fill: white;
         path {
             transform: scale(0.9);
             transform-origin: center;
         }
         &.success {
-            background-color: $success-color-500;    
+            fill: $success-color-500;
+            background-color: $success-color-100;    
         }
         &.error {
-            background-color: $error-color-500;    
+            fill: $error-color-500;
+            background-color: $error-color-100;    
         }
-        &.question {
-            background-color: $info-color-500;    
+        &.info {
+            fill: $info-color-500;
+            background-color: $info-color-100;    
         }
         &.warning {
-            background-color: $warning-color-500;    
+            fill: $warning-color-500;
+            background-color: $warning-color-100;    
         }
     }
 }

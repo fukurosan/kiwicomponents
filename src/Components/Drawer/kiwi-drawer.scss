@@ -137,7 +137,7 @@
 
 :host([type]:not([type="neutral"])) {
 	#title {
-		color: $with-color-above-400 !important;
+		color: $foreground-color-light !important;
 	}
 	#close-icon svg {
 		stroke: white !important;
@@ -158,37 +158,49 @@
 
 :host([type="primary"]) {
 	#header {
-		background-color: $primary-color-700;
+		background-color: $primary-color-500;
 		#subtitle {
 			color: $primary-color-200;
 		}
+	}
+	#menu-panel #close-icon:hover {
+		background-color: $primary-color-600;
 	}
 }
 
 :host([type="secondary"]) {
 	#header {
-		background-color: $secondary-color-700;
+		background-color: $secondary-color-500;
 		#subtitle {
 			color: $secondary-color-200;
 		}
+	}
+	#menu-panel #close-icon:hover {
+		background-color: $secondary-color-600;
 	}
 }
 
 :host([type="info"]) {
 	#header {
-		background-color: $info-color-700;
+		background-color: $info-color-500;
 		#subtitle {
 			color: $info-color-200;
 		}
+	}
+	#menu-panel #close-icon:hover {
+		background-color: $info-color-600;
 	}
 }
 
 :host([type="success"]) {
 	#header {
-		background-color: $success-color-700;
+		background-color: $success-color-500;
 		#subtitle {
 			color: $success-color-200;
 		}
+	}
+	#menu-panel #close-icon:hover {
+		background-color: $success-color-600;
 	}
 }
 
@@ -199,13 +211,19 @@
 			color: $warning-color-200;
 		}
 	}
+	#menu-panel #close-icon:hover {
+		background-color: $warning-color-600;
+	}
 }
 
 :host([type="error"]) {
 	#header {
-		background-color: $error-color-700;
+		background-color: $error-color-500;
 		#subtitle {
 			color: $error-color-200;
 		}
+	}
+	#menu-panel #close-icon:hover {
+		background-color: $error-color-600;
 	}
 }

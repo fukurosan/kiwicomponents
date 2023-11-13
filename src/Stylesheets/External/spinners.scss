@@ -6,7 +6,7 @@
 	height: var(--size);
 	border-radius: 50%;
 	border: calc(var(--size) / 4) solid $neutral-color-300;
-	border-right-color: $primary-color-600;
+	border-right-color: $primary-color-500;
 	animation: spinner-base 1s infinite linear;
 }
 
@@ -21,7 +21,7 @@
 	width: var(--size);
 	height: var(--size);
 	border-radius: 50%;
-	border: calc(var(--size) / 4) solid $primary-color-600;
+	border: calc(var(--size) / 4) solid $primary-color-500;
 	animation: spinner-rythm-animation-1 0.8s infinite linear alternate, spinner-rythm-animation-2 1.6s infinite linear;
 }
 
@@ -91,7 +91,7 @@
 	width: 40%;
 	height: 40%;
 	animation: spinner-spinning-animation 2s infinite linear;
-	background: $primary-color-600;
+	background: $primary-color-500;
 	border-radius: 50%;
 	inset: 0;
 	margin: auto;
@@ -130,7 +130,7 @@
 	height: var(--size);
 	width: calc(var(--size) / 5);
 	animation: spinner-rotate-animation 0.5s infinite;
-	background: $primary-color-600;
+	background: $primary-color-500;
 	position: absolute;
 	left: 50%;
 	margin-left: calc(var(--size) / -10);
@@ -146,9 +146,9 @@
 	--size: 2rem;
 	width: var(--size);
 	height: calc(var(--size) / 1.5);
-	background: radial-gradient(circle closest-side, $primary-color-600 90%, #0000) 0% 50%,
-		radial-gradient(circle closest-side, $primary-color-600 90%, #0000) 50% 50%,
-		radial-gradient(circle closest-side, $primary-color-600 90%, #0000) 100% 50%;
+	background: radial-gradient(circle closest-side, $primary-color-500 90%, #0000) 0% 50%,
+		radial-gradient(circle closest-side, $primary-color-500 90%, #0000) 50% 50%,
+		radial-gradient(circle closest-side, $primary-color-500 90%, #0000) 100% 50%;
 	background-size: calc(100% / 3) 13.4px;
 	background-repeat: no-repeat;
 	animation: spinner-dots-animation 1s infinite linear;
@@ -180,7 +180,7 @@
 	max-width: 5rem;
 	max-height: 5rem;
 	border-radius: 50%;
-	background-color: $primary-color-600;
+	background-color: $primary-color-500;
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	animation: spinner-shape-animation 2s infinite cubic-bezier(0.3, 1, 0, 1);
 }
@@ -206,7 +206,7 @@
 	max-height: 5rem;
 	border-radius: 0.25rem;
 	animation: spinner-flip-animation 1.5s infinite;
-	background-color: $primary-color-600;
+	background-color: $primary-color-500;
 }
 
 @keyframes spinner-flip-animation {

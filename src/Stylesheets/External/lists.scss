@@ -30,8 +30,8 @@ ol.steps {
 			height: 2rem;
 			width: 2rem;
 			border-radius: 50%;
-			background-color: $primary-color-600;
-			color: $with-color-above-400;
+			background-color: $primary-color-500;
+			color: $foreground-color-light;
 			font-weight: 700;
 		}
 		&:not(:first-child)::after {
@@ -43,8 +43,8 @@ ol.steps {
 			width: 0.375rem;
 			margin-inline: 50%;
 			transform: translate(-50%, -50%);
-			background-color: $primary-color-600;
-			color: $with-color-above-400;
+			background-color: $primary-color-500;
+			color: $foreground-color-light;
 		}
 	}
 
@@ -70,14 +70,14 @@ ol.steps {
 	li {
 		&.is-secondary:before,
 		&.is-secondary:after {
-			background-color: $secondary-color-600;
-			color: $with-color-above-400;
+			background-color: $secondary-color-500;
+			color: $foreground-color-light;
 		}
 
 		&.is-neutral:before,
 		&.is-neutral:after {
 			background-color: $neutral-color-300;
-			color: $with-color-below-500;
+			color: $foreground-color-dark;
 		}
 
 		&.is-success:before,
@@ -85,15 +85,15 @@ ol.steps {
 			content: "✓";
 			font-weight: 700;
 			background-color: $success-color-500;
-			color: $with-color-above-400;
+			color: $foreground-color-light;
 		}
 
 		&.is-info:before,
 		&.is-info:after {
 			content: "？";
 			font-weight: 700;
-			background-color: $info-color-600;
-			color: $with-color-above-400;
+			background-color: $info-color-500;
+			color: $foreground-color-light;
 		}
 
 		&.is-warning:before,
@@ -101,15 +101,15 @@ ol.steps {
 			content: "！";
 			font-weight: 700;
 			background-color: $warning-color-500;
-			color: $with-color-above-400;
+			color: $foreground-color-light;
 		}
 
 		&.is-error:before,
 		&.is-error:after {
 			content: "✕";
 			font-weight: 700;
-			background-color: $error-color-600;
-			color: $with-color-above-400;
+			background-color: $error-color-500;
+			color: $foreground-color-light;
 		}
 
 		&[kiwi-content]:before {

@@ -8,6 +8,7 @@ import styles from "./kiwi-tabs.scss"
  *
  * @attr {number} active-tab-index - Index of the currently active tab
  * @attr {"row"|"column"} direction - Direction of the tab layout
+ * @attr {"default"|"popup"|"button"} variant - General look and feel of the tab menu
  * @attr {any} noborder - If set to any value there will be no border separating the tabs and the content below them
  *
  * @fires change - Change event is fired whenever a tab is clicked. The details of the event contains a tabElement reference and an index property of what tab was pressed. Note that this event is not fired when the attribute is manually updated.
@@ -15,7 +16,7 @@ import styles from "./kiwi-tabs.scss"
  */
 class KiwiTabs extends HTMLElement {
 	static get observedAttributes() {
-		return ["active-tab-index", "direction", "noborder"]
+		return ["active-tab-index", "direction", "noborder", "variant"]
 	}
 
 	constructor() {

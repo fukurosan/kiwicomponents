@@ -115,7 +115,7 @@
 
 #subtitle {
 	@extend %body-m;
-	color: $with-color-below-500-faded;
+	color: $foreground-color-dark-faded;
 	display: none;
 	white-space: nowrap;
 	overflow: hidden;

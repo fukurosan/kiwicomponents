@@ -23,10 +23,11 @@ table.sticky-headers {
 	thead {
 		position: sticky;
 		top: 0;
-		background-color: $primary-color-600;
+		background-color: $primary-color-500;
 
 		th {
-			color: $with-color-above-400;
+			color: $foreground-color-light;
+			border-bottom: none;
 		}
 	}
 }

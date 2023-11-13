@@ -3,14 +3,14 @@
 
 // The double attribute selector is to ensure that the color attributes are not overwritten when applying text styles too.
 :is(button, a[role="button"][role="button"]) {
-	--background-color: #{$primary-color-600};
-	--background-color-hover: #{$primary-color-500};
-	--background-color-focus: #{$primary-color-500};
+	--background-color: #{$primary-color-500};
+	--background-color-hover: #{$primary-color-600};
+	--background-color-focus: #{$primary-color-700};
 	--border-color: var(--background-color);
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
-	--text-color: #{$with-color-above-400};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color: #{$foreground-color-light};
+	--text-color-hover: #{$foreground-color-light};
 	box-sizing: border-box;
 	padding: 1em 1.5em;
 	cursor: pointer;
@@ -19,7 +19,7 @@
 	width: 100%;
 	border: 2px solid var(--border-color);
 	outline: none;
-	transition: background-color 200ms, color 200ms;
+	transition: background-color 200ms, color 200ms, border-color 200ms;
 	border-radius: $border-radius-small;
 	box-shadow: none;
 	color: var(--text-color);
@@ -80,26 +80,26 @@ a[role="button"] {
 }
 
 :is(button, a[role="button"]).type-primary {
-	--background-color: #{$primary-color-600};
-	--background-color-hover: #{$primary-color-500};
-	--background-color-focus: #{$primary-color-500};
+	--background-color: #{$primary-color-500};
+	--background-color-hover: #{$primary-color-600};
+	--background-color-focus: #{$primary-color-700};
 }
 :is(button, a[role="button"]).type-primary.fill-light {
-	--background-color: #{$primary-color-200};
-	--background-color-hover: #{$primary-color-300};
-	--background-color-focus: #{$primary-color-300};
-	--text-color: #{$primary-color-700};
-	--text-color-hover: #{$primary-color-900};
+	--background-color: #{$primary-color-100};
+	--background-color-hover: #{$primary-color-200};
+	--background-color-focus: #{$primary-color-200};
+	--text-color: #{$primary-color-600};
+	--text-color-hover: #{$primary-color-700};
 }
 :is(button, a[role="button"]).type-primary.fill-outline {
 	--background-color: transparent;
 	--background-color-hover: #{$primary-color-600};
-	--background-color-focus: #{$primary-color-500};
-	--border-color: #{$primary-color-600};
+	--background-color-focus: #{$primary-color-700};
+	--border-color: #{$primary-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$primary-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :is(button, a[role="button"]).type-primary.fill-none {
 	--background-color: transparent;
@@ -110,26 +110,26 @@ a[role="button"] {
 }
 
 :is(button, a[role="button"]).type-secondary {
-	--background-color: #{$secondary-color-600};
-	--background-color-hover: #{$secondary-color-500};
-	--background-color-focus: #{$secondary-color-500};
+	--background-color: #{$secondary-color-500};
+	--background-color-hover: #{$secondary-color-600};
+	--background-color-focus: #{$secondary-color-700};
 }
 :is(button, a[role="button"]).type-secondary.fill-light {
-	--background-color: #{$secondary-color-200};
-	--background-color-hover: #{$secondary-color-300};
-	--background-color-focus: #{$secondary-color-300};
-	--text-color: #{$secondary-color-700};
-	--text-color-hover: #{$secondary-color-900};
+	--background-color: #{$secondary-color-100};
+	--background-color-hover: #{$secondary-color-200};
+	--background-color-focus: #{$secondary-color-200};
+	--text-color: #{$secondary-color-600};
+	--text-color-hover: #{$secondary-color-700};
 }
 :is(button, a[role="button"]).type-secondary.fill-outline {
 	--background-color: transparent;
 	--background-color-hover: #{$secondary-color-600};
-	--background-color-focus: #{$secondary-color-500};
-	--border-color: #{$secondary-color-600};
+	--background-color-focus: #{$secondary-color-700};
+	--border-color: #{$secondary-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$secondary-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :is(button, a[role="button"]).type-secondary.fill-none {
 	--background-color: transparent;
@@ -140,9 +140,9 @@ a[role="button"] {
 }
 
 :is(button, a[role="button"]).type-neutral {
-	--background-color: #{$neutral-color-600};
-	--background-color-hover: #{$neutral-color-500};
-	--background-color-focus: #{$neutral-color-500};
+	--background-color: #{$neutral-color-500};
+	--background-color-hover: #{$neutral-color-600};
+	--background-color-focus: #{$neutral-color-700};
 }
 :is(button, a[role="button"]).type-neutral.fill-light {
 	--background-color: #{$neutral-color-200};
@@ -154,12 +154,12 @@ a[role="button"] {
 :is(button, a[role="button"]).type-neutral.fill-outline {
 	--background-color: transparent;
 	--background-color-hover: #{$neutral-color-600};
-	--background-color-focus: #{$neutral-color-500};
-	--border-color: #{$neutral-color-600};
+	--background-color-focus: #{$neutral-color-700};
+	--border-color: #{$neutral-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$neutral-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :is(button, a[role="button"]).type-neutral.fill-none {
 	--background-color: transparent;
@@ -170,26 +170,26 @@ a[role="button"] {
 }
 
 :is(button, a[role="button"]).type-info {
-	--background-color: #{$info-color-600};
-	--background-color-hover: #{$info-color-500};
-	--background-color-focus: #{$info-color-500};
+	--background-color: #{$info-color-500};
+	--background-color-hover: #{$info-color-600};
+	--background-color-focus: #{$info-color-700};
 }
 :is(button, a[role="button"]).type-info.fill-light {
-	--background-color: #{$info-color-200};
-	--background-color-hover: #{$info-color-300};
-	--background-color-focus: #{$info-color-300};
-	--text-color: #{$info-color-700};
-	--text-color-hover: #{$info-color-900};
+	--background-color: #{$info-color-100};
+	--background-color-hover: #{$info-color-200};
+	--background-color-focus: #{$info-color-200};
+	--text-color: #{$info-color-600};
+	--text-color-hover: #{$info-color-700};
 }
 :is(button, a[role="button"]).type-info.fill-outline {
 	--background-color: transparent;
 	--background-color-hover: #{$info-color-600};
-	--background-color-focus: #{$info-color-500};
-	--border-color: #{$info-color-600};
+	--background-color-focus: #{$info-color-700};
+	--border-color: #{$info-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$info-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :is(button, a[role="button"]).type-info.fill-none {
 	--background-color: transparent;
@@ -200,26 +200,26 @@ a[role="button"] {
 }
 
 :is(button, a[role="button"]).type-success {
-	--background-color: #{$success-color-600};
-	--background-color-hover: #{$success-color-500};
-	--background-color-focus: #{$success-color-500};
+	--background-color: #{$success-color-500};
+	--background-color-hover: #{$success-color-600};
+	--background-color-focus: #{$success-color-700};
 }
 :is(button, a[role="button"]).type-success.fill-light {
-	--background-color: #{$success-color-200};
-	--background-color-hover: #{$success-color-300};
-	--background-color-focus: #{$success-color-300};
-	--text-color: #{$success-color-700};
-	--text-color-hover: #{$success-color-900};
+	--background-color: #{$success-color-100};
+	--background-color-hover: #{$success-color-200};
+	--background-color-focus: #{$success-color-200};
+	--text-color: #{$success-color-600};
+	--text-color-hover: #{$success-color-700};
 }
 :is(button, a[role="button"]).type-success.fill-outline {
 	--background-color: transparent;
 	--background-color-hover: #{$success-color-600};
-	--background-color-focus: #{$success-color-500};
-	--border-color: #{$success-color-600};
+	--background-color-focus: #{$success-color-700};
+	--border-color: #{$success-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$success-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :is(button, a[role="button"]).type-success.fill-none {
 	--background-color: transparent;
@@ -230,26 +230,26 @@ a[role="button"] {
 }
 
 :is(button, a[role="button"]).type-warning {
-	--background-color: #{$warning-color-600};
-	--background-color-hover: #{$warning-color-500};
-	--background-color-focus: #{$warning-color-500};
+	--background-color: #{$warning-color-500};
+	--background-color-hover: #{$warning-color-600};
+	--background-color-focus: #{$warning-color-700};
 }
 :is(button, a[role="button"]).type-warning.fill-light {
-	--background-color: #{$warning-color-200};
-	--background-color-hover: #{$warning-color-300};
-	--background-color-focus: #{$warning-color-300};
-	--text-color: #{$warning-color-700};
-	--text-color-hover: #{$warning-color-900};
+	--background-color: #{$warning-color-100};
+	--background-color-hover: #{$warning-color-200};
+	--background-color-focus: #{$warning-color-200};
+	--text-color: #{$warning-color-600};
+	--text-color-hover: #{$warning-color-700};
 }
 :is(button, a[role="button"]).type-warning.fill-outline {
 	--background-color: transparent;
 	--background-color-hover: #{$warning-color-600};
-	--background-color-focus: #{$warning-color-500};
-	--border-color: #{$warning-color-600};
+	--background-color-focus: #{$warning-color-700};
+	--border-color: #{$warning-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$warning-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :is(button, a[role="button"]).type-warning.fill-none {
 	--background-color: transparent;
@@ -260,26 +260,26 @@ a[role="button"] {
 }
 
 :is(button, a[role="button"]).type-error {
-	--background-color: #{$error-color-600};
-	--background-color-hover: #{$error-color-500};
-	--background-color-focus: #{$error-color-500};
+	--background-color: #{$error-color-500};
+	--background-color-hover: #{$error-color-600};
+	--background-color-focus: #{$error-color-700};
 }
 :is(button, a[role="button"]).type-error.fill-light {
-	--background-color: #{$error-color-200};
-	--background-color-hover: #{$error-color-300};
-	--background-color-focus: #{$error-color-300};
-	--text-color: #{$error-color-700};
-	--text-color-hover: #{$error-color-900};
+	--background-color: #{$error-color-100};
+	--background-color-hover: #{$error-color-200};
+	--background-color-focus: #{$error-color-200};
+	--text-color: #{$error-color-600};
+	--text-color-hover: #{$error-color-700};
 }
 :is(button, a[role="button"]).type-error.fill-outline {
 	--background-color: transparent;
 	--background-color-hover: #{$error-color-600};
-	--background-color-focus: #{$error-color-500};
-	--border-color: #{$error-color-600};
+	--background-color-focus: #{$error-color-700};
+	--border-color: #{$error-color-500};
 	--border-color-hover: var(--background-color-hover);
 	--border-color-focus: var(--background-color-focus);
 	--text-color: #{$error-color-600};
-	--text-color-hover: #{$with-color-above-400};
+	--text-color-hover: #{$foreground-color-light};
 }
 :is(button, a[role="button"]).type-error.fill-none {
 	--background-color: transparent;

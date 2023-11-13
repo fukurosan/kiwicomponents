@@ -17,13 +17,13 @@ progress {
 		background: none;
 	}
 	&[value]::-webkit-progress-value {
-		background-color: $primary-color-600;
+		background-color: $primary-color-500;
 	}
 	&::-moz-progress-bar {
-		background-color: $primary-color-600;
+		background-color: $primary-color-500;
 	}
 	&:indeterminate {
-		background: #{$neutral-color-300} linear-gradient(to right, #{$primary-color-600} 30%, #{$neutral-color-300} 30%) top left / 150% 150% no-repeat;
+		background: #{$neutral-color-300} linear-gradient(to right, #{$primary-color-500} 30%, #{$neutral-color-300} 30%) top left / 150% 150% no-repeat;
 		animation: progress-animation 1s linear infinite;
 		&[value]::-webkit-progress-value {
 			background-color: transparent;

@@ -60,14 +60,14 @@ ul:not(.root) li::before {
 :host([selected]) #content {
 	background: var(--kiwi-treelist-hover-background, $neutral-color-100);
 	#text {
-		color: var(--kiwi-treelist-hover-color, $with-color-below-500);
+		color: var(--kiwi-treelist-hover-color, $foreground-color-dark);
 	}
 }
 
 :host([selected]) #content:focus {
 	background: var(--kiwi-treelist-focus-background, $neutral-color-200);
 	#text {
-		color: var(--kiwi-treelist-focus-color, $with-color-below-500);
+		color: var(--kiwi-treelist-focus-color, $foreground-color-dark);
 	}
 }
 

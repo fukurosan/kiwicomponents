@@ -126,7 +126,7 @@ details.dropdown {
 		user-select: none;
 		&:focus,
 		&:focus-visible {
-			border: 1px solid $primary-color-600;
+			border: 1px solid $primary-color-500;
 			box-shadow: 0 0 0 0.1875rem $primary-color-100;
 			outline: 0;
 		}

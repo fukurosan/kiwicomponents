@@ -2,94 +2,119 @@
 @import "../Internal/typography.scss";
 @import "../Tokens/shadows.scss";
 
+// Layout class
 
-// Sections live directly inside either body, main or header
-// Sections control the width of the page content and the centering of it.
-// Sections can be made more narrow using the .narrow class, which is useful for content like login forms.
-// Sections till by default remove all margins and gaps on mobile, you can stop this behaviour by setting the class .mobile-margins
+.layout {
+	--kiwi-layout-narrow-max-width: 37rem; //592px
+	--kiwi-layout-content-max-width: 56rem; //896px
+	--kiwi-layout-breakout-max-width: 75rem; //1200px
+	--kiwi-layout-margin-inline: 1rem;
+	--kiwi-layout-gap-space: 0rem;
 
-// Articles are content islands inside of the sections.
-// Articles have responsive inline padding in them, and by default adds a lot of padding. This behaviour can be changed by setting the class .fill
-// Articles can have additional sections in them, which will be given a different background color and some standard styles.
+	--narrow: min(var(--kiwi-layout-narrow-max-width), 100% - var(--kiwi-layout-margin-inline) * 2);
+	--content: clamp(0rem, calc((var(--kiwi-layout-content-max-width) - var(--kiwi-layout-narrow-max-width)) / 2), calc((100% - var(--kiwi-layout-narrow-max-width)) / 2 - var(--kiwi-layout-margin-inline)));
+	--breakout: minmax(0, calc((var(--kiwi-layout-breakout-max-width) - var(--kiwi-layout-content-max-width)) / 2));
+	--full: minmax(var(--kiwi-layout-margin-inline), 1fr);
 
-// The only allowed hierarchy for these <section> and <article> styles is (body | header | main | footer) -> section -> article -> section
-// All other occurences will be unstyled and ignored. This is on purpose.
+	display: grid;
+	row-gap: var(--kiwi-layout-gap-space);
+	grid-template-columns:
+		[full-start] var(--full)
+		[breakout-start] var(--breakout)
+		[content-start] var(--content)
+		[narrow-start] var(--narrow) [narrow-end]
+		var(--content) [content-end]
+		var(--breakout) [breakout-end]
+		var(--full) [full-end];
+}
 
-body > section,
-main > section,
-header > section,
-footer > section {
-	margin-inline: auto;
-	padding-inline: max(1.5rem, calc((100% - 56rem) / 2)); //Equivalent to 56rem (~900px) max width, but allows us to set a full page width background
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
-	&:not(:last-of-type) {
-		margin-bottom: 2rem;
-	}
-	&.narrow {
-		padding-inline: max(1.5rem, calc((100% - 37rem) / 2)); //Equivalent to 37rem (~600px) max width, but allows us to set a full page width background
-		> article {
-			padding: 2.5rem 3.5rem;
-			&.fill {
-				padding: 2rem 1.5rem;
-			}
-		}
-	}
-	> article {
-		box-shadow: var(--kiwi-article-box-shadow, $small-shadow);
-		border: var(--kiwi-article-border, none);
-		box-sizing: content-box;
-		background: var(--kiwi-article-background, #ffffff);
-		border-radius: $border-radius-large;
-		//padding: 3rem clamp(3rem, 8rem, calc(100% - 48rem));
-		padding: 3rem max(1.5rem, calc(calc(100% - 40rem) / 2)); //40rem (~640px) of available space for content, the rest is filled with responsive padding
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-		&.fill {
-			padding: 3rem 3rem;
-		}
-		> section {
-			display: flex;
-			flex-direction: column;
-			gap: 1.5rem;
-			background: var(--kiwi-section-background, $neutral-color-50);
-			padding: 1.5rem;
-			border-radius: $border-radius-large;
-		}
-	}
+.layout > .full-width {
+	grid-column: full;
+}
+
+.layout > .breakout {
+	grid-column: breakout;
+}
+
+.layout > * {
+	grid-column: content;
+}
+
+.layout > .narrow {
+	grid-column: narrow;
 }
 
 @media (max-width: 768px) {
-	body > section,
-	main > section,
-	header > section,
-	footer > section {
-		&:not(.mobile-margins) {
-			width: 100%;
-			max-width: 100%;
-			padding-inline: 0;
-			gap: 0;
-			> article {
-				box-shadow: none;
-				border: none;
-				border-radius: 0;
-				padding: 3rem max(1.5rem, calc(calc(100% - 40rem) / 2)); //40rem (~640px) of available space for content
-			}
-		}
-		&.narrow {
-			max-width: 100%;
-			> article {
-				padding: 2rem max(1.5rem, calc(calc(100% - 40rem) / 2)); //40rem (~640px) of available space for content
-			}
-		}
-		> article,
-		> article.fill {
-			padding: 2rem max(1.5rem, calc(calc(100% - 40rem) / 2)); //40rem (~640px) of available space for content
+	.layout {
+		--kiwi-layout-narrow-max-width: 100%;
+		--kiwi-layout-content-max-width: 100%;
+		--kiwi-layout-breakout-max-width: 100%;
+	}
+	.layout.no-mobile-spacing {
+		--kiwi-layout-margin-inline: 0rem;
+		--kiwi-layout-gap-space: 0rem;
+	}
+}
+
+//Article classes
+
+article {
+	--kiwi-article-content-max-width: 100%; //For example 40rem (~640px) of available space for content, the rest is filled with responsive padding
+	--kiwi-article-min-padding-inline: 3rem;
+	--kiwi-article-min-padding-block: 3rem;
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--kiwi-article-min-padding-block) / 2);
+	padding: var(--kiwi-article-min-padding-block) max(var(--kiwi-article-min-padding-inline), calc(calc(100% - var(--kiwi-article-content-max-width)) / 2));
+	box-shadow: $small-shadow;
+	background: #ffffff;
+	border-radius: $border-radius-large;
+	&.narrow {
+		--kiwi-article-min-padding-block: 3rem;
+		--kiwi-article-min-padding-inline: 1.5rem;
+	}
+	&.limited-content-width {
+		--kiwi-article-content-max-width: 40rem;
+	}
+	> article {
+		--kiwi-article-min-padding-block: 1.5rem;
+		--kiwi-article-min-padding-inline: 1.5rem;
+		gap: var(--kiwi-article-min-padding-block);
+		background: $neutral-color-50;
+		box-shadow: none;
+	}
+}
+
+.article-list {
+	display: flex;
+	flex-direction: column;
+	padding-inline: var(--kiwi-article-list-padding-inline, 1rem);
+	padding-block: var(--kiwi-article-list-padding-block, 1rem);
+	gap: var(--kiwi-article-list-gap, 1rem);
+}
+
+.layout > .article-list {
+	--kiwi-article-list-padding-inline: 0rem;
+	--kiwi-article-list-padding-block: 0rem;
+}
+
+@media (max-width: 768px) {
+	article {
+		--kiwi-article-min-padding-inline: 1.5rem;
+	}
+	.article-list.no-mobile-spacing {
+		--kiwi-article-list-padding-inline: 0rem;
+		--kiwi-article-list-padding-block: 0rem;
+		--kiwi-article-list-gap: 0rem;
+		> article {
+			box-shadow: none;
+			border: none;
+			border-radius: 0;
 		}
 	}
 }
+
+//Containers
 
 .container {
 	margin-inline: 2rem;

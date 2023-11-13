@@ -7,7 +7,7 @@
 	display: none;
 	position: fixed;
 	background: $neutral-color-900;
-	color: $with-color-above-400;
+	color: $foreground-color-light;
 	padding: var(--kiwi-tooltip-padding, 0.5rem 0.75rem);
 	border-radius: $border-radius-medium;
 	max-width: var(--kiwi-tooltip-max-width, 18.75rem);

@@ -32,7 +32,7 @@ export default {
 		},
 		type: {
 			control: { type: "select" },
-			options: ["success", "question", "warning", "error"],
+			options: ["success", "info", "warning", "error"],
 			description: "Defines the styling and default icon of the alert",
 			table: { type: { summary: "" }, defaultValue: { summary: "warning" } }
 		}

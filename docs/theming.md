@@ -22,10 +22,10 @@ The following CSS color variables can be set:
 | ----------------------------- |
 | --kiwi-black                  |
 | --kiwi-white                  |
-| --kiwi-with-dark-color        |
-| --kiwi-with-dark-color-faded  |
-| --kiwi-with-light-color       |
-| --kiwi-with-light-color-faded |
+| --kiwi-foreground-color-light        |
+| --kiwi-foreground-color-light-faded  |
+| --kiwi-foreground-color-dark       |
+| --kiwi-foreground-color-dark-faded |
 | --kiwi-primary-color-50       |
 | --kiwi-primary-color-100      |
 | --kiwi-primary-color-200      |
