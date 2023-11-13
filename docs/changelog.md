@@ -1,5 +1,9 @@
 # Change Log
 
+### 0.5.6
+- Implemented touch controls for kiwi-scroll-list
+- Fixed issue where menu lists would overflow
+
 ### 0.5.5
 - Implemented new CSS system for creating layouts
 - Implemented new system for article elements

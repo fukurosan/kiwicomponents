@@ -28,20 +28,31 @@ class KiwiScrollListElement extends HTMLElement {
 		})
 		let isDown = false
 		let lastX = 0
-		this.addEventListener("mousedown", e => {
+		const moveStart = e => {
 			isDown = true
+			if (e.touches && e.touches[0]) {
+				e = e.touches[0]
+			}
 			lastX = e.screenX
-		})
-		this.addEventListener("mouseup", () => (isDown = false))
-		this.addEventListener("mouseleave", () => (isDown = false))
-		this.addEventListener("mousemove", e => {
+		}
+		const move = e => {
 			if (isDown) {
 				e.preventDefault()
+				if (e.touches && e.touches[0]) {
+					e = e.touches[0]
+				}
 				const delta = e.screenX - lastX
 				lastX = e.screenX
 				this._updateScroll(-delta, false)
 			}
-		})
+		}
+		this.addEventListener("mousedown", moveStart)
+		this.addEventListener("touchstart", moveStart)
+		this.addEventListener("mousemove", move)
+		this.addEventListener("touchmove", move)
+		this.addEventListener("mouseup", () => (isDown = false))
+		this.addEventListener("mouseleave", () => (isDown = false))
+		this.addEventListener("touchend", () => (isDown = false))
 		const resizeObserver = new ResizeObserver(() => this._evaluateArrowVisibility())
 		resizeObserver.observe(this)
 	}

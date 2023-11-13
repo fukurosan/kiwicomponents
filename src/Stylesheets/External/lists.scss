@@ -157,6 +157,7 @@ ul.menu {
 	grid-auto-rows: max-content;
 	grid-auto-columns: 100%;
 	width: 100%;
+	box-sizing: border-box;
 	border-radius: $border-radius-medium;
 	background-color: $white;
 
