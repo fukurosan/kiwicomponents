@@ -99,7 +99,7 @@ export default defineConfig({
 			async writeBundle(_, bundle) {
 				for (const fileName of Object.entries(bundle)) {
 					const file = fileName[0]
-					if (file.match(/dist(\\|\/)(css|js).*\.(css|js)$/i)) {
+					if (file.match(_.dir.endsWith("dist") && /(css|js)(\\|\/).*\.(css|js)$/i)) {
 						const fileURL = `${DIST_FOLDER}/${file}`
 						let data = fs.readFileSync(fileURL, { encoding: "utf8" })
 						data = `${BANNER} ${data}`
