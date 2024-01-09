@@ -25,6 +25,7 @@ src
 .lintstagedrc
 .prettierignore
 .prettierrc
+.storybook
 vite.config.js
 vitest.config.js
 rollup.config.js

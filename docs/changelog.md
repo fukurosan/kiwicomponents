@@ -1,5 +1,11 @@
 # Change Log
 
+### 0.5.8
+- Fixed missing banner
+
+### 0.5.7
+- Fixed images
+
 ### 0.5.6
 - Implemented touch controls for kiwi-scroll-list
 - Fixed issue where menu lists would overflow
