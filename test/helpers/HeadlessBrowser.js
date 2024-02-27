@@ -26,13 +26,13 @@ const getHeadlessBrowserInstance = async (product = "chrome", isDebugMode = inst
 
     const loadBundle = async () => {
         const bundle = fs.readFileSync(instanceConfig.bundlePath, "utf8")
-        const content = `<script>${bundle}</script>`
+        const content = `<style>*{font-style:sans serif !important;}</style><script>${bundle}</script>`
         await page.setContent(content, {waitUntil: "domcontentloaded"})
     }
 
     const loadComponentPage = async (componentName) => {
         const bundle = fs.readFileSync(instanceConfig.bundlePath, "utf8")
-        const content = `<script>${bundle} kiwicomponents.init()</script><${componentName}></${componentName}>`
+        const content = `<style>*{font-style:sans serif !important;}</style><script>${bundle} kiwicomponents.init()</script><${componentName}></${componentName}>`
         await page.setContent(content)
         await page.waitForSelector(componentName)
     }

@@ -76,7 +76,7 @@ export default defineConfig({
 		{
 			//After the JavaScript build has completed we build all the css assets manually
 			name: "build-kiwi-stylesheets",
-			buildEnd() {
+			writeBundle() {
 				fs.mkdirSync(`${DIST_FOLDER}/css`, { recursive: true })
 				fs.readdirSync("./src/Stylesheets/External/").map(fileName => {
 					const css = sass.compile(`./src/Stylesheets/External/${fileName}`, {
@@ -88,6 +88,8 @@ export default defineConfig({
 						fs.writeFileSync(`docs/css/${fileName.replace(/.scss$/, "")}.css`, `${BANNER}${css.css}`, "utf-8")
 					}
 				})
+				//Vite creates this seemingly by default, we can safely remove it.
+				fs.existsSync(`${DIST_FOLDER}/style.css`) && fs.rmSync(`${DIST_FOLDER}/style.css`)
 				return null
 			}
 		},
@@ -99,7 +101,7 @@ export default defineConfig({
 			async writeBundle(_, bundle) {
 				for (const fileName of Object.entries(bundle)) {
 					const file = fileName[0]
-					if (file.match(_.dir.endsWith("dist") && /(css|js)(\\|\/).*\.(css|js)$/i)) {
+					if (_.dir.endsWith("dist") && file.match(/(css|js)(\\|\/).*\.(css|js)$/i)) {
 						const fileURL = `${DIST_FOLDER}/${file}`
 						let data = fs.readFileSync(fileURL, { encoding: "utf8" })
 						data = `${BANNER} ${data}`
