@@ -1,3 +1,7 @@
+//Polyfills
+import "./Polyfills/HTMLElement"
+
+//Web Components
 import { Components, init } from "./Components/index"
 
 //Utilities

@@ -1,5 +1,8 @@
 # Change Log
 
+### 0.5.9
+- Added polyfill
+
 ### 0.5.8
 - Fixed missing banner
 

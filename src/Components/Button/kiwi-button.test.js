@@ -7,7 +7,7 @@ describe("kiwi-button", () => {
 
 	beforeEach(async () => {
 		browserInstance = await getHeadlessBrowserInstance()
-		browserInstance.loadComponentPage(ELEMENT_TAG)
+		await browserInstance.loadComponentPage(ELEMENT_TAG)
 		await browserInstance.execute(selector => {
 			document.querySelector(selector).innerHTML = "Click Me!"
 		}, [ELEMENT_TAG])
